@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Field_lock_after_status_change</fullName>
+    <active>true</active>
+    <description>Field Lock when CPQ status change</description>
+    <errorConditionFormula>AND  
+ (NOT ( $Profile.Name =&apos;System Administrator&apos;),OR ( ISPICKVAL( Status__c ,&apos;ACR Consumed&apos;),  ISPICKVAL(Status__c,&apos;Billed&apos;), ISPICKVAL( Status__c ,&apos;Picked for Billing&apos;) ),
+   OR ( ISCHANGED( Gross_Weight__c ) , ISCHANGED( Gross_Weight_UOM_TMS__c ), ISCHANGED( Net_Weight__c ) ,  
+  ISCHANGED( Net_Weight_UOM_TMS__c ), ISCHANGED( Shipment_Value__c ) , ISCHANGED( Shipper_Name_TMS__c ) , 
+  ISCHANGED( Origin_Address__c ) , ISCHANGED( Consignee_Name_TMS__c ) , ISCHANGED( Customer_Product_Category__c ) , 
+  ISCHANGED( Product_Description__c ), ISCHANGED( Insurance_By__c )  , ISCHANGED( Customer__c ) ,  ISCHANGED( Billing_Account__c ) , 
+  ISCHANGED( Billing_Address__c ) ,  ISCHANGED( Shipment_Date__c ), ISCHANGED( Product_Code__c )  , ISCHANGED( Shipping_Note_Number__c )  ) )</errorConditionFormula>
+    <errorDisplayField>Account__c</errorDisplayField>
+    <errorMessage>Field value cannot be changed</errorMessage>
+</ValidationRule>

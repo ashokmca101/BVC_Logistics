@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ConfigurationEvent__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Specifies when user is prompted to configure this product.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Use this to control when Configure Products screen shows up for this product. Choose &quot;Add&quot; to limit to initial configuration. Choose &quot;Edit&quot; to subsequent configuration.</inlineHelpText>
+    <label>Configuration Event</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>SBQQ__ConfigurationType__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Always</fullName>
+                <default>false</default>
+                <label>Always</label>
+            </value>
+            <value>
+                <fullName>Add</fullName>
+                <default>false</default>
+                <label>Add</label>
+            </value>
+            <value>
+                <fullName>Edit</fullName>
+                <default>false</default>
+                <label>Edit</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Required</controllingFieldValue>
+            <controllingFieldValue>Allowed</controllingFieldValue>
+            <controllingFieldValue>Disabled</controllingFieldValue>
+            <valueName>Always</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Allowed</controllingFieldValue>
+            <valueName>Add</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Allowed</controllingFieldValue>
+            <valueName>Edit</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

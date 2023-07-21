@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__SegmentLabel__c</fullName>
+    <deprecated>false</deprecated>
+    <description>For multi-segmented Products, this is the Column header label (e.g. &quot;Year 1&quot;) associated with this line.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>For multi-segmented Products, this is the Column header label (e.g. &quot;Year 1&quot;) associated with this line.</inlineHelpText>
+    <label>Segment Label</label>
+    <length>25</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

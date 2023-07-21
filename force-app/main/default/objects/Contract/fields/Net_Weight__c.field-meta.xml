@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Net_Weight__c</fullName>
+    <externalId>false</externalId>
+    <label>Net Weight</label>
+    <summarizedField>ST_ACR_Consumption__c.Net_Weight_GMS__c</summarizedField>
+    <summaryForeignKey>ST_ACR_Consumption__c.Contract__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

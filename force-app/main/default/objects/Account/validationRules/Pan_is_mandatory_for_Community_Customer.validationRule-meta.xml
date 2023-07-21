@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pan_is_mandatory_for_Community_Customer</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(On_Boarded_From_Community__c = true,
+ISBLANK(PAN_Number_of_Entity__c ))</errorConditionFormula>
+    <errorMessage>Pan number is mandatory for Customer onboarding from Community.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spicejet</fullName>
+    <columns>NAME</columns>
+    <columns>AWB_Number__c</columns>
+    <columns>Commodity_Code__c</columns>
+    <columns>Commodity_Description__c</columns>
+    <columns>Flight_Date__c</columns>
+    <columns>Flight_Origin__c</columns>
+    <columns>Flight_Destination__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>AirLine_Name__c</field>
+        <operation>equals</operation>
+        <value>SpiceJet</value>
+    </filters>
+    <label>Spicejet</label>
+</ListView>

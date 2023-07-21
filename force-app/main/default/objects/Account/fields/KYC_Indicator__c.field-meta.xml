@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KYC_Indicator__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( INCLUDES(BVC_Company_Type__c, &apos;Domestic&apos;) ,  IF( AND( NOT( ISBLANK(KARZAA_Name_As_Per_PAN__c) ) , ( LOWER(Name_As_Per_PAN_Manual_Input__c) == LOWER(KARZAA_Name_As_Per_PAN__c))) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)) , 
+
+ IF(INCLUDES(BVC_Company_Type__c, &apos;International&apos;), IF( AND( NOT( ISBLANK(IEC__c) ) ,(IEC__c == IEC_Manual_Input__c)) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)), 
+
+ IF( INCLUDES(BVC_Company_Type__c, &apos;CB Customer&apos;) , IF( AND( NOT( ISBLANK(AD_Code__c) ) ,(AD_Code__c == AD_Code_Manual_Input__c)) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)), 
+
+ IF(  AND(INCLUDES(BVC_Company_Type__c, &apos;CB Customer&apos;), INCLUDES(BVC_Company_Type__c, &apos;Domestic&apos;))  , IF( AND( NOT( ISBLANK(AD_Code__c) ), NOT( ISBLANK(KARZAA_Name_As_Per_PAN__c)), (Name_As_Per_PAN_Manual_Input__c == KARZAA_Name_As_Per_PAN__c) ,(AD_Code__c == AD_Code_Manual_Input__c)) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)), 
+
+ IF(  AND(INCLUDES(BVC_Company_Type__c, &apos;CB Customer&apos;), INCLUDES(BVC_Company_Type__c, &apos;International&apos;))  , IF( AND( NOT( ISBLANK(AD_Code__c) ), NOT( ISBLANK(IEC__c)), (IEC__c == IEC_Manual_Input__c) ,(AD_Code__c == AD_Code_Manual_Input__c)) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)), 
+
+ IF(  AND(INCLUDES (BVC_Company_Type__c, &apos;Domestic&apos;), INCLUDES(BVC_Company_Type__c, &apos;International&apos;))  , IF( AND( NOT( ISBLANK(KARZAA_Name_As_Per_PAN__c) ), NOT( ISBLANK(IEC__c)), (IEC__c == IEC_Manual_Input__c) ,(KARZAA_Name_As_Per_PAN__c == KARZAA_Name_As_Per_PAN__c)) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)), 
+
+ IF(  AND(INCLUDES (BVC_Company_Type__c, &apos;CB Customer&apos;), INCLUDES (BVC_Company_Type__c, &apos;Domestic&apos;), INCLUDES (BVC_Company_Type__c, &apos;International&apos;))  , IF( AND( NOT( ISBLANK(KARZAA_Name_As_Per_PAN__c) ), NOT( ISBLANK(AD_Code__c) ) , NOT( ISBLANK(IEC__c)), (IEC__c == IEC_Manual_Input__c) , (AD_Code__c == AD_Code_Manual_Input__c) , (KARZAA_Name_As_Per_PAN__c == KARZAA_Name_As_Per_PAN__c)) , IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcL&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)), 
+
+IMAGE(&apos;https://bvc2--bvcuat--c.documentforce.com/servlet/servlet.FileDownload?file=0151m000000GhcG&apos;, &apos;&apos;, 25, 25)  )  )  )  ) ) ))</formula>
+    <label>KYC Indicator</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

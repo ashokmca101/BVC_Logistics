@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ST_Quote_Line__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Quote Line</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>SBQQ__QuoteLine__c.SBQQ__Quote__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Quote__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>SBQQ__QuoteLine__c</referenceTo>
+    <relationshipLabel>Non ACR Templates</relationshipLabel>
+    <relationshipName>Non_ACR_Templates</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

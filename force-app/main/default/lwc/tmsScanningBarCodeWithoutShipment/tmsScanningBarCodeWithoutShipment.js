@@ -17,9 +17,9 @@ import shipmentRecordGet from "@salesforce/apex/TMS_ScanningBarCodeWithoutShipme
 import createShipmentRecord from "@salesforce/apex/TMS_ScanningBarCodeWithoutShipment.createShipmentRecord"; 
 import createSecureBagRecords from "@salesforce/apex/TMS_ScanningBarCodeWithoutShipment.createSecureBagRecords";
 import createTrackingRecord from "@salesforce/apex/TMS_ScanningBarCodeWithoutShipment.createTrackingRecord";
+
 import { NavigationMixin } from 'lightning/navigation';
 import SHIPMENT_TRACKING from '@salesforce/schema/Shipment_Tracking__c';
-
 
 export default class TmsScanningBarCodeWithoutShipment  extends NavigationMixin(LightningElement) {
     
@@ -50,6 +50,7 @@ export default class TmsScanningBarCodeWithoutShipment  extends NavigationMixin(
     @track isBagIdManual = false;
     @track updatesecurebag = [];
     @track recordTypeId;
+    @track SBID;
     
     
     get acceptedFormats() {
@@ -140,6 +141,10 @@ export default class TmsScanningBarCodeWithoutShipment  extends NavigationMixin(
             bagId: bagId,
             shipmentID: shipmentRecordID
         }).then(result => {
+            //Added By Imran
+            console.log('11.Inside createSecureBagRecords Res :'+result.Id);
+            this.SBID = result.Id;  // this value declared at the top
+            // Added By Imran upto here
             this.isBagIdManual = false;
             
             this.processScannedBarcode(result);
@@ -256,11 +261,13 @@ export default class TmsScanningBarCodeWithoutShipment  extends NavigationMixin(
     handleSecureBagsManualChange(event) {
 
         this.bagManual = event.target.value; 
+        console.log('11.this.bagManual :'+this.bagManual);
         let pid = this.pickupid;
         
         if(this.bagManual != '' && this.bagManual != null) { 
             this.secureBagsID = this.bagManual;
             this.tagbagWithShipment(this.bagManual, this.shipmentRecord.Id);
+            console.log('11.this.secureBagsID :'+this.secureBagsID);
             
         } 
     }

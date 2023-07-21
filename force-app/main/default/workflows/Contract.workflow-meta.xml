@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>ACR_Email_Alert_on_Contract_Creation_for_BVC_Collection_Team</fullName>
+        <description>ACR Email Alert on Contract Creation for BVC Collection Team</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>Quote_Creator_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>Collection_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>mahesh.wadekar@bvclogistics.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/ACR_Contract_Creation_Email_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Contract_Activation_Email_ALert</fullName>
+        <description>Contract Activation Email ALert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Billing_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Non_ACR_Contract_Activation_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Contract_Activation_Email_Alert_for_BVC_Team</fullName>
+        <description>Contract Activation Email Alert for BVC Team</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>Quote_Creator_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>Billing_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>mahesh.wadekar@bvclogistics.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Non_ACR_Contract_Activation_Template</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Quote_Creator_Email_Update</fullName>
+        <field>Quote_Creator_Email__c</field>
+        <formula>SBQQ__Quote__r.CreatedBy.Email</formula>
+        <name>Quote Creator Email Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>ACR Contract Creation Email Alert for Collection Team</fullName>
+        <actions>
+            <name>ACR_Email_Alert_on_Contract_Creation_for_BVC_Collection_Team</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contract.Business_Type__c</field>
+            <operation>equals</operation>
+            <value>ACR</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Contract Activation Email Alert for Billing Team</fullName>
+        <actions>
+            <name>Contract_Activation_Email_Alert_for_BVC_Team</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contract.Status</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

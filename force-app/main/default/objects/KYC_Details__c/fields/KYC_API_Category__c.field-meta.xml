@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KYC_API_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>KYC API Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Summary Financials</fullName>
+                <default>false</default>
+                <label>Summary Financials</label>
+            </value>
+            <value>
+                <fullName>Detailed Financials</fullName>
+                <default>false</default>
+                <label>Detailed Financials</label>
+            </value>
+            <value>
+                <fullName>Detailed Financials-Balance Sheet</fullName>
+                <default>false</default>
+                <label>Detailed Financials-Balance Sheet</label>
+            </value>
+            <value>
+                <fullName>Detailed Financials-CF</fullName>
+                <default>false</default>
+                <label>Detailed Financials-CF</label>
+            </value>
+            <value>
+                <fullName>Detailed Financials-Finacials Ratios</fullName>
+                <default>false</default>
+                <label>Detailed Financials-Finacials Ratios</label>
+            </value>
+            <value>
+                <fullName>Detailed Financials - Revenue</fullName>
+                <default>false</default>
+                <label>Detailed Financials - Revenue</label>
+            </value>
+            <value>
+                <fullName>Detailed Finacials - Expense</fullName>
+                <default>false</default>
+                <label>Detailed Finacials - Expense</label>
+            </value>
+            <value>
+                <fullName>Customer  Profile</fullName>
+                <default>false</default>
+                <label>Customer  Profile</label>
+            </value>
+            <value>
+                <fullName>Management Profile</fullName>
+                <default>false</default>
+                <label>Management Profile</label>
+            </value>
+            <value>
+                <fullName>Statutory Registration Details</fullName>
+                <default>false</default>
+                <label>Statutory Registration Details</label>
+            </value>
+            <value>
+                <fullName>MCA Registrations</fullName>
+                <default>false</default>
+                <label>MCA Registrations</label>
+            </value>
+            <value>
+                <fullName>GST Registrations</fullName>
+                <default>false</default>
+                <label>GST Registrations</label>
+            </value>
+            <value>
+                <fullName>IEC Registration</fullName>
+                <default>false</default>
+                <label>IEC Registration</label>
+            </value>
+            <value>
+                <fullName>TAN Registration</fullName>
+                <default>false</default>
+                <label>TAN Registration</label>
+            </value>
+            <value>
+                <fullName>PAN Registration</fullName>
+                <default>false</default>
+                <label>PAN Registration</label>
+            </value>
+            <value>
+                <fullName>IEC Profile - detailed</fullName>
+                <default>false</default>
+                <label>IEC Profile - detailed</label>
+            </value>
+            <value>
+                <fullName>Credit Rating</fullName>
+                <default>false</default>
+                <label>Credit Rating</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

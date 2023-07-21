@@ -59,4 +59,4 @@ Private class DealTriggerBVCHelperTestClass {
         DealTriggerBVCHelper.insertPeopleRole(opp1);
         
     }
-}
+   }

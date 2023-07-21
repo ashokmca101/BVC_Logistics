@@ -80,6 +80,7 @@ public class InvoiceTriggerHandler {
                 blng__InvoiceLine__c invline = new blng__InvoiceLine__c();
                 invline.blng__Subtotal__c = inv.BVC_CB_ROUND_OFF__c;
                 invline.blng__Invoice__c = inv.Id;
+                invline.BVC_CB_ChargeType__c='Agency';
                 invLine.Name = 'Round Off';
                 invline.blng__UnitPrice__c = inv.BVC_CB_ROUND_OFF__c;
                 invlinelist.add(invline);
@@ -292,50 +293,74 @@ public class InvoiceTriggerHandler {
                 upsert mapUniqueKeyRecord.values();
             } 
         }
-        if(CBinvoiceIds.size()>0 && !CBinvoiceIds.isEmpty()){
-            Map<Id,blng__Invoice__c> SrNumMap = new Map<Id,blng__Invoice__c>([Select id,BVC_Billing_Entity__r.GSTIN_State_Code__c,BVC_Billing_Entity__r.BVC_CB_Billing_Serial_Number__c from blng__Invoice__c where Id IN :CBserial]);
-     		list<blng__Invoice__c> TIinvoices=[Select id,name from blng__Invoice__c where Invoice_Type__c = 'Tax Invoice' AND BVC_CB_Is_CB_Invoice__c =TRUE AND ST_Invoice_Series__c != null];
-            list<blng__Invoice__c> CIinvoices=[Select id,name from blng__Invoice__c where Invoice_Type__c = 'Commercial Invoice' AND BVC_CB_Is_CB_Invoice__c =TRUE AND ST_Invoice_Series__c != null ];
-            list<blng__Invoice__c> BIinvoices=[Select id,name from blng__Invoice__c where Invoice_Type__c = 'Bill of Supply Invoice' AND BVC_CB_Is_CB_Invoice__c =TRUE AND ST_Invoice_Series__c != null];
+        //For CB invoices
+        if(CBinvoiceIds.size()>0 && !CBinvoiceIds.isEmpty() ){
+            Map<Id,blng__Invoice__c> SrNumMap = new Map<Id,blng__Invoice__c>([Select id,state_code__c,BVC_Billing_Entity__r.BVC_CB_Billing_Serial_Number__c from blng__Invoice__c where Id IN :CBserial]);
+     	//	list<blng__Invoice__c> TIinvoices=[Select id,name,state_code__c from blng__Invoice__c where Invoice_Type__c = 'Tax Invoice' AND BVC_CB_Is_CB_Invoice__c =TRUE AND ST_Invoice_Series__c != null];
+        //    list<blng__Invoice__c> CIinvoices=[Select id,name,state_code__c from blng__Invoice__c where Invoice_Type__c = 'Commercial Invoice' AND BVC_CB_Is_CB_Invoice__c =TRUE AND ST_Invoice_Series__c != null ];
+        //   list<blng__Invoice__c> BIinvoices=[Select id,name,state_code__c from blng__Invoice__c where Invoice_Type__c = 'Bill of Supply Invoice' AND BVC_CB_Is_CB_Invoice__c =TRUE AND ST_Invoice_Series__c != null];
             integer taxvar=1;
             integer comvar=1;
             integer bosvar=1;
-            for(blng__Invoice__c CBinv :CBinvoiceIds){
-                string invseries ;
-                String sr = SrNumMap.get(CBinv.id).BVC_Billing_Entity__r.BVC_CB_Billing_Serial_Number__c;
-                string stateCode = SrNumMap.get(CBinv.id).BVC_Billing_Entity__r.GSTIN_State_Code__c;//p
-                Integer lastCount = 0;//p
-                system.debug('+++++++++++++++++++++'+SrNumMap.get(CBinv.id).BVC_Billing_Entity__r.BVC_CB_Billing_Serial_Number__c);
-                system.debug(CBinv.id);
-                if(CBinv.Invoice_Type__c == 'Tax Invoice'){
-                    for (blng__Invoice__c invoice : newList) {
-            			if (invoice.ST_Invoice_Series__c != null && invoice.ST_Invoice_Series__c.startsWith(stateCode)) {
-                            String numericPortion = invoice.ST_Invoice_Series__c.substringAfter(stateCode).substring(0, 2);
-                            if (numericPortion.isNumeric()) {
-                                Integer currentCount = Integer.valueOf(numericPortion);
-                                if (currentCount > lastCount) {
-                                    lastCount = currentCount;
-                    }
+           
+            List<DocumentSeries__c>upsertList = new List<DocumentSeries__c>();
+            Map<String,DocumentSeries__c> mapUniqueKeyRecord =new Map<String,DocumentSeries__c>();
+           
+                for(DocumentSeries__c doc : [Select id, Unique_Key__c, Last_Serial_Number__c from DocumentSeries__c ]){
+                    //mapUniqueKeyNumber.put(doc.Unique_Key__c,Integer.valueOf(doc.Last_Serial_Number__c.right(doc.Last_Serial_Number__c.length() - doc.Unique_Key__c.length())));
+                    mapUniqueKeyRecord.put(doc.Unique_Key__c,doc);
                 }
-            }
-        }
-                    lastCount++;
-                    String lastCountStr = String.valueOf(lastCount).leftPad(2, '0');
-                    invseries = stateCode + CBinv.BVC_CB_Invoice_Series__c + lastCountStr;
-                    CBinv.ST_Invoice_Series__c = invseries;
-                }else if(CBinv.Invoice_Type__c =='Commercial Invoice'){
-                    integer count = CIinvoices.size()+comvar;
-                    invseries =  CBinv.BVC_CB_Invoice_Series__c +sr+count;
+            
+            for(blng__Invoice__c CBinv :CBinvoiceIds){
+                if(CBinv.BVC_CB_Is_CB_Invoice__c==false){ 
+                string invseries ;
+                string sr = SrNumMap.get(CBinv.id).BVC_Billing_Entity__r.BVC_CB_Billing_Serial_Number__c;
+               
+                if(CBinv.Invoice_Type__c == 'Tax Invoice'){
+                       
+                    integer count = integer.valueOf(mapUniqueKeyRecord.get(CBinv.BVC_CB_Invoice_Series__c).Last_Serial_Number__c)+1;                
+                    invseries = CBinv.BVC_CB_Invoice_Series__c+sr+count; 
                     system.debug(invseries);
-					comvar++;                    
-                }else if(CBinv.Invoice_Type__c =='Bill of Supply Invoice'){
-                    integer count = BIinvoices.size()+bosvar;
-                    invseries =  CBinv.BVC_CB_Invoice_Series__c+sr+count;
+                    taxvar++;
+                    //DocumentSeries__c is a custom setting. created record for maharashtra 27CBTI and for gujarat 24CBTII
+                    DocumentSeries__c docM = new DocumentSeries__c(id=mapUniqueKeyRecord.get(CBinv.BVC_CB_Invoice_Series__c).id);
+                            docM.Name = CBinv.BVC_CB_Invoice_Series__c;
+                    //removed +1 from 351= docM.Last_Serial_Number__c = String.valueOf(count+1);
+                    		docM.Last_Serial_Number__c = String.valueOf(count);
+                            docM.Unique_Key__c = CBinv.BVC_CB_Invoice_Series__c;
+                    mapUniqueKeyRecord.put(CBinv.BVC_CB_Invoice_Series__c,docM);
+                    }
+                
+                else if(CBinv.Invoice_Type__c =='Commercial Invoice'){
+                    integer count = integer.valueOf(mapUniqueKeyRecord.get(CBinv.BVC_CB_Invoice_Series__c).Last_Serial_Number__c)+1;                
+                    invseries = CBinv.BVC_CB_Invoice_Series__c+sr+count; 
                     system.debug(invseries);
-                    bosvar++;
+                    taxvar++;
+                    DocumentSeries__c docM = new DocumentSeries__c(id=mapUniqueKeyRecord.get(CBinv.BVC_CB_Invoice_Series__c).id);
+                            docM.Name = CBinv.BVC_CB_Invoice_Series__c;
+                    //removed +1 from 351= docM.Last_Serial_Number__c = String.valueOf(count+1);
+                    		docM.Last_Serial_Number__c = String.valueOf(count);
+                            docM.Unique_Key__c = CBinv.BVC_CB_Invoice_Series__c;
+                    mapUniqueKeyRecord.put(CBinv.BVC_CB_Invoice_Series__c,docM);                  
+                }
+                
+                else if(CBinv.Invoice_Type__c =='Bill of Supply Invoice'){
+                    integer count = integer.valueOf(mapUniqueKeyRecord.get(CBinv.BVC_CB_Invoice_Series__c).Last_Serial_Number__c)+1;                
+                    invseries = CBinv.BVC_CB_Invoice_Series__c+sr+count; 
+                    system.debug(invseries);
+                    taxvar++;
+                    DocumentSeries__c docM = new DocumentSeries__c(id=mapUniqueKeyRecord.get(CBinv.BVC_CB_Invoice_Series__c).id);
+                            docM.Name = CBinv.BVC_CB_Invoice_Series__c;
+                    //removed +1 from 351= docM.Last_Serial_Number__c = String.valueOf(count+1);
+                    		docM.Last_Serial_Number__c = String.valueOf(count);
+                            docM.Unique_Key__c = CBinv.BVC_CB_Invoice_Series__c;
+                    mapUniqueKeyRecord.put(CBinv.BVC_CB_Invoice_Series__c,docM);
                 }
                 cbinv.ST_Invoice_Series__c=invseries ; 
             }
+            }
+            Upsert mapUniqueKeyRecord.values();
+                
         }      
         
     }
@@ -723,6 +748,7 @@ public class InvoiceTriggerHandler {
     ************************************************************************************/ 
     public static void postInvoice(Map<Id,blng__Invoice__c> newMap,Map<Id,blng__Invoice__c> oldMap){
         Set<Id> addressIds = new set<Id>();
+        
         system.debug('Post Invoice Method:');
         list<blng__Invoice__c> invlisttoupdate = new list<blng__Invoice__c>();
         for(blng__Invoice__c inv : newMap.values()){
@@ -736,10 +762,21 @@ public class InvoiceTriggerHandler {
                    		inv.Place_of_Supply_City__c=inv.BVC_CB_Billing_State__c;
                 		inv.Place_Of_Supply_State_Code__c=inv.BVC_CB_Billing_GST_State_Code__c;
                 		inv.Place_Of_Supply_State__c=inv.BVC_CB_Billing_State__c;
-                   		inv.BVC_CB_IsCommInvPosted__c=true;
-                    	inv.BVC_CB_CB_Comm_Inv_Amount__c =inv.blng__TotalAmount__c.round();
+                    	inv.BVC_CB_IsCommInvPosted__c=true;
+                       // decimal roundoff50 = inv.blng__TotalAmount__c.round()-inv.blng__TotalAmount__c;
+                    
+                    	
                         inv.BVC_CB_CB_Comm_Inv_Series__c =inv.ST_Invoice_Series__c;
                         inv.BVC_CB_ROUND_OFF__c = inv.blng__TotalAmount__c.round()-inv.blng__TotalAmount__c;
+                    if(inv.BVC_CB_ROUND_OFF__c==0.5){
+                        inv.BVC_CB_CB_Comm_Inv_Amount__c =inv.blng__TotalAmount__c+1;
+                    }
+                    else{
+                        inv.BVC_CB_CB_Comm_Inv_Amount__c =inv.blng__TotalAmount__c.round();
+                    }
+                       /* Decimal roundedAmount = (inv.blng__TotalAmount__c % 1) >= 0.5 ? Math.ceil(inv.blng__TotalAmount__c) : Math.floor(inv.blng__TotalAmount__c);
+						inv.BVC_CB_CB_Tax_Inv_Amount__c = roundedAmount;
+						inv.BVC_CB_ROUND_OFF__c = roundedAmount - inv.blng__TotalAmount__c;*/
                 }
             if((inv.blng__InvoiceStatus__c == 'Draft' || inv.blng__InvoiceStatus__c == 'Initiated')
                && inv.blng__TaxAmount__c != null 
@@ -793,12 +830,25 @@ public class InvoiceTriggerHandler {
                             inv.BVC_CB_CB_Tax_Inv_Amount__c =inv.blng__TotalAmount__c.round();
                             inv.BVC_CB_CB_Tax_Inv_Series__c =inv.ST_Invoice_Series__c;
                            	inv.BVC_CB_ROUND_OFF__c = inv.blng__TotalAmount__c.round()-inv.blng__TotalAmount__c;
+                           if(inv.BVC_CB_ROUND_OFF__c==0.5){
+                        inv.BVC_CB_CB_Tax_Inv_Amount__c =inv.blng__TotalAmount__c+1;
+                    }
+                    else{
+                        inv.BVC_CB_CB_Tax_Inv_Amount__c =inv.blng__TotalAmount__c.round();
+                    }
+                           
                        }else if(sezAddressMap.containsKey(inv.Billing_Address__c) && inv.blng__TaxAmount__c == 0 && taxAmount == 0){
                           inv.blng__InvoiceStatus__c = 'Posted';
                            inv.BVC_CB_IsTaxPosted__c =true;
                            inv.BVC_CB_CB_Tax_Inv_Amount__c =inv.blng__TotalAmount__c.round();
                            inv.BVC_CB_CB_Tax_Inv_Series__c =inv.ST_Invoice_Series__c;
                            inv.BVC_CB_ROUND_OFF__c = inv.blng__TotalAmount__c.round()-inv.blng__TotalAmount__c;
+                           if(inv.BVC_CB_ROUND_OFF__c==0.5){
+                        inv.BVC_CB_CB_Tax_Inv_Amount__c =inv.blng__TotalAmount__c+1;
+                    }
+                    else{
+                        inv.BVC_CB_CB_Tax_Inv_Amount__c =inv.blng__TotalAmount__c.round();
+                    }
                        }
                        if(inv.Invoice_Type__c == 'Bill of Supply Invoice' && inv.EY_Tax_Calculation_Status__c == 'Success'){
                            	inv.blng__InvoiceStatus__c = 'Posted'; 
@@ -806,6 +856,12 @@ public class InvoiceTriggerHandler {
                             inv.BVC_CB_BOS_Bill_Amount__c =inv.blng__TotalAmount__c.round();
                             inv.BVC_CB_CB_BOS_Inv_Series__c =inv.ST_Invoice_Series__c;
                            	inv.BVC_CB_ROUND_OFF__c = inv.blng__TotalAmount__c.round()-inv.blng__TotalAmount__c;
+                           if(inv.BVC_CB_ROUND_OFF__c==0.5){
+                        inv.BVC_CB_BOS_Bill_Amount__c =inv.blng__TotalAmount__c+1;
+                    }
+                    else{
+                        inv.BVC_CB_BOS_Bill_Amount__c =inv.blng__TotalAmount__c.round();
+                    }
                            //Remove after razorpay works
                        }
                    }else{
@@ -917,6 +973,108 @@ public class InvoiceTriggerHandler {
       i++;
                     i++;
       i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+       i++;
+      
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+                    i++;
+      i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+       i++;
+      
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+                    i++;
+      i++;
+        i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+        i++;
+      i++;
+      i++;
+        
       i++;
       i++;
       i++;

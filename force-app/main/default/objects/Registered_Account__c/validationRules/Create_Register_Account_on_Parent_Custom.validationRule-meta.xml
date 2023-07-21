@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Register_Account_on_Parent_Custom</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK(Customer__r.ParentId))</errorConditionFormula>
+    <errorMessage>You cannot create a register account on child customer. Kindly select a parent customer.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deactivate_Order__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used to bypass the process builder Update Shipment Status. When user is trying to deactivate existing order</description>
+    <externalId>false</externalId>
+    <label>Deactivate Order</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

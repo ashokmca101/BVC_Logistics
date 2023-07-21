@@ -1,6 +1,5 @@
 public with sharing class OrderCreateShipment {
-    
-    
+        
     public static void validateAndCreateOrder(Map<Id,Shipment__c> shipmentMap){
         Set<String> productCodes = new Set<String>();
         Map<Id,Shipment__c> validShipmentData = new Map<Id,Shipment__c>();
@@ -209,8 +208,7 @@ public with sharing class OrderCreateShipment {
         
         
     }
-    
-    
+        
     public static void createOrderShipment(Map<Id,Shipment__c> shipmentMap){
         Map<Id,AddressBook__c> addressMap = new Map<Id,AddressBook__c>();
         Set<Id> addressIds = new Set<Id>();
@@ -617,8 +615,7 @@ public with sharing class OrderCreateShipment {
             system.debug('Shipment error Logs insert failed');
         }
     }
-    
-    
+        
     public static date dateCalculator(Date d,String frequency,String blngCycle){
         Date nextBillingDate ; 
         if(frequency == 'Weekly'){
@@ -710,6 +707,7 @@ public with sharing class OrderCreateShipment {
                 }
         return hBlng;
     }
+    
     public static void Method2(){
         integer i = 0;
           

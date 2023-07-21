@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Amount_Mandatory</fullName>
+    <active>true</active>
+    <description>Deal_Amount_Mandatory</description>
+    <errorConditionFormula>AND(
+ ISPICKVAL( Stage__c , &apos;Payment Received&apos;) ,
+ ISBLANK(  Deal__c ) 
+)</errorConditionFormula>
+    <errorDisplayField>Deal__c</errorDisplayField>
+    <errorMessage>Please enter Deal Amount</errorMessage>
+</ValidationRule>

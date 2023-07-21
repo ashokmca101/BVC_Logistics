@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Inactive_Pincode__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Becomes true if the pincode is inactive through LeadRoundRobin Class and fire an email to the owner through the process builder</description>
+    <externalId>false</externalId>
+    <label>Is Inactive Pincode</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

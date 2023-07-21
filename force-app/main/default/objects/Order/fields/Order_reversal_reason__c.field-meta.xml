@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_reversal_reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Order reversal reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Renewal of Contract</fullName>
+                <default>false</default>
+                <label>Renewal of Contract</label>
+            </value>
+            <value>
+                <fullName>Correction in Gross Weight</fullName>
+                <default>false</default>
+                <label>Correction in Gross Weight</label>
+            </value>
+            <value>
+                <fullName>Correction in Customer</fullName>
+                <default>false</default>
+                <label>Correction in Customer</label>
+            </value>
+            <value>
+                <fullName>Correction in Insurance by BVC</fullName>
+                <default>false</default>
+                <label>Correction in Insurance by BVC</label>
+            </value>
+            <value>
+                <fullName>Correction in Offline Charges</fullName>
+                <default>false</default>
+                <label>Correction in Offline Charges</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

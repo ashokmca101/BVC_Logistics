@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>blng__RevenueRecognitionRule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Lookup to the Revenue Recognition Rule assigned</inlineHelpText>
+    <label>Revenue Recognition Rule</label>
+    <referenceTo>blng__RevenueRecognitionRule__c</referenceTo>
+    <relationshipLabel>Revenue Recognition Rule</relationshipLabel>
+    <relationshipName>CSsRevenueRecognitionRule</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

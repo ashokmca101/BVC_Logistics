@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ExternallyConfigurable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When checked, indicates that configuring this Product automatically launches the External Configuration URL, defined in Salesforce CPQ settings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When checked, indicates that configuring this Product automatically launches the External Configuration URL, defined in Salesforce CPQ settings.</inlineHelpText>
+    <label>Externally Configurable</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

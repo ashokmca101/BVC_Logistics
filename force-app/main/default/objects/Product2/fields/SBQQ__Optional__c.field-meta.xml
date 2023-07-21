@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Optional__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Indicates whether this product is optional or not by default. Optional products don&apos;t contribute to quote total or get transferred to the opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select if this product is optional by default. Optional products don&apos;t contribute to quote total or get transferred to the opportunity.</inlineHelpText>
+    <label>Optional</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

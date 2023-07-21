@@ -113,7 +113,7 @@ public class FlightScheduleBatch_Helper {
             String d = responseWrapper.d;
             String result = d.subStringBetween('RESULT_START:',':RESULT_END');
             system.debug(result);
-            
+    // deserialize the response stored in result           
             IndigoWrapperSessionIdClass1 responseWrap = IndigoWrapperSessionIdClass1.parse(result);
             system.debug(responseWrap);
             session = responseWrap.Table[0].SessionID;
@@ -125,7 +125,7 @@ public class FlightScheduleBatch_Helper {
     public static List<Flight_Schedule__c> getFlightDetails(String originFlightCode,String IndigoAirlineID,String indigoLoginName,String indigoAirlineCode,String indigoEndpoint){
         
         List<Flight_Schedule__c> FlightScheduleList = new List<Flight_Schedule__c>();
-       
+    // store session id and token number    
         String session = FlightScheduleBatch_Helper.generateSessionId();
         String token = FlightScheduleBatch_Helper.generateToken();
         Date todayDate = system.today()+1;
@@ -156,7 +156,7 @@ public class FlightScheduleBatch_Helper {
             System.debug('The status code returned was not expected: ' + response.getStatusCode() + ' ' + response.getStatus());
         } else {
             system.debug(response.getBody());
-            
+       //deserialize the response      
             IndigoWrapperGetFlgtDetailsClass responseWrap = IndigoWrapperGetFlgtDetailsClass.parse(response.getBody());
             system.debug(responseWrap);
             

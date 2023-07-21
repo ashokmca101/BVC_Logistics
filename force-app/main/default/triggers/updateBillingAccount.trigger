@@ -40,11 +40,11 @@ trigger updateBillingAccount on Shipment__c (before insert, before update) {
                         
                     }
                     
-                }
+                } 
             }
         }
         
-    }
+    } 
     if(ShipmentWithBillingAccountList !=null && ShipmentWithBillingAccountList.size()>0){
         //system.debug('calling handler');
         updateBillingAccount_handler.updatePrimaryAddress(ShipmentWithBillingAccountList);

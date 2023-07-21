@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__OrderBookings__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Total amount of all order product bookings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total amount of all order product bookings.</inlineHelpText>
+    <label>Order Bookings</label>
+    <summarizedField>OrderItem.SBQQ__OrderProductBookings__c</summarizedField>
+    <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

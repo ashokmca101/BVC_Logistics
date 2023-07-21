@@ -1,0 +1,16 @@
+<apex:page controller="TMS_shipmentDocumentController" showHeader="false" lightningStylesheets="true">
+
+    <apex:form >
+        <apex:pageBlock title="Available Shipment Labels">
+            <apex:pageMessages id="msg"></apex:pageMessages>
+            <apex:pageBlockTable value="{!LabelWrapList}" var="wr">
+                <apex:column headerValue="Select">
+                    <apex:inputCheckbox Selected="{!wr.selected}"/>
+                </apex:column>
+                <apex:column value="{!wr.sp.Name}" title="Shipping Note Number" />
+                <apex:column value="{!wr.sp.Status__c}" title="Shipping Note Number" />
+            </apex:pageBlockTable>
+            <center><apex:commandButton action="{!GeneratePreShipmentPdf}" value="Generate" disabled="{!if(LabelWrapList.size=0,true,false)}"/></center>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

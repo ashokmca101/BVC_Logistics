@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Charge_Difference__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(
+NOT(ISBLANK(Invoice__c)),
+(Total_Freight_Charges__c        &lt;&gt; Invoice__r.Total_Freight_Charges__c) || 
+ (Total_Liability_Charges__c     &lt;&gt; Invoice__r.Total_Liability_Charge__c ) || 
+ (Total_Offline_Charges__c       &lt;&gt; Invoice__r.Total_Offline_Charges__c )||
+ (Total_BVC_Valuation_Charges__c &lt;&gt; Invoice__r.Total_BVC_Valuation_Charges__c )||
+ (Total_Docket_Charges__c        &lt;&gt; Invoice__r.Total_Docket_Charges__c )||
+ (Total_Fuel_Charges__c          &lt;&gt; Invoice__r.Total_Fuel_Charges__c )||
+ (Total_Holiday_Charges__c       &lt;&gt; Invoice__r.Total_Holiday_Charges__c )||
+ (Total_Weight_Charges__c        &lt;&gt; Invoice__r.Total_Weight_Charges__c )
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Charge Difference</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

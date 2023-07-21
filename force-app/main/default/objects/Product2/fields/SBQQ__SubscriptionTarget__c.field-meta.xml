@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__SubscriptionTarget__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Effective product on which maintenance should calculate.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Use this field to override a product that is included in a percent of total calculation. Point this lookup to a product with a list price you would like to use for the current product’s Percent of Total calculations.</inlineHelpText>
+    <label>Percent Of Total Target</label>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Subscription Targeting Products</relationshipLabel>
+    <relationshipName>SubscriptionTargetingProducts</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

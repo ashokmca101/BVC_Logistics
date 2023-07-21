@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <name>status_changed_to_assigned</name>
+        <label>status changed to assigned</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Status_Check_fro_Assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_assigned1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pickup_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Pickup_Assigned_To__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Pickup_Assigned_To__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Pickup</targetReference>
+            </connector>
+            <label>is assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Status_Check_fro_Assigned</name>
+        <label>Status Check fro Assigned</label>
+        <locationX>182</locationX>
+        <locationY>671</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Assigned</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pickup_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Shipments_Records</targetReference>
+            </connector>
+            <label>is Assigned</label>
+        </rules>
+    </decisions>
+    <description>Update Shipment Tracking Status when Pickup Status is Assigned</description>
+    <environments>Default</environments>
+    <interviewLabel>Flow on Pickup_01 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Flow on Pickup_01</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Pickup</name>
+        <label>Update Pickup</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>Status_Check_fro_Assigned</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Pickup_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updating the Shipment Record Tracking Status as Out for Delivery</description>
+        <name>Update_Shipments_Records</name>
+        <label>Update Shipments Records</label>
+        <locationX>50</locationX>
+        <locationY>791</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pickup__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Tracking_Status__c</field>
+            <value>
+                <stringValue>Out for Pickup</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Shipment__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>status_changed_to_assigned</targetReference>
+        </connector>
+        <object>Pickup__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

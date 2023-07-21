@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>blng__BillingRule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Lookup to the Billing Rule assigned</inlineHelpText>
+    <label>Billing Rule</label>
+    <referenceTo>blng__BillingRule__c</referenceTo>
+    <relationshipLabel>Billing Rule</relationshipLabel>
+    <relationshipName>ConsumptionSchedulesBillingRule</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

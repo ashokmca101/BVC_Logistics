@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_GSTIN_Contain_PAN</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND((TEXT(GST_Registered_Status__c) ==&apos;Registered&apos;),
+      RecordType.Name = &apos;Billing&apos;,
+      ISPICKVAL(Source__c, &apos;Manual&apos;))  , !CONTAINS(GSTIN__c , Customer__r.PAN_Number_of_Entity__c), False)</errorConditionFormula>
+    <errorDisplayField>GSTIN__c</errorDisplayField>
+    <errorMessage>GSTIN should contain the PAN Number of the Customer</errorMessage>
+</ValidationRule>

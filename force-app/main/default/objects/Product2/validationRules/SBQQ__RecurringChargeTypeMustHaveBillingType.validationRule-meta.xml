@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__RecurringChargeTypeMustHaveBillingType</fullName>
+    <active>true</active>
+    <description>When Charge Type is Recurring, a Billing Type must be selected.</description>
+    <errorConditionFormula>AND(ISPICKVAL(SBQQ__ChargeType__c, &apos;Recurring&apos;), ISPICKVAL(SBQQ__BillingType__c, &apos;&apos;))</errorConditionFormula>
+    <errorDisplayField>SBQQ__BillingType__c</errorDisplayField>
+    <errorMessage>When Charge Type is Recurring, a Billing Type must be selected.</errorMessage>
+</ValidationRule>

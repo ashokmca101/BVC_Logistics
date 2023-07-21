@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Product_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Product Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Product_Category__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gold jewellery</fullName>
+                <default>false</default>
+                <label>Gold jewellery</label>
+            </value>
+            <value>
+                <fullName>Silver Jewellery</fullName>
+                <default>false</default>
+                <label>Silver Jewellery</label>
+            </value>
+            <value>
+                <fullName>Silver Bricks</fullName>
+                <default>false</default>
+                <label>Silver Bricks</label>
+            </value>
+            <value>
+                <fullName>Gold Bars</fullName>
+                <default>false</default>
+                <label>Gold Bars</label>
+            </value>
+            <value>
+                <fullName>Coins</fullName>
+                <default>false</default>
+                <label>Coins</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <controllingFieldValue>LuxeSHIP</controllingFieldValue>
+            <valueName>Gold jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GoldSHIP</controllingFieldValue>
+            <controllingFieldValue>LuxeSHIP</controllingFieldValue>
+            <valueName>Gold Bars</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GoldSHIP</controllingFieldValue>
+            <controllingFieldValue>LuxeSHIP</controllingFieldValue>
+            <valueName>Coins</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <controllingFieldValue>LuxeSHIP</controllingFieldValue>
+            <valueName>Silver Jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <controllingFieldValue>LuxeSHIP</controllingFieldValue>
+            <valueName>Silver Bricks</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

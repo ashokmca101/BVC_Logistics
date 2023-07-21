@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>only_sales_rep_can_edit</fullName>
+    <active>true</active>
+    <description>As Sales Rep ,I should be abel to edit below KYC fields  BVC Software ID &amp; BVC Service</description>
+    <errorConditionFormula>AND(
+ISCHANGED(BVC_Service__c),ISCHANGED(BVC_Software_Id__c),
+$Profile.Name &lt;&gt; &apos;Sales User&apos;
+)</errorConditionFormula>
+    <errorMessage>only sales rep can edit.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legacy_eSHIP_Pricing</fullName>
+    <active>true</active>
+    <label>Legacy eSHIP Pricing</label>
+    <picklistValues>
+        <picklist>Business_Type__c</picklist>
+        <values>
+            <fullName>ACR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non ACR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liability_Cover_By_BVC__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Package_Amount__c</picklist>
+        <values>
+            <fullName>1000000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>120000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>250000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2500000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>500000</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shipment_Type__c</picklist>
+        <values>
+            <fullName>Intercity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intracity</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Slab_Criteria__c</picklist>
+        <values>
+            <fullName>Gross Weight Gms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Value INR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Weight</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Slab_Level__c</picklist>
+        <values>
+            <fullName>Level 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level N</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

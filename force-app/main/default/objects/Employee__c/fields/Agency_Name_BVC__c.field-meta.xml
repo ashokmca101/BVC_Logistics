@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agency_Name_BVC__c</fullName>
+    <externalId>false</externalId>
+    <label>Agency Name(BVC)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BVCL</fullName>
+                <default>false</default>
+                <label>BVCL</label>
+            </value>
+            <value>
+                <fullName>BVCS</fullName>
+                <default>false</default>
+                <label>BVCS</label>
+            </value>
+            <value>
+                <fullName>BVCI</fullName>
+                <default>false</default>
+                <label>BVCI</label>
+            </value>
+            <value>
+                <fullName>BVCV,</fullName>
+                <default>false</default>
+                <label>BVCV,</label>
+            </value>
+            <value>
+                <fullName>BVC BRINKS</fullName>
+                <default>false</default>
+                <label>BVC BRINKS</label>
+            </value>
+            <value>
+                <fullName>BVC Tradeport</fullName>
+                <default>false</default>
+                <label>BVC Tradeport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSTIN_Type__c</fullName>
+    <defaultValue>&quot;GSN-Individual IEC&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>GSTIN Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PAN-PAN</fullName>
+                <default>false</default>
+                <label>PAN-PAN</label>
+            </value>
+            <value>
+                <fullName>PSP-Passport</fullName>
+                <default>false</default>
+                <label>PSP-Passport</label>
+            </value>
+            <value>
+                <fullName>TAN-TAN</fullName>
+                <default>false</default>
+                <label>TAN-TAN</label>
+            </value>
+            <value>
+                <fullName>Aadhar</fullName>
+                <default>false</default>
+                <label>ADH-Aadhar</label>
+            </value>
+            <value>
+                <fullName>GSD-Diplomats</fullName>
+                <default>false</default>
+                <label>GSD-Diplomats</label>
+            </value>
+            <value>
+                <fullName>GSG-Government Entities</fullName>
+                <default>false</default>
+                <label>GSG-Government Entities</label>
+            </value>
+            <value>
+                <fullName>GSN-Individual IEC</fullName>
+                <default>false</default>
+                <label>GSN-Individual IEC</label>
+            </value>
+            <value>
+                <fullName>IEC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>IEC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

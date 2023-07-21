@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__DisableAmendmentCoTerm__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>If unchecked, the Amendment Quote End Date will be set according to the Amendment &amp; Renewal Behavior setting. If checked, then no End Date will be set.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If unchecked, the Amendment Quote End Date will be set according to the Amendment &amp; Renewal Behavior setting. If checked, then no End Date will be set.</inlineHelpText>
+    <label>Disable Amendment Co-Term</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

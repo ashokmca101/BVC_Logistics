@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Legal_Entity__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( BVC_Company_ID__c = &apos;BVCC0001&apos;, &apos;B.V. Chinai &amp; Co. (India) Private Limited&apos;,  
+IF(BVC_Company_ID__c = &apos;BVCL0002&apos;, &apos;B.V.C. Logistics Pvt. Ltd&apos;,  
+IF(BVC_Company_ID__c = &apos;BVCB0006&apos;, &apos;B.V.C. Brinks Private Limited &apos;, 
+IF(BVC_Company_ID__c = &apos;BVCT0007&apos;, &apos;B.V.C. Trade Private Limited&apos;, &apos;&apos;) )  ) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>BVC Legal Entity</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>blng__GLRule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>GL Rule</label>
+    <referenceTo>blng__GLRule__c</referenceTo>
+    <relationshipLabel>Finance Transactions</relationshipLabel>
+    <relationshipName>GLRuleFinanceTransactions</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

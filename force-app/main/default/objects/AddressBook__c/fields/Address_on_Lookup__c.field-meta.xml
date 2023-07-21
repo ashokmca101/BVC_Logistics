@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Address_on_Lookup__c</fullName>
+    <externalId>false</externalId>
+    <formula>ADDRESS1__c +&apos; &apos;+ ADDRESS2__c +&apos;, &apos;+ City_TMS__c +&apos;, &apos;+ State_TMS__c +&apos;, &apos;+ Country_TMS__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Address on Lookup</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

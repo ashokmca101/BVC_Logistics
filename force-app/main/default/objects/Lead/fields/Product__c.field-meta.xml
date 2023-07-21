@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product__c</fullName>
+    <externalId>false</externalId>
+    <label>Product</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Domestic Valuables</fullName>
+                <default>false</default>
+                <label>Domestic Valuables</label>
+            </value>
+            <value>
+                <fullName>International Valuables</fullName>
+                <default>false</default>
+                <label>International Valuables</label>
+            </value>
+            <value>
+                <fullName>Customs Brokerage</fullName>
+                <default>false</default>
+                <label>Customs Brokerage</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

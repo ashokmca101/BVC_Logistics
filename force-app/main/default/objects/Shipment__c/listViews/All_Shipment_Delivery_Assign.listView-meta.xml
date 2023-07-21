@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Shipment_Delivery_Assign</fullName>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Shipment_Date__c</columns>
+    <columns>Consignee_Name_TMS__c</columns>
+    <columns>BVC_Products__c</columns>
+    <columns>Destination_Hub__c</columns>
+    <columns>Destination_Address_City__c</columns>
+    <columns>Delivery_Route_Assigned_To__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Delivery_Route_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Tracking_Status__c</field>
+        <operation>equals</operation>
+        <value>Destination Port,Destination Hub,Out for Delivery</value>
+    </filters>
+    <filters>
+        <field>Delivery_Route_Assigned_To__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Shipment__c.Operations_Shipment</value>
+    </filters>
+    <label>BLR Shipment  Delivery Assigned</label>
+    <sharedTo>
+        <group>TMS_Branch_Managers</group>
+        <group>TMS_Managers</group>
+    </sharedTo>
+</ListView>

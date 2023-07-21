@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IIJS</fullName>
+    <columns>NAME</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>IsExhibition__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Destination_Address_City__c</field>
+        <operation>equals</operation>
+        <value>Mumbai</value>
+    </filters>
+    <label>IIJS</label>
+</ListView>

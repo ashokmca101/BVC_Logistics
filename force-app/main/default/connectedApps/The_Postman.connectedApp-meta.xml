@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>govind.sangale@bvclogistics.com</contactEmail>
+    <iconUrl>https://test.salesforce.com/logos/Custom/Bug_Yellow/icon.svg</iconUrl>
+    <label>The Postman</label>
+    <logoUrl>https://test.salesforce.com/logos/Custom/Bug_Yellow/logo.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>https://bvc2--bvcuat.sandbox.lightning.force.com</callbackUrl>
+        <consumerKey>3MVG9Po2PmyYruukqxJeZk9AR_fJCTnJYUyo2DIRhKKsYIdTd8Yw0uH5Tci0gk6LnWs4y4J1R3oxLCrTR8efE</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__SegmentKey__c</fullName>
+    <deprecated>false</deprecated>
+    <description>For multi-segmented Products, this is a shared key used to group multi-dimensional Quote Lines together.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>For multi-segmented Products, this is a shared key used to group multi-dimensional Quote Lines together.</inlineHelpText>
+    <label>Segment Key</label>
+    <length>30</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

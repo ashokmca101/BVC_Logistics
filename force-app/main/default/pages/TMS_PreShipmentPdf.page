@@ -1,0 +1,172 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-26-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page renderAs="pdf" controller="TMS_ShipmentPdfController" showHeader="false" sidebar="false"
+           standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" docType="html-5.0">
+    <html>
+
+        <body style="margin: 0px;padding: 0px;font-size :7pt;">
+            <apex:repeat value="{!SelectedLabelList}" var="Sellabel">
+                <div>
+                <table style="border-collapse: collapse;width: 100%;margin: 0px;padding: 0px; font-family: Arial, Helvetica, sans-serif;">
+                    <tr style = "background-color: Navy; color: white; text-align: center;">
+                        <th colspan="3" style="border: 0.5px solid #747276;">{!$Label.TMS_BVCName}
+                        </th>
+                        <th colspan="2" style="border: 0.5px solid #747276;">Customer
+                        </th>
+                        <th colspan="3" style="border: 0.5px solid #747276;">Shipping Note Number
+                        </th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">Date
+                        </th>
+                    </tr>
+                    <tr style = "background-color: white; color: black; text-align: center; ">
+                        <td colspan="1" rowspan="3" style="border: 0.5px solid #747276;">
+                            <apex:image value="{!$Resource.BVC_Logistics_LOGO}" width="80%" height="80%"/>
+                        </td>
+                        <td colspan="2" rowspan="1" style="text-align: left; border: 0.5px solid #747276;">
+                            {!$Label.TMS_BVCPhone}                          
+                        </td>
+                        <td colspan="2" rowspan="3" style="border: 0.5px solid #747276;">
+                            customer logo
+                        </td>
+                        <td colspan="3" rowspan="3" style="border: 0.5px solid #747276;">
+                            {!Sellabel.name}
+                        </td>
+                        <td colspan="1" rowspan="3" style="border: 0.5px solid #747276;"></td>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="2" rowspan="1" style="border: 0.5px solid #747276;">{!$Label.TMS_BVCEmail}</td>
+                    </tr>
+                    <tr style ="background-color: white; color: black; text-align: left;">
+                        <td colspan="2" rowspan="1" style="border: 0.5px solid #747276;">{!$Label.TMS_BVCWebsite}</td>
+                    </tr>
+                    <tr style = "background-color: Navy; color: white; text-align: center;">
+                        <th colspan="3" style="border: 0.5px solid #747276;">Bill To</th>
+                        <th colspan="3" style="border: 0.5px solid #747276;">Origin</th>
+                        <th colspan="3" style="border: 0.5px solid #747276;">Destination</th>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="3" style="border: 0.5px solid #747276;"><br/><br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            
+                        </td>
+                        <td colspan="3" style="border: 0.5px solid #747276;"> <br/><br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            
+                        </td>
+                        <td colspan="3" style="border: 0.5px solid #747276;"><br/> <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            
+                        </td>
+                    </tr>
+                    <tr style="background-color: Navy; color: white; text-align: center;">
+                        <th colspan="2" style="border: 0.5px solid #747276;">Product Description</th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">No. of Packages</th>
+                        <th colspan="2" style="border: 0.5px solid #747276;">Invoice Value in (INR)</th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">Net Weight (Grams)</th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">Gross Weight (KG)</th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">Insurance by BVC</th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">BVC Service</th>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: center;">
+                        <td colspan="2" style="border: 0.5px solid #747276;"><br/></td>
+                        <td colspan="1" style="border: 0.5px solid #747276;"><br/></td>
+                        <td colspan="2" style="border: 0.5px solid #747276;"><br/></td>
+                        <td colspan="1" style="border: 0.5px solid #747276;"><br/></td>
+                        <td colspan="1" style="border: 0.5px solid #747276;"><br/></td>
+                        <td colspan="1" style="border: 0.5px solid #747276;"><br/></td>
+                        <td colspan="1" style="border: 0.5px solid #747276;"><br/></td>
+                    </tr>
+                    <tr style="background-color: Navy; color: white; text-align: center;">
+                        <th colspan="3" style="border: 0.5px solid #747276;">Shipper Acknowledgement</th>
+                        <th colspan="3" style="border: 0.5px solid #747276;">Delivery Acknowledgement</th>
+                        <th colspan="2" style="border: 0.5px solid #747276;">BVC Secure Bag &amp; Secure Seal Numbers</th>
+                        <th colspan="1" style="border: 0.5px solid #747276;">Ref. No.</th>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="1" style="border: 0.5px solid #747276;">Date &amp; Time
+                        </td>
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td>
+                        <td colspan="1" style="border: 0.5px solid #747276;">Date &amp; Time
+                        </td>
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td>
+                        <td colspan="2" rowspan="4" style="border: 0.5px solid #747276;">
+                        </td>
+                        <td colspan="1" rowspan="4" style="border: 0.5px solid #747276;">
+                        </td>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="1" style="border: 0.5px solid #747276;">Sender ID &amp; Full Name
+                        </td>
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td>
+                        <td colspan="1" style="border: 0.5px solid #747276;">Receiver ID &amp; Full Name
+                        </td>
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="1" style="border: 0.5px solid #747276;">Sign &amp; Company Stamp
+                        </td>
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td>
+                        <td colspan="1" style="border: 0.5px solid #747276;">Sign &amp; Company Stamp
+                        </td>
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: center;">
+                        <td colspan="6" style="border: 0.5px solid #747276;">
+                            Accepting BVC's Terms &amp; Conditions on www.bvclogistics.com
+                        </td></tr>
+                    <tr style="background-color: Navy; color: white; text-align: center;">
+                        <th colspan="6" style="border: 0.5px solid #747276;">BVC Acknowledgement</th>
+                        <th colspan="3" style="border: 0.5px solid #747276;">Additional Information</th>
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: center;">
+                        <td colspan="3" style="border: 0.5px solid #747276;">RECEIVED BY
+                        </td >
+                        <td colspan="3" style="border: 0.5px solid #747276;">DELIVERED BY
+                        </td >
+                        <td colspan="3" rowspan="3" style="border: 0.5px solid #747276;">
+                        </td >
+                    </tr >
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="1" style="border: 0.5px solid #747276;">Full Name &amp; Employee ID
+                        </td >
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td >
+                        <td colspan="1" style="border: 0.5px solid #747276;">Full Name &amp; Employee ID
+                        </td >
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td >
+                    </tr>
+                    <tr style="background-color: white; color: black; text-align: left;">
+                        <td colspan="1" style="border: 0.5px solid #747276;">Signature
+                        </td >
+                        <td colspan="2" style="border: 0.5px solid #747276;">
+                        </td >
+                        <td colspan="1" style="border: 0.5px solid #747276;">Signature
+                        </td >
+                        <td colspan="2" style="border: 0.5px solid #747276; padding: 0px;">
+                        </td >
+                    </tr>
+                </table>
+                <br/><br/><br/>
+                </div>
+            </apex:repeat>
+        </body>
+    </html>
+</apex:page>

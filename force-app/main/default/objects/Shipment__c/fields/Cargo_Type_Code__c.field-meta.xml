@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cargo_Type_Code__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Product_Description__c, 
+					&quot;Machinery&quot;, &quot;GC&quot;,
+					&quot;Packing Material&quot;, &quot;GC&quot;,
+					&quot;Coloured &amp; Gem Stones&quot;, &quot;VAL&quot;,
+					&quot;Cut &amp; Polished Diamonds&quot;, &quot;VAL&quot;,
+					&quot;Diamond Jewellery&quot;, &quot;VAL&quot;,
+					&quot;Dore Bar&quot;, &quot;VAL&quot;,
+					&quot;Gold Bar&quot;, &quot;VAL&quot;,
+					&quot;Gold Coin&quot;, &quot;VAL&quot;,
+					&quot;Gold Jewellery&quot;, &quot;VAL&quot;,
+					&quot;Platinum Jewellery&quot;, &quot;VAL&quot;,
+					&quot;Diamond Powder&quot;, &quot;VUN&quot;,
+					&quot;Imitation Jewellery&quot;, &quot;VUN&quot;,
+					&quot;Silver Bar&quot;, &quot;VUN&quot;,
+					&quot;Silver Coin&quot;, &quot;VUN&quot;,
+					&quot;Silver Jewellery&quot;, &quot;VUN&quot;,
+					&quot;Other&quot;, &quot;PER&quot;,
+					null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Cargo Type Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

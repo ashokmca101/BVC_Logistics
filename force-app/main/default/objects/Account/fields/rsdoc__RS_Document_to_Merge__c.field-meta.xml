@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rsdoc__RS_Document_to_Merge__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Enter Document Action ID to generate document.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter Document Action ID to generate document.</inlineHelpText>
+    <label>Document to Merge (DEPRECATED)</label>
+    <length>50</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

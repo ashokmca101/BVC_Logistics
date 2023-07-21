@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Renew_Assets</fullName>
+    <availability>online</availability>
+    <description>It is used to renew assets from an account when Global Settings - Renewal Model is set to Asset Based.</description>
+    <displayType>button</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Renew Assets</masterLabel>
+    <openType>sidebar</openType>
+    <page>SBQQ__AssetSelector</page>
+    <protected>false</protected>
+</WebLink>

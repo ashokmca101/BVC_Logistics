@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Customer_Product_Category__c),
+				&apos;Gold Jewelry&apos;,&apos;ValSHIP&apos;,
+					&apos;Silver Jewelry&apos;,&apos;SilverSHIP&apos;,
+					&apos;Silver Bricks&apos;,&apos;SilverSHIP&apos;,
+					&apos;Gold Bars&apos;,&apos;GoldSHIP&apos;,
+					&apos;Gold Coins&apos;,&apos;GoldSHIP&apos;,
+					&apos;ExhibiSHIP&apos;
+				)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

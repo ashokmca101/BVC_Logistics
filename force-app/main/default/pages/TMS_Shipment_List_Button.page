@@ -1,0 +1,34 @@
+<apex:page controller="TMS_shipmentDocumentController" showHeader="false">
+    
+    <apex:includeLightning />
+    <apex:form >
+        <apex:pageMessages id="msg"></apex:pageMessages>
+        <apex:inputhidden id="hidData" value="{!shipmentJson}"/>
+        <apex:actionfunction name="generatePDF" action="{!openAsPdf}" />
+        <div id="lightning" />
+        
+        <script>
+        function saveData(data, callback){
+            var hidData = document.getElementById('{!$Component.hidData}');
+            hidData.value =data;
+             generatePDF();            
+            
+        }
+        
+        
+        function loadComponents(){
+            $Lightning.use("c:TMS_Shipment_Visibility_App", function() {
+                $Lightning.createComponent("c:TMS_Shipment_Visibility",
+                                           { 
+                                               sendShippingData : saveData
+                                           },
+                                           "lightning",
+                                           function(cmp) {
+                                           });
+            });
+        }
+        
+        loadComponents();
+        </script>
+    </apex:form>
+</apex:page>

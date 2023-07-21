@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipper_Address__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Shipper Address</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>AddressBook__c.Is_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>AddressBook__c.Customer__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Shipper_Name__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>AddressBook__c</referenceTo>
+    <relationshipLabel>Pickups (Shipper Address)</relationshipLabel>
+    <relationshipName>Pickups2</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

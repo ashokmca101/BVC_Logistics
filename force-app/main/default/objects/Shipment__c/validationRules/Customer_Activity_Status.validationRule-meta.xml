@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Activity_Status</fullName>
+    <active>true</active>
+    <errorConditionFormula>(TEXT(Customer__r.Customer_Status__c) != &apos;Active&apos; &amp;&amp; Verified_for_Billing__c == true) || (TEXT(Customer__r.Customer_Status__c) != &apos;Active&apos; &amp;&amp; Ready_for_Rebilling__c == true)</errorConditionFormula>
+    <errorMessage>The customer is not active.</errorMessage>
+</ValidationRule>

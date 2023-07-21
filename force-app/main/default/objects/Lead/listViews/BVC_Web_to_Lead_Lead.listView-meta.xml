@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Web_to_Lead_Lead</fullName>
+    <filterScope>Queue</filterScope>
+    <label>BVC Web to Lead</label>
+    <queue>BVC_Web_to_Lead</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

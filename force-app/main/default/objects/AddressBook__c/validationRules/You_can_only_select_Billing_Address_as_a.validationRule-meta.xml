@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>You_can_only_select_Billing_Address_as_a</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  !(RecordType.Name == &quot;Billing&quot;) , Is_Primary__c )</errorConditionFormula>
+    <errorDisplayField>Is_Primary__c</errorDisplayField>
+    <errorMessage>You can only select Billing Address as a Primary Address.</errorMessage>
+</ValidationRule>

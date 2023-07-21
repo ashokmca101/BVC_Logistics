@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__PriceCalcStatus__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The order price calculation  job status.  It is set by the system.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates the order price calculation job status.  It is set by the system.</inlineHelpText>
+    <label>Price Calculation Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>SBQQ__JobStatus</valueSetName>
+    </valueSet>
+</CustomField>

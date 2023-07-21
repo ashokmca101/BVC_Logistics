@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ContractStatusCheck</fullName>
+    <active>false</active>
+    <errorConditionFormula>TEXT(Contract__r.Status)  &lt;&gt; &apos;Activated&apos;</errorConditionFormula>
+    <errorMessage>ACR Adjustment can be created for Activated Contract only.</errorMessage>
+</ValidationRule>

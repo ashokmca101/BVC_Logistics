@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pickup_Created_Through__c</fullName>
+    <externalId>false</externalId>
+    <label>Pickup Created Through</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>API</fullName>
+                <default>false</default>
+                <label>API</label>
+            </value>
+            <value>
+                <fullName>Community</fullName>
+                <default>false</default>
+                <label>Community</label>
+            </value>
+            <value>
+                <fullName>Service</fullName>
+                <default>false</default>
+                <label>Service</label>
+            </value>
+            <value>
+                <fullName>Operations Team</fullName>
+                <default>true</default>
+                <label>Operations Team</label>
+            </value>
+            <value>
+                <fullName>Other BVC User</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other BVC User</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

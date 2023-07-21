@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Description__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Customer_Product_Category__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Machinery</fullName>
+                <default>false</default>
+                <label>Machinery</label>
+            </value>
+            <value>
+                <fullName>Packing Material</fullName>
+                <default>false</default>
+                <label>Packing Material</label>
+            </value>
+            <value>
+                <fullName>Coloured &amp; Gem Stones</fullName>
+                <default>false</default>
+                <label>Coloured &amp; Gem Stones</label>
+            </value>
+            <value>
+                <fullName>Cut &amp; Polished Diamonds</fullName>
+                <default>false</default>
+                <label>Cut &amp; Polished Diamonds</label>
+            </value>
+            <value>
+                <fullName>Diamond Jewellery</fullName>
+                <default>false</default>
+                <label>DIAMOND JEWELLERY</label>
+            </value>
+            <value>
+                <fullName>Dore Bar</fullName>
+                <default>false</default>
+                <label>Dore Bar</label>
+            </value>
+            <value>
+                <fullName>Gold Bar</fullName>
+                <default>false</default>
+                <label>GOLD BAR</label>
+            </value>
+            <value>
+                <fullName>Gold Coin</fullName>
+                <default>false</default>
+                <label>Gold Coin</label>
+            </value>
+            <value>
+                <fullName>Gold Jewellery</fullName>
+                <default>false</default>
+                <label>GOLD JEWELLERY</label>
+            </value>
+            <value>
+                <fullName>Platinum Jewellery</fullName>
+                <default>false</default>
+                <label>Platinum Jewellery</label>
+            </value>
+            <value>
+                <fullName>Diamond Powder</fullName>
+                <default>false</default>
+                <label>Diamond Powder</label>
+            </value>
+            <value>
+                <fullName>Imitation Jewellery</fullName>
+                <default>false</default>
+                <label>Imitation Jewellery</label>
+            </value>
+            <value>
+                <fullName>Silver Bar</fullName>
+                <default>false</default>
+                <label>Silver Bar</label>
+            </value>
+            <value>
+                <fullName>Silver Coin</fullName>
+                <default>false</default>
+                <label>Silver Coin</label>
+            </value>
+            <value>
+                <fullName>Silver Jewellery</fullName>
+                <default>false</default>
+                <label>SILVER JEWELLERY</label>
+            </value>
+            <value>
+                <fullName>Rough Diamond</fullName>
+                <default>false</default>
+                <label>ROUGH DIAMOND</label>
+            </value>
+            <value>
+                <fullName>Silver Article</fullName>
+                <default>false</default>
+                <label>SILVER ARTICLE</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>GenSHIP</controllingFieldValue>
+            <valueName>Machinery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GenSHIP</controllingFieldValue>
+            <valueName>Packing Material</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GoldSHIP</controllingFieldValue>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Dore Bar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GoldSHIP</controllingFieldValue>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Gold Bar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GoldSHIP</controllingFieldValue>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Gold Coin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <valueName>Coloured &amp; Gem Stones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <valueName>Imitation Jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <valueName>Silver Bar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <valueName>Silver Coin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <valueName>Silver Jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SilverSHIP</controllingFieldValue>
+            <valueName>Silver Article</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Cut &amp; Polished Diamonds</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Diamond Jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Gold Jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Platinum Jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Diamond Powder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ValSHIP</controllingFieldValue>
+            <valueName>Rough Diamond</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

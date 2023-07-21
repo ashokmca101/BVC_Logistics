@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deliveries_Cancelled</fullName>
+    <columns>NAME</columns>
+    <columns>Customer_Name__c</columns>
+    <columns>Shipment__c</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>Number_of_Secure_Bag__c</columns>
+    <columns>Address__c</columns>
+    <columns>Status__c</columns>
+    <columns>Delivery_Instruction__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Cancelled</value>
+    </filters>
+    <label>Deliveries - Cancelled</label>
+</ListView>

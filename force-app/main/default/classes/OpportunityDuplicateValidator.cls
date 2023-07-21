@@ -5,9 +5,11 @@ public class OpportunityDuplicateValidator {
         Map<String, String> productStageMap = new Map<String, String>();
         
         for (Opportunity opportunity : newOpportunities) {
+            if (opportunity.AccountId != Null) {
             accountIds.add(opportunity.AccountId);
             String productKey = generateProductKey(opportunity);
             productStageMap.put(productKey, opportunity.StageName);
+        }
         }
         
         Map<String, Opportunity> existingOpportunities = new Map<String, Opportunity>();
@@ -21,8 +23,9 @@ public class OpportunityDuplicateValidator {
         }
         
         for (Opportunity newOpportunity : newOpportunities) {
+            If(newOpportunity.AccountId != Null ||newOpportunity.AccountId != '' ){
             String productKey = generateProductKey(newOpportunity);
-            if (existingOpportunities.containsKey(productKey)) {
+                if (existingOpportunities.containsKey(productKey)) {
                 Opportunity existingOpportunity = existingOpportunities.get(productKey);
                 String existingStageName = productStageMap.get(productKey);
                 if (existingStageName != null && !isAllowedStage(existingStageName)) {
@@ -30,7 +33,9 @@ public class OpportunityDuplicateValidator {
                                             ' With BVC Proudct Value: ' + existingOpportunity.BVC_L2_Product__c 
                                            );
                 }
+                
             }
+        }
         }
     }
     

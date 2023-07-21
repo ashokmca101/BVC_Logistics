@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>validation_for_reverse</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF( Success__c == Reverse__c , true, false)</errorConditionFormula>
+    <errorMessage>Success and Reverse Cannot be Same</errorMessage>
+</ValidationRule>

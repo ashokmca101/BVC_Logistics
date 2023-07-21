@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ContractingMethod__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Controls the contracting behavior of an Order Product. &quot;Inherit&quot; uses the behavior of the parent Order. &quot;Contract Separately&quot; generates a separate Contract for
+            the Order Product. &quot;No Contract&quot; skips the Order Product altogether during the contracting process.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls the contracting behavior of an Order Product.</inlineHelpText>
+    <label>Contracting Method</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Inherit</fullName>
+                <default>true</default>
+                <label>Inherit</label>
+            </value>
+            <value>
+                <fullName>Contract Separately</fullName>
+                <default>false</default>
+                <label>Contract Separately</label>
+            </value>
+            <value>
+                <fullName>Do Not Contract</fullName>
+                <default>false</default>
+                <label>Do Not Contract</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

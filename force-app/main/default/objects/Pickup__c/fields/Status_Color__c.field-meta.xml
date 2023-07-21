@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Color__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Pickup_Status__c), &apos;Assigned&apos;, IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;yellow&quot;, 25, 70), 
+					&apos;Cancelled&apos;, IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;red&quot;, 25, 70),
+				&apos;Completed&apos;,IF(Pickup_Date_and_Time__c&lt;= (Pickup_Time_Slot__c + 60/1440), IMAGE(&quot;/img/samples/color_green.gif&quot;, &quot;green&quot;, 25, 70), IMAGE(&quot;/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&amp;versionId=0685g000004Inxh&amp;operationContext=CHATTER&amp;contentId=05T5g00000ElTai&quot;, &quot;orange&quot;, 25, 70)),
+				&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

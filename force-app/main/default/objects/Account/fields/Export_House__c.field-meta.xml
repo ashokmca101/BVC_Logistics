@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Export_House__c</fullName>
+    <externalId>false</externalId>
+    <label>Export House</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Star Trading House</fullName>
+                <default>false</default>
+                <label>Star Trading House</label>
+            </value>
+            <value>
+                <fullName>Super Star Trading House</fullName>
+                <default>false</default>
+                <label>Super Star Trading House</label>
+            </value>
+            <value>
+                <fullName>Export house For BVCI</fullName>
+                <default>false</default>
+                <label>Export house For BVCI</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

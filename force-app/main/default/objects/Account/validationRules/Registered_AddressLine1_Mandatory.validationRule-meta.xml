@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registered_AddressLine1_Mandatory</fullName>
+    <active>true</active>
+    <description>Registered AddressLine1 Mandatory whenever registered address is entered.</description>
+    <errorConditionFormula>OR(
+NOT(ISBLANK(Registered_AddressLine2__c)),
+NOT(ISBLANK(Registered_City__c)),
+NOT(ISBLANK(Registered_Country__c)),
+NOT(ISBLANK(Registered_State__c)),
+NOT(ISBLANK(Registered_Zip_Postal_Code__c))
+)&amp;&amp;ISBLANK(Registered_Street__c)</errorConditionFormula>
+    <errorDisplayField>Registered_Street__c</errorDisplayField>
+    <errorMessage>Kindly populate this field.</errorMessage>
+</ValidationRule>

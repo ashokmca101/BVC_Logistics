@@ -1,0 +1,18 @@
+<apex:page standardController="Opportunity" showHeader="true">
+    
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />    
+    <script>
+    $Lightning.use("c:createBVCQuote", function() {
+        $Lightning.createComponent("c:createQuoteLWC",
+          { 
+              "recordId" :"{!$CurrentPage.parameters.Id}"
+          },
+          "LightningComponentid",
+          function(cmp) {
+             console.log('LWC Componenet added in VF page');
+          });
+    });
+    </script>
+    
+</apex:page>

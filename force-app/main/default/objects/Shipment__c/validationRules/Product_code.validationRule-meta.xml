@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_code</fullName>
+    <active>true</active>
+    <description>Make Customer Product Category, Exhibition Movement Type, Exhibition name mandatory.</description>
+    <errorConditionFormula>IsExhibition__c &amp;&amp;
+(ISPICKVAL( Exhibition_Movement_Type__c ,&apos;&apos;) ||
+ISBLANK(Exhibition__c))</errorConditionFormula>
+    <errorMessage>Please enter Exhibition and Exhibition Movement Type</errorMessage>
+</ValidationRule>

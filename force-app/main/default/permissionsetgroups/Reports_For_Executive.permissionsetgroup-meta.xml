@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>View all reports</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Reports For Executive</label>
+    <permissionSets>Report_Access_permission</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

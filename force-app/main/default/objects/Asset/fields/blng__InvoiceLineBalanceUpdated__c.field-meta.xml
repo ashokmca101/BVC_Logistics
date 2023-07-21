@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>blng__InvoiceLineBalanceUpdated__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The time when invoice line balances was last updated successfully.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The time when invoice line balances was last updated successfully.</inlineHelpText>
+    <label>Invoice Line Balance Updated</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

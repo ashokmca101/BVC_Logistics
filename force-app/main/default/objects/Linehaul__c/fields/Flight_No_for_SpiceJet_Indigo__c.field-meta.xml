@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flight_No_for_SpiceJet_Indigo__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Flight No for SpiceJet/Indigo</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Please Select Correct Flight or which has Departure Date of Today or Greater.</errorMessage>
+        <filterItems>
+            <field>$Source.Select_Airline__c</field>
+            <operation>contains</operation>
+            <valueField>Flight_Schedule__c.Airline_Name__r.Name</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Flight_Schedule__c</referenceTo>
+    <relationshipLabel>Linehauls</relationshipLabel>
+    <relationshipName>Linehauls</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipment_Status_DESTINATION</fullName>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Shipment_Date__c</columns>
+    <columns>Consignee_Name_TMS__c</columns>
+    <columns>Destination_Address_Line1__c</columns>
+    <columns>Product_Description__c</columns>
+    <columns>Origin_Hub__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Destination_Hub__c</columns>
+    <columns>Delivery_Instruction__c</columns>
+    <columns>Destination_Address_City__c</columns>
+    <columns>Delivery_Route_Assigned_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>lessOrEqual</operation>
+    </filters>
+    <label>Shipment Status - DESTINATION</label>
+    <sharedTo>
+        <group>TMS_Branch_Managers</group>
+        <group>TMS_Managers</group>
+        <group>TMS_Team</group>
+    </sharedTo>
+</ListView>

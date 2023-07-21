@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__CostSchedule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Discount schedule used as a Cost Schedule with this product.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Discount schedule used as a Cost Schedule with this product.</inlineHelpText>
+    <label>Cost Schedule</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>SBQQ__DiscountSchedule__c.SBQQ__UserDefined__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>SBQQ__DiscountSchedule__c</referenceTo>
+    <relationshipLabel>Products (Cost Schedule)</relationshipLabel>
+    <relationshipName>Products1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

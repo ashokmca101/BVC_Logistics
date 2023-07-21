@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__RenewalOpportunityStage__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Override the default opportunity stage for this renewal. This must be done prior to selecting Renewal Forecast to take effect on the renewal opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Override the default opportunity stage for this renewal. This must be done prior to selecting Renewal Forecast to take effect on the renewal opportunity.</inlineHelpText>
+    <label>Renewal Opportunity Stage</label>
+    <length>60</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

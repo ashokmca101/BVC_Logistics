@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pickup_Route__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Pickup  Route</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Pickup_Delivery_Route__c.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Pickup</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Pickup_Delivery_Route__c</referenceTo>
+    <relationshipLabel>Address Route Assignments</relationshipLabel>
+    <relationshipName>Address_Route_Assignments</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

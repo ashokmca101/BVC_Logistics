@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipment_Status_Origin_Madurai</fullName>
+    <columns>Shipment_Date__c</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Number_of_Packages__c</columns>
+    <columns>Number_of_Secure_Bags_scanned__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Origin_Hub__c</columns>
+    <columns>Shipper_Name_TMS__c</columns>
+    <columns>Destination_Hub__c</columns>
+    <columns>Consignee_Name_TMS__c</columns>
+    <columns>Billing_Account__c</columns>
+    <columns>Shipment_Value__c</columns>
+    <columns>Net_weight_in_Gram__c</columns>
+    <columns>Gross_Weight__c</columns>
+    <columns>Product_Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>lessOrEqual</operation>
+    </filters>
+    <filters>
+        <field>Origin_Hub__c</field>
+        <operation>equals</operation>
+        <value>MADURAI</value>
+    </filters>
+    <label>MADURAI - Origin</label>
+    <sharedTo>
+        <group>MADURAI_Hub</group>
+    </sharedTo>
+</ListView>

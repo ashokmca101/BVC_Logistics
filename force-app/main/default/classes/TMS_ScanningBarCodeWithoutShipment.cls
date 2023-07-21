@@ -9,7 +9,6 @@
 * 1.0   07-16-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
 **/
 public without sharing class TMS_ScanningBarCodeWithoutShipment {
-    
     @AuraEnabled
     public static Shipment__c shipmentRecordGet(String shippingNoteNumber, String pickupID){
         try {

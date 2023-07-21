@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Address_Number__c</columns>
+    <columns>Customer__c</columns>
+    <columns>CITY__c</columns>
+    <columns>COUNTRY__c</columns>
+    <columns>CITY_AREA__c</columns>
+    <columns>STATE__c</columns>
+    <columns>TRADE_NAME__c</columns>
+    <columns>PINCODE__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Pickup_Route_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+    <sharedTo>
+        <group>TMS_Branch_Managers</group>
+        <group>TMS_Managers</group>
+    </sharedTo>
+</ListView>

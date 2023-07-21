@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PAN_number_must_have_10_Characters</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND((LEN(PAN_Number_of_Entity__c) &lt;&gt; 10),
+    NOT(ISBLANK(PAN_Number_of_Entity__c)),
+    NOT(ISNULL(PAN_Number_of_Entity__c)))</errorConditionFormula>
+    <errorDisplayField>PAN_Number_of_Entity__c</errorDisplayField>
+    <errorMessage>PAN number must have 10 Characters.</errorMessage>
+</ValidationRule>

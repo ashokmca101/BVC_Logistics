@@ -8,14 +8,15 @@ public class TmsUpdateSecureBagTriggerTest {
         Hub__c hub2 = new Hub__c();
         hub2 = BVCL_TestDataFactory.CreateHub('name1', true, 'DELHI');
         
-        Shipment__c testShipment = new Shipment__c();
-        insert testShipment;
+        Account BillingAcc = BVCL_TestDataFactory.createCustomer('BVCLBill Customer','Billing',true);
+        Account ShipperAcc = BVCL_TestDataFactory.createCustomer('BVCLShipp Customer','Shipping',true);
+        Shipment__c Ship1 = BVCL_TestDataFactory.CreateShipment(BillingAcc.id, ShipperAcc.id, null, ShipperAcc.id, null, true);
         
         Flight_Schedule__c testFlightSchedule = new Flight_Schedule__c();
         insert testFlightSchedule;
         
         Secure_Bag__c testSecureBag = new Secure_Bag__c();
-        testSecureBag.Shipment__c = testShipment.Id;
+        testSecureBag.Shipment__c = Ship1.Id;
         testSecureBag.Current_Scan_Hub__c = hub1.Id;
         testSecureBag.Current_Origin_City__c = 'Delhi';
         testSecureBag.Finalised_Linehaul_Number__c = null;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Division__c</fullName>
+    <externalId>false</externalId>
+    <label>Division</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>D&amp;J</fullName>
+                <default>false</default>
+                <label>D&amp;J</label>
+            </value>
+            <value>
+                <fullName>Eship</fullName>
+                <default>false</default>
+                <label>Eship</label>
+            </value>
+            <value>
+                <fullName>Eship &amp; CS</fullName>
+                <default>false</default>
+                <label>Eship &amp; CS</label>
+            </value>
+            <value>
+                <fullName>Corpex</fullName>
+                <default>false</default>
+                <label>Corpex</label>
+            </value>
+            <value>
+                <fullName>Software</fullName>
+                <default>false</default>
+                <label>Software</label>
+            </value>
+            <value>
+                <fullName>Tourism</fullName>
+                <default>false</default>
+                <label>Tourism</label>
+            </value>
+            <value>
+                <fullName>Valship</fullName>
+                <default>false</default>
+                <label>Valship</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>International Surat Service Rep Queue</name>
+    <queueMembers>
+        <users>
+            <user>jay.lad@bvcbrinks.com</user>
+            <user>rahul.panchal@bvcbrinks.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,199 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-16-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+--> 
+<apex:page applyHtmlTag="false" cache="false" contentType="text/HTML" docType="html-5.0"   renderAs="pdf" showHeader="false" sidebar="false" controller="ShipmentAPIPdfController" standardStylesheets="false">
+    <html> 
+        <head>
+            <style type="text/css" media="print"> 
+                @page {
+                    size:  8.30in 12.10in;
+                    margin-top: 1cm;
+                    margin-bottom: 1cm;  
+                } 
+                
+            </style>
+        </head>
+        <apex:variable var="count" value="{!0}"   />
+        <body style="margin: 0px;padding: 0px;font-size :7.4pt;line-height: 1.6;">
+            <apex:repeat value="{!shipmentList}" var="ShipmentRecord">
+                <apex:variable value="{!count+1}" var="count"/>
+                <div>
+                    <table style="border-collapse: collapse;width: 100%;margin: 0px;padding: 0px; font-family: Arial, Helvetica, sans-serif;word-wrap: break-word;">
+                        <tr style = "background-color: Navy; color: white; text-align: center;">
+                            <th colspan="3" style="border: 0.5px solid #747276;width: 33%;">{!$Label.TMS_BVCName}
+                            </th>
+                            <th colspan="4" style="border: 0.5px solid #747276;width: 44%;">Shipping Note Number
+                            </th>
+                            <th colspan="2" style="border: 0.5px solid #747276;width: 22%;">Shipment Date
+                            </th>
+                        </tr>
+                        <tr style = "background-color: white; color: black; text-align: center; height:25px;">
+                            <td colspan="1" rowspan="3" style="border: 0.5px solid #747276;">
+                                <apex:image value="{!$Resource.BVC_Logistics_LOGO}" width="90px" height="50px"/>
+                            </td>
+                            <td colspan="2" rowspan="1" style="text-align: left; border: 0.5px solid #747276;">
+                                {!$Label.TMS_BVCPhone}                          
+                            </td>
+                            <td colspan="4" rowspan="3" style="border: 0.5px solid #747276; text-align: center;">                                  
+                                <!--apex:image url="{!ShipmentRecord.SNN_Bar_Code__c}" alt="{!ShipmentRecord.Shipping_Note_Number__c}" width="200px" height="58px"/-->
+                                <div style="padding: 5px 0px 0px 100px; width:200px; height:58px;" >
+                                    <GMBLBC:barcode value="{!ShipmentRecord.Shipping_Note_Number__c}"/>
+                                </div> 
+                                
+                            </td>
+                            <td colspan="2" rowspan="3" style="border: 0.5px solid #747276;">&nbsp;&nbsp;<apex:outputText value="{0,date,dd/MMM/yyyy}"> <apex:param value="{!ShipmentRecord.Shipment_Date__c}" /> </apex:outputText>&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: left;">
+                            <td colspan="2" rowspan="1" style="border: 0.5px solid #747276;">{!$Label.TMS_BVCEmail}</td>
+                        </tr>
+                        <tr style ="background-color: white; color: black; text-align: left;">
+                            <td colspan="2" rowspan="1" style="border: 0.5px solid #747276;">{!$Label.TMS_BVCWebsite}</td>
+                        </tr>
+                        <tr style = "background-color: Navy; color: white; text-align: center;center;">
+                            <th colspan="3" style="border: 0.5px solid #747276;">Bill To</th>
+                            <th colspan="3" style="border: 0.5px solid #747276;">Origin</th>
+                            <th colspan="3" style="border: 0.5px solid #747276;">Destination</th>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: left;height: 68.4px; vertical-align:top;">
+                            <td colspan="3" style="border: 0.5px solid #747276;">
+                                <br/>
+                                <strong>{!ShipmentRecord.Billing_Account__r.name}</strong><br/>
+                                {!ShipmentRecord.Billing_Address__r.ADDRESS1__c}<br/>
+                                {!ShipmentRecord.Billing_Address__r.ADDRESS2__c}<br/>
+                                {!ShipmentRecord.Billing_Address__r.CITY__c}, {!ShipmentRecord.Billing_Address__r.STATE__c}<br/>
+                                Mobile: {!ShipmentRecord.Billing_Address__r.MOBILE1__c}
+                            </td>
+                            <td colspan="3" style="border: 0.5px solid #747276;">
+                                <br/>
+                                <strong>{!ShipmentRecord.Shipper_Name_TMS__r.name}</strong><br/>
+                                {!ShipmentRecord.Origin_Address_Line_1__c},<br/>
+                                {!ShipmentRecord.Origin_Address_Line_2__c},<br/>
+                                {!ShipmentRecord.Origin_Address_City__c},{!ShipmentRecord.Origin_Address_State__c}<br/>
+                                Mobile: {!ShipmentRecord.Origin_Address_Phone__c}
+                            </td>
+                            <td colspan="3" style="border: 0.5px solid #747276;">
+                                <br/>
+                                <strong>{!ShipmentRecord.Consignee_Name_TMS__r.name}</strong><br/>
+                                {!ShipmentRecord.Destination_Address_Line1__c},<br/>
+                                {!ShipmentRecord.Destination_Address_Line_2__c},<br/>
+                                {!ShipmentRecord.Destination_Address_City__c},{!ShipmentRecord.Destination_Address_State__c}<br/>
+                                Mobile: {!ShipmentRecord.Destination_Address_Phone__c}
+                            </td>
+                        </tr>
+                        <tr style="background-color: Navy; color: white; text-align: center;">
+                            <th colspan="2" style="border: 0.5px solid #747276;">Product Description</th>
+                            <th colspan="1" style="border: 0.5px solid #747276;">No. of Packages</th>
+                            <th colspan="2" style="border: 0.5px solid #747276;">Invoice Value in (INR)</th>
+                            <th colspan="1" style="border: 0.5px solid #747276;">Net Weight (Grams)</th>
+                            <th colspan="1" style="border: 0.5px solid #747276;">Gross Weight (KG)</th>
+                            <th colspan="1" style="border: 0.5px solid #747276;">Insurance by BVC</th>
+                            <th colspan="1" style="border: 0.5px solid #747276;">BVC Service</th>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: center;height: 68.2px;vertical-align:top;" >
+                            <td colspan="2" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Product_Description__c}<br/></td>
+                            <td colspan="1" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Number_of_Packages__c}<br/></td>
+                            <td colspan="2" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Shipment_Value__c}<br/></td>
+                            <td colspan="1" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Net_weight_in_Gram__c}<br/></td>
+                            <td colspan="1" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Gross_Weight__c}<br/></td>
+                            <td colspan="1" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Insurance_By__c}<br/></td>
+                            <td colspan="1" style="border: 0.5px solid #747276;"><br/>{!ShipmentRecord.Customer_Product_Category__c}<br/></td>
+                        </tr> 
+                        
+                        <tr style="background-color: Navy; color: white; text-align: center;">
+                            <th colspan="3" style="border: 0.5px solid #747276;">Shipper Acknowledgement</th>
+                            <th colspan="3" style="border: 0.5px solid #747276;">Delivery Acknowledgement</th>
+                            <th colspan="2" style="border: 0.5px solid #747276;">BVC Secure Bag &amp; Secure Seal Numbers</th>
+                            <th colspan="1" style="border: 0.5px solid #747276;">Ref. No.</th>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: left;">
+                            <td colspan="1" style="border: 0.5px solid #747276;">Date &amp; Time
+                            </td>
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td>
+                            <td colspan="1" style="border: 0.5px solid #747276;">Date &amp; Time
+                            </td>
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td>
+                            <td colspan="2" rowspan="4" style="border: 0.5px solid #747276;">
+                            </td>
+                            <td colspan="1" rowspan="4" style="border: 0.5px solid #747276;">{!ShipmentRecord.name}
+                            </td>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: left;">
+                            <td colspan="1" style="border: 0.5px solid #747276;">Sender ID &amp; Full Name
+                            </td>
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td>
+                            <td colspan="1" style="border: 0.5px solid #747276;">Receiver ID &amp; Full Name
+                            </td>
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: left;">
+                            <td colspan="1" style="border: 0.5px solid #747276;">Sign &amp; Company Stamp
+                            </td>
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td>
+                            <td colspan="1" style="border: 0.5px solid #747276;">Sign &amp; Company Stamp
+                            </td>
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: center;">
+                            <td colspan="6" style="border: 0.5px solid #747276;">
+                                Accepting BVC's Terms &amp; Conditions on www.bvclogistics.com
+                            </td></tr>
+                        <tr style="background-color: Navy; color: white; text-align: center;">
+                            <th colspan="6" style="border: 0.5px solid #747276;">BVC Acknowledgement</th>
+                            <th colspan="3" style="border: 0.5px solid #747276;">Additional Information</th>
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: center;">
+                            <td colspan="3" style="border: 0.5px solid #747276;">RECEIVED BY
+                            </td >
+                            <td colspan="3" style="border: 0.5px solid #747276;">DELIVERED BY
+                            </td >
+                            <td colspan="3" rowspan="3" style="border: 0.5px solid #747276;">{!ShipmentRecord.Invoice_Number__c}
+                            </td >
+                        </tr >
+                        <tr style="background-color: white; color: black; text-align: left;">
+                            <td colspan="1" style="border: 0.5px solid #747276;">Full Name &amp; Employee ID
+                            </td >
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td >
+                            <td colspan="1" style="border: 0.5px solid #747276;">Full Name &amp; Employee ID
+                            </td >
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td >
+                        </tr>
+                        <tr style="background-color: white; color: black; text-align: left;">
+                            <td colspan="1" style="border: 0.5px solid #747276;">Signature
+                            </td >
+                            <td colspan="2" style="border: 0.5px solid #747276;">
+                            </td >
+                            <td colspan="1" style="border: 0.5px solid #747276;">Signature
+                            </td >
+                            <td colspan="2" style="border: 0.5px solid #747276; padding: 0px;">
+                            </td >
+                        </tr>
+                    </table>  
+                </div>
+                <!--div style="{!IF(count != 1 && (MOD(count, 2) == 0),'page-break-after:always; Width:960px;height:50px;','Width:960px;height:50px;')}"> &nbsp;<br/> &nbsp;<br/> &nbsp;</div-->
+                
+
+                <apex:outputpanel rendered="{!IF((MOD(count, 2) != 0),true,false)}">
+                    <div style=" height:30px;"> &nbsp;<br/> &nbsp; </div>
+                </apex:outputpanel>
+
+                <apex:outputpanel rendered="{!IF(count > 1 && (MOD(count, 2) == 0),true,false)}">
+                    <div style="page-break-after:always;width: 960px;">&nbsp;</div>
+                </apex:outputpanel>
+
+                
+            </apex:repeat>
+        </body>
+    </html>
+</apex:page>

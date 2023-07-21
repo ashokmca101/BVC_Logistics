@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Case_Escalation_Level_1</fullName>
+        <description>Case Escalation Level 1</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_1</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Escalation_Level_1_After_1_hr</fullName>
+        <description>Case Escalation Level 1 After 1 hr</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_1</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Escalation_Level_2</fullName>
+        <description>Case Escalation Level 2</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_2</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Send_Case_Escalation_level_2_Email_To_Manager</fullName>
+        <description>New Send Case Escalation level 2 Email To Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/New_Case_escalation_Level_2</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_1_Email</fullName>
+        <ccEmails>sumitsourav111@gmail.com</ccEmails>
+        <description>Send Case Escalation level 1 Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/ContactFollowUpSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_1_Email_Manager</fullName>
+        <description>Send Case Escalation level 1 Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_1</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_1_Email_To_Manager</fullName>
+        <description>Send Case Escalation level 1 Email To Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_2</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_2</fullName>
+        <description>Send Case Escalation level 2</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Director__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_2</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_2_Email_To_Manager</fullName>
+        <description>Send Case Escalation level 2 Email To Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Case_escalation_Level_2</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_2_Email_To_Managers_Manager</fullName>
+        <description>Send Case Escalation level 2 Email To Managers Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Director__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Case_Escalation_Level_3</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Case_Escalation_level_3_Email_To_Managers_Manager</fullName>
+        <description>Send Case Escalation level 3 Email To Managers Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Director__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Case_Escalation_Level_3</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Escalated_Equals_True</fullName>
+        <field>IsEscalated</field>
+        <literalValue>1</literalValue>
+        <name>Escalated Equals True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>First_Escalation_Checkbox</fullName>
+        <field>First_Escalation__c</field>
+        <literalValue>1</literalValue>
+        <name>First Escalation Checkbox</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>IsEscalated_True</fullName>
+        <field>IsEscalated</field>
+        <literalValue>1</literalValue>
+        <name>IsEscalated True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Make_Ticket_Priority_High</fullName>
+        <field>Priority</field>
+        <literalValue>High</literalValue>
+        <name>Make Ticket Priority High</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Priority_High</fullName>
+        <field>Priority</field>
+        <literalValue>High</literalValue>
+        <name>Priority High</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Second_Escalation_Checkbox</fullName>
+        <field>Second_Escalation__c</field>
+        <literalValue>1</literalValue>
+        <name>Second Escalation Checkbox</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Escalated</fullName>
+        <field>IsEscalated</field>
+        <literalValue>1</literalValue>
+        <name>Update Escalated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Milestone_Achieved</fullName>
+        <field>Is_Milestone_Achieved__c</field>
+        <literalValue>0</literalValue>
+        <name>Update Milestone Achieved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

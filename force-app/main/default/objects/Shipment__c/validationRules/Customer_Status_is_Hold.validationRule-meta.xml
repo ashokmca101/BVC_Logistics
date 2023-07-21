@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Status_is_Hold</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+    Customer_Status_TextField__c == &apos;Hold&apos;, 
+    ISCHANGED( Delivery_Instruction__c ),  
+    ISPICKVAL(Delivery_Instruction__c , &apos;Deliver&apos;),
+    checkPayment__c = true
+)</errorConditionFormula>
+    <errorMessage>Customer Status is set as &apos;Hold&apos;</errorMessage>
+</ValidationRule>

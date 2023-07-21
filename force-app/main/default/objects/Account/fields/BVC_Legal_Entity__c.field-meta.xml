@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Legal_Entity__c</fullName>
+    <externalId>false</externalId>
+    <label>BVC Legal Entity</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>B.V. Chinai &amp; Co. (India) Private Limited</fullName>
+                <default>false</default>
+                <label>B.V. Chinai &amp; Co. (India) Private Limited</label>
+            </value>
+            <value>
+                <fullName>B.V.C. Logistics Private Limited</fullName>
+                <default>true</default>
+                <label>B.V.C. Logistics Private Limited</label>
+            </value>
+            <value>
+                <fullName>B.V.C. Brinks Private Limited</fullName>
+                <default>false</default>
+                <label>B.V.C. Brinks Private Limited</label>
+            </value>
+            <value>
+                <fullName>B.V.C. Trade Private Limited</fullName>
+                <default>false</default>
+                <label>B.V.C. Trade Private Limited</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

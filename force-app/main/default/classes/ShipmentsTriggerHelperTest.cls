@@ -128,7 +128,7 @@ public class ShipmentsTriggerHelperTest {
            ship.Customer__c = Acc.id; 
            ship.Insurance_By__c = 'BVC';
      //    ship.Shipper_Name_TMS__c = shippingAcc.Name;
-    //     ship.Consignee_Name_TMS__c = shippingAcc.name;
+           ship.Consignee_Name_TMS__c = shippingAcc.Id;
      //    ship.Origin_Address_Name__c = testAdd.name;
            ship.Destination_Address_Name__c = TestAdd.Id;
            ship.Net_Weight__c = 12;

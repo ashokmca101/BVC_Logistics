@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__PriceHoldEnd__c</fullName>
+    <deprecated>false</deprecated>
+    <description>End date for any price hold that may be in effect.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter date until which the prices must be held.</inlineHelpText>
+    <label>Price Hold End</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

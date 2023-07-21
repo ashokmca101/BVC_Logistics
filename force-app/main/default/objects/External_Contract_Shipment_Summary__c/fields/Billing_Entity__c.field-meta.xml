@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Entity__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Billing Entity</label>
+    <referenceTo>blng__LegalEntity__c</referenceTo>
+    <relationshipLabel>External Contract Shipment Summary</relationshipLabel>
+    <relationshipName>External_Contract_Shipment_Summary</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Reason_Lost__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason Lost</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>StageName</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Potential</fullName>
+                <default>false</default>
+                <label>No Potential</label>
+            </value>
+            <value>
+                <fullName>Pricing</fullName>
+                <default>false</default>
+                <label>Pricing</label>
+            </value>
+            <value>
+                <fullName>Pickup Time</fullName>
+                <default>false</default>
+                <label>Pickup Time</label>
+            </value>
+            <value>
+                <fullName>Delivery Time</fullName>
+                <default>false</default>
+                <label>Delivery Time</label>
+            </value>
+            <value>
+                <fullName>Transit Duration</fullName>
+                <default>false</default>
+                <label>Transit Duration</label>
+            </value>
+            <value>
+                <fullName>Service Issue</fullName>
+                <default>false</default>
+                <label>Service Issue</label>
+            </value>
+            <value>
+                <fullName>Payment Term</fullName>
+                <default>false</default>
+                <label>Payment Term</label>
+            </value>
+            <value>
+                <fullName>Documentation Requirement</fullName>
+                <default>false</default>
+                <label>Documentation Requirement</label>
+            </value>
+            <value>
+                <fullName>Satisfied with competition</fullName>
+                <default>false</default>
+                <label>Satisfied with competition</label>
+            </value>
+            <value>
+                <fullName>Consignee Preference</fullName>
+                <default>false</default>
+                <label>Consignee Preference</label>
+            </value>
+            <value>
+                <fullName>Global Contract</fullName>
+                <default>false</default>
+                <label>Global Contract</label>
+            </value>
+            <value>
+                <fullName>Unauthentic Business</fullName>
+                <default>false</default>
+                <label>Unauthentic Business</label>
+            </value>
+            <value>
+                <fullName>Other Reasons</fullName>
+                <default>false</default>
+                <label>Other Reasons</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>No Potential</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Pricing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Pickup Time</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Delivery Time</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Transit Duration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Service Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Payment Term</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Documentation Requirement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Satisfied with competition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Consignee Preference</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Global Contract</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Unauthentic Business</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Lost</controllingFieldValue>
+            <valueName>Other Reasons</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

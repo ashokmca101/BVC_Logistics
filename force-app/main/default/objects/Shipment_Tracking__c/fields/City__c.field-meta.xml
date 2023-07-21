@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>City__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Location__c),
+					&quot;Out for Pickup&quot;, Shipment__r.Origin_Address_City__c,
+					&quot;Picked Up&quot;, Shipment__r.Origin_Address_City__c,
+					&quot;Origin Hub&quot;, Hub__r.Hub_City__c,
+					&quot;Transit Hub&quot;, Hub__r.Hub_City__c,
+					&quot;Destination Hub&quot;, Hub__r.Hub_City__c,
+					&quot;Out for Delivery&quot;, Shipment__r.Destination_Address_City__c,
+					&quot;Delivered&quot;, Shipment__r.Destination_Address_City__c,
+					&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>City</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

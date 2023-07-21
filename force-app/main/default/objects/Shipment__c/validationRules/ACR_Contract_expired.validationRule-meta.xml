@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACR_Contract_expired</fullName>
+    <active>true</active>
+    <description>Rule if ACR Customer has Negative Balance and Expired Contract.</description>
+    <errorConditionFormula>ISPICKVAL(Status__c, &apos;Verified For Billing&apos;)
+&amp;&amp; !Proceed_for_ACR_Billing__c &amp;&amp; ISPICKVAL( Customer__r.Customer_Category_Static__c , &apos;ACR&apos;)
+&amp;&amp; ISBLANK( Customer__r.Active_Contract__c)
+&amp;&amp; ( Customer__r.Previous_Balance_Amount__c &lt; 0 
+|| Customer__r.Previous_Contract_End_Date__c &lt; TODAY())</errorConditionFormula>
+    <errorDisplayField>Account_text__c</errorDisplayField>
+    <errorMessage>ACR Contract has expired for the customer, Please check &apos;Proceed for ACR Billing&apos; to proceed.</errorMessage>
+</ValidationRule>

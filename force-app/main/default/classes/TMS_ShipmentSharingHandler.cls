@@ -3,6 +3,7 @@ public class TMS_ShipmentSharingHandler {
     public static Map<String,List<String>> UserBranches(){
         Map<String,List<String>> UserBranchMap = new Map<String,List<String>>();
         for(User u:[select id, City FROM User WHERE Profile.Name = 'Operations Office Executive' AND City !=null LIMIT 50000]){
+        //for(User u:[select id, City FROM User WHERE (Profile.Name = 'Operations Office Executive' OR Profile.Name = 'System Administrator') AND City !=null LIMIT 50000]){
             string userCity = u.City.toUpperCase();
             if(UserBranchMap.containsKey(userCity)){
                 UserBranchMap.get(userCity).add(u.id);
@@ -105,6 +106,7 @@ public class TMS_ShipmentSharingHandler {
     //This method shares shipment records with transit hub employees based on the transit hub's branch city.
 	//It retrieves the relevant users from the `UserBranches()` method.    
     public static void ShipmentShareToTransitExecutives(Map<String,List<String>> TransitCityShip_Map){
+        System.debug('for checking in share class '+TransitCityShip_Map);
         try{
             Map<String,List<String>> UserBranchMap = TMS_ShipmentSharingHandler.UserBranches();
             //Sharing code
@@ -113,6 +115,7 @@ public class TMS_ShipmentSharingHandler {
             ///share records to transit hub employees
             for(String TransitBranch:TransitCityShip_Map.keySet()){
                 System.debug('11. Inside TransitBranch'+TransitBranch);
+                System.debug('11. Inside UserBranchMap'+UserBranchMap);
                 List<String> ShipmentsInBranch = TransitCityShip_Map.get(TransitBranch);
                 if(UserBranchMap!=null && UserBranchMap.containsKey(TransitBranch)){
                     List<String> UsersInBranch = UserBranchMap.get(TransitBranch);
@@ -129,12 +132,13 @@ public class TMS_ShipmentSharingHandler {
                     }
                 }
             }
+            System.debug('for checking ShipToShareList : '+ShipToShareList);
             if(ShipToShareList != null && ShipToShareList.size()>0){
-                system.debug('ShipToShareList: '+ShipToShareList.size());
+                system.debug('for checking ShipToShareList: '+ShipToShareList.size());
                 database.insert(ShipToShareList,false);
             }
         }Catch(exception e){
-            //system.debug('line: '+e.getLineNumber()+ ' msg: '+e.getMessage());
+            system.debug('line: '+e.getLineNumber()+ ' msg: '+e.getMessage());
         }
     }
     

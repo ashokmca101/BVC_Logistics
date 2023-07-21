@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ResetProductLookup__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Flag that determines whether Product Lookup data (guided selling questions, search filters and search results) are cleared after user selects desired products.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check to clear search filters and results every time you add products to your quotes. Otherwise, your previous selections are kept.</inlineHelpText>
+    <label>Reset Product Lookup</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

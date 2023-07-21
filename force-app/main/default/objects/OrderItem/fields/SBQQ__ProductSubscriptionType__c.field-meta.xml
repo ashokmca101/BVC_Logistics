@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ProductSubscriptionType__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Set the order item&apos;s product subscription type.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set the order item&apos;s product subscription type.</inlineHelpText>
+    <label>Product Subscription Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>SBQQ__SubscriptionType</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Online_Offline__c</fullName>
+    <externalId>false</externalId>
+    <label>Online/Offline</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Online</fullName>
+                <default>false</default>
+                <label>Online</label>
+            </value>
+            <value>
+                <fullName>Offline</fullName>
+                <default>false</default>
+                <label>Offline</label>
+            </value>
+            <value>
+                <fullName>Dta</fullName>
+                <default>false</default>
+                <label>Dta</label>
+            </value>
+            <value>
+                <fullName>No Service</fullName>
+                <default>false</default>
+                <label>No Service</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

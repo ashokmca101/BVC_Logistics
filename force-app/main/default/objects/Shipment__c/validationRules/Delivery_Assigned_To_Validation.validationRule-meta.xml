@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Assigned_To_Validation</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(OR(  TEXT(Tracking_Status__c)==&apos;Created&apos;  ,TEXT(Tracking_Status__c)==&apos;Out for Pickup&apos;
+,TEXT(Tracking_Status__c)==&apos;Picked Up&apos;
+,TEXT(Tracking_Status__c)==&apos;Origin Hub&apos;
+,TEXT(Tracking_Status__c)==&apos;Origin Port&apos;
+,TEXT(Tracking_Status__c)==&apos;Transit Hub&apos;
+,TEXT(Tracking_Status__c)==&apos;Transit Port&apos;),  NOT(ISBLANK( Delivery_Route_Assigned_To__c )))</errorConditionFormula>
+    <errorMessage>Can Assign Only At Destination Hub/Port</errorMessage>
+</ValidationRule>

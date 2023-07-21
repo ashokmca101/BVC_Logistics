@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__DiagnosticToolEnabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Enable to run pricing diagnostics during a Quote Line Editor Calculate.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Use to enable CPQ Diagnostic Tool, only available if org setting is enabled. Contact support to enable this capability.</inlineHelpText>
+    <label>Enable Diagnostic Tool</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

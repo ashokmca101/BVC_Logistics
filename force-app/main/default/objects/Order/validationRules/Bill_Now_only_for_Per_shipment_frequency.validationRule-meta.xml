@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bill_Now_only_for_Per_shipment_frequency</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL(Business_Type__c   , &apos;Non ACR&apos;)
+&amp;&amp;(ISPICKVAL(Account.Billing_Frequency__c, &apos;Weekly&apos;) ||
+ISPICKVAL(Account.Billing_Frequency__c, &apos;Monthly&apos;))  
+&amp;&amp;  ST_Bill_Now__c == True</errorConditionFormula>
+    <errorMessage>Bill Now is only possible for ACR or during shipment flow with Customer Billing frequency as Shipment</errorMessage>
+</ValidationRule>

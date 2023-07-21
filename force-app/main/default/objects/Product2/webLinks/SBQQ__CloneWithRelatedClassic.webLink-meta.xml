@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__CloneWithRelatedClassic</fullName>
+    <availability>online</availability>
+    <description>Clones this product with related Salesforce CPQ records such as Features, Options, Costs and Block Prices</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Clone with Related</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>{!URLFOR($Action.Product2.Clone, Product2.Id, [saveURL=&apos;/apex/SBQQ__CloneProductChildren?id=&apos; &amp; Product2.Id,cancelURL=&apos;&apos; &amp; Product2.Id])}</url>
+</WebLink>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Competitors__c</fullName>
+    <description>Enter the competitors for BVC for the specific Opportunity</description>
+    <externalId>false</externalId>
+    <label>Competitors</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sequel Logistics</fullName>
+                <default>false</default>
+                <label>Sequel Logistics</label>
+            </value>
+            <value>
+                <fullName>Ambe Express</fullName>
+                <default>false</default>
+                <label>Ambe Express</label>
+            </value>
+            <value>
+                <fullName>Secure Global Logistics</fullName>
+                <default>false</default>
+                <label>Secure Global Logistics</label>
+            </value>
+            <value>
+                <fullName>Brinks India</fullName>
+                <default>false</default>
+                <label>Brinks India</label>
+            </value>
+            <value>
+                <fullName>Malca-Amit</fullName>
+                <default>false</default>
+                <label>Malca-Amit</label>
+            </value>
+            <value>
+                <fullName>Ferrari</fullName>
+                <default>false</default>
+                <label>Ferrari</label>
+            </value>
+            <value>
+                <fullName>CMS</fullName>
+                <default>false</default>
+                <label>CMS</label>
+            </value>
+            <value>
+                <fullName>SIS</fullName>
+                <default>false</default>
+                <label>SIS</label>
+            </value>
+            <value>
+                <fullName>Gati</fullName>
+                <default>false</default>
+                <label>Gati</label>
+            </value>
+            <value>
+                <fullName>Safexpress</fullName>
+                <default>false</default>
+                <label>Safexpress</label>
+            </value>
+            <value>
+                <fullName>Blue Dart</fullName>
+                <default>false</default>
+                <label>Blue Dart</label>
+            </value>
+            <value>
+                <fullName>Delhivery</fullName>
+                <default>false</default>
+                <label>Delhivery</label>
+            </value>
+            <value>
+                <fullName>Naplog</fullName>
+                <default>false</default>
+                <label>Naplog</label>
+            </value>
+            <value>
+                <fullName>Ashok Logistics</fullName>
+                <default>false</default>
+                <label>Ashok Logistics</label>
+            </value>
+            <value>
+                <fullName>Air Parcel</fullName>
+                <default>false</default>
+                <label>Air Parcel</label>
+            </value>
+            <value>
+                <fullName>JK Customs</fullName>
+                <default>false</default>
+                <label>JK Customs</label>
+            </value>
+            <value>
+                <fullName>BK Freight</fullName>
+                <default>false</default>
+                <label>BK Freight</label>
+            </value>
+            <value>
+                <fullName>Self-transport</fullName>
+                <default>false</default>
+                <label>Self-transport</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

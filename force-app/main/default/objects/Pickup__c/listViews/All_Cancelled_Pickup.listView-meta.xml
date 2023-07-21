@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Cancelled_Pickup</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>BVC_Origin_Hub__c</columns>
+    <columns>Pickup_Assigned_To__c</columns>
+    <columns>Pickup_Status__c</columns>
+    <columns>Shipper_Name__c</columns>
+    <columns>Origin_Address_Line1__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Pickup_Status__c</field>
+        <operation>equals</operation>
+        <value>Cancelled</value>
+    </filters>
+    <label>Cancelled</label>
+    <sharedTo>
+        <group>TMS_Managers</group>
+    </sharedTo>
+</ListView>

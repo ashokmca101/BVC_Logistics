@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVCSoftwareID__c</fullName>
+    <description>BVC softwares in which data should be flow via AWS</description>
+    <externalId>false</externalId>
+    <label>BVCSoftwareID</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BVC SYSTEM</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM</label>
+            </value>
+            <value>
+                <fullName>BKC</fullName>
+                <default>false</default>
+                <label>BKC</label>
+            </value>
+            <value>
+                <fullName>F1</fullName>
+                <default>false</default>
+                <label>F1</label>
+            </value>
+            <value>
+                <fullName>BITS - G</fullName>
+                <default>false</default>
+                <label>BITS - G</label>
+            </value>
+            <value>
+                <fullName>BVC SYSTEM - AND - F3</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM - AND - F3</label>
+            </value>
+            <value>
+                <fullName>BVC SYSTEM - BKC - F1</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM - BKC - F1</label>
+            </value>
+            <value>
+                <fullName>BVC SYSTEM - CORP - F4</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM - CORP - F4</label>
+            </value>
+            <value>
+                <fullName>BVC SYSTEM - SAC - F6</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM - SAC - F6</label>
+            </value>
+            <value>
+                <fullName>BVC SYSTEM - SEZ - F2</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM - SEZ - F2</label>
+            </value>
+            <value>
+                <fullName>BVC SYSTEM - SRT - F5</fullName>
+                <default>false</default>
+                <label>BVC SYSTEM - SRT - F5</label>
+            </value>
+            <value>
+                <fullName>Corvi</fullName>
+                <default>false</default>
+                <label>Corvi</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - AMD - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - AMD - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - BKC - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - BKC - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - BKG - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - BKG - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - BLR - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - BLR - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - CHE - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - CHE - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - COC - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - COC - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - DEL - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - DEL - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - HYD - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - HYD - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - JAI - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - JAI - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - KOL - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - KOL - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - SAC - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - SAC - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - SEZ - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - SEZ - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - SRT - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - SRT - A2</label>
+            </value>
+            <value>
+                <fullName>IVALSHIP - VIZ - A2</fullName>
+                <default>false</default>
+                <label>IVALSHIP - VIZ - A2</label>
+            </value>
+            <value>
+                <fullName>MERCURY - A1</fullName>
+                <default>false</default>
+                <label>MERCURY - A1</label>
+            </value>
+            <value>
+                <fullName>PLUTO - E</fullName>
+                <default>false</default>
+                <label>PLUTO - E</label>
+            </value>
+            <value>
+                <fullName>Tally Legacy</fullName>
+                <default>false</default>
+                <label>Tally Legacy</label>
+            </value>
+            <value>
+                <fullName>VAMASHIP - C</fullName>
+                <default>false</default>
+                <label>VAMASHIP - C</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

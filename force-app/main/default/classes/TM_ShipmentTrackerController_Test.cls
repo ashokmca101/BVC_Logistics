@@ -28,7 +28,7 @@ public class TM_ShipmentTrackerController_Test {
         bag1.Seal_Id__c = Seal.id;
         bag1.Current_Scan_Loction__c = 'Created';
         bag1.Current_Scan_Hub__c = hub.id;
-        //bag1.Current_Scan_Airport__c = Airport.id;
+        bag1.Current_Scan_Airport__c = Airport.id;
         insert bag1;
         List<Secure_Bag__c> BagList = new List<Secure_Bag__c>();
         BagList.add(bag1);
@@ -52,6 +52,7 @@ public class TM_ShipmentTrackerController_Test {
         TM_ShipmentTrackerController.bagBySecureBagId(SP_Bag.name,st,'Misrouted');
         TM_ShipmentTrackerController.updateSecureBag(st, BagList, wr, 'Unlock');
         TM_ShipmentTrackerController.updateNormalBag(st, BagList);
+        TM_ShipmentTrackerController.upadateScanBagsWithNoseal(st, BagList);
         Test.stopTest();
     }
 
@@ -105,6 +106,7 @@ public class TM_ShipmentTrackerController_Test {
         TM_ShipmentTrackerController.updateSecureBag(st, BagList, wr, 'Unlock');
         BagList = new List<Secure_Bag__c>();
         TM_ShipmentTrackerController.updateSecureBag(st, BagList, wr, 'Unlock');
+        TM_ShipmentTrackerController.upadateScanBagsWithNoseal(st, BagList);
         Test.stopTest();
     }
 
@@ -155,6 +157,7 @@ public class TM_ShipmentTrackerController_Test {
         BagList = new List<Secure_Bag__c>();
         TM_ShipmentTrackerController.updateSecureBag(st, BagList, wr, 'Unlock');
         TM_ShipmentTrackerController.LoggedInUserHub();
+        TM_ShipmentTrackerController.LoggedInUserHubWithBranchName();
         Test.stopTest();
     }
 

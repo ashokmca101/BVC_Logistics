@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Special_Service_DTA</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>ST_Rate_Amount__c</columns>
+    <columns>ST_Rate_UOM__c</columns>
+    <columns>ST_Origin__c</columns>
+    <columns>ST_Destination__c</columns>
+    <columns>ST_Minimum_Freight__c</columns>
+    <columns>ST_Product__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ST_Product__c</field>
+        <operation>contains</operation>
+        <value>spec</value>
+    </filters>
+    <filters>
+        <field>ST_Product__c</field>
+        <operation>contains</operation>
+        <value>dta</value>
+    </filters>
+    <label>Special Service &amp; DTA</label>
+</ListView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Select_Airline__c</fullName>
+    <externalId>false</externalId>
+    <label>Select Airline</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Indigo</fullName>
+                <default>false</default>
+                <label>Indigo</label>
+            </value>
+            <value>
+                <fullName>SPICEJET</fullName>
+                <default>false</default>
+                <label>SPICEJET</label>
+            </value>
+            <value>
+                <fullName>AIR ASIA</fullName>
+                <default>false</default>
+                <label>AIR ASIA</label>
+            </value>
+            <value>
+                <fullName>GO</fullName>
+                <default>false</default>
+                <label>GO</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Annexure_ReportId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Annexure ReportId</shortDescription>
+        <value>00O5g00000DBCnGEAX</value>
+    </labels>
+    <labels>
+        <fullName>BVCL_Company_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BVCL Company Id</shortDescription>
+        <value>BVCL0002</value>
+    </labels>
+    <labels>
+        <fullName>BulkApprovalUsers</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BulkApprovalUsers</shortDescription>
+        <value>0055g000003o3XrAAI,0055g00000BUBhjAAH,0055g00000CXpgaAAD,0055g00000BUBNkAAP</value>
+    </labels>
+    <labels>
+        <fullName>CongaVF_Base_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CongaVF Base URL</shortDescription>
+        <value>https://bvc2--apxtcfq.visualforce.com/</value>
+    </labels>
+    <labels>
+        <fullName>ContractConsumptionExpiryEmailTemplateName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContractConsumptionExpiryEmailTemplateName</shortDescription>
+        <value>Contract Consumption Expiry HTML</value>
+    </labels>
+    <labels>
+        <fullName>ContractExpiryEmailThresholdPercent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContractExpiryEmailThresholdPercent</shortDescription>
+        <value>8555</value>
+    </labels>
+    <labels>
+        <fullName>Contract_Days_to_Expiry_HTML_Template</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contract Days to Expiry HTML</shortDescription>
+        <value>Contract Days to Expiry HTML</value>
+    </labels>
+    <labels>
+        <fullName>Contract_Expiry_Email_Days_to_send</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contract Expiry Email Days to send</shortDescription>
+        <value>45,30,25,7,5,3,2,1</value>
+    </labels>
+    <labels>
+        <fullName>Default_Business_Hour_Id</fullName>
+        <categories>Contains Default Business Hour Id</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default_Business_Hour_Id</shortDescription>
+        <value>01m5g000000KoeVAAS</value>
+    </labels>
+    <labels>
+        <fullName>ECS_Annexure_Report_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ECS Annexure Report Id</shortDescription>
+        <value>00O5g00000FnrcfEAB</value>
+    </labels>
+    <labels>
+        <fullName>EntitlementId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EntitlementId</shortDescription>
+        <value>5505g000000BKxeAAG</value>
+    </labels>
+    <labels>
+        <fullName>ExecutiveProfileName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExecutiveProfileName</shortDescription>
+        <value>Operations Field Executive</value>
+    </labels>
+    <labels>
+        <fullName>Integration_Log_Days_to_Expiry</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration Log - Days to Expiry</shortDescription>
+        <value>30</value>
+    </labels>
+    <labels>
+        <fullName>Non_Approval_Send_Quote_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Non Approval Send Quote Error</shortDescription>
+        <value>Please Approve the quote before sending</value>
+    </labels>
+    <labels>
+        <fullName>ORDER_ACR_RECORDTYPE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ORDER ACR RECORDTYPE</shortDescription>
+        <value>012O0000000c8ciIAA</value>
+    </labels>
+    <labels>
+        <fullName>ORDER_NON_ACR_RECORDTYPE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ORDER NON ACR RECORDTYPE</shortDescription>
+        <value>012O0000000c8cjIAA</value>
+    </labels>
+    <labels>
+        <fullName>ORDER_SHIPMENT_RECORDTYPE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ORDER SHIPMENT RECORDTYPE</shortDescription>
+        <value>012O0000000c8ckIAA</value>
+    </labels>
+    <labels>
+        <fullName>Quote_Edit_Profiles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Edit Profiles</shortDescription>
+        <value>System Administrator,Sales User,Billing Admin</value>
+    </labels>
+    <labels>
+        <fullName>Razorpay_Endpoint_Community_Payment_Links</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Razorpay Endpoint Community Payment Links</shortDescription>
+        <value>https://api.razorpay.com/v1/payment_links</value>
+    </labels>
+    <labels>
+        <fullName>Razorpay_Endpoint_getAllPayment</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Razorpay Endpoint getAllPayment</shortDescription>
+        <value>https://api.razorpay.com/v1/payment_links/</value>
+    </labels>
+    <labels>
+        <fullName>Razorpay_Max_Limit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Razorpay Max Limit</shortDescription>
+        <value>500000</value>
+    </labels>
+    <labels>
+        <fullName>Razorpay_Password_Community</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Razorpay Password Community</shortDescription>
+        <value>Xan2xYD0MaOwOwQtNMX2icKa</value>
+    </labels>
+    <labels>
+        <fullName>Razorpay_Username_Community</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Razorpay Username Community</shortDescription>
+        <value>rzp_test_L0SDLcmzd1ALse</value>
+    </labels>
+    <labels>
+        <fullName>Shipment_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shipment Record Type</shortDescription>
+        <value>0125g0000002aQgAAI</value>
+    </labels>
+    <labels>
+        <fullName>Shipment_s_Default_Owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shipment&apos;s Default Owner</shortDescription>
+        <value>0055g00000E6PrvAAF</value>
+    </labels>
+    <labels>
+        <fullName>Subject_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subject Label</shortDescription>
+        <value>KYC Error</value>
+    </labels>
+    <labels>
+        <fullName>TMS_BVCEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TMS BVCEmail</shortDescription>
+        <value>care@bvclogistics.com</value>
+    </labels>
+    <labels>
+        <fullName>TMS_BVCName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TMS BVCName</shortDescription>
+        <value>BVC Logistics Pvt Ltd</value>
+    </labels>
+    <labels>
+        <fullName>TMS_BVCPhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TMS BVCPhone</shortDescription>
+        <value>1800-123-2711</value>
+    </labels>
+    <labels>
+        <fullName>TMS_BVCWebsite</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TMS BVCWebsite</shortDescription>
+        <value>www.bvclogistics.com</value>
+    </labels>
+    <labels>
+        <fullName>TMS_Mobile_Default_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TMS_Mobile_Default_Account</shortDescription>
+        <value>0011e00000Bu8WsAAJ</value>
+    </labels>
+</CustomLabels>

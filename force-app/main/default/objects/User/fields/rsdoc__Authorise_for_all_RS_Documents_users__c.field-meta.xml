@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rsdoc__Authorise_for_all_RS_Documents_users__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>If checked, once this user authorises access to his Google Drive, all other users will use this authorisation when generating documents.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If checked, once this user authorises access to his Google Drive, all other users will use this authorisation when generating documents.</inlineHelpText>
+    <label>Authorise for all RS Documents users</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

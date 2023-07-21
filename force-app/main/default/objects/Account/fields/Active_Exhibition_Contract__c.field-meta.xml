@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Exhibition_Contract__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Active Exhibition Contract</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Only Exhibition contracts ae allowed for this field.</errorMessage>
+        <filterItems>
+            <field>Contract.Business_Type__c</field>
+            <operation>equals</operation>
+            <value>Exhibition</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contract</referenceTo>
+    <relationshipLabel>Customers (Active Exhibition Contract)</relationshipLabel>
+    <relationshipName>ExhibitionCustomers</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

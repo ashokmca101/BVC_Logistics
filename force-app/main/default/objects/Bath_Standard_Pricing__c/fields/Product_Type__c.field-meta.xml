@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Studded Jewellery</fullName>
+                <default>false</default>
+                <label>Studded Jewellery</label>
+            </value>
+            <value>
+                <fullName>Plain Jewellery</fullName>
+                <default>false</default>
+                <label>Plain Jewellery</label>
+            </value>
+            <value>
+                <fullName>Preset Solitaire</fullName>
+                <default>false</default>
+                <label>Preset Solitaire</label>
+            </value>
+            <value>
+                <fullName>UnStud-Jwry</fullName>
+                <default>false</default>
+                <label>UnStud-Jwry</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

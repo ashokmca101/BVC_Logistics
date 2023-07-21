@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>check_required_field_for_eship</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(  AND(ISPICKVAL( Customer_Product_Category__c , &apos;eSHIP&apos;) ,Verified_for_Billing__c ==true,OR(ISBLANK( Total_Invoice_Value__c ),ISBLANK( Gross_Weight__c), ISPICKVAL( Product_Category__c,&apos;&apos; ),ISPICKVAL(  Shipment_Type__c,&apos;&apos; ) ) )  , true, false)</errorConditionFormula>
+    <errorDisplayField>Account__c</errorDisplayField>
+    <errorMessage>Fields are Missing - Shipment Type or Product Category or Total Invoice Value or Gross Weight</errorMessage>
+</ValidationRule>

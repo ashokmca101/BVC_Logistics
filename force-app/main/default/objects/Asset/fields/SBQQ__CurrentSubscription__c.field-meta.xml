@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__CurrentSubscription__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Subscription that currently covers this asset. This field is only populated if one and only one subscription covers this asset. Renewals will overwrite with new subscription.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Subscription that currently covers this asset. Automatically populated if one and only one subscription covers this asset. Renewals will overwrite with new subscription.</inlineHelpText>
+    <label>Current Subscription</label>
+    <referenceTo>SBQQ__Subscription__c</referenceTo>
+    <relationshipLabel>Covered Assets</relationshipLabel>
+    <relationshipName>CoveredAssets</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

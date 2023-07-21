@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>ST_Discount_Approval_L1</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>false</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Auto Approval L1</label>
+        <name>Auto_Approval_L1</name>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>!ISNULL(Max_Discount_on_QuoteLine__c ) &amp;&amp; Max_Discount_on_QuoteLine__c &lt;10 &amp;&amp; NOT(
+ISPICKVAL(BVC_Service__c , &apos;BATH&apos;)) &amp;&amp; NOT(
+ISPICKVAL(BVC_Service__c , &apos;eSHIP&apos;)) &amp;&amp; NOT( ISPICKVAL(BVC_Service__c , &apos;iValSHIP&apos;)) &amp;&amp; NOT( ISPICKVAL(BVC_Service__c , &apos;ieSHIP&apos;)) &amp;&amp; NOT( ISPICKVAL(BVC_Service__c , &apos;ExhibiSHIP&apos;))</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>ST_Update_Auto_Approve_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Auto Approval Quote</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

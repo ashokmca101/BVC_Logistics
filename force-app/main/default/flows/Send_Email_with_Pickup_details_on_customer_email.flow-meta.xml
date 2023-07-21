@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Used to send email to customer email ID</description>
+        <name>Send_Email_with_Pickup_details_on_customer_email_and_mob</name>
+        <label>Send Email with Pickup details on customer email and mob</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>Pickup__c.Send_Email_with_Pickup_details_on_customer_email_and_mob</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <description>Used for sending email to customer Email ID</description>
+    <environments>Default</environments>
+    <interviewLabel>Send Email with Pickup details on customer email and mob {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Email with Pickup details on customer email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Email_with_Pickup_details_on_customer_email_and_mob</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Primary_Customer_Email__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Customer_Email__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>legacyaccounts@bvclogistics.com</stringValue>
+            </value>
+        </filters>
+        <object>Pickup__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

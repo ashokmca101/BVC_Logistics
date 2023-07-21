@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Term_schedule_requires_subscription</fullName>
+    <active>true</active>
+    <description>Ensures only subscription products have Term Discount Schedule field populated.</description>
+    <errorConditionFormula>AND(ISPICKVAL(SBQQ__SubscriptionPricing__c, &apos;&apos;),NOT(ISBLANK(SBQQ__TermDiscountSchedule__c)))</errorConditionFormula>
+    <errorDisplayField>SBQQ__TermDiscountSchedule__c</errorDisplayField>
+    <errorMessage>Only subscription products may specify term discount schedule</errorMessage>
+</ValidationRule>

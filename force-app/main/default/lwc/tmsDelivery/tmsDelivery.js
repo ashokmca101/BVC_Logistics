@@ -9,7 +9,9 @@ import signaturePadURL from '@salesforce/resourceUrl/signature_pad';
 import saveSign from '@salesforce/apex/TSM_SignatureHelper.saveSign'; 
 import getshipmetID from '@salesforce/apex/TSM_SignatureHelper.getshipmetID';
 import DELIVERY from '@salesforce/schema/Delivery__c';
-
+// added by imran
+import saveSNPhoto from '@salesforce/apex/TSM_SignatureHelper.saveSNPhoto';
+import saveIdPhoto from '@salesforce/apex/TSM_SignatureHelper.saveIdPhoto';
 
 const columns = [
     { label: 'Shipping Note Number', fieldName: 'Shipping_Note_Number__c', type: 'text' },
@@ -42,7 +44,6 @@ export default class TmsDelivery extends NavigationMixin(LightningElement){
     @track shipmentId;
     @track tempRecord =[];
 	@track deliveryId;
-    @track SBID;
 	
 	handleConsigneeNameChange(event) {
         DELIVERY.Consignee_Name__c = event.target.value; 
@@ -66,9 +67,12 @@ export default class TmsDelivery extends NavigationMixin(LightningElement){
 			this.data = undefined;
 			this.error = error;
 		}
-	}	
+	}
+	
 
     connectedCallback(){
+				
+				console.log('for checking this.deliveryId',this.deliveryId);
 
         this.isLoading = true;
         if (navigator.geolocation) {
@@ -81,15 +85,9 @@ export default class TmsDelivery extends NavigationMixin(LightningElement){
         allSecureBagGet({
             deliveryId : this.recordId
         }).then(result=>{
-						console.log('record Id :',this.recordId);
+            console.log('record Id :',this.recordId);
             this.bagRecord =   result;
-            console.log('11.SecureBag :',result);
-            for(let key in result)
-            {
-                console.log('VAL :'+result[key]);
-            }
-            console.log('11.SecureBag :',result[0].Id);
-            this.SBID = result[0].Id;
+            console.log('dsgdsgdfsgdfsgdfsg :',result);
             this.isLoading = false;
 
         }).catch(error=>{
@@ -309,18 +307,13 @@ export default class TmsDelivery extends NavigationMixin(LightningElement){
         
 
     }
-
-
- 	
 	fileuploaddone(event) {
-        
+        console.log('Pod File Upload');
         const uploadedFiles = event.detail.files;
         let uploadedFileNames = '';
-        console.log('FILE UPLOADED');
 
         for(let i = 0; i < uploadedFiles.length; i++) {
-            uploadedFileNames += uploadedFiles[i].name + ', ';  
-            console.log('FILE UPLOADED Name :'+uploadedFiles[i].name);          
+            uploadedFileNames += uploadedFiles[i].name + ', ';
         }
 
         this.dispatchEvent(
@@ -332,6 +325,104 @@ export default class TmsDelivery extends NavigationMixin(LightningElement){
         ); 
 
     }
-	
+    // added by Imran
+	//fileuploaddone(event) {
+	PODfileuploaddone(event) {
+        console.log('Pod File Upload');
+        const uploadedFiles = event.detail.files;
+        let uploadedFileNames = '';
+
+        for(let i = 0; i < uploadedFiles.length; i++) {
+            uploadedFileNames += uploadedFiles[i].name + ', ';
+        }
+
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Success',
+                message: uploadedFiles.length + ' Files uploaded Successfully: ' + uploadedFileNames,
+                variant: 'success',
+            }),
+        ); 
+
+    }
+
+	SNfileuploaddone(event) {
+    console.log('SN File Update');
+    console.log('SN File shipmentId :'+this.shipmentId);
+        const uploadedFiles = event.detail.files;
+        let uploadedFileNames = '';
+
+        for(let i = 0; i < uploadedFiles.length; i++) {
+            uploadedFileNames += uploadedFiles[i].name + ', ';
+        }
+
+        let tempRecord = [];         
+
+        this.selectedbag.forEach((item, index) => {
+            tempRecord.push(item);
+          });
+
+        saveSNPhoto({
+            shipId: this.shipmentId,
+            contentDocId: uploadedFiles[0].documentId,
+            secureBagList : tempRecord
+        }) .then(result => { 
+             console.log('<-------  RecieverIDPhoto Update Successfully --------->');
+
+        }).catch(erorr => { 
+            console.log("----- Error ------",erorr );
+        }).finally(()=>{
+        });
+
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Success',
+                message: uploadedFiles.length + ' Files uploaded Successfully: ' + uploadedFileNames,
+                variant: 'success',
+            }),
+        ); 
+
+    }
+
+    IDfileuploaddone(event) {
+    console.log('ID Update');
+    console.log('SN File shipmentId :'+this.shipmentId);
+        const uploadedFiles = event.detail.files;
+        console.log('1122. File path:'+uploadedFiles[0].Name);
+        console.log('1122:. documentId :'+uploadedFiles[0].documentId);
+        let uploadedFileNames = '';
+
+        for(let i = 0; i < uploadedFiles.length; i++) {
+            uploadedFileNames += uploadedFiles[i].name + ', ';
+        }
+
+        let tempRecord = [];         
+
+        this.selectedbag.forEach((item, index) => {
+            tempRecord.push(item);
+          });
+
+        saveIdPhoto({
+            shipId: this.shipmentId,
+            contentDocId: uploadedFiles[0].documentId,
+            secureBagList : tempRecord
+        }) .then(result => { 
+             console.log('<-------  DocketPhoto Update Successfully --------->');
+
+        }).catch(erorr => { 
+            console.log("----- Error ------",erorr );
+        }).finally(()=>{
+        });
+
+
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Success',
+                message: uploadedFiles.length + ' Files uploaded Successfully: ' + uploadedFileNames,
+                variant: 'success',
+            }),
+        ); 
+
+    }	
 	
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Include_or_Exclude_Maintenance</fullName>
+    <active>true</active>
+    <description>Validates that either Includes In Maintenance or Excludes From Maintenance checkbox is checked but not both.</description>
+    <errorConditionFormula>AND(SBQQ__IncludeInMaintenance__c,SBQQ__ExcludeFromMaintenance__c)</errorConditionFormula>
+    <errorMessage>You must check either Include In Maintenance or Exclude From Maintenance checkbox.</errorMessage>
+</ValidationRule>

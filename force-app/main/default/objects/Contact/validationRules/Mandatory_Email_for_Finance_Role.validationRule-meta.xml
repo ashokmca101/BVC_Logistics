@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandatory_Email_for_Finance_Role</fullName>
+    <active>true</active>
+    <description>Email field must not be blank for People with Finance Role</description>
+    <errorConditionFormula>IF( BVC_Finance_Contact__c , TRUE, FALSE) &amp;&amp;  ISBLANK( Email )</errorConditionFormula>
+    <errorDisplayField>Email</errorDisplayField>
+    <errorMessage>Email cannot be left blank</errorMessage>
+</ValidationRule>

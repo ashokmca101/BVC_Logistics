@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Users_Cannot_Change_the_Owner</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND
+(
+ISCHANGED( OwnerId ),
+ NOT(OR( 
+     $User.Id  &lt;&gt;  OwnerId ,
+     $Profile.Name == &apos;System Administrator&apos;,
+     $Profile.Name == &apos;COP User&apos;,
+     $Profile.Name == &apos;Sales Head&apos;,
+     $Profile.Name == &apos;Sales User&apos; )) 
+)</errorConditionFormula>
+    <errorMessage>You do not have the sufficient access to change the Owner</errorMessage>
+</ValidationRule>

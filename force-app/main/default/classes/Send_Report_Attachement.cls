@@ -29,11 +29,12 @@ public class Send_Report_Attachement {
                   SampleText = '"'+AccountList[0].name+'","'+AccountList[0].PAN_Number_of_Entity__c+'","'+AccountList[0].Active_Contract__r.ContractNumber+'","'+ship.Shipping_Note_Number__c+'","'+ship.Shipping_Note_Number__c+'","'+ship.Shipment_Date__c+'","'+ship.Shipment_Value__c+'","'+ship.Net_weight_in_Gram__c+'","'+ship.Gross_weight_in_Gram__c+'","'+acrcon.Freight_Charges__c+'","'+acrcon.Weight_Charges__c+'","'+acrcon.Offline_Charges__c+'","'+acrcon.Liability_charges__c+'","'+acrcon.BVC_Valuation_Charges__c+'","'+acrcon.Total_Charge__c+'","'+ship.Product_Code__c+'","'+ship.Product_Description__c+'","'+ship.Shipper_Name_TMS__c+'","'+ship.Consignee_Name_TMS__c+'","'+acrcon.Origin_City__c+'","'+acrcon.Origin_Type__c +'","'+acrcon.Destination_City__c +'","'+acrcon.Destination_type__c+'","'+ship.Shipment_Type__c+'" \n';    
                   recordString= recordString + SampleText;
                   system.debug('recordString++++++++'+SampleText);
+                  finalStr += recordString;
                  }
               }
                }
            }
-         finalstr = finalstr +recordString;
+      //   finalstr = finalstr +recordString;
      system.debug('finalstr++++++++'+finalstr);
          /*if(recordString.length()>0){
              Contact setOfContactId = [select id from contact where AccountId = :Account1];

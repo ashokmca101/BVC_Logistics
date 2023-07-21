@@ -81,19 +81,19 @@ trigger TMS_PickupTrigger on Pickup__c (after Insert, after update,before insert
     If(Trigger.isBefore){
         if (Trigger.isInsert || Trigger.isUpdate) {
             
-            Set<Id> escorterUserIds = new Set<Id>();
+            //Set<Id> escorterUserIds = new Set<Id>();
             for(Pickup__c  pick: trigger.new){
                 if (pick.Pickup_Assigned_To__c != null && (trigger.isInsert || (trigger.isUpdate && pick.Pickup_Assigned_To__c != trigger.oldMap.get(pick.Id).Pickup_Assigned_To__c))) {
                     system.debug('assigned');
-                    escorterUserIds.add(pick.Pickup_Assigned_To__c);
+                    //escorterUserIds.add(pick.Pickup_Assigned_To__c);
                 }
                 
             }
             
-            Map<Id, User> escorterUsers = new Map<Id, User>([SELECT Id, UserRole.Name FROM User WHERE Id IN :escorterUserIds AND UserRole.Name = 'Escorter']);
+           // Map<Id, User> escorterUsers = new Map<Id, User>([SELECT Id, UserRole.Name FROM User WHERE Id IN :escorterUserIds AND UserRole.Name = 'Escorter']);
 
             for (Pickup__c pick : trigger.new) {
-                if (pick.Pickup_Assigned_To__c != null && escorterUsers.containsKey(pick.Pickup_Assigned_To__c) && pick.OTP__c == null) {
+                if (pick.Pickup_Assigned_To__c != null && pick.OTP__c == null && (trigger.isInsert || (trigger.isUpdate && trigger.oldMap.get(pick.Id).OTP__c == null))) {
                     
                     Integer otpLength = 4;
                     String allowedChars = '0123456789';

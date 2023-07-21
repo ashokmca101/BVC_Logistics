@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Out_For_Delivery</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Customer_Name__c</columns>
+    <columns>NAME</columns>
+    <columns>Active_Pincode__c</columns>
+    <columns>CITY__c</columns>
+    <columns>Number_of_Shipment__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LAST_UPDATE</field>
+        <operation>lessOrEqual</operation>
+    </filters>
+    <filters>
+        <field>Number_of_Shipment__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </filters>
+    <label>Out For Delivery</label>
+</ListView>

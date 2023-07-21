@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Delivery</fullName>
+    <columns>LAST_UPDATE</columns>
+    <columns>Number_of_Shipment__c</columns>
+    <columns>Customer__c</columns>
+    <columns>ADDRESS1__c</columns>
+    <columns>CITY__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Delivery_Status__c</columns>
+    <columns>Delivery_Completed__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>LAST_UPDATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>My Delivery</label>
+</ListView>

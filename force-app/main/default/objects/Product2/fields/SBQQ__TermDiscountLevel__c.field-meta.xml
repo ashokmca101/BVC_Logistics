@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__TermDiscountLevel__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Level of subscription term that&apos;s used to calculated term discount.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Specify subscription term level that should be used in calculating term discount. Leave blank to indicate default.</inlineHelpText>
+    <label>Term Discount Level</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Line</fullName>
+                <default>false</default>
+                <label>Line</label>
+            </value>
+            <value>
+                <fullName>Group</fullName>
+                <default>false</default>
+                <label>Group</label>
+            </value>
+            <value>
+                <fullName>Quote</fullName>
+                <default>false</default>
+                <label>Quote</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

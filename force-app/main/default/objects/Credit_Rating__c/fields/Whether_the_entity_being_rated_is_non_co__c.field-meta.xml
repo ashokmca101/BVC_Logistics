@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Whether_the_entity_being_rated_is_non_co__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <label>Whether the entity being rated is non-co</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

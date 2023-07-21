@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_onboarding_Existing_Rejected__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>flag</description>
+    <externalId>false</externalId>
+    <label>Self onboarding Existing Rejected</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

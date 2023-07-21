@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>If_Bill_To_does_not_accept_payment</fullName>
+    <active>true</active>
+    <description>If Bill To does not accept payment than throw error</description>
+    <errorConditionFormula>NOT(  Payer__r.To_Pay_Shipment_Allowed__c )</errorConditionFormula>
+    <errorMessage>Bill to Party selected does not allow to pay shipments.</errorMessage>
+</ValidationRule>

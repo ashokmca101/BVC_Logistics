@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__BundleRoot__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>The root bundle parent Order Product of components. This component will be deleted if its bundle root is deleted.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>An internally used field that points to the root of its bundle parent.</inlineHelpText>
+    <label>Bundle Root</label>
+    <referenceTo>OrderItem</referenceTo>
+    <relationshipLabel>Order Products (Bundle Root)</relationshipLabel>
+    <relationshipName>BundleChildren</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

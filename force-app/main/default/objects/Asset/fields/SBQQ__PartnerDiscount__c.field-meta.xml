@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__PartnerDiscount__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Partner discounts are applied after all automatic and discretionary discounts. The partner discount is taken into account in the Partner Price.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Partner discounts are applied after all automatic and discretionary discounts. The partner discount is taken into account in the Partner Price.</inlineHelpText>
+    <label>Partner Discount</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

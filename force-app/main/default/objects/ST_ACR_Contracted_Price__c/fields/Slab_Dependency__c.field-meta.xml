@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Slab_Dependency__c</fullName>
+    <externalId>false</externalId>
+    <label>Slab Dependency</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gross Weight</fullName>
+                <default>false</default>
+                <label>Gross Weight</label>
+            </value>
+            <value>
+                <fullName>Net Weight</fullName>
+                <default>false</default>
+                <label>Net Weight</label>
+            </value>
+            <value>
+                <fullName>Invoice Value</fullName>
+                <default>false</default>
+                <label>Invoice Value</label>
+            </value>
+            <value>
+                <fullName>Kilometer</fullName>
+                <default>false</default>
+                <label>Kilometer</label>
+            </value>
+            <value>
+                <fullName>Package Weight</fullName>
+                <default>false</default>
+                <label>Package Weight</label>
+            </value>
+            <value>
+                <fullName>Freight Charges</fullName>
+                <default>false</default>
+                <label>Freight Charges</label>
+            </value>
+            <value>
+                <fullName>Per Shipment</fullName>
+                <default>false</default>
+                <label>Per Shipment</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

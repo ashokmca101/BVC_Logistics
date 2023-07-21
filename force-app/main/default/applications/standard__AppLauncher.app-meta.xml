@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-AppLauncher</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <tabs>standard-AppLauncher</tabs>
+    <tabs>External_Contract__c</tabs>
+    <tabs>External_Contract_Shipment__c</tabs>
+    <tabs>External_Contract_Shipment_Summary__c</tabs>
+    <tabs>Employee__c</tabs>
+    <tabs>Quartely_Sales_target__c</tabs>
+    <tabs>Billing__c</tabs>
+    <tabs>Delivery__c</tabs>
+    <tabs>Airlines_CSR__c</tabs>
+    <tabs>AirLine1__c</tabs>
+    <tabs>Collection_Deals__c</tabs>
+    <tabs>Exempted_City__c</tabs>
+    <tabs>Bath_Standard_Pricing__c</tabs>
+    <tabs>eSHIP_Standard_Pricing__c</tabs>
+    <tabs>Bath_Custom_Pricing__c</tabs>
+    <tabs>eSHIP_Custom_Pricing__c</tabs>
+    <tabs>Print_Invoice</tabs>
+    <tabs>testflightinfo__c</tabs>
+    <tabs>BPCL_Transaction__c</tabs>
+</CustomApplication>

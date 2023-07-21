@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__SubscriptionPercent__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Percent of non-subscription total to be used as the price of this subscription.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Percent of non-subscription total to be used as the price of this subscription.</inlineHelpText>
+    <label>Percent Of Total (%)</label>
+    <precision>7</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

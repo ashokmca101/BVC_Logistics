@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Validate_billing_frequency</fullName>
+    <active>true</active>
+    <description>When Charge Type is &apos;One-Time&apos;, a Billing Frequency value cannot be selected.</description>
+    <errorConditionFormula>AND(ISPICKVAL(SBQQ__ChargeType__c, &apos;One-Time&apos;), NOT(ISPICKVAL(SBQQ__BillingFrequency__c, &apos;&apos;)))</errorConditionFormula>
+    <errorDisplayField>SBQQ__BillingFrequency__c</errorDisplayField>
+    <errorMessage>When Charge Type is &apos;One-Time&apos;, a Billing Frequency value cannot be selected.</errorMessage>
+</ValidationRule>

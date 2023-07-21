@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Documents_Uploaded__c</fullName>
+    <externalId>false</externalId>
+    <label>Documents Uploaded</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Passport</fullName>
+                <default>false</default>
+                <label>Passport</label>
+            </value>
+            <value>
+                <fullName>PAN card</fullName>
+                <default>false</default>
+                <label>PAN card</label>
+            </value>
+            <value>
+                <fullName>IEC Certificate</fullName>
+                <default>false</default>
+                <label>IEC Certificate</label>
+            </value>
+            <value>
+                <fullName>GST Registration Copy</fullName>
+                <default>false</default>
+                <label>GST Registration Copy</label>
+            </value>
+            <value>
+                <fullName>Authorised Dealer Code Bank Letter</fullName>
+                <default>false</default>
+                <label>Authorised Dealer Code Bank Letter</label>
+            </value>
+            <value>
+                <fullName>Voter’s Identity card</fullName>
+                <default>false</default>
+                <label>Voter’s Identity card</label>
+            </value>
+            <value>
+                <fullName>Driving license</fullName>
+                <default>false</default>
+                <label>Driving license</label>
+            </value>
+            <value>
+                <fullName>Bank account statement</fullName>
+                <default>false</default>
+                <label>Bank account statement</label>
+            </value>
+            <value>
+                <fullName>Adhar Card</fullName>
+                <default>false</default>
+                <label>Adhar Card</label>
+            </value>
+            <value>
+                <fullName>Ration card</fullName>
+                <default>false</default>
+                <label>Ration card</label>
+            </value>
+            <value>
+                <fullName>Certificate of incorporation</fullName>
+                <default>false</default>
+                <label>Certificate of incorporation</label>
+            </value>
+            <value>
+                <fullName>Memorandum of Association</fullName>
+                <default>false</default>
+                <label>Memorandum of Association</label>
+            </value>
+            <value>
+                <fullName>Articles of Association</fullName>
+                <default>false</default>
+                <label>Articles of Association</label>
+            </value>
+            <value>
+                <fullName>Power of Attorney granted to its managers, officers or employees to transact business on its behalf</fullName>
+                <default>false</default>
+                <label>Power of Attorney granted to its managers, officers or employees to transact business on its behalf</label>
+            </value>
+            <value>
+                <fullName>Copy of PAN allotment letter</fullName>
+                <default>false</default>
+                <label>Copy of PAN allotment letter</label>
+            </value>
+            <value>
+                <fullName>Registration certificate (if registered)</fullName>
+                <default>false</default>
+                <label>Registration certificate (if registered)</label>
+            </value>
+            <value>
+                <fullName>Partnership deed</fullName>
+                <default>false</default>
+                <label>Partnership deed</label>
+            </value>
+            <value>
+                <fullName>Power of Attorney granted to a partner or an employee of the firm to transact business on its behalf</fullName>
+                <default>false</default>
+                <label>Power of Attorney granted to a partner or an employee of the firm to transact business on its behalf</label>
+            </value>
+            <value>
+                <fullName>Any officially valid document identifying the partners and the person holding the Power of Attorney and their addresses</fullName>
+                <default>false</default>
+                <label>Any officially valid document identifying the partners and the person holding the Power of Attorney and their addresses</label>
+            </value>
+            <value>
+                <fullName>Telephone bill in the name of firm/ partners</fullName>
+                <default>false</default>
+                <label>Telephone bill in the name of firm/ partners</label>
+            </value>
+            <value>
+                <fullName>Certificate of Registration, if registered</fullName>
+                <default>false</default>
+                <label>Certificate of Registration, if registered</label>
+            </value>
+            <value>
+                <fullName>Power of Attorney granted to transact business on its behalf</fullName>
+                <default>false</default>
+                <label>Power of Attorney granted to transact business on its behalf</label>
+            </value>
+            <value>
+                <fullName>Any officially valid document to identify the trustees, settlers, beneficiaries and those holding the Power of Attorney, founders/ managers/ directors and their addresses</fullName>
+                <default>false</default>
+                <label>Any officially valid document to identify the trustees, settlers, beneficiaries and those holding the Power of Attorney, founders/ managers/ directors and their addresses</label>
+            </value>
+            <value>
+                <fullName>Resolution of the managing body of the foundation/ association</fullName>
+                <default>false</default>
+                <label>Resolution of the managing body of the foundation/ association</label>
+            </value>
+            <value>
+                <fullName>Telephone bill</fullName>
+                <default>false</default>
+                <label>Telephone bill</label>
+            </value>
+            <value>
+                <fullName>Proof of Address</fullName>
+                <default>false</default>
+                <label>Proof of Address</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

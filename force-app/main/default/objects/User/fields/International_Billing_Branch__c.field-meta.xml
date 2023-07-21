@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>International_Billing_Branch__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>it should be a Hub Name for iValShip, ieShip&amp; international ExhibiShip</inlineHelpText>
+    <label>International Billing Branch</label>
+    <length>100</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

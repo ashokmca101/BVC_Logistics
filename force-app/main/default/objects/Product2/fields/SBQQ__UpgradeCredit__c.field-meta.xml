@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__UpgradeCredit__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Credit product quoted when upgrading this product.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Use to specify credit when quoting upgrades to this product.</inlineHelpText>
+    <label>Upgrade Credit</label>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Credited Products</relationshipLabel>
+    <relationshipName>CreditedProducts</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

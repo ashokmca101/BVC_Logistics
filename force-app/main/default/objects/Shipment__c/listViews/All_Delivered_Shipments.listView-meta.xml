@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Delivered_Shipments</fullName>
+    <columns>Destination_Hub__c</columns>
+    <columns>Shipment_Date__c</columns>
+    <columns>Actual_Delivery_Date_and_Time__c</columns>
+    <columns>NAME</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>Consignee_Name_TMS__c</columns>
+    <columns>Destination_Address_City__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Origin_Hub__c</columns>
+    <columns>Delivery_Route_Assigned_To__c</columns>
+    <columns>POD__c</columns>
+    <columns>POD_Trigger_Date_del__c</columns>
+    <columns>POD_Link_Url__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Tracking_Status__c</field>
+        <operation>equals</operation>
+        <value>Out for Delivery,Delivered</value>
+    </filters>
+    <filters>
+        <field>DeliverybySafe__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Delivery_Route_Assigned_To__c</field>
+        <operation>contains</operation>
+        <value>VIVEK</value>
+    </filters>
+    <filters>
+        <field>Destination_Hub__c</field>
+        <operation>contains</operation>
+        <value>BDB</value>
+    </filters>
+    <label>All Delivered - Shipments</label>
+    <sharedTo>
+        <group>TMS_Branch_Managers</group>
+        <group>TMS_Managers</group>
+    </sharedTo>
+</ListView>

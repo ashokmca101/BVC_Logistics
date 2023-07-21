@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSTIN_must_have_15_Characters</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(  AND(TEXT(GST_Registered_Status__c) ==&apos;Registered&apos; ,
+     RecordType.Name = &apos;Billing&apos;),
+    IF(LEN( GSTIN__c )=15 &amp;&amp; NOT(ISBLANK(GSTIN__c)), false,true) ,
+   false )</errorConditionFormula>
+    <errorDisplayField>GSTIN__c</errorDisplayField>
+    <errorMessage>GSTIN should contain 15 characters.</errorMessage>
+</ValidationRule>

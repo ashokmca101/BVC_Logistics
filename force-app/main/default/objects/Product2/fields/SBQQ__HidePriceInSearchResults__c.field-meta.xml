@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__HidePriceInSearchResults__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Indicates whether the product price should be displayed in the Product Search Results.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select checkbox to hide this product&apos;s price in the Product Search Results.</inlineHelpText>
+    <label>Hide Price in Search Results</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

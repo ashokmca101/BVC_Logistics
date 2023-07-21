@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__OutputFormatChangeAllowed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Flag that indicates whether this user is allowed to change output format of quote documents.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check to allow this user to change output format of quote documents.</inlineHelpText>
+    <label>Allow Output Format Change</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

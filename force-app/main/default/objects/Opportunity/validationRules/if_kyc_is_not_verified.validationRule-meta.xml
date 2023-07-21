@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>if_kyc_is_not_verified</fullName>
+    <active>true</active>
+    <description>if kyc is not verified, then related opp can not be closed.</description>
+    <errorConditionFormula>AND( OR(
+ ISPICKVAL(Account.KYC_Status__c, &apos;Verification Failed&apos;),
+ ISPICKVAL(Account.KYC_Status__c, &apos;&apos;)
+)   , OR (
+ISPICKVAL( StageName , &apos;Contract Signed&apos;),
+ISPICKVAL( StageName , &apos;Won - Shipments Started&apos;)
+) )</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>KYC is not verified</errorMessage>
+</ValidationRule>

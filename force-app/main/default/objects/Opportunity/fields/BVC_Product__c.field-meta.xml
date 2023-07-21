@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Product__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup field with Product</description>
+    <externalId>false</externalId>
+    <label>Product</label>
+    <lookupFilter>
+        <active>false</active>
+        <filterItems>
+            <field>Product2.Family</field>
+            <operation>equals</operation>
+            <value>CB, ArtSHIP, ValSHIP, eSHIP, ieSHIP, iValSHIP, ExhibiSHIP, BATH</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Opportunities</relationshipLabel>
+    <relationshipName>Opportunities</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

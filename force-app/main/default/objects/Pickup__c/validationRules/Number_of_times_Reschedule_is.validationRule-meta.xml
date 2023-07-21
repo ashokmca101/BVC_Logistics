@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_times_Reschedule_is</fullName>
+    <active>true</active>
+    <description>IF number of times rescheduled field is  greater than 2 then show error message that you can&apos;t reschedule pickup</description>
+    <errorConditionFormula>Number_of_Times_Rescheduled__c &gt;1</errorConditionFormula>
+    <errorMessage>You can rescheduled pickup only twice not more than that.Number of times Reschedule should not more than 2</errorMessage>
+</ValidationRule>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Flight Departed</label>
+    <protected>false</protected>
+    <values>
+        <field>AirAsia_AWB_Status__c</field>
+        <value xsi:type="xsd:string">Departed</value>
+    </values>
+    <values>
+        <field>GO_Air_AWB_Status__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Indigo_AWB_Status__c</field>
+        <value xsi:type="xsd:string">Departed</value>
+    </values>
+    <values>
+        <field>SpiceJet_AWB_Status__c</field>
+        <value xsi:type="xsd:string">Departed</value>
+    </values>
+</CustomMetadata>
