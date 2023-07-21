@@ -1,0 +1,44 @@
+<aura:component controller="MassApprovalRejectionController" implements="flexiPage:availableForAllPageTypes,force:appHostable">
+    
+    <!-- Call Javescript Method on Load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+    <!-- Functional Attributes -->
+    <aura:attribute name="columns" type="list" description="Captures the value of column names of the data table"/>
+    <aura:attribute name="data" type="object" description="Captures the records displayed in the data table"/>
+    <aura:attribute name="sortedBy" type="string" description="Captures the column name used for sorting"/>
+    <aura:attribute name="sortedDirection" type="string" description="Captures the direction of sorting(ascending or descending)"/>
+ 
+    <!-- Spinner -->
+    <lightning:spinner aura:id="spinnerId" variant="brand" size="medium"/>
+    <!-- Spinner -->
+    
+    <!-- Page Header -->
+    <div class="slds-page-header" role="banner">
+    	<span class="slds-page-header__title">Items to Approve</span>
+    </div>
+    <!-- Page Header -->
+    
+    <!--Approve and Reject buttons are disabled by default.Whenever a record is selected, buttons will be enabled-->
+    <div class="slds-m-vertical_medium">
+    	<lightning:button aura:id="approvalButtonId" label="Approve" variant="success" disabled="true"
+                          onclick="{!c.handleApproveAction}"/>
+        <lightning:button aura:id="rejectButtonId" label="Reject" variant="destructive" disabled="true"
+                          onclick="{!c.handleRejectAction}"/>
+    </div>
+     <!--Approve and Reject buttons are disabled by default.Whenever a record is selected, buttons will be enabled-->
+    
+    <!-- Page Body -->
+    <div>
+    	<lightning:datatable aura:id="approvalRecordsTableId"
+                             keyField="workItemId"
+                             columns="{!v.columns}"
+                             data="{!v.data}"
+                             sortedBy="{!v.sortedBy}"
+                             sortedDirection="{!v.sortedDirection}"
+                             onsort="{!c.handleSortingOfRows}"
+                             onrowselection="{!c.handleRowSelection}"/>
+ 
+    </div>
+    <!-- Page Body -->
+</aura:component>

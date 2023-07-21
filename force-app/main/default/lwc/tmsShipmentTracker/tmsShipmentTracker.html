@@ -1,0 +1,427 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-04-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   07-08-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template> 
+    
+    <!-- Lightning Spinner  -->
+    <template if:true={isLoading}>
+            <lightning-spinner variant="brand" alternative-text="Loading"></lightning-spinner>
+    </template>
+
+    <template if:true={isHubUser}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header"> 
+                    <h2 id="is-Hub-User" class="slds-modal__title slds-hyphenate">Alert</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="is-Hub-User_1">
+                    <h4>WARNING</h4> 
+                    <p> You don't have the level of access required to complete this action. Please contact your administrator for help.</p> 
+                     
+                </div>
+                 </div>
+        </section>
+    </template>
+    
+
+
+
+    <!-- Location Details Section start -->
+    <template if:true={mainView}>
+        <lightning-card title="Location Details" icon-name="standard:location" > 
+             
+            <lightning-record-edit-form object-api-name="Shipment_Tracking__c">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <!--lightning-input-field class="slds-size_1-of-1" label="Location" onchange={handleLocationChange} field-name="Location__c" data-id="location"></lightning-input-field-->
+                    <lightning-combobox class="slds-combobox__input"  name="location" onchange={handleLocationChange} label="location" options={options} data-id="location"></lightning-combobox>
+                </div>
+                <template if:true={isLocation}>
+                    <template if:true={ishub}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                            <lightning-input-field class="slds-size_1-of-1" label="Name of Hub" onchange={handleHubChange} field-name="Hub__c" data-id="hub"> </lightning-input-field>
+                            
+                        </div>
+                    </template> 
+
+                    <template if:true={isAirport}> 
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                            <lightning-input-field class="slds-size_1-of-1" label="Airport" onchange={handleAirportChange} field-name="Airport__c" data-id="airport"></lightning-input-field>
+                        </div> 
+                    </template>
+
+                    <template if:true={isVehicle}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                            <lightning-input-field class="slds-size_1-of-1" label="Vehicle" onchange={handleVehicleChange} field-name="BVC_Vehicle__c" data-id="vehicle"></lightning-input-field>
+                        </div> 
+                    </template>
+                    <template if:true={isVault}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                            <lightning-input-field class="slds-size_1-of-1" label="Vault" onchange={handleVaultChange} field-name="Vaults__c" data-id="vault"></lightning-input-field>
+                        </div> 
+                    </template>
+                </template> 
+            </lightning-record-edit-form> 
+            
+            <div slot="footer" class="slds-wrap slds-grid slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                <div class="slds-size_1-of-2 ">
+                
+                    <lightning-button class="slds-float_left" variant="brand" label="Scan Seal" disabled={isSealButtonDisable} onclick={sealIDScanning} required></lightning-button>
+                </div> 
+                <div class="slds-size_1-of-2 ">
+                    <template if:true={scanbag}> 
+                     <lightning-button class="slds-float_right" variant="brand" label="Scan Bag 1" onclick={bagScanning} required></lightning-button>
+                    </template>
+                </div>
+            </div>
+
+        </lightning-card> 
+    </template>
+
+    <!-- Seal ID Section start -->
+    <template if:true={sealView}> 
+        <lightning-card title="Scan Information" icon-name="standard:asset_object">  
+            <template if:true={isSealIdManual}>
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="sealManual">Seal Id (Manual)</label>
+                        <div class="slds-form-element__control">
+                            <input type="text" id="sealManual" data-id="sealManualID"
+                                onchange={handleSealIDManualChange} placeholder="Seal Id (Manual)" class="slds-input" />
+                        </div>
+                    </div>
+                </div> 
+            </template>
+
+            <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                <label class="slds-form-element__label">Seal Id</label>
+                <div class="slds-form-element__control">{sealID}</div>
+            </div>
+
+
+            <template if:true={bagInformation}>
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                    <tr class="slds-line-height_reset">
+                        
+                        <!-- <th class="" scope="col">
+                            <div class="slds-truncate" title="SBag#">Secure Bag Name</div>
+                        </th> -->
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="SN#">Number of Shipping Note Number</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Bag#">Number of Secure Bag</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Cargo Type">Cargo Type</div>
+                        </th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={sealArray} for:item="seal">
+                            <tr key = {seal} class="slds-hint-parent">
+                                
+                                <!-- <template for:each={seal.bagInformation} for:item="sealBagInformation">
+                                    <tr key={sealBagInformation} class="slds-hint-parent"> -->
+
+                                        <!-- <td data-label="Bag#">
+                                            <input type="checkbox" onclick={selectedCheckboxes} value={seal.Secure_Bag__r.Id} name={selectedRecord} checked={seal.checkId}> 
+                                        </td> -->
+
+                                        <td data-label="Number SN#">
+                                            <div class="slds-truncate" title={seal.numberOfShippingNote}>{seal.numberOfShippingNote}</div>
+                                        </td>
+                                        <td data-label="Number Bag#">
+                                            <div class="slds-truncate" title={seal.numberOfBag}>{seal.numberOfBag}</div>
+                                        </td>
+        
+                                        <td data-label="Cargo Type">
+                                            <div class="slds-truncate" title={seal.cargoType}>{seal.cargoType}</div>
+                                        </td>                               
+                                
+
+                                    <!-- </tr>
+
+                                </template> -->
+                                
+                            </tr>
+
+                            
+                        </template>
+                    </tbody>
+
+                </table>
+
+
+                 <!-- <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Number of Shipping Note Number</label>
+                    <div class="slds-form-element__control">{bagInformation.numberOfShippingNote}</div>
+                </div>
+
+                
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Number of Secure Bag </label>
+                    <div class="slds-form-element__control">{bagInformation.numberOfBag}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Cargo Type</label>
+                    <div class="slds-form-element__control"> {bagInformation.cargoType}</div>
+                </div>
+                 
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label ">Destination City</label>
+                    <div class="slds-form-element__control">{bagInformation.destinationCity}</div>
+                </div> -->
+            </template>
+            
+            <!-- Page button Section -->
+            <div slot="footer" class="slds-wrap slds-grid slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                
+                
+                <div class="slds-size_1-of-2 ">
+                    <template if:true={scanbag}> 
+                    <lightning-button class="slds-float_left" variant="brand" label="Unlock Seal ID" onclick={unlocksealId} disabled={enableUnlockSealIDButton}></lightning-button>
+                </template>
+                </div> 
+
+                <div class="slds-size_1-of-2 ">
+                    <lightning-button class="slds-float_right" variant="Neutral" label="Complete." onclick={scanningCompleted} disabled={enableUnlockSealCompleteButton}></lightning-button>
+                </div>
+                
+            </div>
+
+        </lightning-card> 
+    </template> 
+    
+    <template if:true={bagView}> 
+        <lightning-card title="Scan Information" icon-name="standard:asset_object">  
+            <template if:true={isSecureIdManual}>
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="secureBagsManual">Secure Bag Id (Manual)</label>
+                        <div class="slds-form-element__control">
+                            <input type="text" id="secureBagsManual" data-id="secureBagsManualID"
+                                onchange={handleSecureManualChange} placeholder="Secure Bag Id (Manual)" class="slds-input" />
+                        </div>
+                    </div>
+                </div> 
+            </template>
+            
+
+            <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                <label class="slds-form-element__label">Bag Id = {secureBagID}</label>
+                <div class="slds-form-element__control"></div>
+                <label class="slds-form-element__label">Total Bag = {totalBagLength}</label>
+            </div>
+
+
+            <template if:false={normalBagButton}>
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Number of Secure Bag Left = {bagCount}</label>
+                    <div class="slds-form-element__control"></div>
+                </div>
+            </template>
+
+
+            <!-- Total Bag = {totalBagLength} -->
+            <template if:true={currentSecureBags}>
+                
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <!-- <input type="checkbox" id="checkAll" onclick={checkAll}> -->
+                                <!-- <input type="checkbox"> -->
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Shipping Note Number">Shipping Note Number123</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Secure Bag">Secure Bag</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Shipper Account">Shipper Account</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Origin">Origin</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Consignee Account">Consignee Account</div>
+                            </th>
+                            <!--<th class="" scope="col">
+                                <div class="slds-truncate" title="Destination">Destination</div>
+                            </th>-->
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Destination">Destination</div>
+                            </th>
+                            
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Cargo Type">Cargo Type</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Destination Hub">Destination Hub</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        <template for:each={bagArray} for:item="bag">
+                             
+                            <tr key = {bag} class="slds-hint-parent">
+                                <td data-label="Shipping Note Number"> 
+                                     <input type="checkbox" onclick={selectedCheckboxes} value={bag.Secure_Bag__r.Id} name={bag} checked={bag.checkId}> 
+                                    <!-- <lightning-input type="checkbox" onclick={selectedCheckboxes} label="" value={bag.Secure_Bag__r.Id} checked={bag.checkId}></lightning-input> -->
+                                </td>
+
+                                <td data-label="Shipping Note Number">
+                                    <div class="slds-truncate" title={bag.Shipping_Note_Number__c}>{bag.Shipping_Note_Number__c}</div>
+                                </td>
+                               
+                                <td data-label="Secure Bag">
+                                    <div class="slds-truncate" title={bag.Secure_Bag__r.Name}>{bag.Secure_Bag__r.Name}</div>
+                                </td>
+                                
+                                <td data-label="Shipper Account">
+                                    <div class="slds-truncate" title={bag.Shipment__r.Shipper_Name_TMS__r.Name}>{bag.Shipment__r.Shipper_Name_TMS__r.Name}</div>
+                                </td>                               
+                                <td data-label="Origin">
+                                    <div class="slds-truncate" title={bag.Shipment__r.Origin_Address_City__c}>{bag.Shipment__r.Origin_Address_City__c}</div>
+                                </td>
+
+                                
+
+
+                                 <td data-label="Consignee Account">
+                                    <div class="slds-truncate" title={bag.consigneeName}>{bag.consigneeName}</div>
+                                </td> 
+
+                                
+                                
+                                <td data-label="Destination">
+                                    <div class="slds-truncate" title={bag.Shipment__r.Destination_Address_City__c}>{bag.Shipment__r.Destination_Address_City__c}</div>
+                                </td>
+                                
+                                <td data-label="Cargo Type">
+                                    <div class="slds-truncate" title={bag.Cargo_Type__c}>{bag.Cargo_Type__c}</div>
+                                </td>
+                                <td data-label="Destination Hub">
+                                    <div class="slds-truncate" title={bag.Destination_Hub__c}>{bag.Destination_Hub__c}</div>
+                                </td>
+
+
+
+                            </tr>
+
+                            
+                        </template>
+                    </tbody>
+                </table>
+
+
+                
+
+<!--
+
+
+                <lightning-datatable key-field="Id" data={currentSecureBags} columns={columns} hide-checkbox-column="true"
+                    show-row-number-column="true">
+                </lightning-datatable>
+                
+
+                
+                <template if:false={normalBagButton}>
+                    <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                        <label class="slds-form-element__label">Number of Secure Bag Left </label>
+                        <div class="slds-form-element__control">{bagCount}</div>
+                    </div>
+                </template>
+
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Shipping Note Number</label>
+                    <div class="slds-form-element__control">{currentSecureBags.Shipping_Note_Number__c}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Secure Bag</label>
+                    <div class="slds-form-element__control">{currentSecureBags.Secure_Bag__r.Name}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Cargo Type</label>
+                    <div class="slds-form-element__control"> {currentSecureBags.Cargo_Type__c}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label ">Destination Hub</label>
+                    <div class="slds-form-element__control">{currentSecureBags.Destination_Hub__c}</div>
+                </div>
+                -->
+            
+            </template> 
+
+
+
+
+
+
+
+            
+            <!-- Page button Section -->
+            <div slot="footer" class="slds-wrap slds-grid slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                
+                <template if:false={normalBagButton}>
+                    <div class="slds-size_1-of-2 ">
+                        <lightning-button class="slds-float_left" variant="brand" label="Scan Bag 2" onclick={unlocksealId}></lightning-button>
+                    </div>
+    
+                    <div class="slds-size_1-of-2 ">
+                        <lightning-button class="slds-float_right" variant="Neutral" label="Complete@@@" onclick={scanningCompleted}></lightning-button>
+                    </div> 
+                </template>
+                 
+
+                <template if:true={normalBagButton}>
+                    <div class="slds-size_1-of-2 ">
+                        <lightning-button class="slds-float_left" variant="brand" label="Scan Bag 3" onclick={bagScanning}></lightning-button>
+                    </div>
+    
+                    <div class="slds-size_1-of-2 ">
+                        <lightning-button class="slds-float_right" variant="Neutral" label="Complete###" onclick={scanningEnd}></lightning-button>
+                    </div> 
+                </template>
+                 
+            </div>
+
+        </lightning-card> 
+    </template>
+    <template if:true={isCountMismatch}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header"> 
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Alert</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <h4>Count Mismatch:</h4> 
+                    <p>Total number of bag {bagInformation.numberOfBag}.</p> 
+                    <p>Number of Bag Scanned : {bagCount}. </p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={cancelProcess}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={updateBag}>Save</button>
+                </footer>
+            </div>
+        </section>
+    </template>
+</template>

@@ -1,0 +1,30 @@
+<aura:component implements="force:lightningQuickAction,force:hasSObjectName,force:hasRecordId" controller="Indigo_CreateAWB">
+    <aura:handler name="init" action="{!c.doinit}" value="{!this}"/>
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="showLinehaulObj" type="Boolean" default="false"/>
+    <aura:attribute name="linehaul" type="object"/>
+    <aura:Attribute name="AirlineName" type= "String"/>
+    <aura:Attribute name="AWBNumber" type= "String"/>
+    
+    <aura:attribute name="Spinner" type="Boolean" default="false"/>
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showLinehaulObj}">
+        <br/>
+        <h2 style="text-align:center;">Please confirm to create AWB</h2><!--</label>-->
+        <br/>
+        <div align="center" draggable="false">
+            <lightning:button label="Yes" onclick="{!c.createAWBOnClick}" variant="brand"/>
+        </div>
+    </aura:if>
+    
+</aura:component>

@@ -1,0 +1,25 @@
+({
+    onInit : function(component,event,helper) {
+        helper.init(component);
+    },
+    onScanStart:function(component,event,helper){
+        component.find('nativeScanner').scan();
+    },
+    onScanSuccess:function(component,event,helper){
+        helper.scanSuccess(component,event);
+    },
+    onClickUnlockSeal:function(component,event,helper){
+        component.set('v.mode','seal');
+        component.set('v.action','scanSeal');
+    },
+    onClickScanBags:function(component,event,helper){
+        component.set('v.mode','bag');
+        component.set('v.action','scanBag');
+    },
+    onClickComplete:function(component,event,helper){
+        helper.complete(component);
+    },
+    onClickReset:function(component,event,helper){
+        helper.reset(component);
+    }
+})

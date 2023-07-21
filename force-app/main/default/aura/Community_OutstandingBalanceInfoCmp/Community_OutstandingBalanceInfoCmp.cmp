@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	
+    <aura:attribute name="currentUser" type="User"/>
+    
+<aura:attribute name="tUser" type="User"/>
+   <force:recordData aura:id="recordLoader" recordId="{!$SObjectType.CurrentUser.Id}" 
+     fields="Id, Profile.Name, ProfileId, ContactId , Contact.Account.Annual_Contract_Balance__c  , Contact.Account.Outstanding_Balance__c    " 
+       targetFields="{!v.currentUser}"/>
+    <div class="slds-grid slds-gutters">
+  <div class="slds-col">
+    <span style="font-size:15px;padding-left: 150px;"><b> Outstanding Balance &nbsp;&nbsp; :&nbsp;&nbsp;</b> {!v.currentUser.Contact.Account.Outstanding_Balance__c }</span>
+  </div>
+  <div class="slds-col">
+      <span style="font-size:15px;padding-left: 150px;"><b>Annual Contract Balance &nbsp;&nbsp;:&nbsp;&nbsp;</b> {!v.currentUser.Contact.Account.Annual_Contract_Balance__c  }</span>
+  </div>
+</div>
+    
+    
+    
+
+    
+</aura:component>

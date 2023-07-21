@@ -1,0 +1,81 @@
+<aura:component controller="Community_BulkShipmentImportController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- Import attributes start  -->
+    <aura:attribute name="ShowModule" type="boolean" default="false"/>
+    <aura:attribute name="showcard" type="boolean" default="false"/>
+    <aura:attribute name="loaded" type="boolean" default="false"/>
+    <aura:attribute name="showcomponent" type="boolean" default="true"/>
+    <aura:attribute name="isButtonHide" type="Boolean" default="false" />
+    <aura:attribute name="gridData" type="Object"/>  
+    <aura:attribute name="productList" type="String"/>
+    <aura:attribute name="ShipmentDate" type="Date"/>
+    <!-- Import attributes end  -->
+    <aura:attribute name="productMap" type="Map"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--Bulk Shipment Form Starts-->
+    <lightning:card variant="Narrow" iconName="doctype:csv" footer="" title="Create Bulk Shipments">
+        <div class="slds-grid slds-gutters slds-p-around_x-small">
+            <div class="slds-col ">
+                <lightning:input type="date" name="input1" aura:id="InputDate" label="Enter a date" onchange="{! c.dateChange }" required="true"/>
+            </div>
+            <div class="slds-col">
+                <lightning:select aura:id="productPicklist" value="{!v.productList}" onchange="{!c.handleProductOnChange}" name="productPicklist" label="Product" required="true">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.productMap}" var="ind" indexVar="key">
+                        <option text="{!ind.value}" value="{!ind.key}" selected="{!ind.key==v.productList}" />
+                    </aura:iteration>
+                </lightning:select> 
+            </div>
+            <div class="slds-col">
+                
+            </div>
+            <div class="slds-col">
+                
+            </div>
+        </div>
+        <!--Rest Code--> 
+        <aura:if isTrue="{! v.loaded }">            
+            <lightning:spinner alternativeText="Loading" />        
+        </aura:if>
+        <p class="slds-p-horizontal_small">
+        </p>
+        <aura:if isTrue = "{!v.showcomponent}">
+            <div class="slds-m-left_large" style="margin-left : 5%">
+                <div>  
+                    <input type="file" class="file" aura:id="file" onchange="{!c.showfiledata}"/>
+                    <lightning:button disabled="{!v.isButtonHide}" label="{!v.isButtonHide == true ? 'Shipment Created' : 'Create Bulk Shipment'}" onclick="{!c.CreateRecord}" class="slds-button slds-button_outline-brand"/>
+                    <c:Community_ShipmentTemplateCmp />
+                    
+                </div>
+            </div>    
+        </aura:if>
+        <aura:if isTrue = "{!v.showcard}">
+            <div class="external-events slds-table--header-fixed_container" style="height:20rem;">
+                <div class=" slds-scrollable " style="height:100%;">
+                    <table class="slds-table slds-table--bordered">    	
+                        <thead>
+                            <tr class="slds-text-heading--label">            	
+                                <aura:iteration items="{!v.gridData.headers}" var="col">                     
+                                    <th class=""> {!col} </th>  
+                                </aura:iteration>                
+                            </tr>        	 
+                        </thead>
+                        <tbody>
+                            <!-- Limitation - we cannot use indexvar of iterator control to refer header json information else, instead of defining css class for each column, we could have used it from header only -->
+                            <aura:iteration items="{!v.gridData.rows}" var="row">
+                                <tr class="slds-hint-parent"> {!row}
+                                    <aura:iteration items="{!row}" var="col" > 
+                                        <td class="">{!col.val} </td>
+                                    </aura:iteration>
+                                </tr>
+                            </aura:iteration>              
+                        </tbody>    
+                    </table>
+                </div>
+            </div>
+            <!--  			<div id="divCSV">
+                        </div>-->
+        </aura:if>
+    </lightning:card> 
+    <!--Bulk Shipment Form Ends-->  
+</aura:component>

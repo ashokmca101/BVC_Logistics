@@ -1,0 +1,179 @@
+<aura:component Controller="CRM_KYCDocumentsUpload" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="accountDetail" type="Object" />
+    
+    <aura:attribute name="KYCDocuments" type="String[]"/>
+    <aura:attribute name="AllDocs" type="String[]"/>
+    <aura:attribute name="RequiredDocs" type="String[]"/>
+    <aura:attribute name="AddRequiredDocs" type="String[]"/>
+    <aura:attribute name="showSaveButton" type="Boolean" default="false"/>
+    
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg','.pdf']" />
+    <aura:attribute name="multiple" type="Boolean" default="true" />
+    <aura:attribute name="disabled" type="Boolean" default="true" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="Buttonlabel" type="String"/>
+    <aura:attribute name="DocumentType" type="String"/>
+    <aura:attribute name="NameOfDoc" type="String"/>
+    
+    <aura:attribute name="interKYCModal" type="Boolean" default="false" />
+    <aura:attribute name="resetLayoutUI" type="Boolean" default="true" />
+    <aura:attribute name="isRequiredDoc" type="Boolean" default="false" />
+    <aura:attribute name="cbCustomerKYCModal" type="Boolean" default="false" />
+    <aura:attribute name="ADCodeManualInpt" type="String"/>
+    <aura:attribute name="IECManualInpt" type="String"/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    
+    
+    
+    <div class="c-container">
+      
+        <lightning:layout>
+              <aura:if isTrue="{!v.resetLayoutUI}">
+    <lightning:layoutItem size="6" padding="horizontal-medium">
+                <article>
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    Documents Required
+                                </h2>
+                            </div>
+                        </header> 
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        
+                        <aura:iteration items="{!v.RequiredDocs}" var="doc">
+                            <lightning:fileUpload   label="{!'Attach '+ doc}"
+                                                    name="fileUploader"
+                                                    multiple="false"
+                                                  title="PAN Card"
+                                                    accept="{!v.filetype}"
+                                                    recordId="{!v.recordId}"
+                                                    onuploadfinished="{!c.handleUploadFinished}" 
+                                                    docUploaded = "{!doc}"/>    
+                        </aura:iteration> 
+                    </div>
+                </article>
+                <article>
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    Additional Documents Required
+                                </h2>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        <aura:iteration items="{!v.AddRequiredDocs}" var="adddoc">
+                            <lightning:fileUpload   label="{!'Attach '+ adddoc}"
+                                                    name="fileUploader"
+                                                    multiple="false"
+                                                    accept="{!v.filetype}"
+                                                    recordId="{!v.recordId}"
+                                                    onuploadfinished="{!c.handleUploadFinished}" 
+                                                    docUploaded = "{!adddoc}"/>    
+                        </aura:iteration>  
+                    </div>
+                </article>
+            </lightning:layoutItem>
+         </aura:if>
+        <lightning:layoutItem size="3" padding="horizontal-medium">
+                <div class="slds-p-top_medium">
+                    <article class="slds-card">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                            <span>Do you want international shipment ?</span>
+                                    </h2>
+                                </div>  
+                            </header>
+                        </div>
+                        <footer class="slds-card__footer">
+                            <div style="text-align:center;">
+                                <lightning:button variant="brand" label="Yes" title="Brand action" onclick="{! c.openInterKYCModal }" />
+                            </div>
+                        </footer>
+                    </article>
+                    
+                    
+          <!--          <article class="slds-card">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                        <span>Are you a Custom Brokerage customer ?</span>
+                                </h2>
+                            </div>
+                        </header>
+                    </div>
+                    <footer class="slds-card__footer">
+                        <div style="text-align:center;">
+                                <lightning:button variant="brand" label="Yes" title="Brand action" onclick="{! c.openCBCustomerKYCModal }" />
+                            </div>
+                    </footer>
+                </article>-->
+                    
+                   
+                    </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    
+    
+    
+    <!-- Modal For International KYC -->  
+   <aura:if isTrue="{!v.interKYCModal}"> 
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">International KYC</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="slds-card__body slds-card__body_inner">
+                    <lightning:input name="IEC" label="IEC" value="{!v.IECManualInpt}" /> 
+                    
+                </div>
+            </div>
+            <footer class="slds-modal__footer">
+                <div style="text-align:center;">
+                <lightning:button variant="brand" label="Submit" title="Brand action" onclick="{! c.submitIEC }" />
+                <lightning:button variant="Neutral" label="Cancel" title="Brand action" onclick="{! c.closeInterKYCModal }" />
+                </div>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+   <!-- Modal For CB Customer KYC --> 
+    <aura:if isTrue="{!v.cbCustomerKYCModal}"> 
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">CB Customer KYC</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-card__body slds-card__body_inner">
+                        <lightning:input name="AD Code" label="AD Code" value="{!v.ADCodeManualInpt}" />
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <div style="text-align:center;">
+                        <lightning:button variant="brand" label="Submit" title="Brand action" onclick="{! c.submitADCode }" />
+                        <lightning:button variant="Neutral" label="Cancel" title="Brand action" onclick="{! c.closeCBCustomerKYCModal }" />
+                    </div>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+</aura:component>

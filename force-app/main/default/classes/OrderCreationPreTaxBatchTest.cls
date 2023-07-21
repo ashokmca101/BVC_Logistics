@@ -1,0 +1,157 @@
+@isTest
+public class OrderCreationPreTaxBatchTest {
+    @testSetup static void testdata() {
+            list<BVC_CB_Object_Mapping__c> objmappings =new list<BVC_CB_Object_Mapping__c>();
+            BVC_CB_Object_Mapping__c objmapping =new BVC_CB_Object_Mapping__c();
+            objmapping.Source_Field_API_Name__c ='BVC_CB_SalesForceCustomerId__c';
+            objmapping.Target_Field_API_Name__c ='BVC_CB_SalesForceCustomerId__c';
+            objmapping.Source_Object_API_Name__c='Order';
+            objmapping.Is_Active__c = true;
+            objmapping.Target_Object_API_Name__c='blng__Invoice__c';
+            objmappings.add(objmapping);
+             BVC_CB_Object_Mapping__c objmapping2 =new BVC_CB_Object_Mapping__c();
+            objmapping2.Source_Field_API_Name__c ='BVC_CB_SalesForceCustomerId__c';
+            objmapping2.Target_Field_API_Name__c ='AccountId';
+            objmapping2.Source_Object_API_Name__c='BVC_CB_PreTaxBill__c';
+            objmapping2.Target_Object_API_Name__c='Order';
+            objmapping2.Is_Active__c = true;
+            objmappings.add(objmapping2);
+             BVC_CB_Object_Mapping__c objmapping3 =new BVC_CB_Object_Mapping__c();
+            objmapping3.Source_Field_API_Name__c ='BVC_CB_BE_Date__c';
+            objmapping3.Target_Field_API_Name__c ='EffectiveDate';
+            objmapping3.Source_Object_API_Name__c='BVC_CB_PreTaxBill__c';
+            objmapping3.Target_Object_API_Name__c='Order';
+            objmapping3.Is_Active__c = true;
+            objmappings.add(objmapping3);
+            BVC_CB_Object_Mapping__c objmapping4 =new BVC_CB_Object_Mapping__c();
+            objmapping4.Source_Field_API_Name__c ='BVC_CB_ChargeType__c';
+            objmapping4.Target_Field_API_Name__c ='SBQQ__ChargeType__c';
+            objmapping4.Source_Object_API_Name__c='BVC_CB_PreTaxBillDetails__c';
+            objmapping4.Target_Object_API_Name__c='OrderItem';
+            objmapping4.Is_Active__c = true;
+            objmappings.add(objmapping4);
+            BVC_CB_Object_Mapping__c objmapping5 =new BVC_CB_Object_Mapping__c();
+            objmapping5.Source_Field_API_Name__c ='BVC_CB_ChargeAmount__c';
+            objmapping5.Target_Field_API_Name__c ='UnitPrice';
+            objmapping5.Source_Object_API_Name__c='BVC_CB_PreTaxBillDetails__c';
+            objmapping5.Target_Object_API_Name__c='OrderItem';
+            objmapping5.Is_Active__c = true;
+            objmappings.add(objmapping5);
+             BVC_CB_Object_Mapping__c objmapping6 =new BVC_CB_Object_Mapping__c();
+            objmapping6.Source_Field_API_Name__c ='BVC_CB_ChargeAmount__c';
+            objmapping6.Target_Field_API_Name__c ='blng__BillingDayOfMonth__c';
+            objmapping6.Source_Object_API_Name__c='BVC_CB_PreTaxBill__c';
+            objmapping6.Target_Object_API_Name__c='Order';
+            objmapping6.Is_Active__c = true;
+            objmappings.add(objmapping6);
+        BVC_CB_Object_Mapping__c objmapping7 =new BVC_CB_Object_Mapping__c();
+            objmapping7.Source_Field_API_Name__c ='BVC_CB_ExportShipmentID__c';
+            objmapping7.Target_Field_API_Name__c ='BVC_CB_ExportShipmentID__c';
+            objmapping7.Source_Object_API_Name__c='BVC_CB_PreTaxBill__c';
+            objmapping7.Target_Object_API_Name__c='Order';
+            objmapping7.Is_Active__c = true;
+            objmappings.add(objmapping7);
+        BVC_CB_Object_Mapping__c objmapping8 =new BVC_CB_Object_Mapping__c();
+            objmapping8.Source_Field_API_Name__c ='BVC_CB_Import_Shipment__c';
+            objmapping8.Target_Field_API_Name__c ='BVC_CB_Import_Shipment__c';
+            objmapping8.Source_Object_API_Name__c='BVC_CB_PreTaxBill__c';
+            objmapping8.Target_Object_API_Name__c='Order';
+            objmapping8.Is_Active__c = true;
+            objmappings.add(objmapping8);
+            insert  objmappings;
+       Entity__c entity= TestUtility.createBVCEntity();
+          insert entity;
+       blng__LegalEntity__c blngEntity = TestUtility.createLegalEntity(entity);
+          insert blngEntity;
+       Active_Pincode__c ActivePinCode = TestUtility.createPinCode();
+          insert ActivePinCode;
+       Hub__c orgBranch = TestUtility.createBVCBranch(blngEntity,ActivePinCode ); 
+         insert orgBranch;
+       blng__BillingRule__c BlngRule = TestUtility.createBillingRule();
+        insert Blngrule;
+        blng__RevenueRecognitionRule__c RevenueRule= TestUtility.createRevenueRule();
+        insert RevenueRule;
+        blng__TaxRule__c TaxRule = TestUtility.createTaxRule();
+        insert TaxRule;
+          blng__FinanceBook__c bfb= new blng__FinanceBook__c();
+            bfb.name= 'test bfb';
+            bfb.blng__PeriodType__c ='Accounting';
+            insert bfb;
+            blng__BillingTreatment__c Btreatment = new blng__BillingTreatment__c();
+        Btreatment.Name ='test treatment';
+            Btreatment.blng__BillingRule__c =Blngrule.id;
+            btreatment.blng__BillingFinanceBook__c = bfb.id;
+        insert Btreatment;
+        Product2 ChargeHead = TestUtility.createACRProduct(Blngrule,RevenueRule,TaxRule);
+        ChargeHead.Name='COURIER CHARGES';
+        ChargeHead.ProductCode='CB-22';
+        insert ChargeHead;
+        Product2 ChargeHead1 = TestUtility.createACRProduct(Blngrule,RevenueRule,TaxRule);
+        ChargeHead1.Name='BVC BATH';
+        ChargeHead1.family='BATH';
+        ChargeHead1.ProductCode='BVC BATH';
+        insert ChargeHead1;
+        list<Product2> prodlist=new list<Product2>();
+        prodlist.add(ChargeHead);
+        Pricebook2 PB=  TestUtility.createPriceBook();
+        insert PB;
+        id StandardPricebookid =Test.getStandardPricebookId();
+        PricebookEntry PBEstandard= new PricebookEntry(Pricebook2Id =StandardPricebookid, Product2Id = ChargeHead.Id, UnitPrice = 1000, IsActive = true);
+       insert PBEstandard;
+        List<PricebookEntry> PBEntry= TestUtility.createPricebookEntry(PB.id,prodlist);
+        insert PBEntry;
+            account customer= new account();
+            customer.name='test ';
+        	customer.Last_Name__c = 'customer';
+            customer.PAN_Number_of_Entity__c='PV8278N1ZQ';
+            customer.GST_Registered__c =true;
+            customer.KARZAA_KYC_Verified__c = true;
+            insert customer;
+       BVC_CB_PreTaxBill__c Pretaxbill= new BVC_CB_PreTaxBill__c();
+           Pretaxbill.name='TestPretaxBill0001';
+           Pretaxbill.BVC_CB_Org_Branch_SF_ID__c=orgBranch.id;
+           Pretaxbill.BVC_CB_Is_Order_Created__c=false;
+           Pretaxbill.BVC_CB_PretaxDetails_Inserted__c=True;
+           pretaxbill.BVC_CB_Import_Shipment__c=7;
+           pretaxbill.BVC_CB_ExportShipmentID__c ='test';
+            pretaxbill.BVC_CB_BE_Date__c=system.today();
+             pretaxbill.BVC_CB_PretaxDetails_Inserted__c =true;
+        pretaxbill.BVC_CB_ExportShipmentID__c='test';
+           pretaxbill.BVC_CB_SalesForceCustomerId__c=customer.Id;
+        insert Pretaxbill;
+       BVC_CB_PreTaxBillDetails__c Pretaxbilldetails= new BVC_CB_PreTaxBillDetails__c();
+        Pretaxbilldetails.BVC_CB_Invoice_Type__c='Tax Invoice';
+        	Pretaxbilldetails.BVC_CB_Charge_Product_Code__c=ChargeHead.id;
+            Pretaxbilldetails.BVC_CB_PreTaxBill__c = Pretaxbill.id;
+            Pretaxbilldetails.BVC_CB_ChargeType__c='Agency';
+            Pretaxbilldetails.BVC_CB_ChargeAmount__c=30;
+        insert Pretaxbilldetails;
+        
+        }
+     
+       @istest static void invokebatchTest(){
+           Test.startTest();
+         BVC_CB_PreTaxBill__c Pretaxbill= [SELECT Id,name,BVC_CB_Is_Order_Created__c from BVC_CB_PreTaxBill__c where BVC_CB_Is_Order_Created__c=false and BVC_CB_PretaxDetails_Inserted__c =true limit 1 ];
+        system.debug('size of pt'+Pretaxbill.id);
+          OrderCreationPreTaxBatch.invokebatch(Pretaxbill.id);
+        Test.stopTest();
+    }
+      @istest static void invokebatchclassTest(){
+         //BVC_CB_PreTaxBill__c Pretaxbill= [SELECT Id,name,BVC_CB_Is_Order_Created__c from BVC_CB_PreTaxBill__c where Name='TestPretaxBill0001' limit 1 ];
+         
+        Test.startTest();
+           Id batchJobId = Database.executeBatch(new OrderCreationPreTaxBatch(), 1);
+        Test.stopTest();
+         /* order o=[select id from order];
+          account a=[select id,Billing_Address__c from account];
+          Hub__c h=[select id from Hub__c];
+          blng__Invoice__c inv1=Testutility.createInvoice(a,h,o);
+          product2 p=[select id from product2 where name='BVC Bath'];
+          blng__Invoice__c inv=[select id from blng__Invoice__c limit 1];
+          inv.Product__c=p.id;
+          inv.Total_Logistics_Charges__c =30;
+          inv.blng__InvoiceStatus__c='Draft';
+          update inv;*/
+          
+    }
+}

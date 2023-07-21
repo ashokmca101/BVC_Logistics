@@ -1,0 +1,66 @@
+<aura:component controller="eShipFileUploadHpr" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:availableForFlowScreens,lightning:isUrlAddressable,lightning:actionOverride" access="global" description="Component to import .xlsx files in Lightning">
+
+<ltng:require scripts="{!$Resource.XLSX}"/> 
+<aura:registerEvent name="onImport" type="c:ExcelImportEvent"/>
+<aura:attribute name="content" type="String" />
+<aura:attribute name="file" type="Object" />
+<aura:attribute name="recordTypeMap" type="Map" default="" />
+<aura:attribute name="label" type="String" description="Label for input"  required="false"/>
+<aura:attribute name="class" type="String" description="Additional styles" required="false"/>
+<aura:attribute name="variant" type="String" description="Input variant" required="false" default="standard"/>
+<aura:attribute name="required" type="Boolean" description="Shows if input is mandatory" default="false"/>
+<aura:attribute name="disabled" type="Boolean" description="Displays input disabled" default="false"/>
+<aura:attribute name="accept" type="String" default=".xls, .xlsx"/>
+
+<aura:attribute name="stretchedDropzone" type="Boolean" description="Makes dropzone stretchable" default="false"/>
+<aura:attribute name="isLoading" type="Boolean" default="false" access="private"/>
+
+<aura:attribute name="fileSizeThreshold" type="Integer" description="Max file size in bytes, default 10mb" default="10000000" required="false"/>
+<aura:attribute name="messageFileSizeExceeded" type="String" default="File size exceeded" required="false"/>
+<aura:attribute name="messageNoFileSpecified" type="String" default="No file specified" required="false"/>
+<aura:attribute name="hideSpinner" type="boolean" default="false"/>
+<aura:attribute name="showError" type="boolean" default="false"/>
+<aura:attribute name="errorMessage" type="String" default="No file specified" required="false"/>
+<lightning:card >
+    <p class="slds-align_absolute-center">
+    <lightning:input type="file" 
+     label="{!v.label}"
+     class="{!v.class
+     + (v.stretchedDropzone ? ' bigger-drop-zone' : '')
+     + (v.isLoading ? ' drop-zone-loading' : '')}"
+     variant="{!v.variant}"
+     required="{!v.required}"
+     disabled="{!v.disabled}"
+     onchange="{!c.onTableImport}"
+     multiple="false"
+     accept="{!v.accept}"/> </p> 
+ 
+     <aura:if isTrue="{!v.showError}">
+        <!-- Show the message to ui -->
+        <div class="slds-notify slds-notify_toast slds-theme_error">
+            <span class="slds-assistive-text">ERROR</span>
+            <div class="slds-notify__content">
+            <h5 class="slds-text-heading_small slds-align_absolute-center">Error Message </h5>
+            <br/>
+            <p class="slds-align_absolute-center">{!v.errorMessage}</p>                
+            </div>
+        </div>
+    </aura:if>
+<div class="invisibleClass" style="height:50px; width:1000px">
+    
+        <aura:if isTrue="{! v.hideSpinner }">
+            <div aura:id="spinnerId" class="slds-spinner_container" >
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative"  role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a" ></div>
+                    <div class="slds-spinner__dot-b"></div>
+                    <div class="custom-loading-text" >
+                       This might take some time...
+                </div>
+                </div>
+            </div>
+    </aura:if>
+    </div>  
+       
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,97 @@
+<aura:component controller="TMS_LinehaulClass2" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="SelHub" type="Account"/>
+    <aura:attribute name="CAccount" type="Account"/>
+    <aura:attribute name="SelHub1" type="Object"/>
+    <aura:attribute name="Remarks" type="String"/>
+    <aura:attribute type="DateTime" name="P_Date"/>
+    <aura:attribute name="stag" type="boolean" default="false"/>
+    <aura:attribute name="refresh" type="boolean" default="false"/>
+     
+    <aura:attribute name="dup" type="boolean" default="false"/>
+    
+    <aura:attribute name="PKName" type="String"/>
+    
+    <aura:attribute name="cac" type="boolean" default="true"/>
+    <aura:attribute name="sac" type="boolean" default="true"/>
+    <aura:attribute name="sad" type="boolean" default="true"/>
+
+	<aura:attribute name="tem" type="Boolean" default="false"/>
+    
+    <aura:attribute name="Name1" type="String" default="F"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="margins">
+    <aura:if isTrue="{!v.refresh}">    
+        <aura:set attribute="else">          
+            <label class="slds-form-element__label" for="text-input-id-1"> Customer Account </label>
+            <div class="slds-form-element__control">
+                <c:TMS_Lookup2 objectName="Account"
+                               field_API_text="Name"
+                               field_API_val="Id"
+                               limit="8"
+                               field_API_search="Name"
+                               lookupIcon="standard:asset_object" 
+                               selItem="{!v.CAccount}"
+                               placeholder="Search Customer Account"
+                               RecordType="Billing"
+                               field_API_text1="ST_Pricing_Type__c"
+                               />&nbsp;&nbsp; 
+            </div>    
+            <aura:if isTrue="{!v.cac}">    
+                <aura:set attribute="else">
+                    <div class="error1">Select Customer Account</div>
+                </aura:set>
+            </aura:if> 
+            
+            Customer Category : {!v.CAccount.text1}<br/>
+            <label class="slds-form-element__label" for="text-input-id-1"> Shipping Account </label>
+            <div class="slds-form-element__control">
+                <c:TMS_Lookup2 objectName="Account"
+                               field_API_text="Name"
+                               field_API_val="Id"
+                               limit="8"
+                               field_API_search="Name"
+                               lookupIcon="standard:asset_object" 
+                               selItem="{!v.SelHub}"
+                               placeholder="Search Shipping Account"
+                               RecordType="Shipping"
+                               />&nbsp;&nbsp; 
+            </div>
+            <aura:if isTrue="{!v.sac}">    
+                <aura:set attribute="else">
+                    <div class="error1">Select Shipper Account</div>
+                </aura:set>
+            </aura:if> 
+            <label class="slds-form-element__label" for="text-input-id-1"> Shipping Address</label>
+            <div class="slds-form-element__control">
+                <c:TMS_Lookup2 objectName="AddressBook__c"
+                               field_API_text="Name"
+                               field_API_val="Id"
+                               limit="8"
+                               field_API_search="Name"
+                               lookupIcon="standard:asset_object" 
+                               selItem="{!v.SelHub1}"
+                               placeholder="Search Shipping Address"
+                               ShipAcId = "{!v.SelHub.val}"
+                               />&nbsp;&nbsp; 
+            </div>
+            <aura:if isTrue="{!v.sad}">    
+                <aura:set attribute="else">
+                    <div class="error1">Select Shipping Aaddress</div>
+                </aura:set>
+            </aura:if> 
+            
+            <lightning:input type="datetime" name="input2" label="Pickup Date and Time" value="{!v.P_Date}"/>
+            <lightning:textarea name="input1" label="Remarks" value="{!v.Remarks}"></lightning:textarea>
+            <br/>
+            <aura:if isTrue="{!v.dup}"> 
+            <ui:inputCheckbox aura:id="checkbox" label="Save Duplicate" change="{!c.onCheck}"/>
+            </aura:if>
+            <center>
+                <!-- <lightning:button variant="brand" label="Cancel" title="Cancel" onclick="{!c.handleCancel}"/> -->
+                <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.handleSave}"/>
+            </center>
+            
+        </aura:set>
+    </aura:if>     
+	</div>    
+</aura:component>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <description>This page overrides standard new age of Address object to track onchange event of pincode to pre populate State and country.</description>
+</AuraDefinitionBundle>

@@ -1,0 +1,28 @@
+.THIS {
+}
+
+.THIS .slds-checkbox [type="checkbox"]:checked + .slds-checkbox_faux::after, 
+.THIS .slds-checkbox [type="checkbox"]:checked + .slds-checkbox--faux::after, 
+.THIS .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox_faux::after, 
+.THIS .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux::after, 
+.THIS .slds-checkbox [type="checkbox"]:checked + .slds-checkbox__label .slds-checkbox_faux::after, 
+.THIS .slds-checkbox [type="checkbox"]:checked + .slds-checkbox__label .slds-checkbox--faux::after {
+    /* display: block;
+    content: "";
+    height: 0.25rem;
+    width: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0px) rotate(-45deg); */
+    border-bottom: 2px solid rgb(86, 212, 61) !important;
+    border-left: 2px solid rgb(86, 212, 61) !important;
+}
+
+.THIS .slds-checkbox [type="checkbox"]:unchecked + .slds-checkbox--faux::before{
+background-color: red !important;
+}
+
+.THIS .slds-checkbox [type="checkbox"] {
+    background-color: red;
+}

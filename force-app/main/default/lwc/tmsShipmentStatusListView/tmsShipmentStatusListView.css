@@ -1,0 +1,30 @@
+:host .slds-col { 
+	padding-left: 0px !important; 
+}
+
+:host header{
+    border-bottom: 2px solid rgb(239, 110, 100);
+    padding-bottom: 10px;
+} 
+
+:host .custom-box{
+    border-bottom: 2px solid rgb(239, 110, 100);
+    padding-bottom: 10px;
+}
+
+:host .slds-table{ 
+    border: 1px solid rgb(231, 232, 233);
+    overflow-x:auto;
+}
+
+:host .slds-box{
+    background-color: #FAFAF9; 
+    border-radius: 0px;
+}
+
+.lookup-container{
+margin-top: -1rem;
+margin-left: -0.5rem;
+position: absolute !important;
+z-index: 10000;
+}

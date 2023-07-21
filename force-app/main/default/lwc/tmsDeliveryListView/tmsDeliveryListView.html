@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-21-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   06-08-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template> 
+
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" alternative-text="Loading"></lightning-spinner>
+    </template> 
+    <lightning-card title="Deliveries" icon-name="standard:asset_object">
+         
+        <lightning-datatable data={deliveryRecord} columns={columns} key-field="id" onrowselection={getSelectedName}  ></lightning-datatable>
+        <div slot="footer" class="slds-wrap slds-grid slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+            
+            <div class="slds-size_1-of-2 ">
+                <lightning-button class="slds-float_right" variant="Neutral" label="Accepted" onclick={fileDetails}></lightning-button>
+                 
+            </div> 
+        </div>
+    </lightning-card>
+</template>

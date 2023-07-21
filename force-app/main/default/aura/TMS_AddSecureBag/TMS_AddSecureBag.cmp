@@ -1,0 +1,4 @@
+<aura:component  implements="force:lightningQuickAction,force:hasRecordId,lightning:availableForFlowScreens"   >
+    <aura:attribute name="recordId" type="String" /> 
+    <c:tmsAddSecureBagOnShipment recordId="{!v.recordId}"/>
+</aura:component>

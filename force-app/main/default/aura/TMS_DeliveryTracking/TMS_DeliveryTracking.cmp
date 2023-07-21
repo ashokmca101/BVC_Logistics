@@ -1,0 +1,8 @@
+<aura:component  implements="force:lightningQuickAction,force:hasRecordId"  > 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="Id" />
+    <!--c:tmsDeliverScanner recordId ="{!v.recordId}"/-->
+    
+    <c:tmsDelivery recordId ="{!v.recordId}"/>
+    
+</aura:component>

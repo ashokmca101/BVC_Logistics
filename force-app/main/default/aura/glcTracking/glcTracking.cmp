@@ -1,0 +1,326 @@
+<aura:component controller="gcTracking" implements="force:appHostable">
+
+    <aura:handler name="init" 	value="{!this}" action="{!c.onInit}"/>
+
+    <aura:attribute name="focusTimer"		type="Object"	access="public"/>
+
+    <aura:attribute name="pageMessages"     type="String"/>
+
+    <aura:attribute name="action"               type="String"   default="selectLocation"    description="scanSeal,scanBag"/>
+
+    <aura:attribute name="location"             type="String"/>
+    <aura:attribute name="locationOptions"      type="Object[]"/>
+
+    <aura:attribute name="hubId"                type="String"/>
+    <aura:attribute name="hubOptions"           type="Object[]"/>
+
+    <aura:attribute name="transportId"          type="String"/>
+    <aura:attribute name="transportOptions"     type="Object[]"/>
+
+    <aura:attribute name="bags"                 type="Object[]"/>
+    <aura:attribute name="seal"                 type="Object"/>
+
+    <aura:attribute name="bagCount_seal"        type="Integer"  default="0"/>
+    <aura:attribute name="bagCount_scanned"     type="Integer"  default="0"/>
+    <aura:attribute name="bagCount_extra"       type="Integer"  default="0"     description="scanned, but not supposed to be in that seal."/>
+    <aura:attribute name="bagCount_unscanned"   type="Integer"  default="0"/>
+
+    <GMBLBC:barcodeScanner aura:id="nativeScanner" onsuccess="{!c.onScanSuccess}" 
+        barcodeTypes="CODE_128,CODE_39,CODE_93,ITF,QR"/>
+    
+    <div style="max-width:1400px; min-height:1000px; margin:0 auto" class="slds-theme_default slds-p-around_small slds-is-relative">
+		<lightning:spinner aura:id="mySpinner" class="slds-hide"/>
+        <div aura:id="myBody">
+
+            <!-- Toast -->
+            <div class="slds-notify_container slds-hide" aura:id="myToast">
+                <div class="slds-notify slds-notify_toast slds-theme_error slds-current-color" role="status">
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top">
+                        <lightning:icon iconName="utility:error" size="small"/>
+                    </span>
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small">{!v.pageMessages}</h2>
+                    </div>
+                </div>
+            </div>
+
+			<div style="font-size:14pt;" class="slds-text-color_inverse slds-text-align_center">
+                <div style="background: DarkBlue;" class="slds-p-around_xx-small">
+                    <aura:if isTrue="{!v.action == 'selectLocation'}">
+                        Select Location
+                    </aura:if>
+                    <aura:if isTrue="{!v.action == 'scanSeal'}">
+                        Scan Seal
+                    </aura:if>
+                    <aura:if isTrue="{!v.action == 'scanBag'}">
+                        Scan Bags
+                    </aura:if>
+                </div>
+            </div>
+
+            <div style="max-width:500px;margin:0 auto">
+
+                <!-- SELECT LOCATION -->
+                <!--
+                <aura:if isTrue="{!or(v.action == 'selectLocation',v.location == 'Out for Delivery')}">
+                    <div class="slds-grid">
+                        <div class="slds-col">
+                            <div>
+                                <lightning:select aura:id="selectLocation"
+                                                label="Location"
+                                                value="{!v.location}"
+                                                disabled="{!v.action != 'selectLocation'}">
+                                    <aura:iteration items="{!v.locationOptions}" var="option">
+                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.value == v.location}"/>
+                                    </aura:iteration>
+                                </lightning:select>                    
+                            </div>
+                        </div>
+                        <aura:if isTrue="{!v.action != 'selectLocation'}">
+                            <div class="slds-col slds-size_4-of-12 slds-p-left_xx-small slds-p-top_small">
+                                <div class="slds-button slds-button_brand slds-button_stretch" style="height:100%" onclick="{!c.onClickReset}">
+                                    <lightning:icon variant="inverse" iconName="utility:refresh" size="small"/>
+                                </div>
+                            </div>
+                        </aura:if>                
+                    </div>                
+                </aura:if>                    
+                -->
+    
+                <!-- SELECT HUB -->
+                <aura:if isTrue="{!v.location == 'Hub'}">
+                    <div class="slds-grid">
+                        <div class="slds-col">
+                            <div>
+                                <lightning:select aura:id="selectHub"
+                                                label="Hub"
+                                                value="{!v.hubId}"
+                                                disabled="{!v.action != 'selectLocation'}">
+                                    <aura:iteration items="{!v.hubOptions}" var="option">
+                                        <option text="{!option.Name}" value="{!option.Id}" selected="{!option.Id == v.hubId}"/>
+                                    </aura:iteration>
+                                </lightning:select>                    
+                            </div>
+                        </div>
+                        <aura:if isTrue="{!v.action != 'selectLocation'}">
+                            <div class="slds-col slds-size_4-of-12 slds-p-left_xx-small slds-p-top_small">
+                                <div class="slds-button slds-button_brand slds-button_stretch" style="height:100%" onclick="{!c.onClickReset}">
+                                    <lightning:icon variant="inverse" iconName="utility:refresh" size="small"/>
+                                </div>
+                            </div>
+                        </aura:if>                
+                    </div>                
+                </aura:if>
+    
+                <!-- SELECT TRANSPORT -->
+                <aura:if isTrue="{!v.location == 'Port'}">
+                    <div class="slds-grid">
+                        <div class="slds-col">
+                            <div>
+                                <lightning:select aura:id="selectTransport"
+                                                label="Airport"
+                                                value="{!v.transportId}"
+                                                disabled="{!v.action != 'selectLocation'}">
+                                    <aura:iteration items="{!v.transportOptions}" var="option">
+                                        <option text="{!option.Name}" value="{!option.Id}" selected="{!option.Id == v.transportId}"/>
+                                    </aura:iteration>
+                                </lightning:select>                    
+                            </div>
+                        </div>
+                        <aura:if isTrue="{!v.action != 'selectLocation'}">
+                            <div class="slds-col slds-size_4-of-12 slds-p-left_xx-small slds-p-top_small">
+                                <div class="slds-button slds-button_brand slds-button_stretch" style="height:100%" onclick="{!c.onClickReset}">
+                                    <lightning:icon variant="inverse" iconName="utility:refresh" size="small"/>
+                                </div>
+                            </div>
+                        </aura:if>                
+                    </div>                
+                </aura:if>
+
+                <!-- Unlock Seal / Scan Bags -->
+                <aura:if isTrue="{!and(v.action == 'selectLocation',v.location)}">
+                    <div class="slds-grid slds-text-align_center">
+                        <div class="slds-col slds-size_2-of-12"/>
+                        <div class="slds-col slds-size_4-of-12 slds-p-vertical_x-small slds-p-right_xx-small" style="font-size:12pt;">
+                            <lightning:button variant="brand" class="slds-button_stretch" label="Unlock Seal" title="Unlock Seal" onclick="{!c.onClickUnlockSeal}"
+                            disabled="{!!v.location}"/>
+                        </div>
+                        <div class="slds-col slds-size_4-of-12 slds-p-vertical_x-small slds-p-left_xx-small" style="font-size:12pt;">
+                            <lightning:button variant="brand" class="slds-button_stretch" label="In-Scan Bags" title="In-Scan Bags" onclick="{!c.onClickScanBags}"
+                            disabled="{!!v.location}"/>
+                        </div>                        
+                        <div class="slds-col slds-size_2-of-12"/>
+                    </div>
+                </aura:if>                
+                
+                <!-- BARCODE SCANNING CONTROLS -->
+                <aura:if isTrue="{!or(v.action=='scanSeal',v.action =='scanBag')}">
+                    <div class="slds-grid slds-grid_vertical-align-center slds-m-top_small">
+                        <div class="slds-col">
+                            <GMBLBC:barcodeInput aura:id="laserScanner" onsuccess="{!c.onScanSuccess}"/>
+                        </div>
+                        <aura:if isTrue="{!$Browser.formFactor != 'DESKTOP'}">
+                            <div class="slds-col slds-size_4-of-12 slds-p-left_xx-small">
+                                <lightning:button variant="brand" class="slds-button_stretch" onclick="{!c.onScanStart}">
+                                    <lightning:icon src="{!$Resource.GMBLBC__scanIconSvg + '#g-icon'}" size="large"/>
+                                </lightning:button>
+                            </div>                
+                        </aura:if>
+                    </div>
+                </aura:if>                
+            </div>
+
+            <aura:if isTrue="{!v.action == 'scanBag'}">
+
+                <!-- SEAL BAGS SUMMARY & CONTROLS -->
+                <aura:if isTrue="{!v.seal}">
+                    <div class="slds-grid slds-m-top_x-small">
+                        <div class="slds-col slds-size_9-of-12">
+                            <div class="slds-grid slds-theme_shade slds-border_top slds-border_bottom slds-p-top_xx-small slds-p-bottom_xxx-small" style="font-weight:bold">
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    Seal
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    Seal Bags
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    Extra Bags
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    Unscanned
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    Scanned
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-border_bottom slds-p-top_xx-small slds-p-bottom_xxx-small" style="font-weight:bold">
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    {!v.seal.Name}
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    {!v.bagCount_seal}
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    {!v.bagCount_extra}
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    {!v.bagCount_unscanned}
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-text-align_center">
+                                    {!v.bagCount_scanned}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12">
+                            <div class="slds-grid slds-m-left_small slds-m-right_x-small">
+                                <div class="slds-col slds-size_1-of-2 slds-m-right_xx-small">
+                                    <lightning:button variant="brand" class="slds-button_stretch" label="Complete" title="Complete" onclick="{!c.onClickComplete}"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-m-left_xx-small">
+                                    <lightning:button variant="destructive" class="slds-button_stretch" label="Cancel" title="Cancel" onclick="{!c.onClickReset}"/>
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+
+                    <!-- IN-SCAN BAGS SUMMARY & CONTROLS -->
+                    <aura:set attribute="else"> 
+                        <div style="max-width:500px;margin:0 auto">
+                            <div class="slds-grid slds-m-top_x-small">
+                                <div class="slds-col slds-size_1-of-3">
+                                    <div class="slds-grid slds-theme_shade slds-border_top slds-border_bottom slds-p-top_xx-small slds-p-bottom_xxx-small" style="font-weight:bold">
+                                        <div class="slds-col slds-text-align_center">
+                                            Scanned Bags
+                                        </div>
+                                    </div>
+                                    <div class="slds-grid slds-border_bottom slds-p-top_xx-small slds-p-bottom_xxx-small" style="font-weight:bold">
+                                        <div class="slds-col slds-text-align_center">
+                                            {!v.bagCount_scanned}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_2-of-3">
+                                    <div class="slds-grid slds-m-left_small slds-m-right_x-small">
+                                        <div class="slds-col slds-size_1-of-2 slds-m-right_xx-small">
+                                            <lightning:button variant="brand" class="slds-button_stretch" label="Complete" title="Complete" onclick="{!c.onClickComplete}"/>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2 slds-m-left_xx-small">
+                                            <lightning:button variant="destructive" class="slds-button_stretch" label="Cancel" title="Cancel" onclick="{!c.onClickReset}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </aura:set>
+                </aura:if>
+                
+                <br/>
+
+                <!-- SCROLLABLE LIST OF BAGS -->
+                <aura:if isTrue="{!v.bags.length > 0}">
+                    <div class="slds-grid slds-theme_shade slds-border_top slds-border_bottom slds-p-top_xx-small slds-p-bottom_xxx-small slds-m-top_small" style="font-weight:bold">
+                        <div class="slds-col slds-size_1-of-12 slds-p-left_xx-small">
+                            Bag Name
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+                            SN#
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+                            Bag#
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+                            Shipment
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+                            Cargo Type
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+                            Seal
+                        </div>
+
+                        <div class="slds-col slds-size_3-of-12">
+                            Current Scan Hub
+                        </div>
+                        <div class="slds-col slds-size_3-of-12">
+                            Destination Hub
+                        </div>
+                    </div>
+                    
+                    <div class="scroller slds-border_bottom">
+                        <aura:iteration items="{!v.bags}" var="r">
+
+                            <div class="slds-grid slds-border_bottom slds-has-flexi-truncate slds-p-top_xx-small slds-p-bottom_xx-small" 
+                            style="{!r.scanned == TRUE ? 'background-color:LawnGreen':'background-color:red;'}">
+
+                                <div class="slds-col slds-size_1-of-12 slds-p-left_xx-small slds-truncate">
+                                    {!r.Name}
+                                </div>
+                                <div class="slds-col slds-size_1-of-12 slds-truncate">
+                                    {!r.Shipment__r.Shipping_Note_Number__c}
+                                </div>                
+                                <div class="slds-col slds-size_1-of-12">
+                                    {!r.Secure_Bag__r.Name}  
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    {!r.Shipment__r.Name}  
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    {!r.Cargo_Type__c}  
+                                </div>                
+                                <div class="slds-col slds-size_1-of-12 ">
+                                    {!r.Seal_Id__r.Name}  
+                                </div>
+                                <div class="slds-col slds-size_3-of-12 slds-truncate">
+                                    {!r.Current_Scan_Hub__r.Name}  
+                                </div>
+                                <div class="slds-col slds-size_3-of-12 slds-truncate">
+                                    {!r.Destination_Hub__c}  
+                                </div>
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </aura:if>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

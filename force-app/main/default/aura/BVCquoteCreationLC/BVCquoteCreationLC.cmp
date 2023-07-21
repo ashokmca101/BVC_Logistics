@@ -1,0 +1,22 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global"
+                 controller="CreateEshipBathIvalIeExhibiQTContr">
+
+    <aura:attribute name="hideSpinner" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="String"/>
+    <ltng:require styles="{!$Resource.sednEsign}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinIt}"/>
+    <lightning:quickActionAPI aura:id="quickActionAPI" />
+    <aura:handler name="change" value="{!v.returnvalue}" action="{!c.navtoQuote}"/>
+    <div class="invisibleClass">
+        <aura:if isTrue="{! v.hideSpinner }">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+    </aura:if>
+    </div>
+
+</aura:component>

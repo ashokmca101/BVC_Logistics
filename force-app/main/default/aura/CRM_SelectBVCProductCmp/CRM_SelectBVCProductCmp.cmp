@@ -1,0 +1,56 @@
+<aura:component controller="CRM_SelectBVCProductController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="relatedproduct" type="String[]" />
+    <aura:attribute name="SelectedProduct" type="String[]"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <lightning:icon iconName="standard:product_item" alternativeText="Event" />
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Rohde Corp - 80,000 Widgets">Select Related Products.</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <p class="slds-page-header__name-meta">Second Level Products</p>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+    </div>    
+    <table class="slds-table slds-table_bordered">
+        <thead>
+            <tr>              
+                <th></th>
+                <th>Sr. No.</th>
+                <th>Product Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.relatedproduct}" var="acc" indexVar="i">
+                <tr>                    
+                    <td>
+                        <div class="slds-checkbox">
+                            <input type="checkbox" name="chk" id="{!acc}" onchange="{!c.getSelectedProduct}"/>                            
+                            <label class="slds-checkbox__label" for="{!acc}">
+                                <span class="slds-checkbox_faux"></span>                                
+                            </label>
+                        </div>
+                    </td>
+                    <td>{!i+1}</td>
+                    <td>{!acc}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table><br/>
+    <center>
+        <lightning:button variant="brand" label="Save" title="Brand action" onclick="{!c.saveProduct}"/>
+		<lightning:button variant="brand" label="Cancel" title="Brand action" onclick="{!c.Cancel}"/>        
+    </center>
+</aura:component>

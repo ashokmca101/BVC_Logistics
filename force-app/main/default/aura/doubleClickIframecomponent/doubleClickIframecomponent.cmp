@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <iframe src="https://web.doubletick.io/"
+            width="100%"
+            height="500px"
+            sandbox="allow-same-origin allow-scripts allow-forms"
+            scrolling="auto"/>
+</aura:component>

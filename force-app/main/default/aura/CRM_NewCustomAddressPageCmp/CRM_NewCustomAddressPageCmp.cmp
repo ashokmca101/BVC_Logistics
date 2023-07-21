@@ -1,0 +1,97 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:actionOverride" controller="NewCustomAddressController" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="NotaPortalUser" type="Boolean" default="true"/> 
+    <aura:attribute name="isCommunity" type="Boolean" default="false"/>  
+    <aura:attribute name="isShipping" type="Boolean" default="false"/> 
+     <aura:attribute name="isLoading" type="Boolean" default="false"/> 
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+       <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner alternativeText="Loading" size="large" />
+     </aura:if>
+        <div class="slds-modal__container" style="width:900px;">
+            <header class="slds-modal__header">
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create Address</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning:recordEditForm aura:id="recordEditForm"
+                                          objectApiName="AddressBook__c" onerror="{!c.onError}" onsuccess="{!c.handleOnSuccess}">
+                   <!-- <lightning:messages />-->
+                    <h3 class="slds-section-title--divider">Basic Information</h3>
+                    <br />
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning:inputField fieldName="Name" aura:id="Name"/>
+                            <aura:if isTrue="{! (!v.isShipping)}">
+                                <lightning:inputField fieldName="GSTIN__c" aura:id="GSTIN__c"/>
+                                <!--<lightning:inputField fieldName="Account_Number__c" aura:id="Account_Number__c"/>-->
+                                <lightning:inputField fieldName="TRADE_NAME__c" aura:id="TRADE_NAME__c" />
+                                <lightning:inputField fieldName="IECBRANCHSRNO__c" aura:id="IECBRANCHSRNO__c"/>
+                                <lightning:inputField fieldName="GST_Registered_Status__c" aura:id="GST_Registered_Status__c" onchange="{!c.GstStatusChanged}"/>
+                                <lightning:inputField fieldName="Dealer_Type__c" aura:id="Dealer_Type__c"/>
+                            </aura:if>
+                               
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning:inputField fieldName="Customer__c" aura:id="Customer" onchange="{!c.CustChanged}"/>
+                            <lightning:inputField fieldName="Your_Address_Identifier__c" aura:id="Your_Address_Identifier__c" required="true"/>
+                            <aura:if isTrue="{! (!v.isShipping)}">
+                                <lightning:inputField fieldName="People__c" aura:id="People__c"/>
+                                <lightning:inputField fieldName="BRANCH_CONTACT_PERSON__c" aura:id="BRANCH_CONTACT_PERSON__c"/>
+                            </aura:if>
+                            <lightning:inputField fieldName="RecordTypeId" aura:id="RecordTypeId" disabled="true"/>
+                        </div>
+                    </div>
+                    <h3 class="slds-section-title--divider">Address Information</h3>
+                    <br />    
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">	
+                            <lightning:inputField fieldName="ADDRESS1__c" aura:id="ADDRESS1__c" required="true"/>
+                            <lightning:inputField fieldName="ADDRESS2__c" aura:id="ADDRESS2__c"/>
+                            <lightning:inputField fieldName="Active_Pincode__c" aura:id="ActivePincode" onchange="{!c.PincodeChanged}" required="true"/>
+                            <!--<lightning:inputField fieldName="PINCODE__c" aura:id="Pincode" onchange="{!c.PincodeChanged}" required="true"/>-->
+                             <aura:if isTrue="{! (!v.isShipping)}">
+                                <lightning:inputField fieldName="EMAIL_ID__c" aura:id="EMAIL_ID__c"/>
+                                <lightning:inputField fieldName="MOBILE1__c" aura:id="MOBILE1__c"/>
+                                <lightning:inputField fieldName="MOBILE2__c" aura:id="MOBILE2__c"/>
+                            </aura:if>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning:inputField fieldName="CITY__c" aura:id="City" required="true" disabled="true"/>
+                            <aura:if isTrue="{! (!v.isShipping)}">
+                                <lightning:inputField fieldName="District__c" aura:id="District" disabled="true"/>
+                             </aura:if>
+                            <lightning:inputField fieldName="STATE__c" aura:id="State" disabled="true"/>
+                            <lightning:inputField fieldName="COUNTRY__c" aura:id="Country" disabled="true"/>
+                           
+                            <aura:if isTrue="{! (!v.isShipping)}">
+                                 <lightning:inputField fieldName="LANDLINE_NO__c" />
+                                <lightning:inputField fieldName="Is_Primary__c" /> 
+                            </aura:if>
+                            <!--<lightning:inputField fieldName="Is_Billing_Address__c" aura:id="Is_Billing_Address__c"/>-->
+                        </div>
+                    </div>
+                    
+                    <h3 class="slds-section-title--divider">Other Information</h3>
+                    <br />    
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">	
+                             <lightning:inputField fieldName="Is_Active__c" aura:id="Is_Active__c"/>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">	
+                            <aura:if isTrue="{! (!v.isShipping)}">
+                             <lightning:inputField fieldName="GSTIN_Type__c" aura:id="GSTIN_Type__c"/>
+                            </aura:if>
+                        </div>
+                        
+                    </div>
+                   
+                </lightning:recordEditForm>
+            </div>    
+            <footer class="slds-modal__footer">
+                <lightning:button class="slds-m-top_small" type="submit" label="Save" onclick="{!c.save}"/>
+                <lightning:button class="slds-m-top_small" type="Cancel" label="Cancel" onclick="{!c.cancelDialog}"/>
+            </footer>
+        </div>
+    </section>
+    <!--<div class="slds-backdrop slds-backdrop_open"></div> -->
+</aura:component>

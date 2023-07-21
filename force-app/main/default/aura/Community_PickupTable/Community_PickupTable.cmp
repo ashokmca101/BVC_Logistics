@@ -1,0 +1,166 @@
+<aura:component controller="AddressForPickupAuraController" implements="forceCommunity:availableForAllPageTypes" access="global">
+    
+    <!--Declare Event Handlers--> 
+  <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <!-- Address Table attributes start -->
+    <aura:attribute name="addressList" type="list" />   
+    <aura:attribute name="isSelectAll" type="boolean" default="false"/>
+    
+    <aura:attribute name="pickUpList" type="Pickup__c" />
+    <!-- Address Table attributes end -->
+    
+    <!-- Modal show/hide attributes start -->
+    <aura:attribute name="showPickupModal" type="boolean" default="false"/>
+    <!-- Modal show/hide attributes start -->
+    
+    <!-- Pickup Form attributes start -->
+    
+    <aura:attribute name="customerId" type="String" />
+    <aura:attribute name="addressId" type="list" />
+    <aura:attribute name="reloadForm" type="boolean" default="true" />
+    
+    <!-- Pickup Form attributes start -->
+    
+    
+    <div class="slds-m-around_xx-large">
+        <h1 class="slds-text-heading--medium">Address</h1>
+        <br/>
+        
+        <div style="text-align:right">
+            <lightning:button label="Create Pickup" class="slds-button_brand" onclick="{!c.handleSelectedAddress }"  />
+        </div>
+        <br/>
+        
+        <!-- Address Table Starts -->
+        
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer" role="grid">      
+            <thead>  
+                <tr class="slds-text-title--caps">
+                    <th>           
+                        <label class="slds-checkbox">
+                            <ui:inputCheckbox value="{!v.isSelectAll}" change="{!c.handleSelectAllAddress}" aura:id="selectAll"/>
+                            <span class="slds-checkbox--faux" />
+                            <span class="slds-form-element__label"></span>
+                        </label>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <aura:if isTrue="{!(empty(v.addressList))}">
+                    There is no Address available.
+                </aura:if>
+                
+                <aura:iteration items="{!v.addressList}" var="addr">
+                    <tr>
+                        <th>
+                            <label class="slds-checkbox">
+                                <ui:inputCheckbox aura:id="checkAddress" text="{!addr.Id}" change="{!c.onCheck}"/>
+                                <span class="slds-checkbox--faux" />
+                                <span class="slds-form-element__label"></span>
+                            </label>
+                        </th>
+                        <th scope="row">
+                            <div class="slds-truncate" title="{!addr.Name}">{!addr.Name}</div>
+                        </th>
+                        
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        <div>
+            
+            <!-- Address Table End -->
+            
+            <br/>
+            <div style="text-align:right">
+                <lightning:button label="Create Pickup" class="slds-button_brand" onclick="{!c.handleSelectedAddress }"  />
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <aura:if isTrue="{!v.showPickupModal}"> 
+        
+        <section role="dialog" tabindex="-1" aura:id="myModal" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Pickup Form</h2>
+                </header>
+                
+                <!-- Pickup Form Start -->
+              <!--  <div class="slds-box slds-theme_default">
+                    <lightning:recordEditForm objectApiName="Pickup__c" onsubmit="{!c.handleSubmit}"
+                                              onsuccess="{!c.handleSuccess}"
+                                              onerror = "{!c.handleError}"
+                                              aura:id="recordEditForm" >
+                        <lightning:messages />
+                        <aura:if isTrue="{!v.reloadForm}">
+                            <div class="slds-grid slds-wrap">  
+                                
+                                
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Contact_Person_Name__c" aura:id="Contact_Person_Name__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Contact_Person_Number__c" aura:id="Contact_Person_Number__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Destination__c" aura:id="Destination__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Insurance_By__c" aura:id="Insurance_By__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">    
+                                    <lightning:inputField fieldName="Net_Weight__c" aura:id="Net_Weight__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Net_Weight_UOM__c" aura:id="Net_Weight_UOM__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="No_Of_Parcels__c" aura:id="No_Of_Parcels__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pickup_Date__c" aura:id="Pickup_Date__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pickup_Time__c" aura:id="Pickup_Time__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Product_Type__c" aura:id="Product_Type__c"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="TypeOfPickup__c" aura:id="TypeOfPickup__c"/>
+                                </div>
+                                
+                                <aura:set attribute="else">
+                                    Saving...
+                                </aura:set>
+                            </div>
+                        </aura:if> 
+                        <div style="text-align:center">
+                            <lightning:button variant="brand" type="submit" label="Submit" />
+                            <lightning:button label="Cancel"  onclick="{! c.handleCloseModal }"/>
+                          
+                       </div>
+                    
+               
+                    </lightning:recordEditForm>
+                   
+                </div>-->
+                <!-- Pickup Form End-->
+                
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </aura:if> 
+    
+    
+</aura:component>

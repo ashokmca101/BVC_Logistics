@@ -1,0 +1,107 @@
+<template>
+ 
+    <!-- create folder card -->
+    <lightning-card  variant="Narrow"  title="Shipment Datatable" icon-name="standard:folder" class="cardSpinner">
+        <!-- loader -->
+        <div if:true={showSpinner}>
+            <lightning-spinner
+                alternative-text="Loading..." variant="brand">
+            </lightning-spinner>
+        </div>
+        <!--/loader-->
+        <div class="slds-m-around_medium">
+            <template if:true={clickSearch}>
+                <lightning-layout>
+                    <lightning-layout-item padding="around-medium" size="6">
+                        <div onkeyup={handleKeyUp} class="slds-size_8-of-12">
+                            <lightning-input
+                                name="enter-search"
+                                label="Search Shipment"
+                                type="search"
+                            ></lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-medium" size="6">
+                        <div class="slds-size_8-of-12 slds-float_right">
+                            <template if:true={oldone}>
+                            <lightning-record-edit-form object-api-name="Shipment__c" id="createContactForm" >
+                            <lightning-input-field field-name="Delivery_Route_Assigned_To__c" variant="label-hidden" onchange={handleSelection}> </lightning-input-field>
+                            </lightning-record-edit-form>
+                            </template>
+                            <template if:true={newone}>
+                            <lightning-record-edit-form object-api-name="Shipment__c" id="createContactForm1" >
+                            <lightning-input-field field-name="Delivery_Route_Assigned_To__c" variant="label-hidden" onchange={handleSelection}> </lightning-input-field>
+                            </lightning-record-edit-form>  
+                            </template>
+
+                            <div style="padding-top: 9px;">
+                                <lightning-button variant="brand" label="Bulk Update" disabled={isDisabled} style="margin-left: 40%;" title="Bulk Update" onclick={handleBulkUpdate} class="slds-m-left_x-small"></lightning-button>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                
+             </template>
+             <template if:false={clickSearch}>
+                <lightning-button variant="brand-outline" label="Get Search Box" title="Search" onclick={handleClick} class="slds-m-left_x-small"></lightning-button> 
+             </template>
+        </div>
+        <div class="spinner">
+            <template if:true={isLoading}>
+                 <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                 </lightning-spinner>
+            </template>
+        </div>
+        <template if:false={isLoading}>
+        <div class="slds-m-around_medium">
+            <div class="slds-scrollable" style="height:auto;" > 
+                <c-l-w-c-lookup-custom-datatable-type
+                    key-field="Id"
+                    data={data} 
+                    columns={columns} 
+                    onlookupchanged={lookupChanged} 
+                    onvalueselect={handleSelection}
+                    onrowaction={handleRowAction}
+                    draft-values={draftValues} 
+                    oncellchange={handleCellChange}
+                    onsave={handleSave}
+                    oncancel={handleCancel}
+                    hide-checkbox-column>
+                </c-l-w-c-lookup-custom-datatable-type>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread slds-m-left_medium slds-m-right_medium">
+            <!--RECORDS PER PAGE-->
+            <div class="slds-col">
+                <div class="slds-list_inline slds-p-bottom_xx-small">
+                    <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Page Size:</label>
+                    <div class="slds-select_container">
+                        <select class="slds-select" id="recordsPerPage" onchange={handleRecordsPerPage}>
+                            <template for:each={pageSizeOptions} for:item="option">
+                                <option key={option} value={option}>{option}</option>
+                            </template>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--PAGE NAVIGATION-->
+            <div class="slds-align_absolute-center" style="height:5rem">
+                <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+                <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous" alternative-text="Previous" onclick={previousPage}></lightning-button>
+                &nbsp;
+                <span class="slds-badge">Showing {pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+                &nbsp;
+                <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next" alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+                <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last" alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+            </div>
+            <!--TOTAL RECORDS-->
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+                    <span class="slds-badge"> Total Records: {totalRecords}</span>
+                </div>
+            </div>
+        </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,12 @@
+<aura:component controller="CreateContract" implements="force:lightningQuickAction,force:hasRecordId" >
+	<aura:html tag="style">
+    .slds-backdrop {
+    background: rgba(43, 40, 38, 0) !important;  
+    }
+    .slds-fade-in-open {
+    display:none !important;
+   }
+</aura:html>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+</aura:component>

@@ -1,0 +1,66 @@
+<template>
+    <lightning-Card title="Shipment Bulk Verification" icon-name="Custom:Shipment__c">
+        <!--<div class="slds-text-body_small slds-text-color_error">
+		<template if:true={showLoadingSpinner}>
+		<lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+		</template></div>-->
+        
+        <div class="slds-grid  ">
+            <div class="slds-col slds-p-horizontal_medium slds-size_1-of-3">
+             <span>  <br /><lightning-combobox
+            name="progress"
+            label="BVC Service"
+            value={value}
+            placeholder="Select Progress"
+            options={options}
+            data-field="bvcservice"
+            onchange={bvcserviceMT}
+            required >
+        </lightning-combobox></span>
+        </div>
+                        <div class="slds-col slds-p-horizontal_medium slds-size_1-of-3">
+                            <span>
+                                <lightning-input type="datetime" required onchange={shipmentFromMT} data-field="shipmentFrom" name="input3" label="Shipment Created From"  ></lightning-input>
+                            </span>
+                        </div>
+                        <div class="slds-col  slds-p-horizontal_medium slds-size_1-of-3">
+                            <span>
+                                <lightning-input type="datetime" required onchange={shipmentToMT} data-field="shipmentTo" name="input3" label="Shipment Created To"  ></lightning-input>
+                            </span>
+                        </div>
+                    </div>
+                    
+         <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" data-field="customerName"  value={customerName} onchange={customerNameMT} label="Customer Name"></lightning-input>
+        </div><br/>
+        <div class="slds-grid  ">
+                        <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                            <span>
+                                <button class="slds-button slds-button_brand" onclick={getSelectedRec}>Get Shipments</button>
+                            </span>
+                        </div>
+                        <div class="slds-col  slds-p-horizontal_medium slds-size_1-of-2">
+                            <span>
+                                <template if:true={haveData}> 
+                                    <button class="slds-button slds-button_success" onclick={verifiedForBilling}>Verified For Billing</button></template>
+                            </span>
+                        </div>
+                    </div> 
+        
+                            <br />
+        
+        <template if:true={data}>
+            <div style="border-top: 1px solid rgb(221 219 218);">
+            <!-- datatable -->
+            <lightning-datatable
+                    key-field="Shipment__c"
+                    data={data}
+                    columns={columns}
+                    show-row-number-column=true
+                    column-widths-mode="fixed">
+            </lightning-datatable>
+            <!-- /datatable -->
+        </div>
+        </template>
+    </lightning-Card>
+</template>

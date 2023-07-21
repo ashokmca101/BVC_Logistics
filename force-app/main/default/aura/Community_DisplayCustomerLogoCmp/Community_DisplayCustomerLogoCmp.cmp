@@ -1,0 +1,10 @@
+<aura:component Controller="Community_DisplayCustomerLogoController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="imgurl" type="string" default="" />
+  
+    <!--<lightning:card class="slds-text-heading_small slds-card_boundary"   title=""  footer="" >-->
+ 				<div class="slds-align_absolute-center" style="height:5rem">
+                    <img src="{!v.imgurl}" alt="Logo" style="height:5rem"/> 
+                </div> 
+    <!--</lightning:card>--> 
+</aura:component>

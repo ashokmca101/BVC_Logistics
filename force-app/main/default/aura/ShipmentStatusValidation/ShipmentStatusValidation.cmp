@@ -1,0 +1,35 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global"
+                controller="updateShipment"
+                >
+    
+    <aura:attribute name="recordId" type="String" />
+	<aura:attribute name="temp" type="boolean" default="true"/>
+    <aura:attribute name="ds" type="string" default=""/>
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:if isTrue="{!v.temp}"> 
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+
+                <span class="slds-assistive-text">Cancel and close</span>
+            </button>
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Tracking Status Changed Remarks</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+        <lightning:recordEditForm recordId="{!v.recordId}" objectApiName="Shipment__c">
+        <lightning:messages />
+        <lightning:inputField fieldName="Delivery_Remarks__c" value="{!v.ds}" required="true"/>		
+        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" onclick="{!c.closeModal}" />
+    </lightning:recordEditForm>                
+
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>    
+
+     </aura:if> 
+
+</aura:component>

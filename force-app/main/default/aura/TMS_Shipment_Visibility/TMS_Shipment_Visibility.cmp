@@ -1,0 +1,64 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" Controller="TMS_shipmentDocumentController">
+    <aura:attribute name="data" 				type="List"	  />
+    <aura:attribute name="filteredData" 		type="List"    />
+    <aura:attribute name="columns" 				type="List"   />
+    <aura:attribute name="addProductsCols"      type="List"   />
+    <aura:attribute name="selectedShipments" 	type="List"/>
+    <aura:attribute name="ShipAcc" type="Object"/>
+    <aura:attribute name="OriginHub" type="Object"/>
+    <aura:attribute name="DestHub" type="Object"/>
+    <aura:attribute name="ShipDate" type="Date"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="sendShippingData" type="List"/>
+    <!--<lightning:input type="Search" placeholder="TMS - Enter your Shipment Name Here...." onchange="{!c.searchTable}" label= "Enter Shipment Name" aura:id="SearchBox"/>-->
+    <br/><div class="slds-grid">
+    <div class="slds-col slds-size_1-of-5" style="padding-left: 10px;">
+        <div class="slds-text-heading_x-small" >Shipper Account</div>
+        <c:TMS_Lookup objectName="Account"
+                      field_API_text="Name"
+                      field_API_val="Id"
+                      limit="8"
+                      field_API_search="Name"
+                      lookupIcon="standard:asset_object" 
+                      selItem="{!v.ShipAcc}"
+                      RecordType="Shipping"
+                      placeholder="Search Shipper Account"
+                      />
+    </div>
+    <div class="slds-col slds-size_1-of-5" style="padding-left: 10px;">
+        <div class="slds-text-heading_x-small" >Origin Hub</div>
+        <c:TMS_Lookup objectName="Hub__c"
+                      field_API_text="Name"
+                      field_API_val="Id"
+                      limit="8"
+                      field_API_search="Name"
+                      lookupIcon="standard:asset_object" 
+                      selItem="{!v.OriginHub}"
+                      placeholder="Search Origin Hub"
+                      />
+    </div>
+    <div class="slds-col slds-size_1-of-5" style="padding-left: 10px;">
+        <div class="slds-text-heading_x-small" >Destination Hub</div>
+        <c:TMS_Lookup objectName="Hub__c"
+                      field_API_text="Name"
+                      field_API_val="Id"
+                      limit="8"
+                      field_API_search="Name"
+                      lookupIcon="standard:asset_object" 
+                      selItem="{!v.DestHub}"
+                      placeholder="Search Destination Hub"
+                      />
+    </div>
+    <div class="slds-col slds-size_1-of-5" style="padding-left: 10px;">
+        <div class="slds-text-heading_x-small" >Shipment Date</div>
+        <ui:inputDate class="field" value="{!v.ShipDate}" displayDatePicker="true" />
+    </div>
+    <div class="slds-col slds-size_1-of-5" style="padding-left: 10px;padding-top: 18px;">
+        <lightning:button variant="brand" label="Filter" title="Brand action" onclick="{!c.init}"/> 
+    </div></div><br/>
+    <div class="slds-scrollable_y" style="height:20rem;width:85rem">
+        <lightning:datatable keyField="id" columns="{!v.columns}" data="{!v.filteredData}" onrowselection="{!c.handleSelect}"/>
+    </div> 
+    <br/>
+    <center><lightning:button variant="brand" label="Generate Pdf" title="Brand action" onclick="{!c.showSelectedName}"/></center>
+</aura:component>

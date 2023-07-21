@@ -1,0 +1,98 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-04-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   06-08-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <div class="slds-box" >    
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:product_required" alternative-text="product_required" title="product_required"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                    <p  class="slds-card__header-link slds-truncate">
+                        <span>Shipment</span> 
+                    </p>
+                </h2>
+                
+            </div>
+        </header> 
+        <div class="slds-grid slds-wrap slds-gutters slds-m-top_medium custom-box">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+                <!--lightning-input type="search" label="Account" data-id="accountID" value={filterDate.account} onchange={handleKeyChange} placeholder="Search for Account"></lightning-input-->
+                <lightning-record-edit-form object-api-name="Shipment__c">
+                    <label class="slds-form-element__label" for="accountID">Account </label>
+                    <lightning-input-field label="Account" field-name="Payer__c" data-id="accountID"
+                        variant="label-hidden" placeholder="Search for Account" onchange={accountNameHandler}></lightning-input-field>
+                </lightning-record-edit-form>
+            
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+                <!--lightning-input type="search" label="Billing Account" data-id="billingAccountID" value={filterDate.billingAccount}></lightning-input-->
+                <lightning-record-edit-form object-api-name="Shipment__c">
+                    <label class="slds-form-element__label" for="billingAccountID">Billing Account </label>
+                    <lightning-input-field field-name="Billing_Account__c" label="Billing Account" onchange={billingAccountHandler} data-id="billingAccountID"
+                        variant="label-hidden" placeholder="Search for Billing Account"></lightning-input-field>
+                </lightning-record-edit-form>
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+                <!--lightning-input type="search" label="BVC Branch" value={filterDate.bvcBranch} data-id="bvcBranchID"></lightning-input-->
+                <lightning-record-edit-form object-api-name="Shipment__c">
+                    <label class="slds-form-element__label" for="bvcBranchID">BVC Branch</label>
+                    <lightning-input-field label="BVC Branch" field-name="Origin_Hub__c" onchange={bvcHubHandler} data-id="bvcBranchID"
+                        variant="label-hidden" placeholder="Search for BVC Branch"></lightning-input-field>
+                </lightning-record-edit-form> 
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+                <!--lightning-input type="search" label="Exhibition Name" value={filterDate.exhibitionName}  data-id="exhibitionNameID" ></lightning-input-->
+                <lightning-record-edit-form object-api-name="Shipment__c">
+                    <label class="slds-form-element__label" for="exhibitionNameID">Exhibition Name</label>
+                    <lightning-input-field label="Exhibition Name" field-name="Exhibition__c" onchange={ExhibitionHandler} data-id="exhibitionNameID"
+                        variant="label-hidden" placeholder="Search for Exhibition Name"></lightning-input-field>
+                </lightning-record-edit-form>
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12"> 
+                
+                <div class="slds-col slds-size_1-of-2 slds-float_right">
+                    <lightning-input type="Date" label="Shipment Date To" onchange={DateFromHandler} value={filterDate.shipmentDateTo} data-id="shipmentDateToID"></lightning-input>
+                </div> 
+                <div class="slds-col slds-size_1-of-2 slds-float_right">
+                    <lightning-input type="Date" label="Shipment Date From" onchange={DateToHandler} value={filterDate.shipmentDateFrom}
+                        data-id="shipmentDateFromID"></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12"> 
+                <div class="slds-col slds-size_1-of-2 slds-float_right">
+                    <lightning-combobox name="ReadyforBilling" label="Verified for Billing" onchange={BillingHandler} placeholder="Yes/No" options={ReadyforBilling} data-id="readyforBillingID"  value={filterDate.ReadyforBilling}></lightning-combobox>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2 slds-float_right">
+                    <lightning-combobox class="slds-combobox__input"  name="ReadyforRebilling" onchange={ReBillingHandler} label="Rebilling Required" placeholder="Yes/No" options={ReadyforRebilling} data-id="readyforRebillingID" value={filterDate.ReadyforRebilling}></lightning-combobox>
+                </div> 
+                
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+                <lightning-button-group class="slds-m-top_large slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Search" onclick={searchShipment}></lightning-button>
+                    <!--lightning-button variant="brand-outline" label="Clear"></lightning-button-->  
+                    <lightning-button variant="brand"  onclick={exportdata} label="Export" title="Export" icon-name="utility:download">
+                    </lightning-button>
+                </lightning-button-group>
+            </div>
+        </div>  
+    </div> 
+    <c-custom-datatable class="slds-max-medium-table_stacked" onvaluechange={handleValueChange} oncellchange={handleCellChange} data={records} columns={columns} show-row-number-column="true" key-field="Id" draft-values={draftValues} onsave={handleSave} data-record="Id" onedit={handleEdit} hide-checkbox-column="true" oncancel={handleCancel}>
+    </c-custom-datatable>
+     
+</template>

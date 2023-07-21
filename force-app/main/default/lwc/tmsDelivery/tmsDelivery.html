@@ -1,0 +1,67 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-21-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <!-- Lightning Spinner  -->
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" alternative-text="Loading"></lightning-spinner>
+    </template> 
+    <template if:true={shipmentView}>
+        <lightning-card title="Scan Information" icon-name="standard:asset_object">
+            <lightning-datatable data={bagRecord} columns={columns} key-field="id" onrowselection={getSelectedName}></lightning-datatable>
+        
+        
+            <div slot="footer" class="slds-wrap slds-grid slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                
+                <div class="slds-size_1-of-2 ">
+                    <lightning-button class="slds-float_right" variant="Neutral" label="Next" onclick={fileDetails}></lightning-button>
+                     
+                </div> 
+            </div>
+        </lightning-card>
+    </template>
+    <template if:true={idSignatureView}> 
+        <!--<c-tms-signature recordid={recordId} trackinglist={trackingInsert}></c-tms-signature>-->
+		
+		<template if:true={isLoad}>
+        <lightning-spinner variant="brand" alternative-text="Loading"></lightning-spinner>
+</template> 
+
+    <lightning-card icon-name="standard:record_signature_task"> 
+        <div class="slds-form-element">
+            <lightning-record-edit-form object-api-name="Delivery__c" record-id={recordId}>
+
+                <lightning-input-field onchange={handleConsigneeNameChange} field-name="Consignee_Name__c"></lightning-input-field> 
+                <lightning-input-field onchange={handleConsigneeDesignationChange} field-name="Consignee_Designation__c"></lightning-input-field>
+                 
+            </lightning-record-edit-form>
+        </div>
+       
+        
+        <div slot="title">
+            <p>Signature Capturing</p> 
+        </div> 
+        <div class="slds-m-around_medium slds-box">
+            <canvas class="signature-pad" width={canvasWidth} height={canvasHeight} lwc:dom="manual"></canvas>
+        </div> 
+
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="IDUploader"  label="ID Photo" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="SNPUploader"  label="Shipping Note Photo (optional)" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="SBUploader"  label="Secure Bag Photo (Optional)" accept={acceptedFormats} record-id={SBID} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="PODUploader"  label="POD" accept={acceptedFormats} record-id={deliveryId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+
+        <div slot="footer">  
+            <lightning-button label="Complete" onclick={handleClick}></lightning-button>
+            
+        </div>
+    </lightning-card>
+		
+		
+    </template>
+
+
+</template>

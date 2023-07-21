@@ -1,0 +1,166 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-22-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   07-08-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template> 
+    
+    <!-- Lightning Spinner  -->
+    <template if:true={isLoading}>
+            <lightning-spinner variant="brand" alternative-text="Loading"></lightning-spinner>
+    </template> 
+
+    <!-- Secure bag Section start -->
+    <template if:true={shipmentView}> 
+        <lightning-card title="Scan Information" icon-name="standard:asset_object">  
+            <template if:true={isBagIdManual}>
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="secureBagsManual">Secure Bag Id (Manual)</label>
+                        <div class="slds-form-element__control">
+                            <input type="text" id="secureBagsManual" date-id="secureBagsManualID"
+                                onchange={handleSecureBagsManualChange} placeholder="Secure Bag Id (Manual)" class="slds-input" />
+                        </div>
+                    </div>
+                </div> 
+            </template>
+
+            <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                <label class="slds-form-element__label">Secure Bag Id</label>
+                <div class="slds-form-element__control">{secureBagsID}</div>
+            </div>
+
+
+            <template if:true={currentSecureBags}>
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Shipping Note Number</label>
+                    <div class="slds-form-element__control">{currentSecureBags.Shipping_Note_Number__c}</div>
+                </div>
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label"> Number of Shipping Note Number left</label> 
+                    <div class="slds-form-element__control">{numberofSSN}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Cargo Type</label>
+                    <div class="slds-form-element__control">{currentSecureBags.Cargo_Type__c}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label">Destination City</label>
+                    <div class="slds-form-element__control"> {currentSecureBags.Current_Destination_City__c}</div>
+                </div>
+                
+                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-p-around_small">
+                    <label class="slds-form-element__label ">Destination Delivery Hub</label>
+                    <div class="slds-form-element__control">{currentSecureBags.Destination_Hub__c}</div>
+                </div> 
+            </template> 
+            
+            <!-- Page button Section -->
+            <div slot="footer" class="slds-wrap slds-grid slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                
+                <div class="slds-size_1-of-2 ">
+                    <lightning-button class="slds-float_left " variant="brand" label={sacnButtonLabel} disabled={scanButton} onclick={secureBagScanning}></lightning-button>
+                </div>
+            
+                <div class="slds-size_1-of-2 ">
+                    <lightning-button class="slds-float_right" variant="Neutral" label="Upload Document" onclick={uploadDocument}></lightning-button>
+                </div> 
+            </div>
+
+        </lightning-card> 
+    </template>  
+
+    <template if:true={idUploadView}>
+        <lightning-card title="Shipping Note Photo" icon-name="standard:scan_card">
+             
+            <h4>Shipping Note Number : {barCodeData}</h4>             
+            <h5>Last secure bag : {secureBagsID}</h5>
+            <div class="slds-welcome-mat">
+                <div class="slds-welcome-mat__content slds-grid">
+                    <ul class="slds-p-around_xx-small slds-size_1-of-1">
+                        <li class="slds-welcome-mat__tile">
+                            <h3 class="slds-welcome-mat__tile-title slds-size_1-of-1">Upload Shipping Note Photo</h3>
+                            <div class="slds-box slds-media"> 
+                                <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-size_1-of-2">
+                                    <div class="slds-welcome-mat__tile-figure">
+                                        <div class="slds-welcome-mat__tile-icon-container">
+                                            <span class="slds-icon_container slds-icon-utility-upload">
+                                                <lightning-file-upload name="fileUploader" accept={acceptedFormats} record-id={shipmentRecordId} onuploadfinished={shippingNotePhotoUploadFinished} multiple></lightning-file-upload>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-size_1-of-2">
+                                    <div class="slds-welcome-mat__tile-body">  
+                                        <p class="slds-welcome-mat__tile-description">Number of Photos Uploaded : {sploadShippingNotePhoto}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="slds-welcome-mat__tile">
+                            <h3 class="slds-welcome-mat__tile-title slds-size_1-of-1">Upload Invoice Photo</h3>
+                            <div class="slds-box slds-media"> 
+                                <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-size_1-of-2">
+                                    <div class="slds-welcome-mat__tile-figure">
+                                        <div class="slds-welcome-mat__tile-icon-container">
+                                            <span class="slds-icon_container slds-icon-utility-upload">
+                                                <div class="slds-welcome-mat__tile-icon-container"> 
+                                                    <lightning-file-upload name="fileUploader" accept={acceptedFormats} record-id={shipmentRecordId} onuploadfinished={uploadInvoicePhotoUploadFinished} multiple></lightning-file-upload>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-size_1-of-2">
+                                    <div class="slds-welcome-mat__tile-body">  
+                                        <p class="slds-welcome-mat__tile-description">Number of Photos Uploaded : {sploadInvoicePhoto}</p>
+                                    </div>
+                                </div>
+                            </div> 
+                        </li>
+    
+                        <li class="slds-welcome-mat__tile">
+                            <h3 class="slds-welcome-mat__tile-title slds-size_1-of-1">Upload Secure Bag Photo</h3>
+                            <div class="slds-box slds-media"> 
+                                <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-size_1-of-2">
+                                    <div class="slds-welcome-mat__tile-figure">
+                                        <div class="slds-welcome-mat__tile-icon-container">
+                                            <span class="slds-icon_container slds-icon-utility-upload">
+                                                <div class="slds-welcome-mat__tile-icon-container">
+                                                    <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader" accept={acceptedFormats} record-id={shipmentRecordId} onuploadfinished={uploadSecureBagPhotoUploadFinished} multiple>
+                                                    </lightning-file-upload>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="slds-media__body slds-size_1-of-2">
+                                    <div class="slds-welcome-mat__tile-body">  
+                                        <p class="slds-welcome-mat__tile-description">Number of Photos Uploaded : {sploadSecureBagPhoto}</p>
+                                    </div>
+                                </div>
+                            </div> 
+                        </li> 
+                    </ul>
+                </div>
+            </div> 
+
+            <div slot="footer">
+                <lightning-button variant="brand" label="Signature" onclick={addSignature}></lightning-button>
+            </div>
+
+        </lightning-card>  
+    </template>
+    <template if:true={idSignatureView}> 
+        <c-tms-signature recordid={shipmentRecordId}></c-tms-signature>
+    </template>
+
+</template>

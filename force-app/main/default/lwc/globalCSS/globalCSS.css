@@ -1,0 +1,7 @@
+.slds-scrollable_y {
+    max-height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 1234px !important;
+    height: 1000px !important;
+}

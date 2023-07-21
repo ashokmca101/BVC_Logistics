@@ -1,0 +1,5 @@
+<aura:component implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+	<lightning:button class="slds-button" label="Book Shipment"  onclick="{!c.goToBookShip}" />
+    <lightning:button class="slds-button" label="Book Pickup"  onclick="{!c.goToBookPick}" />
+    <lightning:button class="slds-button" label="View Shipments"  onclick="{!c.goToViewShip}" />
+</aura:component>

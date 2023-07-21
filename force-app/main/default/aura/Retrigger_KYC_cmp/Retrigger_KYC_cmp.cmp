@@ -1,0 +1,7 @@
+<aura:component implements="force:lightningQuickAction,force:hasRecordId" controller="RetriggerKYCController">
+    
+    <aura:attribute name="recordId" type="String" />
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+	
+</aura:component>

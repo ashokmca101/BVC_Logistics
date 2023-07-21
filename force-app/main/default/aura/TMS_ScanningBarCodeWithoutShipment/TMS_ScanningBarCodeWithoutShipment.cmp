@@ -1,0 +1,4 @@
+<aura:component  implements="force:lightningQuickAction,force:hasRecordId"  >
+    <aura:attribute name="recordId" type="String" /> 
+    <c:tmsScanningBarCodeWithoutShipment pickupid="{!v.recordId}"/>
+</aura:component>

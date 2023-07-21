@@ -1,0 +1,718 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-27-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   06-17-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<aura:component controller="TMS_LinehaulClass" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="OriginCity" type="String"/>
+    <aura:attribute name="DestCity" type="String"/>
+    <aura:attribute name="SelHub" type="Object"/>
+    <aura:attribute name="ShowHub" type="boolean" default="false"/>
+    <aura:attribute name="pageNum" type="Integer" default="1"/>
+    <aura:attribute name="ShipmentList" type="TMS_LinehaulClass.DefaultLineHaulWrap[]"/>
+    <aura:attribute name="BagList" type="TMS_LinehaulClass.SecureBagWrapper[]"/>
+    <aura:attribute name="NewBagList" type="TMS_LinehaulClass.SecureBagWrapper[]"/>
+    <aura:attribute name="LinehaulWrapSet" type="Set" />
+    <aura:attribute name="picklistVal" type="Map"/>
+    <aura:attribute name="CityVal" type="Map"/>
+    <aura:attribute name="LineHaulType" type="String" />
+    <aura:attribute name="FilterDest" type="String" />
+    <aura:attribute name="FilterSeal" type="String" />
+    <aura:attribute name="FilterCargo" type="String" />
+    <aura:attribute name="SelectedDest" type="String" />
+    <aura:attribute name="DestinationPicklist" type="string[]"/>
+    <aura:attribute name="SelectedDestination" type="String"/>
+    <aura:attribute name="showModal" type="boolean" default="false"/>
+    <aura:attribute name="SelectedSeal" type= "Object"/>
+    <aura:attribute name="Airport" type= "Object"/>
+    <aura:attribute name="DestAirport" type= "Object"/>
+    <aura:attribute name="FlightDateTime" type="DateTime" />
+    <aura:attribute name="FlightSchedule" type= "Object"/>
+    <aura:attribute name="airlineList" type= "List"/>	
+    <aura:attribute name="commodityCodeList" type= "List"/>	
+    <aura:attribute name="flightscheduleId" type= "String"/>	
+    <aura:attribute name="selectedComCode" type= "String"/>	
+    <aura:attribute name="availAWB" type= "List" default="--Select a Value--" />	
+    <aura:attribute name="availFlightSchedule" type= "List" default="--Select a Value--" />
+    <aura:attribute name="Vehicle" type= "Object"/>
+    <aura:attribute name="finalisedNumber" type= "String"/>
+    <aura:attribute name="finalisedNumberRoad" type= "String"/>
+    <aura:attribute name="Filter" type= "String"/>
+    <aura:attribute name="DisableAddBox" type="Boolean" default="true"/>
+    <aura:attribute name="DisableAddLineHaul" type="Boolean" default="true"/>
+    <aura:attribute name="DisableSaveDraft" type="Boolean" default="true"/>
+        <aura:attribute name="showFlightSchedule" type="Boolean" default="true"/>	
+    <aura:attribute name="currentDate" type="string"/>	
+    <aura:attribute name="TommorowDate" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="showBarcodeModal" type="Boolean" default="false"/>
+    
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    
+     <!--loading spinner start-->
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Loading spinner end-->
+    <aura:if isTrue="{! (v.pageNum)==1 }">
+        <div class="slds-scrollable" style="height:22rem;">
+            <div class="main-class slds-theme_default" style="border-radius: 10px;">
+                <div class="slds-page-header">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <!--<div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-opportunity" title="opportunity">
+                                        <lightning:icon iconName="standard:asset_object" alternativeText="search" title="search" />
+                                        <span class="slds-assistive-text">Search</span>
+                                    </span>
+                                </div> 
+                            </div>-->
+                            
+                            <div class="slds-grid">
+                                <div class="slds-size_1-of-6">
+                                    <lightning:select aura:id="select" value="{!v.Filter}" label="Type" onchange="{!c.handleSelect}">
+                                        <option value="Inbound">Inbound</option>
+                                        <option value="Outbound">Outbound</option>
+                                        <option value="Finalised">Finalised</option>
+                                    </lightning:select>
+                                </div>&nbsp;&nbsp;&nbsp;
+                                <aura:if isTrue="{! (v.ShowHub)}">
+                                    <div class="slds-size_1-of-6">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="text-input-id-1"> Hub</label>
+                                            <div class="slds-form-element__control">
+                                                <c:TMS_Lookup objectName="Hub__c"
+                                                              field_API_text="Name"
+                                                              field_API_val="Id"
+                                                              limit="8"
+                                                              field_API_search="Name"
+                                                              lookupIcon="standard:asset_object" 
+                                                              selItem="{!v.SelHub}"
+                                                              placeholder="Search Hub"
+                                                              />&nbsp;&nbsp; 
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="slds-size_1-of-6">
+                                        <lightning:button variant="brand" label="Filter" title="Brand action" class="slds-m-top_large slds-m-left_large"  onclick="{!c.handleSelect}" />
+                                    </div> 
+                                </aura:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-wrap"
+                       aria-label="Example table of Opportunities with vertical borders">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th style="width:3.25rem;" class="slds-text-align--right">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox">
+                                            <!--header checkbox for select all-->
+                                            <ui:inputCheckbox aura:id="box3" change="{!c.selectAll}"/>
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">#</div>
+                            </th>
+                            <aura:if isTrue="{!(v.Filter)=='Outbound' }">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Unique Identifier">Unique Identifier</div>
+                                </th>
+                                <aura:set attribute="else">
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Finalized linehaul Number">Finalized linehaul Number</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Finalized linehaul Number">Finalized Time</div>
+                                    </th>
+                                </aura:set>
+                            </aura:if>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Origin">Origin</div>
+                            </th>
+                            <th class="" scope="col">
+                                <aura:if isTrue="{! (v.Filter)=='Outbound' }">
+                                    <div class="slds-truncate" title="Destination">Destination</div>
+                                    <aura:set attribute="else">
+                                        <div class="slds-truncate" title="Next Destination">Next Destination</div>
+                                    </aura:set>
+                                </aura:if>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Cargo Type">Cargo Type</div>
+                            </th>
+                            <aura:if isTrue="{! (v.Filter)=='Finalised' }">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Linehaul Type">Linehaul Type</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Airline">Airline</div>
+                                </th>
+                            </aura:if>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="SN #">SN #</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="SN #">SB #</div>
+                            </th>
+                            <aura:if isTrue="{! (v.Filter)=='Outbound' }">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="#SB without Seal">#SB without Seal</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="#Finalized Bags">#Finalized Bags</div>
+                                </th>
+                            </aura:if>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.ShipmentList}" var="sh" indexVar="index">
+                            <tr class="slds-hint-parent">
+                                <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox">
+                                                <ui:inputCheckbox aura:id="boxPack" value="{!sh.process}"/>
+                                                <span class="slds-checkbox--faux"></span>
+                                                <span class="slds-form-element__label text"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="">{!sh.Index}</div>
+                                </td>
+                                <aura:if isTrue="{! (v.Filter)=='Outbound' }">
+                                    <td data-label="">
+                                        <div class="slds-truncate" title="">{!sh.UniqueBag.Unique_Identifier__c}</div>
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td data-label="">
+                                            <div class="slds-truncate" title="">{!sh.UniqueBag.Finalised_Linehaul_Number__c}</div>
+                                        </td>
+                                        <td data-label="">
+                                            <div class="slds-truncate" title=""><lightning:formattedDateTime value="{!sh.UniqueBag.Finalized_Time__c}" year="numeric" month="numeric" day="numeric"  hour="2-digit" minute="2-digit"/></div>
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                
+                                <td data-label="">
+                                    <div class="slds-truncate" title="">{!sh.UniqueBag.Current_Scanned_at__c}</div>
+                                </td>
+                                <td data-label="">
+                                    <aura:if isTrue="{! (v.Filter)=='Outbound' }">
+                                        <div class="slds-truncate" title="">{!sh.UniqueBag.Shipment__r.Destination_Hub__r.Branch__c}</div>
+                                        <aura:set attribute="else">
+                                            <div class="slds-truncate" title="">{!sh.UniqueBag.Next_Destination__c}</div>
+                                        </aura:set>
+                                    </aura:if>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="">{!sh.UniqueBag.Cargo_Type__c}</div>
+                                </td>
+                                <aura:if isTrue="{! (v.Filter)=='Finalised' }">
+                                    <td data-label="">
+                                        <div class="slds-truncate" title="">{!sh.UniqueBag.Linehaul_Type__c}</div>
+                                    </td>
+                                    <td data-label="">
+                                        <div class="slds-truncate" title="">{!sh.UniqueBag.Flight_Schedule__r.name}</div>
+                                    </td>
+                                </aura:if> 
+                                <td data-label="">
+                                    <div class="slds-truncate" title=""> {!sh.ShipCount} </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title=""> {!sh.BagsCount} </div>
+                                </td>
+                                <aura:if isTrue="{! (v.Filter)=='Outbound' }">
+                                    <td data-label="">
+                                        <div class="slds-truncate" title=""> {!sh.withoutSealBags} </div>
+                                    </td>
+                                    <td data-label="">
+                                        <div class="slds-truncate" title=""> {!sh.FinalizedBags} </div>
+                                    </td>
+                                </aura:if>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <br/>
+            </div>
+        </div>
+        
+        
+        <div class="slds-align_absolute-center slds-p-top_small">
+            <lightning:button variant="neutral" label="Get Secure Bags" title="Brand action" onclick="{!c.SecureBags}" />
+        </div>
+    </aura:if>
+    
+    <aura:if isTrue="{! (v.pageNum)==2 }">
+        <div class="slds-scrollable" style="height:22rem;">
+            <div class="main-class slds-theme_default" style="border-radius: 10px;">
+                
+                <div class="slds-page-header">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-6" style="padding-right: 10px;">
+                                    <lightning:select label="Next Destination" value="{!v.FilterDest}">
+                                        <aura:iteration items="{!v.CityVal}" var="ct" indexVar="key">
+                                            <option text="{!ct.value}" value="{!ct.key}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-6" style="padding-right: 10px;">
+                                    <lightning:select label="Seal Id" value="{!v.FilterSeal}">
+                                        <option value="">All</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Completed">Completed</option>
+                                    </lightning:select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-6" style="padding-right: 10px;">
+                                    <lightning:select label="Cargo Type" value="{!v.FilterCargo}">
+                                        <option value="">All</option>
+                                        <option value="General Cargo">General Cargo</option>
+                                        <option value="Valuable">Valuable</option>
+                                        <option value="Vulnerable">Vulnerable</option>
+                                        <option value="Perishable">Perishable</option>
+                                    </lightning:select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-6" style="padding-right: 10px;">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="text-input-id-1">Filter</label>
+                                        <div class="slds-form-element__control">
+                                            
+                                            <lightning:button variant="neutral" label="Filter" title="Brand action" onclick="{!c.FilterBag}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-wrap"
+                       aria-label="Example table of Opportunities with vertical borders">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <!--<th class="" scope="col">
+                                    <div class="slds-truncate" title="Select">Select</div>
+                                </th>-->
+                            <th style="width:3.25rem;" class="slds-text-align--right">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox">
+                                            <!--header checkbox for select all-->
+                                            <ui:inputCheckbox aura:id="BagSelect" change="{!c.selectAllBag}"/>
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">#</div>
+                            </th>
+                            <th class="" scope="col" >
+                                <div class="slds-truncate" title="">Bag Identifier Search</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">SN #</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Shipment Created Date</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Shipper Account</div>
+                            </th>
+                           
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Origin
+</div>
+                            </th>
+                             <th class="" scope="col">
+                                <div class="slds-truncate" title="">Consignee Account</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Destination</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Destination Hub</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Current Hub</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">Next Destination</div>
+                            </th>
+                            <!--<th class="" scope="col">
+                                <div class="slds-truncate" title="">Finalized Number</div>
+                            </th>-->
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Seal Id">Seal Id</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                            </td>
+                            
+                            <td data-label="" >
+                                <input type="text" class="slds-input slds-combobox__input" 
+                                                aria-activedescendant="listbox-option-unique-id-01" aria-autocomplete="list" placeholder="Search Bag"
+                                                aria-controls="listbox-unique-id" autocomplete="off" role="combobox" onkeyup="{!c.BagChange}"/>
+                            </td>
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                                
+                            </td>
+                            <td data-label="">
+                                <input type="text" class="slds-input slds-combobox__input" 
+                                                aria-activedescendant="listbox-option-unique-id-01" aria-autocomplete="list" placeholder="Search Destination Hub"
+                                                aria-controls="listbox-unique-id" autocomplete="off" role="combobox" onkeyup="{!c.DestHubChange}"/>
+                            </td>
+                            <td data-label="">
+                            </td>
+                            <td data-label="">
+                            </td>
+                        </tr>
+                        <aura:iteration items="{!v.BagList}" var="bag" indexVar="index">
+                            <tr class="slds-hint-parent">
+                                <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox">
+                                                <ui:inputCheckbox aura:id="BagPack" value="{!bag.process}"/>
+                                                <span class="slds-checkbox--faux"></span>
+                                                <span class="slds-form-element__label text"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="">{!bag.index}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="Default Linehaul Name">{!bag.sb.Secure_Packaging_Identifier__c}</div>
+                                </td>
+                                
+                                <td data-label="">
+                                    <div class="slds-truncate" title="">{!bag.sb.Shipping_Note_Number__c}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title=""><lightning:formattedDateTime value="{!bag.sb.Shipment__r.CreatedDate}" year="numeric" month="numeric" day="numeric"  hour="2-digit" minute="2-digit"/></div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="Shipper Name">
+                                         {!bag.sb.Shipment__r.Shipper_Name_TMS__r.Name}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="Destination Hub">{!bag.sb.Shipment__r.Origin_Address_City__c}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="Consignee Name">{!bag.sb.Shipment__r.Consignee_Name_TMS__r.Name}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="20%"> {!bag.sb.Shipment__r.Destination_Address_City__c}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="20%"> {!bag.sb.Destination_Hub__c}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="20%"> {!bag.CurrentHub}</div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate" title="20%"> {!bag.sb.Next_Destination__c}</div>
+                                </td>
+                                <!--<td data-label="">
+                                    <div class="slds-truncate" title="20%"> {!bag.sb.Finalised_Linehaul_Number__c} </div>
+                                </td>-->
+                                <td data-label="">
+                                    <div class="slds-truncate" title="20%"> {!bag.Seal} </div>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <br/>
+                <aura:if isTrue="{!v.showModal}">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+                             aria-modal="true" aria-describedby="modal-content-id-1" 
+                             class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header">
+                                <lightning:buttonIcon iconName="utility:close"
+                                                      onclick="{! c.hideModel }"
+                                                      alternativeText="close"
+                                                      variant="bare-inverse"
+                                                      class="slds-modal__close"/>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                    Destination/Seal</h2>
+                            </header>
+                            <!--Modal/Popup Box Body Starts here-->
+                            <div class="slds-modal__content slds-p-around_xx-large" id="modal-content-id-1">
+                                <div class="slds-text-heading_x-small" ><b>Next Destination</b></div>
+                                <lightning:select variant="label-hidden" aura:id="a_opt" class="label-hidden" value="{!v.SelectedDest}" >
+                                    <aura:iteration items="{!v.CityVal}" var="ct" indexVar="key">
+                                        <option text="{!ct.value}" value="{!ct.key}"/>
+                                    </aura:iteration>
+                                </lightning:select><br/>
+                                <div class="slds-text-heading_x-small" ><b>Secure Seal</b></div><br/>
+                                 <c:TMS_Lookup1 objectName="Secure_Packaging__c"
+                                              field_API_text="Name"
+                                              field_API_val="Id"
+                                              SecurePackType="Secure Seal"
+                                              
+                                              field_API_search="Name"
+                                              lookupIcon="standard:asset_object" 
+                                              selItem="{!v.SelectedSeal}"
+                                              placeholder="Search Seal"
+                                              aura:id ="searchSeal"
+                                              /><br/>
+                                
+                            </div>
+                            <!--Modal/Popup Box Footer Starts here-->
+                            <footer class="slds-modal__footer">
+                                <lightning:button variant="neutral"
+                                                  label="Cancel"
+                                                  title="Cancel"
+                                                  onclick="{! c.hideModel }"/>
+                                <lightning:button variant="brand"
+                                                  label="Save"
+                                                  title="Save"
+                                                  onclick="{!c.saveBox}"/>
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+
+                <aura:if isTrue="{!v.showBarcodeModal}">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+                             aria-modal="true" aria-describedby="modal-content-id-1" 
+                             class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header">
+                                <lightning:buttonIcon iconName="utility:close"
+                                                      onclick="{!c.hideBarcodeModal }"
+                                                      alternativeText="close"
+                                                      variant="bare-inverse"
+                                                      class="slds-modal__close"/>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                    Scan Secure Package</h2>
+                            </header>
+                            <!--Modal/Popup Box Body Starts here-->
+                            <div class="slds-modal__content slds-p-around_xx-large" id="modal-content-id-1">
+                                <GMBLBC:barcodeInput aura:id="laserScanner" onsuccess="{!c.onScanSuccess}"/>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+                
+            </div>
+        </div>
+        <div class="slds-align_absolute-center slds-p-top_small">
+            <lightning:button variant="neutral" label="Back" title="Brand action" onclick="{!c.BackToShip}" />
+            <lightning:button variant="brand" label="Scan Bags" onclick="{!c.onClickScanBags}"/>
+            <lightning:button variant="brand" label="Add Seal/Next Destination" title="Brand action" onclick="{!c.showModel}"  disabled="{!v.DisableAddBox}"/>
+            <lightning:button variant="brand" label="Add to linehaul" title="Brand action" onclick="{!c.AddToLineHaul}" disabled="{!v.DisableAddLineHaul}"/>
+            <!--<lightning:button variant="brand" label="Save" title="Brand action" onclick="{!c.SaveDraft}" disabled="{!v.DisableSaveDraft}"/>-->
+        </div>
+        
+    </aura:if>
+    
+    <aura:if isTrue="{! (v.pageNum)==3 }">
+        <div class="slds-theme_default"  style="border-radius: 15px; padding-left: 10px;padding-right: 15px; padding-top: 10px;">
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2" style="padding-right: 10px;">
+                    <div class="slds-text-heading_x-small" ><b>Line Haul Type</b></div>
+                    <lightning:select variant="label-hidden" aura:id="a_opt" class="label-hidden" value="{!v.LineHaulType}" onchange="{!c.LineHaulChange}">
+                        <aura:iteration items="{!v.picklistVal}" var="ind" indexVar="key">
+                            <option text="{!ind.value}" value="{!ind.key}"/>
+                        </aura:iteration>
+                    </lightning:select><br/>
+                    <aura:if isTrue="{! (v.LineHaulType)=='Air' }">
+                        <div class="slds-text-heading_x-small" ><b>Origin Airport</b></div>
+                        <c:TMS_Lookup objectName="Transport__c"
+                                      field_API_text="Name"
+                                      field_API_val="Id"
+                                      limit="8"
+                                      field_API_search="Name"
+                                      RecordType="Airport"
+                                      lookupIcon="standard:asset_object" 
+                                      selItem="{!v.Airport}"
+                                      placeholder="Search Airport"
+                                      /><br/>
+                                                              	
+                        <div class="slds-text-heading_x-small"><b>Flight Date</b></div>	
+                        <!--<ui:inputDate class="field" value="{!v.FlightDateTime}" displayDatePicker="true" />-->	
+                        <lightning:input type="date" value="{!v.FlightDateTime}" min="{!v.currentDate}" max="{!v.TommorowDate}" onchange="{!c.onSelectedFlightSchedChange}"/>	
+                        	
+                       <br/>	
+                      	
+            	
+                        <div style="{! IF(v.showFlightSchedule==true,'display:block','display:none')}" class="slds-text-heading_x-small" ><b>Flight Schdule</b></div>	
+                        <div style="{! IF(v.showFlightSchedule==true,'display:block','display:none')}" >	
+                            <lightning:select variant="label-hidden" aura:id="flightSched" onchange="{!c.onselectedFlightSchedule}">	
+                                <aura:iteration items="{!v.availFlightSchedule}" var="fsc">	
+                                    <aura:if isTrue="{!fsc.Airline_Name1__c == 'SPICEJET'}">	
+                                        <option value="{!fsc.Id}">{!fsc.Name} </option>	
+                                        <aura:set attribute="else">	
+                                            <option value="{!fsc.Id}">{!fsc.Name} - {!fsc.Origin__c} - {!fsc.Destination__c} - {!fsc.Actual_Flight_Departure__c}</option>	
+                                        </aura:set>	
+                                    </aura:if>	
+                               <!-- <aura:if isTrue="{!fsc.Airline_Name1__c == 'Indigo'}">	
+                </aura:if>-->	
+                            </aura:iteration>	
+                        </lightning:select>	
+                        </div>	
+                        <div style="{! IF(v.showFlightSchedule==true,'display:block','display:none')}">	
+                            <br/>	
+                        </div>	
+                        	
+                        <!--available awb-->	
+                        <div class="slds-text-heading_x-small" ><b>Available AWB</b></div>	
+                        <lightning:select variant="label-hidden" aura:id="awbSelect" name="select" onchange="{!c.onSelectedAWBChange}" >	
+                            <aura:iteration items="{!v.availAWB}" var="awb">	
+                                <option value="{!awb}">{!awb}</option>	
+                            </aura:iteration>	
+                        </lightning:select>	
+                                                   	
+                       <!-- <c:TMS_Lookup objectName="Flight_Schedule__c"
+                                      field_API_text="Name"
+                                      field_API_val="Id"
+                                      limit="8"
+                                      field_API_search="Name"
+                                      lookupIcon="standard:asset_object" 
+                                      selItem="{!v.FlightSchedule}"
+                                      OriginAirport="{!v.Airport}"
+                                      DestAirport = "{!v.DestAirport}"
+                                      placeholder="Search Flight Schedule"
+                                      /><br/>
+                                      /> -->
+                         <!-- <c:TMS_Lookup objectName="Linehaul__c"	
+                                      field_API_text="AWB_Number__c"	
+                                      field_API_val="Id"	
+                                      field_API_search="AWB_Number__c"	
+                                      lookupIcon="standard:asset_object" 	
+                                      selItem="{!v.availAWB}"	
+                                      placeholder="Available AWB"	
+                                      /><br/> 	
+                       <lightning:select name="select1" label="How many tickets?" required="true">	
+                            <aura:iteration items="{!v.availAWB}" var="awb">	
+                              <option value="{!awb.AWB_Number__c}">{!awb.AWB_Number__c}</option>	
+                            </aura:iteration>	
+                            	
+                        </lightning:select>-->	
+                        
+                        <aura:set attribute="else">
+                            <div class="slds-text-heading_x-small" ><b>Vehicle</b></div>
+                            <c:TMS_Lookup objectName="Transport__c"
+                                          field_API_text="Name"
+                                          field_API_val="Id"
+                                          limit="8"
+                                          field_API_search="Name"
+                                          RecordType="BVC Vehicle"
+                                          lookupIcon="standard:asset_object" 
+                                          selItem="{!v.Vehicle}"
+                                          placeholder="Search Vehicle"
+                                          />
+                        </aura:set>
+                    </aura:if>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2" style="padding-left: 10px;">
+                    <aura:if isTrue="{! (v.LineHaulType)=='Air' }">
+                        <div class="slds-text-heading_x-small"><b>Finalised Linehaul Number / Airway Bill Number</b></div>
+                        <aura:set attribute="else">
+                            <div class="slds-text-heading_x-small"><b>Finalised Linehaul Number</b></div>
+                        </aura:set>
+                    </aura:if>
+                    <br/>
+                    <lightning:input variant="label-hidden" class="label-hidden" value="{! v.finalisedNumber }"/>
+                    <aura:if isTrue="{! (v.LineHaulType)=='Air' }"><br/>
+                        <div class="slds-text-heading_x-small" ><b>Destination Airport</b></div>
+                        <c:TMS_Lookup objectName="Transport__c"
+                                      field_API_text="Name"
+                                      field_API_val="Id"
+                                      limit="8"
+                                      field_API_search="Name"
+                                      RecordType="Airport"
+                                      lookupIcon="standard:asset_object" 
+                                      selItem="{!v.DestAirport}"
+                                      placeholder="Search Airport"
+                                      />
+                        
+                        <br/>
+                      	                         <!--airline input	
+                        <div class="slds-text-heading_x-small" style="margin-bottom:16px"><b>Airline</b></div>	
+                        <lightning:input name="input" aura:Id="airlineVal" variant="label-hidden" onkeyup="{!c.onSelectedFlightSchedChange}"/>	
+                        <br/> -->	
+                         <div class="slds-text-heading_x-small" ><b>Airline</b></div>	
+                        <lightning:select variant="label-hidden" aura:id="arlList" name="Airline" onchange="{!c.onSelectedFlightSchedChange}" >	
+                            <aura:iteration items="{!v.airlineList}" var="arl">	
+                                <option value="{!arl.Airline_Name__c}">{!arl.Airline_Name__c}</option>	
+                            </aura:iteration>	
+                        </lightning:select>	
+                       	
+                        	
+                        <br/>	
+                        <!--available awb-->	
+                        <div class="slds-text-heading_x-small" ><b>Commodity Code</b></div>	
+                        <lightning:select variant="label-hidden" aura:id="comCode" name="ComCode" onchange="{!c.onSelectedComCode}" >	
+                            <aura:iteration items="{!v.commodityCodeList}" var="comcodeVal">	
+                                <option value="{!comcodeVal.Commodity_Code__c}">{!comcodeVal.Commodity_Code__c}</option>	
+                            </aura:iteration>	
+                        </lightning:select>	
+                        <br/>	
+                        
+                    </aura:if>
+                </div>
+            </div>
+            <br/>
+            <div class="slds-align_absolute-center slds-p-top_small">
+                <lightning:button variant="neutral" label="Back" title="Brand action" onclick="{!c.BackToBag}" />
+                <lightning:button variant="success" label="Finalise" title="Brand action" onclick="{!c.Save}" />
+                <lightning:button variant="neutral" label="Fetch AWB" title="Brand action" onclick="{!c.AvailableAWB}" />
+            </div><br/>
+        </div>
+    </aura:if>
+    
+</aura:component>

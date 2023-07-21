@@ -1,0 +1,41 @@
+<!--
+   Component Name   :   multipleFileUploadOnShipment
+   Description      :   Lightning component to upload multiple files on shipment object,handles file formats and shows attached files. 
+   Input Parameter	:	Record ID   
+   Developer Name   :   Mr.Sangale Govind    Created Date:10/01/2023
+-->
+
+<aura:component controller="MultipleFileUploadonShipmentController" implements="lightning:availableForFlowScreens" access="global">
+
+<!--Functional Public Attributes-->
+    <aura:attribute access="public" name="showUploadFile" type="boolean" default="false"/>
+    <aura:attribute access="public" name="accept" type="List" default="['.jpg', '.jpeg', '.docx', '.pdf', '.ppt', '.pptx', '.xls', '.xlsx', '.gif','.png', '.csv']"/>
+    <aura:attribute access="public" name="multiple" type="Boolean" default="true"/>
+    <aura:attribute access="public" name="disabled" type="Boolean" default="false"/>
+    <aura:attribute access="public" name="uploadedFiles" type="List" default=""/>
+    <aura:attribute access="public" name="sObjectAttachedFiles" type="List" default="[]"/>
+    <aura:attribute access="public" name="sObjectName" type="String" default=""/>
+    <aura:attribute access="public" name="sObjectId" type="String" default=""/>
+      
+    <aura:handler name="init" value="{!this}" action="{!c.getExistingFiles}"/>
+
+   <!-- Quick Action Modal Header -->
+    <div class="modal-header slds-modal__header slds-size_1-of-1">
+        <h4 class="slds-text-heading--medium">Upload Files</h4>
+    </div>
+    <lightning:fileUpload name="fileUploader"
+                          multiple="{!v.multiple}"
+                          accept="{!v.accept}"
+                          disabled="{!v.disabled}"
+                          recordId="{!v.sObjectId}"
+                          onuploadfinished="{!c.handleUploadFinished}"/>
+
+<!-- Responsive Layout to show File Cards on the Modal -->
+    <lightning:layout multipleRows="true">
+           <aura:iteration items="{!v.sObjectAttachedFiles}" var="file">
+             <lightning:layoutItem padding="around-small">
+                <lightning:fileCard fileId="{!file.Id}" description="{!file.Title}"/>
+             </lightning:layoutItem>
+          </aura:iteration>
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:dependency resource="markup://force:navigateToURL" type="EVENT"/>	
+    <aura:handler event="force:showToast" action="{!c.redirectToNewRecord}"/>
+</aura:component>

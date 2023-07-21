@@ -1,0 +1,8 @@
+:host .slds-welcome-mat__tiles{
+    background: rgb(243, 243, 243) !important;
+}
+
+:host .slds-welcome-mat__tile-title{
+    padding: 0px;
+    margin: 0px;
+}

@@ -1,0 +1,26 @@
+<template>
+
+    <lightning-layout horizontal-align="space">
+        <lightning-layout-item padding="around-small">
+            <div class="custom-box"><lightning-input type="date" name="Start Date" label="Start Date" value={startDate} onchange={startDateChange}></lightning-input></div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <div class="custom-box"><lightning-input type="date" name="End Date" label="End Date" value={endDate} onchange={endDateChange}></lightning-input></div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <div class="custom-box">
+                <lightning-button label="Search" slot="fetchInvoices" onclick={searchInvoices} padding="around-small"></lightning-button>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <template if:true={data}>
+        <lightning-datatable
+                    key-field="id"
+                    data={data}
+                    columns={columns}
+                    min-column-width="80">
+        </lightning-datatable>            
+    </template>
+    
+</template>

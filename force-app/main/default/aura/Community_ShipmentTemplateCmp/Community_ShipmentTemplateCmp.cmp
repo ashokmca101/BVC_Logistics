@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:attribute name="selectedDocumentId" type="string" default="0691m000000LKnFAAW"/>
+    <lightning:button label="Download Shipment Template" class="slds-button slds-button_outline-brand" onclick="{! c.openSingleFile }"/>
+</aura:component>

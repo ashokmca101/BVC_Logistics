@@ -1,0 +1,3 @@
+<design:component>
+    <design:attribute Name="sObjectId" Label="RecordID"/>          
+</design:component>

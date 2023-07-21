@@ -1,0 +1,30 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CheckKYCVerified" >
+
+<!--Boolean attribute to indicate if modal is open or not. It depends on Is_KYC_Verified__c field on User obect. 
+    If KYC field on User is checked It means kYC of that user is verified and isModalOpen will become false as a result popup willbe closed. --> 
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="isModalOpen" type="boolean"/>
+    <div class="slds-m-around_xx-large">
+      <aura:if isTrue="{!v.isModalOpen}">
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" aria-hidden="true">
+                <div class="slds-modal__container" aria-hidden="true">
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-align_absolute-center" style="height:20rem"><h1><b>Your KYC is not updated. Kindly refresh the page after updating your KYC.</b></h1></div>
+                    </div>
+                    <footer class="slds-modal__footer">
+                       <lightning:navigation aura:id="navService"/>
+                      <lightning:button class="slds-button" label="Update KYC"  onclick="{!c.goToRec}" />
+                      <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+</aura:component>

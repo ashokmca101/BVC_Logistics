@@ -1,0 +1,14 @@
+.THIS {
+}
+
+.THIS.error1{
+    color: red;
+    font-weight: bold;
+}
+
+.THIS.margins{
+    margin-right: 150px;
+    margin-left: 80px;
+    font-weight: bold;
+    margin-block: 35px;
+}
