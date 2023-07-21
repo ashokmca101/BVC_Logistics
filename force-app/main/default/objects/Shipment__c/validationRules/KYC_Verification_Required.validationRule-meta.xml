@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KYC_Verification_Required</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Status__c, &apos;Verified For Billing&apos;) &amp;&amp; ( NOT(AND((NOT( ISBLANK(Customer__r.Name_As_Per_PAN_Manual_Input__c) )),
+
+OR(
+( ISPICKVAL( Customer__r.KYC_Status__c , &apos;API Verified&apos;) ),
+( ISPICKVAL( Customer__r.KYC_Status__c , &apos;Manually Verified&apos;) )),
+( Customer__r.Billing_Address__c &lt;&gt; null ),
+( Customer__r.Is_Finance_Contact_Present__c ),
+( Customer__r.Primary_Address__c &lt;&gt; null ))))</errorConditionFormula>
+    <errorDisplayField>Account__c</errorDisplayField>
+    <errorMessage>KYC incomplete, Cannot Generate the Order.</errorMessage>
+</ValidationRule>

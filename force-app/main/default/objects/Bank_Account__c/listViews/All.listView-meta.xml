@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Bank_Name__c</columns>
+    <columns>Branch_Name__c</columns>
+    <columns>BVC_Entity__c</columns>
+    <columns>Bank_Account_Number__c</columns>
+    <columns>IFSC_Code__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

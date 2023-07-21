@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Portal_User_On_Shipment_Customer</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK($User.ContactId))&amp;&amp;(Customer__c != $User.Parent_Customer_Id__c)&amp;&amp; NOT(ISBLANK(Customer__c))</errorConditionFormula>
+    <errorDisplayField>Customer__c</errorDisplayField>
+    <errorMessage>Kindly Select Your Customer.</errorMessage>
+</ValidationRule>

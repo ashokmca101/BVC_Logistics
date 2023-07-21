@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_Destination_HUB_Name__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Next Destination HUB Name</label>
+    <referenceTo>Hub__c</referenceTo>
+    <relationshipLabel>Secure Bags (Next Destination HUB Name)</relationshipLabel>
+    <relationshipName>Secure_Bags4</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Indigo</fullName>
+    <columns>NAME</columns>
+    <columns>Origin__c</columns>
+    <columns>Departure_Date__c</columns>
+    <columns>Destination__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Consignee_Account_Code__c</columns>
+    <columns>Consignee_City__c</columns>
+    <columns>Shipping_Account_Code__c</columns>
+    <columns>Shipping_Agent_Code__c</columns>
+    <columns>Shipping_City__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Airline_Name1__c</field>
+        <operation>equals</operation>
+        <value>Indigo</value>
+    </filters>
+    <filters>
+        <field>Origin__c</field>
+        <operation>equals</operation>
+        <value>BLR</value>
+    </filters>
+    <label>Indigo</label>
+</ListView>

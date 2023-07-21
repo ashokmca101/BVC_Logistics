@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Select_Airline_mandatory</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(ISBLANK(TEXT(Select_Airline__c)),true,
+IF(AND(NOT(ISBLANK(TEXT(Select_Airline__c))),(ISPICKVAL(Select_Airline__c,&quot;SPICEJET&quot;)),ISBLANK(Flight_No_for_SpiceJet_Indigo__c)),true,false))</errorConditionFormula>
+    <errorMessage>Please Select Flight Number or Do not Select Flight Number for Indigo Airline.</errorMessage>
+</ValidationRule>

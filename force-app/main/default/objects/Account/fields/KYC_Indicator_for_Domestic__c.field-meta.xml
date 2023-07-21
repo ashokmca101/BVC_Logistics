@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KYC_Indicator_for_Domestic__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AND((NOT( ISBLANK(Name_As_Per_PAN_Manual_Input__c) )),
+        
+ OR(
+      ( ISPICKVAL( KYC_Status__c , &apos;API Verified&apos;) ),
+   ( ISPICKVAL( KYC_Status__c , &apos;Manually Verified&apos;) )),
+( Billing_Address__c &lt;&gt; null ),
+( Is_Finance_Contact_Present__c ),
+(  Primary_Address__c  &lt;&gt; null  )
+
+
+) ,
+      IMAGE(&apos;https://bvc2--c.documentforce.com/sfc/servlet.shepherd/version/download/0685g000002k2f5&apos;, &apos;&apos;, 25, 25), IMAGE(&apos;https://bvc2--c.documentforce.com/sfc/servlet.shepherd/version/download/0685g000002k2ew&apos;, &apos;&apos; , 25, 25))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>KYC Indicator for Domestic</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

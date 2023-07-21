@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>debtsDueDirWithSix__c</fullName>
+    <description>Debt due by directors/others officers of the company within six months</description>
+    <externalId>false</externalId>
+    <label>Debt due by directors within 6 months</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

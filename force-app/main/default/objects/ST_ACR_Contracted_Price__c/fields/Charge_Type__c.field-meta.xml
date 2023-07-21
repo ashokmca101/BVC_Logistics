@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Charge_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Charge Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Freight Charge</fullName>
+                <default>false</default>
+                <label>Freight Charge</label>
+            </value>
+            <value>
+                <fullName>Liability Charge</fullName>
+                <default>false</default>
+                <label>Liability Charge</label>
+            </value>
+            <value>
+                <fullName>Offline Charge</fullName>
+                <default>false</default>
+                <label>Offline Charge</label>
+            </value>
+            <value>
+                <fullName>Weight Charge</fullName>
+                <default>false</default>
+                <label>Weight Charge</label>
+            </value>
+            <value>
+                <fullName>BVC Valuation Charge</fullName>
+                <default>false</default>
+                <label>BVC Valuation Charge</label>
+            </value>
+            <value>
+                <fullName>Docket Charge</fullName>
+                <default>false</default>
+                <label>Docket Charge</label>
+            </value>
+            <value>
+                <fullName>Fuel Charge</fullName>
+                <default>false</default>
+                <label>Fuel Charge</label>
+            </value>
+            <value>
+                <fullName>Holiday Charge</fullName>
+                <default>false</default>
+                <label>Holiday Charge</label>
+            </value>
+            <value>
+                <fullName>Fuel Surcharge</fullName>
+                <default>false</default>
+                <label>Fuel Surcharge</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

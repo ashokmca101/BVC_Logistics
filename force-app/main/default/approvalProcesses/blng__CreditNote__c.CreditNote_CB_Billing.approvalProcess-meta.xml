@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>blng__Account__c</field>
+        <field>blng__RelatedInvoice__c</field>
+        <field>blng__Status__c</field>
+        <field>blng__Subtotal__c</field>
+        <field>Reason_for_Credit_Note__c</field>
+        <field>Internal_Comments__c</field>
+        <field>Remark__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>hitesh@bvcgroup.com</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>pritam.vartak@bvclogistics.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>blng__CreditNote__c.Approval_reason__c</field>
+                <operation>notEqual</operation>
+                <value>Balance Reduction in ACR</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>blng__CreditNote__c.Approval_reason__c</field>
+                <operation>notEqual</operation>
+                <value>Invoice Date Change</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>blng__CreditNote__c.Approval_reason__c</field>
+                <operation>notEqual</operation>
+                <value>Billing Address Change</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Approver</label>
+        <name>Approver</name>
+    </approvalStep>
+    <emailTemplate>unfiled$public/Credit_Note_Approval_Template</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>(1 OR 2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>blng__CreditNote__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Tax Credit Note</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>blng__CreditNote__c.RecordType</field>
+            <operation>equals</operation>
+            <value>BOS Credit Note</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>blng__CreditNote__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Commercial Credit Note</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Credit_Note_Approval_Response_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_Credit_Note_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_CreditNote_Approval_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Credit_Note_Approval_Response_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Credit_Note_Status_Changed_to_cancelled</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Rejection_Action_Credit_Note</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>CreditNote CB Billing</label>
+    <processOrder>3</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

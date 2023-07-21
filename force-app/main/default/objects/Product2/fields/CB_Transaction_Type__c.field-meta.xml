@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CB_Transaction_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Transaction Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Taxable</fullName>
+                <default>false</default>
+                <label>Taxable</label>
+            </value>
+            <value>
+                <fullName>NonTaxable</fullName>
+                <default>false</default>
+                <label>NonTaxable</label>
+            </value>
+            <value>
+                <fullName>Exempted</fullName>
+                <default>false</default>
+                <label>Exempted</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

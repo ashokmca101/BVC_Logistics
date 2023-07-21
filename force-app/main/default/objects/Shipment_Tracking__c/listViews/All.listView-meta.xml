@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>Shipping_Note_No__c</columns>
+    <columns>NAME</columns>
+    <columns>Shipment__c</columns>
+    <columns>Scan_Time__c</columns>
+    <columns>Orgin__c</columns>
+    <columns>Hub__c</columns>
+    <columns>Geocode__Latitude__s</columns>
+    <columns>Geocode__Longitude__s</columns>
+    <columns>Destination__c</columns>
+    <columns>Act_Delivery_Date__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Status__c</columns>
+    <columns>Location__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

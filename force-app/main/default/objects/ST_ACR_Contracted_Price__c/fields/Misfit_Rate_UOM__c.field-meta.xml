@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Misfit_Rate_UOM__c</fullName>
+    <externalId>false</externalId>
+    <label>Rate UOM (Misfit)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gross weight</fullName>
+                <default>false</default>
+                <label>Gross weight</label>
+            </value>
+            <value>
+                <fullName>Net Weight</fullName>
+                <default>false</default>
+                <label>Net Weight</label>
+            </value>
+            <value>
+                <fullName>Per Shipment</fullName>
+                <default>false</default>
+                <label>Per Shipment</label>
+            </value>
+            <value>
+                <fullName>Package Weight</fullName>
+                <default>false</default>
+                <label>Package Weight</label>
+            </value>
+            <value>
+                <fullName>Per Lakhs</fullName>
+                <default>false</default>
+                <label>Per Lakhs</label>
+            </value>
+            <value>
+                <fullName>% of Invoice Value</fullName>
+                <default>false</default>
+                <label>% of Invoice Value</label>
+            </value>
+            <value>
+                <fullName>% of Freight Charges</fullName>
+                <default>false</default>
+                <label>% of Freight Charges</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

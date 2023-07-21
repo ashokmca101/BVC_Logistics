@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>WebHookonTracking</fullName>
+        <apiVersion>58.0</apiVersion>
+        <endpointUrl>https://bvclogistics-dev.outsystemsenterprise.com/BVCWebhook/rest/BVC/Tracking</endpointUrl>
+        <fields>Id</fields>
+        <fields>Location__c</fields>
+        <fields>Shipping_Note_No__c</fields>
+        <fields>StatusTime__c</fields>
+        <fields>Status__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>imran.shaik@bvclogistics.com</integrationUser>
+        <name>WebHookonTracking</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+</Workflow>

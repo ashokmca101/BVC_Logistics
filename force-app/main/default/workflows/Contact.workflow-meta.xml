@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Email_Notification_to_Community_User_if_existing_found_based_on_PAN_provided</fullName>
+        <ccEmails>sumitsourav111@gmail.com</ccEmails>
+        <description>Email Notification to Community User if existing found based on PAN provided.</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>BVC_Community_Email_Template_Folder/PAN_Based_Existing_Account_Confirmation_Template</template>
+    </alerts>
+</Workflow>

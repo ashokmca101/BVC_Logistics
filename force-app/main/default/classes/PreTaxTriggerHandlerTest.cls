@@ -240,6 +240,7 @@ public class PreTaxTriggerHandlerTest {
         doc3.rsdoc__Template_Document_ID__c='1uZcLxCSH_49alJviesXWA0xMFwLBTytgaA0TdIIvkag';
         doclist.add(doc1);doclist.add(doc2);doclist.add(doc3);
         insert doclist;
+            CPQ_CNEYTaxCalculation.fakeMethod();
              Test.stopTest();
         }
    @istest static void createOrderFromPreTaxTest(){
@@ -335,7 +336,7 @@ public class PreTaxTriggerHandlerTest {
         update inv;
     }
     //Uncomment this if you need code coverage for credit note trigger handler
-    /*@istest static void createOrderFromPreTaxTest3(){
+   /* @istest static void createOrderFromPreTaxTest3(){
         Test.startTest();
         BVC_CB_PreTaxBill__c PTbill =[Select ID, name,BVC_CB_PretaxDetails_Inserted__c from BVC_CB_PreTaxBill__c where name='TestPretaxBill0001'];
         PTbill.BVC_CB_PretaxDetails_Inserted__c =True;
@@ -548,6 +549,7 @@ public class PreTaxTriggerHandlerTest {
         CNAllocation.blng__Type__c  = 'Allocation';
         insert CNAllocation;
         CPQ_CNEYTaxCalculation.doTaxCalculationForCN(cnlist[1].id);*/
+    
         CBOrderActivation testobj = new CBOrderActivation();//for the batch class CBOrderActivationBatch added
         String cronexpression = '0 43 20 ? * * *';
         System.schedule('Testing', cronexpression, testobj);

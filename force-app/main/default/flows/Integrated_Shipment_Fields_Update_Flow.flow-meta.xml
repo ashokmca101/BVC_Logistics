@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <name>Update_shipment_stage_to_BVC_weighment_done</name>
+        <label>Update shipment stage to BVC weighment done</label>
+        <locationX>116</locationX>
+        <locationY>1127</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Shipment_Stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>BVC Weighment Done</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Gross_and_net_weight_created</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>update_shipment_stage_to_weightment_pending_0</name>
+        <label>update shipment stage to weightment pending</label>
+        <locationX>380</locationX>
+        <locationY>1127</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Shipment_Stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Weighment Pending</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Gross_and_net_weight_created</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Gross_and_net_weight_created</name>
+        <label>Check Gross and net weight created</label>
+        <locationX>380</locationX>
+        <locationY>1343</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>shipment_stage_is_bvc_weighment_done</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Shipment_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BVC Weighment Done</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_status_is_pending</targetReference>
+            </connector>
+            <label>shipment stage is bvc weighment done</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Gross_weight_of_Shipment_Object</name>
+        <label>Check Gross weight of Shipment Object</label>
+        <locationX>380</locationX>
+        <locationY>1007</locationY>
+        <defaultConnector>
+            <targetReference>Check_Gross_and_net_weight_created</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_gross_weight_is_not_NULL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Gross_Weight__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_shipment_stage_to_BVC_weighment_done</targetReference>
+            </connector>
+            <label>Check gross weight is not NULL</label>
+        </rules>
+        <rules>
+            <name>If_gross_weight_is_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Gross_Weight__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_shipment_stage_to_weightment_pending_0</targetReference>
+            </connector>
+            <label>If gross weight is null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_pickup_record_id_not_null</name>
+        <label>Check pickup record id not null</label>
+        <locationX>380</locationX>
+        <locationY>671</locationY>
+        <defaultConnector>
+            <targetReference>Check_Gross_weight_of_Shipment_Object</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>check_pickup_list</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Pickup_Records_0.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Pickup_Records_0.Pickup_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_pickup_status_to_complete</targetReference>
+            </connector>
+            <label>check pickup list</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_status_is_pending</name>
+        <label>check status is pending</label>
+        <locationX>182</locationX>
+        <locationY>1463</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>status_is_pending</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Customer__r.Credit_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Non Credit</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer__r.Customer_Category_Static__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Non-ACR</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer__r.Billing_Frequency__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Shipment</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Verified for Billing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Billed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Picked for Billing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_shipment_record</targetReference>
+            </connector>
+            <label>status is pending</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_tracaking_status</name>
+        <label>check tracaking status</label>
+        <locationX>380</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Get_Pickup_Records_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>tracking_status_is_picked_up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Tracking_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tracking_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Picked Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Pickup_Records_0</targetReference>
+            </connector>
+            <label>tracking status is picked up</label>
+        </rules>
+    </decisions>
+    <description>added condition for bath and eSHIP in start</description>
+    <environments>Default</environments>
+    <interviewLabel>Integrated Shipment Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Integrated Shipment Fields Update Flow after save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Pickup_Records_0</name>
+        <label>Get Pickup Records</label>
+        <locationX>380</locationX>
+        <locationY>551</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_pickup_record_id_not_null</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Shipment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Pickup_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pickup__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>update_pickup_status_to_complete</name>
+        <label>update pickup status to complete</label>
+        <locationX>248</locationX>
+        <locationY>791</locationY>
+        <connector>
+            <targetReference>Check_Gross_weight_of_Shipment_Object</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Pickup_Records_0.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Pickup_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Pickup_Status__c</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Pickup__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_shipment_record</name>
+        <label>update shipment record</label>
+        <locationX>50</locationX>
+        <locationY>1583</locationY>
+        <inputAssignments>
+            <field>Verified_for_Billing__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>check_tracaking_status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Customer_Product_Category__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>BATH</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Product_Category__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>eSHIP</stringValue>
+            </value>
+        </filters>
+        <object>Shipment__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>emailTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Dear Sir/Madam,﻿&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;The status of Shipment &lt;/span&gt;&lt;span style=&quot;color: rgb(27, 26, 26); background-color: rgb(255, 255, 255);&quot;&gt;{!$Record.Name}&lt;/span&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt; with Shipping Note Number {!$Record.Shipping_Note_Number__c} dated &lt;/span&gt;&lt;span style=&quot;color: rgb(27, 26, 26); background-color: rgb(255, 255, 255);&quot;&gt;{!$Record.Shipment_Date__c} &lt;/span&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt; is set as &apos;&lt;/span&gt;&lt;strong style=&quot;color: rgb(27, 26, 26);&quot;&gt;Hold&lt;/strong&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;&apos;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;The other details are as follows-&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Product Description- {!$Record.Product_Description__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Shipment Value- {!$Record.Shipment_Value__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Billing Account- {!$Record.Billing_Account__r.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Shipper Account- {!$Record.Shipper_Name_TMS__r.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Shipper PAN- {!$Record.Shipper_Name_TMS__r.PAN_Number_of_Entity__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Consignee Account- {!$Record.Consignee_Name_TMS__r.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Consignee PAN- {!$Record.Consignee_Name_TMS__r.PAN_Number_of_Entity__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Origin Address City- {!$Record.Origin_Address_City__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Destination Address City- {!$Record.Destination_Address_City__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Origin Hub- {!$Record.Origin_Hub__r.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(27, 26, 26);&quot;&gt;Destination Hub- {!$Record.Destination_Hub__r.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regards,&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;BVC Team&lt;/strong&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>subjectTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;The Status of the Shipping Note Number {!$Record.Shipping_Note_Number__c} for the Account {!$Record.Billing_Account__r.Name}&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

@@ -48,11 +48,17 @@
         <div class="slds-m-around_medium slds-box">
             <canvas class="signature-pad" width={canvasWidth} height={canvasHeight} lwc:dom="manual"></canvas>
         </div> 
+        <!--
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="POD" accept={acceptedFormats} record-id={deliveryId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="ID Photo" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="Shipping Note Photo (optional)" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="Secure Bag Photo (Optional)" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        -->
 
-        <lightning-file-upload class="slds-file-selector__text_integrated" name="IDUploader"  label="ID Photo" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
-        <lightning-file-upload class="slds-file-selector__text_integrated" name="SNPUploader"  label="Shipping Note Photo (optional)" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
-        <lightning-file-upload class="slds-file-selector__text_integrated" name="SBUploader"  label="Secure Bag Photo (Optional)" accept={acceptedFormats} record-id={SBID} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
-        <lightning-file-upload class="slds-file-selector__text_integrated" name="PODUploader"  label="POD" accept={acceptedFormats} record-id={deliveryId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="POD" accept={acceptedFormats} record-id={deliveryId} onuploadfinished={PODfileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="ID Photo" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={IDfileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="Shipping Note Photo (optional)" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={SNfileuploaddone} multiple> </lightning-file-upload>
+        <lightning-file-upload class="slds-file-selector__text_integrated" name="fileUploader"  label="Secure Bag Photo (Optional)" accept={acceptedFormats} record-id={shipmentId} onuploadfinished={fileuploaddone} multiple> </lightning-file-upload>
 
         <div slot="footer">  
             <lightning-button label="Complete" onclick={handleClick}></lightning-button>

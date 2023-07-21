@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__SubscriptionType__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Indicates the subscription type to determine contract&apos;s pricing.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates the subscription type to determine contract&apos;s pricing.</inlineHelpText>
+    <label>Subscription Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>SBQQ__ProductSubscriptionType__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>SBQQ__SubscriptionType</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Renewable</controllingFieldValue>
+            <controllingFieldValue>Renewable/Evergreen</controllingFieldValue>
+            <valueName>Renewable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>One-time</controllingFieldValue>
+            <valueName>One-time</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Renewable/Evergreen</controllingFieldValue>
+            <controllingFieldValue>Evergreen</controllingFieldValue>
+            <valueName>Evergreen</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

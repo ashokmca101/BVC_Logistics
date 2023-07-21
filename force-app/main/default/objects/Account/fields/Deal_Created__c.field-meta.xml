@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Created__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>this field is used in PB &quot;Create Deal&quot;. When consumption becomes 80%, it will create deal</description>
+    <externalId>false</externalId>
+    <label>Deal Created</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

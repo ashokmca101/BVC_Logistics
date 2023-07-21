@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipment_Status_Destination_BHOPAL</fullName>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Shipment_Date__c</columns>
+    <columns>Consignee_Name_TMS__c</columns>
+    <columns>Destination_Address_Line1__c</columns>
+    <columns>Origin_Hub__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Destination_Hub__c</columns>
+    <columns>Destination_Address_City__c</columns>
+    <columns>Delivery_Instruction__c</columns>
+    <columns>Delivery_Route_Number__c</columns>
+    <columns>Delivery_Route_Assigned_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Shipment_Status__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Destination_Hub__c</field>
+        <operation>equals</operation>
+        <value>BHOPAL</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Shipment__c.Operations_Shipment</value>
+    </filters>
+    <filters>
+        <field>Tracking_Status__c</field>
+        <operation>equals</operation>
+        <value>Destination Port,Destination Hub,Out for Delivery</value>
+    </filters>
+    <label>Shipment Status - Destination BHOPAL</label>
+    <sharedTo>
+        <group>TMS_Branch_Managers</group>
+        <group>TMS_Managers</group>
+    </sharedTo>
+</ListView>

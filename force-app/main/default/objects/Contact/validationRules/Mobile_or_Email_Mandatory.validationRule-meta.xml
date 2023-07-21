@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mobile_or_Email_Mandatory</fullName>
+    <active>true</active>
+    <description>Either enter mobile or the email address</description>
+    <errorConditionFormula>ISBLANK( MobilePhone ) &amp;&amp;  ISBLANK(  Email  )</errorConditionFormula>
+    <errorMessage>Either enter the Mobile Number or the Email</errorMessage>
+</ValidationRule>

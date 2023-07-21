@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tracking_Status_lock_after_delivered</fullName>
+    <active>false</active>
+    <description>Tracking_Status Lock when delivered</description>
+    <errorConditionFormula>AND(
+  ISCHANGED(Tracking_Status__c),
+  ISPICKVAL(PRIORVALUE(Tracking_Status__c), &quot;Delivered&quot;)
+)</errorConditionFormula>
+    <errorMessage>Tracking status cannot be changed once delivered</errorMessage>
+</ValidationRule>

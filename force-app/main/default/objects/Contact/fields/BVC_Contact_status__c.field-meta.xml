@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Contact_status__c</fullName>
+    <externalId>false</externalId>
+    <label>Contact status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Active</fullName>
+                <default>true</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Inactive-Moved To Another Company</fullName>
+                <default>false</default>
+                <label>Inactive-Moved To Another Company</label>
+            </value>
+            <value>
+                <fullName>Inactive-No Activity</fullName>
+                <default>false</default>
+                <label>Inactive-No Activity</label>
+            </value>
+            <value>
+                <fullName>Active-DND</fullName>
+                <default>false</default>
+                <label>Active-DND</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

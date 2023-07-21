@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__OriginalUnitCost__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Original unit cost of the Asset at the time of purchase before Cost Schedules were applied.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Original unit cost of the Asset at the time of purchase before Cost Schedules were applied.</inlineHelpText>
+    <label>Original Unit Cost</label>
+    <precision>14</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

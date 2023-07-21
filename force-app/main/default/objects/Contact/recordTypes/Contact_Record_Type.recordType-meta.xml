@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Record_Type</fullName>
+    <active>true</active>
+    <label>Contact Record Type</label>
+    <picklistValues>
+        <picklist>BVC_Contact_status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Active-DND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive-Moved To Another Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive-No Activity</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Customer portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct database upload by admin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct lead addition by users</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email ID common</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Specific exhibitions or campaign links or forms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website Inquiries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website signup %28community%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website visitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WhatsApp inbound</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Name</picklist>
+        <values>
+            <fullName>Dr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mrs%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ms%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prof%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

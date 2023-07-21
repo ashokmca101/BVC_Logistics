@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <defaultValue>&quot;Manual&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>Source</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Manual</fullName>
+                <default>false</default>
+                <label>Manual</label>
+            </value>
+            <value>
+                <fullName>KARZAA</fullName>
+                <default>false</default>
+                <label>KARZAA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

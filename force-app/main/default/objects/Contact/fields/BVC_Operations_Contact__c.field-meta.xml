@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Operations_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is to indicate if the contact is for Operations</description>
+    <externalId>false</externalId>
+    <label>Operations Contact</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

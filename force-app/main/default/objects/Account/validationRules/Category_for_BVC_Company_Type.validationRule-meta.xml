@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category_for_BVC_Company_Type</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF((INCLUDES(BVC_Company_Type__c,&apos;International&apos;) || INCLUDES(BVC_Company_Type__c,&apos;International;CB Customer&apos;)) &amp;&amp; (NOT(INCLUDES(BVC_Company_Type__c,&apos;Domestic&apos;))), IF( ISPICKVAL( Category__c , &apos;Manufacturer&apos;) || ISPICKVAL(Category__c, &apos;Merchant&apos;) , FALSE , TRUE) ,FALSE)</errorConditionFormula>
+    <errorDisplayField>Category__c</errorDisplayField>
+    <errorMessage>Category must be one of Manufacturer or Merchant for the selected BVC Company Type</errorMessage>
+</ValidationRule>

@@ -76,7 +76,7 @@
                 </div> 
                 <div class="slds-size_1-of-2 ">
                     <template if:true={scanbag}> 
-                     <lightning-button class="slds-float_right" variant="brand" label="Scan Bag 1" onclick={bagScanning} required></lightning-button>
+                     <lightning-button class="slds-float_right" variant="brand" label="Scan Bag" onclick={bagScanning} required></lightning-button>
                     </template>
                 </div>
             </div>
@@ -191,12 +191,12 @@
                 
                 <div class="slds-size_1-of-2 ">
                     <template if:true={scanbag}> 
-                    <lightning-button class="slds-float_left" variant="brand" label="Unlock Seal ID" onclick={unlocksealId} disabled={enableUnlockSealIDButton}></lightning-button>
+                    <lightning-button class="slds-float_left" variant="brand" label="Unlock Seal ID" onclick={unlocksealId}></lightning-button>
                 </template>
                 </div> 
 
                 <div class="slds-size_1-of-2 ">
-                    <lightning-button class="slds-float_right" variant="Neutral" label="Complete." onclick={scanningCompleted} disabled={enableUnlockSealCompleteButton}></lightning-button>
+                    <lightning-button class="slds-float_right" variant="Neutral" label="Complete" onclick={scanningCompleted} disabled={enableUnlockSealCompleteButton}></lightning-button>
                 </div>
                 
             </div>
@@ -245,7 +245,7 @@
                                 <!-- <input type="checkbox"> -->
                             </th>
                             <th class="" scope="col">
-                                <div class="slds-truncate" title="Shipping Note Number">Shipping Note Number123</div>
+                                <div class="slds-truncate" title="Shipping Note Number">Shipping Note Number</div>
                             </th>
                             <th class="" scope="col">
                                 <div class="slds-truncate" title="Secure Bag">Secure Bag</div>
@@ -383,22 +383,22 @@
                 
                 <template if:false={normalBagButton}>
                     <div class="slds-size_1-of-2 ">
-                        <lightning-button class="slds-float_left" variant="brand" label="Scan Bag 2" onclick={unlocksealId}></lightning-button>
+                        <lightning-button class="slds-float_left" variant="brand" label="Scan Bag" onclick={unlocksealId}></lightning-button>
                     </div>
     
                     <div class="slds-size_1-of-2 ">
-                        <lightning-button class="slds-float_right" variant="Neutral" label="Complete@@@" onclick={scanningCompleted}></lightning-button>
+                        <lightning-button class="slds-float_right" variant="Neutral" label="Complete" onclick={scanningCompleted}></lightning-button>
                     </div> 
                 </template>
                  
 
                 <template if:true={normalBagButton}>
                     <div class="slds-size_1-of-2 ">
-                        <lightning-button class="slds-float_left" variant="brand" label="Scan Bag 3" onclick={bagScanning}></lightning-button>
+                        <lightning-button class="slds-float_left" variant="brand" label="Scan Bag" onclick={bagScanning}></lightning-button>
                     </div>
     
                     <div class="slds-size_1-of-2 ">
-                        <lightning-button class="slds-float_right" variant="Neutral" label="Complete###" onclick={scanningEnd}></lightning-button>
+                        <lightning-button class="slds-float_right" variant="Neutral" label="Complete" onclick={scanningEnd}></lightning-button>
                     </div> 
                 </template>
                  

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ProductOption__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Product option that generated this line (if any).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Product option that generated this line (if any).</inlineHelpText>
+    <label>Product Option</label>
+    <referenceTo>SBQQ__ProductOption__c</referenceTo>
+    <relationshipLabel>Assets</relationshipLabel>
+    <relationshipName>Assets</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

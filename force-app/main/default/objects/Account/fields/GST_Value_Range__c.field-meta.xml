@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GST_Value_Range__c</fullName>
+    <externalId>false</externalId>
+    <label>GST Value Range</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NA</fullName>
+                <default>false</default>
+                <label>NA</label>
+            </value>
+            <value>
+                <fullName>Slab: Rs. 500 Cr. and above</fullName>
+                <default>false</default>
+                <label>Slab: Rs. 500 Cr. and above</label>
+            </value>
+            <value>
+                <fullName>Slab: Rs. 5 Cr. to 25 Cr.</fullName>
+                <default>false</default>
+                <label>Slab: Rs. 5 Cr. to 25 Cr.</label>
+            </value>
+            <value>
+                <fullName>Slab: Rs. 25 Cr. to 100 Cr.</fullName>
+                <default>false</default>
+                <label>Slab: Rs. 25 Cr. to 100 Cr.</label>
+            </value>
+            <value>
+                <fullName>Slab: Rs. 100 Cr. to 500 Cr.</fullName>
+                <default>false</default>
+                <label>Slab: Rs. 100 Cr. to 500 Cr.</label>
+            </value>
+            <value>
+                <fullName>Slab: Rs. 1.5 Cr. to 5 Cr.</fullName>
+                <default>false</default>
+                <label>Slab: Rs. 1.5 Cr. to 5 Cr.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

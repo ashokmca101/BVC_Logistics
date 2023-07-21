@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDB_Pickup_Status</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Pickup_Status__c</columns>
+    <columns>BVC_Origin_Hub__c</columns>
+    <columns>Pickup_Assigned_To__c</columns>
+    <columns>Shipment__c</columns>
+    <columns>Shipping_Note_No__c</columns>
+    <columns>Shipper_Name__c</columns>
+    <columns>Origin_Address_Line1__c</columns>
+    <columns>Origin_Address_Pincode__c</columns>
+    <columns>Pickup_Route_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>BVC_Origin_Hub__c</field>
+        <operation>equals</operation>
+        <value>MUMBAI-BDB</value>
+    </filters>
+    <label>BDB - Pickup Status</label>
+    <sharedTo>
+        <group>Mumbai_BDB</group>
+    </sharedTo>
+</ListView>

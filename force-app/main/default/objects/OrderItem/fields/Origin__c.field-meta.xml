@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origin__c</fullName>
+    <externalId>false</externalId>
+    <label>Origin</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ahmedabad</fullName>
+                <default>false</default>
+                <label>Ahmedabad</label>
+            </value>
+            <value>
+                <fullName>Rajkot</fullName>
+                <default>false</default>
+                <label>Rajkot</label>
+            </value>
+            <value>
+                <fullName>Delhi</fullName>
+                <default>false</default>
+                <label>Delhi</label>
+            </value>
+            <value>
+                <fullName>Rudrapur</fullName>
+                <default>false</default>
+                <label>Rudrapur</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__AmendmentOwner__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Owner of the original opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Owner of the original opportunity.</inlineHelpText>
+    <label>Amendment Owner</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>AmendmentContracts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

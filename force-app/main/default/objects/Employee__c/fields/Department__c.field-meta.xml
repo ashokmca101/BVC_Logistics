@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Department__c</fullName>
+    <externalId>false</externalId>
+    <label>Department</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A/c</fullName>
+                <default>false</default>
+                <label>A/c</label>
+            </value>
+            <value>
+                <fullName>HR</fullName>
+                <default>false</default>
+                <label>HR</label>
+            </value>
+            <value>
+                <fullName>IT</fullName>
+                <default>false</default>
+                <label>IT</label>
+            </value>
+            <value>
+                <fullName>Sales</fullName>
+                <default>false</default>
+                <label>Sales</label>
+            </value>
+            <value>
+                <fullName>Management</fullName>
+                <default>false</default>
+                <label>Management</label>
+            </value>
+            <value>
+                <fullName>eSHIP</fullName>
+                <default>false</default>
+                <label>eSHIP</label>
+            </value>
+            <value>
+                <fullName>Customs Brokerage</fullName>
+                <default>false</default>
+                <label>Customs Brokerage</label>
+            </value>
+            <value>
+                <fullName>Billing &amp; Collection</fullName>
+                <default>false</default>
+                <label>Billing &amp; Collection</label>
+            </value>
+            <value>
+                <fullName>Operations</fullName>
+                <default>false</default>
+                <label>Operations</label>
+            </value>
+            <value>
+                <fullName>Finance &amp; Accounts</fullName>
+                <default>false</default>
+                <label>Finance &amp; Accounts</label>
+            </value>
+            <value>
+                <fullName>E-Ship &amp; Customer Happiness Desk</fullName>
+                <default>false</default>
+                <label>E-Ship &amp; Customer Happiness Desk</label>
+            </value>
+            <value>
+                <fullName>Credit Control &amp; Collection</fullName>
+                <default>false</default>
+                <label>Credit Control &amp; Collection</label>
+            </value>
+            <value>
+                <fullName>Customer Happiness Desk</fullName>
+                <default>false</default>
+                <label>Customer Happiness Desk</label>
+            </value>
+            <value>
+                <fullName>Technology</fullName>
+                <default>false</default>
+                <label>Technology</label>
+            </value>
+            <value>
+                <fullName>HR &amp; Administration</fullName>
+                <default>false</default>
+                <label>HR &amp; Administration</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Security</fullName>
+                <default>false</default>
+                <label>Security</label>
+            </value>
+            <value>
+                <fullName>Research &amp; Projects</fullName>
+                <default>false</default>
+                <label>Research &amp; Projects</label>
+            </value>
+            <value>
+                <fullName>Tech</fullName>
+                <default>false</default>
+                <label>Tech</label>
+            </value>
+            <value>
+                <fullName>Customer Care</fullName>
+                <default>false</default>
+                <label>Customer Care</label>
+            </value>
+            <value>
+                <fullName>Key Accounts</fullName>
+                <default>false</default>
+                <label>Key Accounts</label>
+            </value>
+            <value>
+                <fullName>Sales &amp; Operation</fullName>
+                <default>false</default>
+                <label>Sales &amp; Operation</label>
+            </value>
+            <value>
+                <fullName>Finance</fullName>
+                <default>false</default>
+                <label>Finance</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

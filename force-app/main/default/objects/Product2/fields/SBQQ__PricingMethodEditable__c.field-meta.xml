@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__PricingMethodEditable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Specifies whether Pricing Method may be changed when this product is added to quote.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select if Pricing Method can be changed when this product is added to quote.</inlineHelpText>
+    <label>Pricing Method Editable</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

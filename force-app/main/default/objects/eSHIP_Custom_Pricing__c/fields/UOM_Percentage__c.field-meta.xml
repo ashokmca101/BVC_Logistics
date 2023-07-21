@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UOM_Percentage__c</fullName>
+    <defaultValue>10</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>Provide Percent/100 value</inlineHelpText>
+    <label>UOM Percentage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>5</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

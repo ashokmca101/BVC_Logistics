@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Excel_Sheet_Row__c</fullName>
+    <defaultValue>&quot;Manually Created Shipment&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>Excel Sheet Row</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

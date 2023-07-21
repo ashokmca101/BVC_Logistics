@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Airport_Code</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>ACCOUNT_CODE__c</columns>
+    <columns>AGENT_CODE__c</columns>
+    <columns>Airport_Code__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Airport_Code__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>No Airport Code</label>
+</ListView>

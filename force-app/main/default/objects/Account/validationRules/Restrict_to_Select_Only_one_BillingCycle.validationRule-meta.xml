@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_to_Select_Only_one_BillingCycle</fullName>
+    <active>true</active>
+    <description>Restrict User to Select Only one Billing Cycle.</description>
+    <errorConditionFormula>IF(Billing_Cycle_from_26_25__c=True  &amp;&amp; Billing_Cycle_from_1_31__c=True,True,False)</errorConditionFormula>
+    <errorMessage>Kindly Select Only one Billing Cycle.</errorMessage>
+</ValidationRule>

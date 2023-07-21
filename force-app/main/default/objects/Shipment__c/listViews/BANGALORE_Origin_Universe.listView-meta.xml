@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BANGALORE_Origin_Universe</fullName>
+    <columns>Shipment_Date__c</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Pickup__c</columns>
+    <columns>Number_of_Packages__c</columns>
+    <columns>Number_of_Secure_Bags__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Origin_Hub__c</columns>
+    <columns>Shipper_Name_TMS__c</columns>
+    <columns>Origin_Address_Line_1__c</columns>
+    <columns>Origin_Address_Pincode__c</columns>
+    <columns>Destination_Hub__c</columns>
+    <columns>Shipment_Value__c</columns>
+    <columns>Net_weight_in_Gram__c</columns>
+    <columns>Product_Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Shipment_Date__c</field>
+        <operation>lessOrEqual</operation>
+    </filters>
+    <filters>
+        <field>Origin_Hub__c</field>
+        <operation>equals</operation>
+        <value>BENGALURU</value>
+    </filters>
+    <filters>
+        <field>Tracking_Status__c</field>
+        <operation>equals</operation>
+        <value>Created,Out for Pickup,Picked Up</value>
+    </filters>
+    <filters>
+        <field>Shipping_Note_Number__c</field>
+        <operation>contains</operation>
+        <value>UV,DS</value>
+    </filters>
+    <label>BANGALORE - Origin Universe</label>
+    <sharedTo>
+        <group>BANGALORE_Hub</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__CoTerminationEvent__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Determines when contracts are co-terminated.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Determines when contracts are co-terminated.</inlineHelpText>
+    <label>Co-Termination Event</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>SBQQ__ContractCoTermination__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Add-on</fullName>
+                <default>false</default>
+                <label>Add-on</label>
+            </value>
+            <value>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+                <label>Renewal</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Always</controllingFieldValue>
+            <controllingFieldValue>Prompt</controllingFieldValue>
+            <valueName>Add-on</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Always</controllingFieldValue>
+            <valueName>Renewal</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

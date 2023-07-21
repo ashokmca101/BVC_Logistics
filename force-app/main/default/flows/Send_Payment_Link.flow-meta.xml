@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Invoice2_0_0</name>
+        <label>Send Invoice</label>
+        <locationX>446</locationX>
+        <locationY>1934</locationY>
+        <actionName>SendInvoice_ctlr</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Create_Task_0</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>email</name>
+            <value>
+                <elementReference>Email.value</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>firstName</name>
+            <value>
+                <elementReference>First_Name</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recIds</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Assign_Contact_Role</name>
+        <label>Assign Contact Role</label>
+        <locationX>578</locationX>
+        <locationY>1238</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Account_Contact_Record.Roles</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Invoice Recipient</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Contact_Role</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_shipment_to_Contact_Found</name>
+        <label>Assign shipment to Contact Found</label>
+        <locationX>50</locationX>
+        <locationY>878</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Contact_for_Duplicate_Rule.Shipment__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Contact_Record_Found</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Contact_exists_or_not</name>
+        <label>Check Contact exists or not</label>
+        <locationX>446</locationX>
+        <locationY>758</locationY>
+        <defaultConnector>
+            <targetReference>Create_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Contact Does not exists</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_for_Duplicate_Rule</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_shipment_to_Contact_Found</targetReference>
+            </connector>
+            <label>Contact Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_for_Account_Contact_Record</name>
+        <label>Check for Account Contact Record</label>
+        <locationX>842</locationX>
+        <locationY>1118</locationY>
+        <defaultConnector>
+            <targetReference>Send_Invoice2_0_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_Contact_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Contact_Role</targetReference>
+            </connector>
+            <label>Record Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Phone_Validity_0</name>
+        <label>check Phone Validity</label>
+        <locationX>1260</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>Invalid_Mobile_Number2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Valid_Phone_No_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>checkMobileNo</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_payment_link_from_shipment_invoice</targetReference>
+            </connector>
+            <label>Valid Phone No</label>
+        </rules>
+    </decisions>
+    <description>Send payment link to email address &amp; mobile number</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>checkMobileNo</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(LEN({!Mobile_Number.value}) == 10, true, false)</expression>
+    </formulas>
+    <interviewLabel>Send Payment Link {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Payment Link</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Contact</name>
+        <label>Create Contact</label>
+        <locationX>842</locationX>
+        <locationY>878</locationY>
+        <connector>
+            <targetReference>Get_Account_Contact_Record</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>get_payment_link_from_shipment_invoice.Shipment__r.Billing_Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>Email.value</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>First_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>Last_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MobilePhone</field>
+            <value>
+                <elementReference>Mobile_Number.value</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipment__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Task_0</name>
+        <label>Create Task</label>
+        <locationX>446</locationX>
+        <locationY>2054</locationY>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Payment_Link_Template</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Payment Link Sent</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Check_If_contact_Exists</name>
+        <label>Check If contact Exists</label>
+        <locationX>446</locationX>
+        <locationY>518</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Contact_for_Duplicate_Rule</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>LastName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Last_Name</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Email.value</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Shipment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Account_Contact_Record</name>
+        <label>Get Account Contact Record</label>
+        <locationX>842</locationX>
+        <locationY>998</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_for_Account_Contact_Record</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>AccountContact</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Create_Contact</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_for_Duplicate_Rule</name>
+        <label>Get Contact for Duplicate Rule</label>
+        <locationX>446</locationX>
+        <locationY>638</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Contact_exists_or_not</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Email.value</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_payment_link_from_shipment_invoice</name>
+        <label>get payment link from shipment invoice</label>
+        <locationX>446</locationX>
+        <locationY>398</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_contact_Exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Payment_Link__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Shipment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Shipment_Invoice__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact_Record_Found</name>
+        <label>Update Contact Record Found</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Send_Invoice2_0_0</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Update_Contact</targetReference>
+        </faultConnector>
+        <inputReference>Get_Contact_for_Duplicate_Rule</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_Role</name>
+        <label>Update Contact Role</label>
+        <locationX>578</locationX>
+        <locationY>1358</locationY>
+        <connector>
+            <targetReference>Send_Invoice2_0_0</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>UpdateRoleFailed</targetReference>
+        </faultConnector>
+        <inputReference>Get_Account_Contact_Record</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>AccountContact</name>
+        <label>AccountContact</label>
+        <locationX>1282</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Account_Contact</name>
+            <fieldText>&lt;p&gt;Account Contact Error while updating&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Enter_Details</name>
+        <label>Enter Details</label>
+        <locationX>1260</locationX>
+        <locationY>158</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Cancel</backButtonLabel>
+        <connector>
+            <targetReference>check_Phone_Validity_0</targetReference>
+        </connector>
+        <fields>
+            <name>First_Name</name>
+            <dataType>String</dataType>
+            <fieldText>First Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Last_Name</name>
+            <dataType>String</dataType>
+            <fieldText>Last Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Email</name>
+            <extensionName>flowruntime:email</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Email Address</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Mobile_Number</name>
+            <extensionName>flowruntime:phone</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Mobile</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <nextOrFinishButtonLabel>Send</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>1546</locationX>
+        <locationY>998</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Failure</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(250, 24, 24);&quot;&gt;Contact Creation Failed&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>1810</locationX>
+        <locationY>2054</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Error2</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(237, 26, 26);&quot;&gt;Error Encountered. Please contact your administrator.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Invalid_Mobile_Number2</name>
+        <label>Invalid Mobile Number</label>
+        <locationX>2074</locationX>
+        <locationY>398</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Enter_Details</targetReference>
+        </connector>
+        <fields>
+            <name>Invalid_Mobile_Number</name>
+            <fieldText>&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;color: rgb(247, 16, 16);&quot;&gt;Enter 10 digit Mobile Number&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Update_Contact</name>
+        <label>Update_Contact</label>
+        <locationX>314</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>UpdateContact</name>
+            <fieldText>&lt;p&gt;Error in Update contact record found&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>UpdateRoleFailed</name>
+        <label>UpdateRoleFailed</label>
+        <locationX>842</locationX>
+        <locationY>1478</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>UpdateContactRole</name>
+            <fieldText>&lt;p&gt;Update Contact Role error&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>1134</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Enter_Details</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Hello &lt;firstName&gt; ji,
+
+ 
+
+Hope you&apos;re doing great.
+
+ 
+
+For your Shipment &lt;ShippingNoteNumber&gt; on &lt;dateOfShipment&gt;, INR &lt;amount&gt; is pending.
+
+ 
+
+You can pay through multiple payment mediums by clicking:
+
+&lt;RazorpayLink&gt;</description>
+        <name>emailTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;color: rgb(89, 82, 82);&quot;&gt;Hello &lt;/span&gt;&lt;span style=&quot;color: rgb(89, 82, 82); background-color: rgb(255, 255, 255);&quot;&gt;{!First_Name}&lt;/span&gt;&lt;span style=&quot;color: rgb(89, 82, 82);&quot;&gt; ji,&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(89, 82, 82);&quot;&gt;Hope you&apos;re doing great.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(89, 82, 82);&quot;&gt;For your Shipment {!get_payment_link_from_shipment_invoice.Shipment__r.Shipping_Note_Number__c} on {!get_payment_link_from_shipment_invoice.Shipment__r.Shipment_Date__c}, INR {!get_payment_link_from_shipment_invoice.Balance_Amount__c} is pending.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(89, 82, 82);&quot;&gt;You can pay through multiple payment mediums by clicking: &lt;/span&gt;&lt;a href=&quot;{!get_payment_link_from_shipment_invoice.Payment_Link__c}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(89, 82, 82);&quot;&gt;{!get_payment_link_from_shipment_invoice.Payment_Link__c}&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Do share if you have any questions, thank you!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Regards,&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Team BVC&lt;/b&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Payment Link Template for Description</description>
+        <name>Payment_Link_Template</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello {!First_Name} ji,
+Hope you&apos;re doing great. 
+For you Shipment {!get_payment_link_from_shipment_invoice.Shipment__r.Shipping_Note_Number__c} on {!get_payment_link_from_shipment_invoice.Shipment__r.Shipment_Date__c}, an amount of Rs. {!get_payment_link_from_shipment_invoice.Balance_Amount__c} is pending.
+You can pay through multiple payment mediums by clicking: {!get_payment_link_from_shipment_invoice.Payment_Link__c}</text>
+    </textTemplates>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

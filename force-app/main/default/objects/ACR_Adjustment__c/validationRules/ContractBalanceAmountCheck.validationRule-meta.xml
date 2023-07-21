@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ContractBalanceAmountCheck</fullName>
+    <active>false</active>
+    <errorConditionFormula>Contract__r.Balance_Amount__c  &lt; 0</errorConditionFormula>
+    <errorMessage>Contract Balance Amount should be greater than or equals to 0.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recurring_End_Date_mandatory</fullName>
+    <active>true</active>
+    <description>When Recurring is set to true</description>
+    <errorConditionFormula>Recurring__c  = True   &amp;&amp;  ISNULL(Recurring_End_Date__c  )</errorConditionFormula>
+    <errorDisplayField>Recurring_End_Date__c</errorDisplayField>
+    <errorMessage>Please enter Recurring End Date</errorMessage>
+</ValidationRule>

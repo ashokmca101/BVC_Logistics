@@ -167,7 +167,7 @@ public class InvoiceLineTriggerHandler {
         }
     }
     
-    public static void rollupInvoiceCharges(List<blng__InvoiceLine__c> lines){
+    public static void rollupInvoiceCharges(List<blng__InvoiceLine__c> lines, Map<id,blng__InvoiceLine__c> OldLines){
         Map<Id,Decimal> mapVlauationCharges = new map<Id,Decimal>();
         Map<Id,Decimal> mapDocketCharges = new map<Id,Decimal>();
         Map<Id,Decimal> mapFuelCharges = new map<Id,Decimal>();
@@ -182,7 +182,10 @@ public class InvoiceLineTriggerHandler {
             if(lineItem.blng__InvoiceLineStatus__c!='Posted'){
                invoiceIds.add(lineItem.blng__Invoice__c); 
             }
-            
+        }
+        Map<id,blng__Invoice__c> InvMap = new Map<id,blng__Invoice__c>([SELECT id,Total_BVC_Valuation_Charges__c,Total_Docket_Charges__c,Total_Fuel_Charges__c,Total_Holiday_Charges__c,Total_Weight_Charges__c,Total_Logistics_Charges__c,Total_Fuel_Surcharge__c,Total_Vaulting_Charges__c FROM blng__Invoice__c WHERE id IN:invoiceIds]); 
+        for(blng__InvoiceLine__c lineItem : lines){
+                        
             if(lineItem.BVC_Valuation_Charges__c !=null ){
                 if(mapVlauationCharges.containsKey(lineItem.blng__Invoice__c)){
                     Decimal bvcValues = mapVlauationCharges.get(lineItem.blng__Invoice__c) +lineItem.BVC_Valuation_Charges__c;
@@ -195,8 +198,10 @@ public class InvoiceLineTriggerHandler {
             }
            if(lineItem.Fuel_Surcharge__c !=null ){//Prat
                 if(mapSurchargeCharges.containsKey(lineItem.blng__Invoice__c)){
+                    system.debug('before adding surcharge--------'+mapSurchargeCharges);
                     Decimal fSurcharge = mapSurchargeCharges.get(lineItem.blng__Invoice__c) +lineItem.Fuel_Surcharge__c;
                     mapSurchargeCharges.put(lineItem.blng__Invoice__c,fSurcharge);
+                    system.debug('after adding surcharge--------'+mapSurchargeCharges);
                 }
                     else{
                         mapSurchargeCharges.put(lineItem.blng__Invoice__c,lineItem.Fuel_Surcharge__c);
@@ -250,8 +255,11 @@ public class InvoiceLineTriggerHandler {
             }
             if(lineItem.Weight_Charges__c != null){
                 if(mapWeightCharges.containsKey(lineItem.blng__Invoice__c)){
+                     system.debug('before adding wt--------'+mapWeightCharges);
                     Decimal bvcValues = mapWeightCharges.get(lineItem.blng__Invoice__c) +lineItem.Weight_Charges__c;
+                    system.debug('bvcValues--------'+bvcValues);
                     mapWeightCharges.put(lineItem.blng__Invoice__c,bvcValues);
+                    system.debug('after adding wt--------'+mapWeightCharges);
                 }else{
                     mapWeightCharges.put(lineItem.blng__Invoice__c,lineItem.Weight_Charges__c);
                 }
@@ -274,6 +282,8 @@ public class InvoiceLineTriggerHandler {
               for(Id invId : invoiceIds){
                 blng__Invoice__c invObj = new blng__Invoice__c();
                 invObj.Id = invId;
+                blng__Invoice__c invM = InvMap.get(invId);
+                
                 invObj.Total_BVC_Valuation_Charges__c = mapVlauationCharges.get(invId);
                 invObj.Total_Docket_Charges__c = mapDocketCharges.get(invId);
                 invObj.Total_Fuel_Charges__c = mapFuelCharges.get(invId);
@@ -281,6 +291,7 @@ public class InvoiceLineTriggerHandler {
                 invObj.Total_Weight_Charges__c = mapWeightCharges.get(invId);
                 invObj.Total_Logistics_Charges__c = mapLogisticsCharges.get(invId);
                 invObj.Total_Fuel_Surcharge__c = mapSurchargeCharges.get(invId);//Prat
+                  system.debug('invObj.Total_Fuel_Surcharge__c======='+invObj.Total_Fuel_Surcharge__c);
                 invObj.Total_Vaulting_Charges__c = mapVaultCharges.get(invId); 
                 updateList.add(invObj);
             }

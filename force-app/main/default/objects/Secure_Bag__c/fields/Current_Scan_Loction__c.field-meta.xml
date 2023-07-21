@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Scan_Loction__c</fullName>
+    <externalId>false</externalId>
+    <label>Current Scan Location</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Created</fullName>
+                <default>false</default>
+                <label>Created</label>
+            </value>
+            <value>
+                <fullName>Out for Pickup</fullName>
+                <default>false</default>
+                <label>Out for Pickup</label>
+            </value>
+            <value>
+                <fullName>Picked Up</fullName>
+                <default>false</default>
+                <label>Picked Up</label>
+            </value>
+            <value>
+                <fullName>Origin Hub</fullName>
+                <default>false</default>
+                <label>Origin Hub</label>
+            </value>
+            <value>
+                <fullName>Origin Port</fullName>
+                <default>false</default>
+                <label>Origin Port</label>
+            </value>
+            <value>
+                <fullName>Transit Hub</fullName>
+                <default>false</default>
+                <label>Transit Hub</label>
+            </value>
+            <value>
+                <fullName>Transit Port</fullName>
+                <default>false</default>
+                <label>Transit Port</label>
+            </value>
+            <value>
+                <fullName>Destination Port</fullName>
+                <default>false</default>
+                <label>Destination Port</label>
+            </value>
+            <value>
+                <fullName>Destination Hub</fullName>
+                <default>false</default>
+                <label>Destination Hub</label>
+            </value>
+            <value>
+                <fullName>Out for Delivery</fullName>
+                <default>false</default>
+                <label>Out for Delivery</label>
+            </value>
+            <value>
+                <fullName>Delivered</fullName>
+                <default>false</default>
+                <label>Delivered</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACR_Package_type__c</fullName>
+    <externalId>false</externalId>
+    <label>ACR Package type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Package 1 : 30K</fullName>
+                <default>false</default>
+                <label>Package 1 : 30K</label>
+            </value>
+            <value>
+                <fullName>Package 2 : 60K</fullName>
+                <default>false</default>
+                <label>Package 2 : 60K</label>
+            </value>
+            <value>
+                <fullName>Package 3 : 1.2L</fullName>
+                <default>false</default>
+                <label>Package 3 : 1.2L</label>
+            </value>
+            <value>
+                <fullName>Package 4 : 2.5L</fullName>
+                <default>false</default>
+                <label>Package 4 : 2.5L</label>
+            </value>
+            <value>
+                <fullName>Package 5 : 3.5L</fullName>
+                <default>false</default>
+                <label>Package 5 : 3.5L</label>
+            </value>
+            <value>
+                <fullName>Package 6 : 5.0L</fullName>
+                <default>false</default>
+                <label>Package 6 : 5.0L</label>
+            </value>
+            <value>
+                <fullName>Package 7 : 7.5L</fullName>
+                <default>false</default>
+                <label>Package 7 : 7.5L</label>
+            </value>
+            <value>
+                <fullName>Package 8 : 10.0L</fullName>
+                <default>false</default>
+                <label>Package 8 : 10.0L</label>
+            </value>
+            <value>
+                <fullName>Package 9 : 12.5L</fullName>
+                <default>false</default>
+                <label>Package 9 : 12.5L</label>
+            </value>
+            <value>
+                <fullName>Package 10 : 15.0L</fullName>
+                <default>false</default>
+                <label>Package 10 : 15.0L</label>
+            </value>
+            <value>
+                <fullName>Package 11 : 17.5L</fullName>
+                <default>false</default>
+                <label>Package 11 : 17.5L</label>
+            </value>
+            <value>
+                <fullName>Package 12 : 20.0L+&quot;</fullName>
+                <default>false</default>
+                <label>Package 12 : 20.0L+&quot;</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

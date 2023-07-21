@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ReconfigurationDisabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Flag that disables re-configuration of this product.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When checked this product can only be configured when first added to a quote. If selected, users will not have access to a Configure link on the Edit Lines page after product has been added.</inlineHelpText>
+    <label>Disable Reconfiguration</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

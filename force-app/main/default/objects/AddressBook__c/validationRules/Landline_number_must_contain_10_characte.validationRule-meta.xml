@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Landline_number_must_contain_10_characte</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND((LEN(LANDLINE_NO__c) &lt;&gt; 13),
+     TEXT(Source__c)!=&apos;KARZAA&apos;,
+     NOT(CONTAINS(&quot;+91&quot;, LANDLINE_NO__c)) )</errorConditionFormula>
+    <errorDisplayField>LANDLINE_NO__c</errorDisplayField>
+    <errorMessage>Landline Number must contain 10 digit except country code</errorMessage>
+</ValidationRule>

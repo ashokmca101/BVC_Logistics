@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>PARKING CHARGES</label>
+    <protected>false</protected>
+    <values>
+        <field>Business_Segment__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>COA_Revenue_Account_Code__c</field>
+        <value xsi:type="xsd:string">412806</value>
+    </values>
+    <values>
+        <field>COA_Revenue_Sub_Account__c</field>
+        <value xsi:type="xsd:string">CUH13</value>
+    </values>
+    <values>
+        <field>Charge_Code__c</field>
+        <value xsi:type="xsd:string">BVCIPARKCH</value>
+    </values>
+    <values>
+        <field>Material_Description__c</field>
+        <value xsi:type="xsd:string">PARKING CHARGES</value>
+    </values>
+    <values>
+        <field>Nature_Of_Service__c</field>
+        <value xsi:type="xsd:string">PARKING CHARGES</value>
+    </values>
+</CustomMetadata>

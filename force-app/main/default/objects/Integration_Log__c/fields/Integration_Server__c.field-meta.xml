@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Server__c</fullName>
+    <externalId>false</externalId>
+    <label>Integration Server</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Razorpay</fullName>
+                <default>false</default>
+                <label>Razorpay</label>
+            </value>
+            <value>
+                <fullName>Ey Tax Server</fullName>
+                <default>false</default>
+                <label>Ey Tax Server</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

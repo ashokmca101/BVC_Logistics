@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consumed_Amount__c</fullName>
+    <externalId>false</externalId>
+    <label>Consumed Amount</label>
+    <summarizedField>ST_ACR_Consumption__c.Total_Charge__c</summarizedField>
+    <summaryForeignKey>ST_ACR_Consumption__c.Contract__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

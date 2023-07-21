@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This is used to send email alert when stage of deal is changed to bvc opportunity from contact later.</description>
+        <name>Send_Email_to_Deal_owner_when_stage_is_BVC_opportunity</name>
+        <label>Send Email to Deal owner when stage is BVC opportunity</label>
+        <locationX>308</locationX>
+        <locationY>408</locationY>
+        <actionName>Opportunity.Email_Alert_for_deal_stage_change_from_contact_later_to_bvc_opportunity</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Update Deal Stage {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Deal Stage</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>update_Deal_stage_to_BVC_opportunity_from_contact_Later</name>
+        <label>update Deal stage to BVC opportunity from contact Later</label>
+        <locationX>308</locationX>
+        <locationY>288</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Deal_owner_when_stage_is_BVC_opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Contact Later</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>BVC Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Contact Later</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BVC_Next_Contact_Date__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <dateTimeValue>2001-01-01T08:00:00.000Z</dateTimeValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Schedule_on_Next_contact_date_time</name>
+            <connector>
+                <targetReference>update_Deal_stage_to_BVC_opportunity_from_contact_Later</targetReference>
+            </connector>
+            <label>Schedule on Next contact date time</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>BVC_Next_Contact_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

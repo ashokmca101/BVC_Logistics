@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CHANDIGARH_Destination</fullName>
+    <columns>Shipment_Date__c</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Consignee_Name_TMS__c</columns>
+    <columns>Destination_Address_Line1__c</columns>
+    <columns>Origin_Hub__c</columns>
+    <columns>Tracking_Status__c</columns>
+    <columns>Destination_Hub__c</columns>
+    <columns>Destination_Address_City__c</columns>
+    <columns>Number_of_Packages__c</columns>
+    <columns>Delivery_Instruction__c</columns>
+    <columns>Delivery_Route_Number__c</columns>
+    <columns>Delivery_Route_Assigned_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Shipment_Status__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Destination_Hub__c</field>
+        <operation>equals</operation>
+        <value>CHANDIGARH</value>
+    </filters>
+    <filters>
+        <field>Tracking_Status__c</field>
+        <operation>equals</operation>
+        <value>Destination Hub,Out for Delivery</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Shipment__c.Operations_Shipment</value>
+    </filters>
+    <label>CHANDIGARH - Destination</label>
+    <sharedTo>
+        <group>CHANDIGARH_Hub</group>
+    </sharedTo>
+</ListView>

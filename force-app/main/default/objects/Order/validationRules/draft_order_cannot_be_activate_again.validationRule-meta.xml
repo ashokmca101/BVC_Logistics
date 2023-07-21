@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>draft_order_cannot_be_activate_again</fullName>
+    <active>true</active>
+    <description>once order is deactivated, user should not be able to activate again</description>
+    <errorConditionFormula>IF(ISPICKVAL(Order_Status_Static__c, &apos;Cancelled&apos;), ISCHANGED(Status),null)</errorConditionFormula>
+    <errorMessage>You cannot change the status</errorMessage>
+</ValidationRule>

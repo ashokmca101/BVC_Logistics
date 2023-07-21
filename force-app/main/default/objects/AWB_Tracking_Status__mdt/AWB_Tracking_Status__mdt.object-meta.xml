@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used to store mapping of AWB Status</description>
+    <label>AWB Tracking Status</label>
+    <pluralLabel>AWB Tracking Statuses</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

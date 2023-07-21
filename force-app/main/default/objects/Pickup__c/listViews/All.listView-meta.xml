@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Customer__c</columns>
+    <columns>Shipment__c</columns>
+    <columns>Shipping_Note_No__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>BVC_Origin_Hub__c</columns>
+    <columns>Pickup_Status__c</columns>
+    <columns>Pickup_Assigned_To__c</columns>
+    <columns>Shipper_Name__c</columns>
+    <columns>Shipper_Address__c</columns>
+    <columns>ACR_NON_ACR__c</columns>
+    <columns>Credit_Status__c</columns>
+    <columns>CustomerPAN__c</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Customer__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>All</label>
+    <sharedTo>
+        <group>TMS_Managers</group>
+    </sharedTo>
+</ListView>

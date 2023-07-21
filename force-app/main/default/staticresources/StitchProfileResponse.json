@@ -1,0 +1,1024 @@
+{
+  "statusCode": 101,
+  "requestId": "597e13d2-99a8-4230-8105-ae1bb16b2a26",
+  "result": {
+    "profile": {
+      "pans": [
+        "JITPS4169G"
+      ],
+      "pin": "680005",
+      "addressSource": "gst",
+      "gstServicesDetails": [],
+      "dateOfVatRegistration": null,
+      "fatherName": null,
+      "descriptionOfMainDivision": null,
+      "city": "Thrissur",
+      "mainDivisonOfBusinessActivity": null,
+      "formerNames": [],
+      "dateOfBirth": null,
+      "state": "Kerala",
+      "tradeName": "JYOTHI DIAMONDS",
+      "natureOfBusiness": [
+        "Retail Business",
+        "Wholesale Business",
+        "Factory / Manufacturing"
+      ],
+      "email": "jyothidiamonds916@gmail.com",
+      "entityClass": null,
+      "dateOfIncorporation": null,
+      "emailDomain": "gmail.com",
+      "activitySubClass": null,
+      "entityId": "JITPS4169G",
+      "registeredAddress": "5/326/B, FIRST FLOOR, A4 APARTMENTS, ARISTO ROAD, EAST FORT, Thrissur, Kerala, 680005",
+      "name": "PUTHENKULAMBU GOPALAN SURESH",
+      "type": "SOLE_PROPRIETOR",
+      "industry": null,
+      "subIndustry": null,
+      "activityClass": null,
+      "activityGroup": null,
+      "contact": "9846400442",
+      "formerEntityIds": [],
+      "constitutionOfBusiness": "Proprietorship",
+      "gstGoodsDetails": [
+        {
+          "chapter": "Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal and articles thereof; imitation jewellery; coin.",
+          "asPercentOfTotalCount": 50,
+          "hsnCode": "7103",
+          "description": "PRECIOUS STONES (OTHER THAN DIAMONDS) AND SEMI-PRECIOUS STONES, WHETHER OR NOT WORKED OR GRADED BUT NOT STRUNG, MOUNTED OR SET; UNGRADED PRECIOUS STONES (OTHER THAN DIAMONDS) AND SEMI-PRECIOUS STONES, TEMPORARILY STRUNG FOR CONVENIENCE OF TRANSPORT",
+          "chapterCode": "71",
+          "sectionCode": "14",
+          "section": "Natural or Cultured Pearls, Precious or Semi-Precious Stones, Precious Metals, Metals clad with Precious Metal, and articles thereof; Imitation Jewellery; Coin",
+          "gstinCount": 1
+        },
+        {
+          "chapter": "Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal and articles thereof; imitation jewellery; coin.",
+          "asPercentOfTotalCount": 50,
+          "hsnCode": "7113",
+          "description": "ARTICLES OF JEWELLERY AND PARTS THEREOF, OF PRECIOUS METAL OR OF METAL CLAD WITH PRECIOUS METAL - Of precious metal whether or not plated or clad with precious metal:",
+          "chapterCode": "71",
+          "sectionCode": "14",
+          "section": "Natural or Cultured Pearls, Precious or Semi-Precious Stones, Precious Metals, Metals clad with Precious Metal, and articles thereof; Imitation Jewellery; Coin",
+          "gstinCount": 1
+        }
+      ]
+    },
+    "management": {
+      "current": [
+        {
+          "pans": [
+            "JITPS4169G"
+          ],
+          "pin": "680005",
+          "dinPan_": null,
+          "isDscRegistered": null,
+          "fatherName": null,
+          "tenureBeginDate": null,
+          "city": "Thrissur",
+          "alerts": [],
+          "dateOfBirth": null,
+          "state": "Kerala",
+          "dscExpiryDate": null,
+          "status": null,
+          "address": "5/326/B, FIRST FLOOR, A4 APARTMENTS, ARISTO ROAD, EAST FORT, Thrissur, Kerala, 680005",
+          "nationality": null,
+          "kid": null,
+          "din": null,
+          "name": "PUTHENKULAMBU GOPALAN SURESH",
+          "designation": null,
+          "tenureEndDate": null,
+          "gender": null,
+          "email": null,
+          "dinDateOfApproval": null
+        }
+      ],
+      "source": "gst",
+      "former": []
+    },
+    "charges": [],
+    "statutoryRegistration": {
+      "pans": [
+        {
+          "panType": "PERSON",
+          "dateOfIssuance": null,
+          "name": "PUTHENKULAMBU GOPALAN SURESH",
+          "timestamp": "2020-07-31 07:06:49.702Z",
+          "emailDomain": null,
+          "pincode": null,
+          "dateOfBirth": null,
+          "state": null,
+          "mcaEntityId": null,
+          "mcaEntityType": null,
+          "address": null,
+          "email": null,
+          "pan": "JITPS4169G",
+          "yearMonthOfIssuance": null
+        }
+      ],
+      "gst": [
+        {
+          "natureOfTrade": "Retail Business, Wholesale Business, Factory / Manufacturing",
+          "city": "Thrissur",
+          "contacted": null,
+          "dateOfRegistrationCancellation": null,
+          "pin": "680005",
+          "aadhaarAuthenticated": "No",
+          "servicesDetails": null,
+          "transactionDefaults": [],
+          "dateOfVatRegistration": null,
+          "grossTotalIncomes": [
+            {
+              "financialYear": "2018-2019",
+              "income": "Rs. 2.5 lakhs to Rs. 5 lakhs"
+            }
+          ],
+          "taxPaymentsInCash": null,
+          "dateOfEkyc": null,
+          "addr": null,
+          "tin": null,
+          "ntcrbs": null,
+          "constitutionOfBusiness": "Proprietorship",
+          "isMoreAdditionalPlaces": null,
+          "gstin": "32JITPS4169G1ZJ",
+          "natureOfBusiness": [
+            "Retail Business",
+            "Wholesale Business",
+            "Factory / Manufacturing"
+          ],
+          "email": "jyothidiamonds916@gmail.com",
+          "pan": "JITPS4169G",
+          "status": "ACTIVE",
+          "signatoriesContact": [
+            {
+              "emailDomain": null,
+              "contact": "9999999999",
+              "name": "XXXXXXXX",
+              "email": "xx.xxxx@xx.xx"
+            }
+          ],
+          "sourceUri": null,
+          "tradeName": "JYOTHI DIAMONDS",
+          "mandatedEinvoice": false,
+          "aggregateTurnover": "Slab: Rs. 1.5 Cr. to 5 Cr.",
+          "timestamp": "2021-05-20 15:58:21.388Z",
+          "legalName": "PUTHENKULAMBU GOPALAN SURESH",
+          "ekycVerified": "No",
+          "isFieldVisitConducted": false,
+          "state": "Kerala",
+          "address": "5/326/B, FIRST FLOOR, A4 APARTMENTS, ARISTO ROAD, EAST FORT, Thrissur, Kerala, 680005",
+          "dealerType": "Regular",
+          "goodsDetails": [
+            {
+              "chapter": "Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal and articles thereof; imitation jewellery; coin.",
+              "hsnCode": "7103",
+              "chapterCode": "71",
+              "sectionCode": "14",
+              "section": "Natural or Cultured Pearls, Precious or Semi-Precious Stones, Precious Metals, Metals clad with Precious Metal, and articles thereof; Imitation Jewellery; Coin",
+              "hsn1": "PRECIOUS STONES (OTHER THAN DIAMONDS) AND SEMI-PRECIOUS STONES, WHETHER OR NOT WORKED OR GRADED BUT NOT STRUNG, MOUNTED OR SET; UNGRADED PRECIOUS STONES (OTHER THAN DIAMONDS) AND SEMI-PRECIOUS STONES, TEMPORARILY STRUNG FOR CONVENIENCE OF TRANSPORT",
+              "hsn2": "PRECIOUS STONES (OTHER THAN DIAMONDS) AND SEMI-PRECIOUS STONES, WHETHER OR NOT WORKED OR GRADED BUT NOT STRUNG, MOUNTED OR SET; UNGRADED PRECIOUS STONES (OTHER THAN DIAMONDS) AND SEMI-PRECIOUS STONES, TEMPORARILY STRUNG FOR CONVENIENCE OF TRANSPORT"
+            },
+            {
+              "chapter": "Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal and articles thereof; imitation jewellery; coin.",
+              "hsnCode": "7113",
+              "chapterCode": "71",
+              "sectionCode": "14",
+              "section": "Natural or Cultured Pearls, Precious or Semi-Precious Stones, Precious Metals, Metals clad with Precious Metal, and articles thereof; Imitation Jewellery; Coin",
+              "hsn1": "ARTICLES OF JEWELLERY AND PARTS THEREOF, OF PRECIOUS METAL OR OF METAL CLAD WITH PRECIOUS METAL - Of precious metal whether or not plated or clad with precious metal:",
+              "hsn2": "ARTICLES OF JEWELLERY AND PARTS THEREOF, OF PRECIOUS METAL OR OF METAL CLAD WITH PRECIOUS METAL"
+            }
+          ],
+          "dateOfAadharAuthentication": null,
+          "kid": "TPE000116482254P",
+          "aggregateTurnovers": [
+            {
+              "financialYear": null,
+              "turnover": "Slab: Rs.1.5 Cr. to 5 Cr."
+            },
+            {
+              "financialYear": "2019-2020",
+              "turnover": "Slab: Rs. 1.5 Cr. to 5 Cr."
+            }
+          ],
+          "branches": [
+            {
+              "natureOfTrade": "Office / Sale Office, Bonded Warehouse",
+              "addr": null,
+              "address": "Helios,Eyeplus - 51, SCO, Sector 17 E - Opposite Canara Bank, Chandigarh, Chandigarh, Chandigarh, 160017",
+              "contact": "9818366142",
+              "lastUpdatedDate": null,
+              "emailDomain": "titan.co.in",
+              "email": "sanjayg@titan.co.in"
+            },
+            {
+              "natureOfTrade": "Office / Sale Office, Bonded Warehouse",
+              "addr": null,
+              "address": "Helios - 143 A, 1st, Elante Mall, Industrial Area, Phase-1, Chandigarh, Chandigarh, 160002",
+              "contact": "9818366142",
+              "lastUpdatedDate": null,
+              "emailDomain": "titan.co.in",
+              "email": "sanjayg@titan.co.in"
+            },
+            {
+              "natureOfTrade": "Retail Business, Office / Sale Office",
+              "addr": null,
+              "address": "1, INTERNATION AIRPORT, CHANDIGARH, Chandigarh, Chandigarh, 160055",
+              "contact": "9999697374",
+              "lastUpdatedDate": null,
+              "emailDomain": null,
+              "email": null
+            },
+            {
+              "natureOfTrade": "Office / Sale Office, Retail Business",
+              "addr": null,
+              "address": "HELIOS - SCO-51, Sector-17-E, Chandigarh, Chandigarh, Chandigarh, 160017",
+              "contact": "9999697374",
+              "lastUpdatedDate": null,
+              "emailDomain": null,
+              "email": null
+            },
+            {
+              "natureOfTrade": "Retail Business, Office / Sale Office",
+              "addr": null,
+              "address": "SCO - 31, TITAN COMPANY LIMITED, RAMDITTA MAL GANGA RAM, SECTOR - 26, CHANDIGARH, Chandigarh, Chandigarh, 160019",
+              "contact": "9999697374",
+              "lastUpdatedDate": null,
+              "emailDomain": null,
+              "email": null
+            },
+            {
+              "natureOfTrade": "Retail Business, Office / Sale Office",
+              "addr": null,
+              "address": "Tanishq-Sector 17-C, SCO 194-195, TITAN COMPANY LTD, Near Ghazal Restaurant, CHANDIGARH, Chandigarh, Chandigarh, 160017",
+              "contact": "9779054651",
+              "lastUpdatedDate": null,
+              "emailDomain": "titan.co.in",
+              "email": "btqchb@titan.co.in"
+            },
+            {
+              "natureOfTrade": "Retail Business, Office / Sale Office",
+              "addr": null,
+              "address": "Tanishq-Showroom No. 43, Pocket No-1, TITAN COMPANY LTD, Manimajra Main Kalka National Highway,, CHANDIGARH, Chandigarh, Chandigarh, 160101",
+              "contact": "9953210006",
+              "lastUpdatedDate": null,
+              "emailDomain": "titan.co.in",
+              "email": "btqchm@titan.co.in"
+            },
+            {
+              "natureOfTrade": "Retail Business, Office / Sale Office",
+              "addr": null,
+              "address": "MIA Tanishq-Shop No.225A,Second Floor ,, TITAN COMPANY LTD, Elante Mall,PlotNo178-178A, Industrial AreaPhase1,, CHANDIGARH, Chandigarh, Chandigarh, 160002",
+              "contact": "9988199777",
+              "lastUpdatedDate": null,
+              "emailDomain": "titan.co.in",
+              "email": "btqmch@titan.co.in"
+            }
+          ],
+          "state_": "KERALA",
+          "signatories": [
+            "PUTHENKULAMBU GOPALAN SURESH"
+          ],
+          "contact": "9846400442",
+          "compdetl": true,
+          "lastUpdatedDate": null,
+          "emailDomain": "gmail.com",
+          "dateOfRegistration": "08-01-2018",
+          "complianceRating": null,
+          "cancellationFlag": null
+        }
+      ],
+      "startupRecognition": [],
+      "lei": [],
+      "lin": [],
+      "exchangeInformation": {
+        "bseSecurity": [],
+        "nseSecurity": []
+      },
+      "mca": [
+        {
+          "pans": [
+            "AAACT5131A"
+          ],
+          "numberOfDesignatedPartners": null,
+          "subcategory": "Non-govt company",
+          "dateOfAnnualReturnFiled": null,
+          "totalObligationOfContribution": null,
+          "paidUpCapital": 887786160,
+          "activitySubClass_": "Other business activities n.e.c.",
+          "foreignCompanyWithShareCapital": null,
+          "dateOfLastAgm": "11-08-2020",
+          "descriptionOfMainDivision": null,
+          "officeDetails": null,
+          "category": "Company limited by Shares",
+          "mainDivisonOfBusinessActivity": null,
+          "activityGroup_": "Business activities n.e.c.",
+          "formerNames": [
+            {
+              "toDate": null,
+              "fromDate": null,
+              "name": "TITAN INDUSTRIES LIMITED"
+            }
+          ],
+          "registrationNumber": "001456",
+          "activeCompliance": "ACTIVE compliant",
+          "dateOfStatementOfAccountsAndSolvencyFiled": null,
+          "formerBusinesses_": [],
+          "email": "dineshshetty@titan.co.in",
+          "status": "ACTIVE",
+          "sourceUri": null,
+          "dateOfIncorporation": "26-07-1984",
+          "timestamp": "2020-12-20 06:09:18.745Z",
+          "emailDomain": "titan.co.in",
+          "countryOfIncorporation": null,
+          "numberOfPartners": null,
+          "rocCode": "RoC-Coimbatore",
+          "numberOfMembers": 0,
+          "entityId": "L74999TZ1984PLC001456",
+          "typeOfOffice": null,
+          "class": "Public",
+          "kid": "KCO000008279841G",
+          "registeredAddress": "3SIPCOT INDUSTRIAL COMPLEX HOSUR HOSUR TN 635126 IN",
+          "listingStatus": "Listed",
+          "name": "TITAN COMPANY LIMITED",
+          "activityClass_": "Other business activit ies n.e.c.[This class includes service activities generally delivered to commercial clients]",
+          "numberOfAuthorisedRepresentatives": null,
+          "industry_": "Real estate, renting and business activities",
+          "type_": "DOMESTIC_COMPANY",
+          "formerEntityIds": [],
+          "dateOfBalanceSheet": "31-03-2020",
+          "alternateAddress": "Integrity, #193, Veersandra, Electronics City P.O, Off Hosur Main Road Bangalore 560100 KA IN",
+          "authorisedCapital": 1600000000,
+          "subIndustry_": "Other business activities"
+        }
+      ],
+      "leiV2": [],
+      "epf": [],
+      "tan": [
+        {
+          "category": null,
+          "assessingOfficerNumber": "1",
+          "buildingName": null,
+          "sourceUri": "CHET08980G",
+          "areaCode": "CHE",
+          "timestamp": "2020-10-01 10:52:17.089Z",
+          "deductorCategory": "COMPANY/FIRMS/AOP/BOI/AJP/AOP(TRUST) AND BRANCHES",
+          "emailDomains": [
+            "titan.co.in"
+          ],
+          "divisionName": null,
+          "name": "TITAN COMPANY LIMITED",
+          "dispatchDate": null,
+          "branch": null,
+          "address": "3 SIPCOT INDUSTRIAL COMPLEX TAMILNADU HOSUR 635126",
+          "tanStatus": "ACTIVE",
+          "subCategory": null,
+          "tan": "CHET08980G",
+          "emails": [
+            "vinaybabu@titan.co.in",
+            "nairy@titan.co.in"
+          ],
+          "pan": "AAACT5131A",
+          "kid": "KCO000008279841G"
+        }
+      ],
+      "iec": [
+        {
+          "dateOfIecSuspension": null,
+          "categoryOfExporters": null,
+          "entityType": null,
+          "iecPrintStatus": null,
+          "panIssuedBy": null,
+          "contacts_": [],
+          "orders": [
+            {
+              "orderNumber": "072404000101AM10",
+              "issuedBy": "Jt. DGFT, Bangalore",
+              "details": "EO UNFULFILLED",
+              "dateOfOrder": "26-07-2019"
+            }
+          ],
+          "fileDate": null,
+          "panIssueDate": null,
+          "dateOfIncorporation": null,
+          "exporterType": null,
+          "dgftRaOffice": null,
+          "iec": "0488000262",
+          "deniedEntityListStatus": null,
+          "email": null,
+          "pan": "AAACT5131A",
+          "iecGateStatus": "AMENDMENT",
+          "bin": "AAACT5131AFT001",
+          "dateOfIecCancellation": null,
+          "sourceUri": null,
+          "accountNumber": null,
+          "timestamp": "2021-03-17 15:23:11.108Z",
+          "dateOfIecAllotment": null,
+          "accountType": null,
+          "address": "3 sipcot Industrial complex,Contact No: 919845517338,Hosur",
+          "bank": null,
+          "kid": "KCO000008279841G",
+          "branches": [],
+          "name": "TITAN COMPANY LIMITED",
+          "rcmcs": [
+            {
+              "status": null,
+              "statusFromExportPromotionCouncil": null,
+              "issueDate": "12-03-1993",
+              "productsForWhichRegistered": null,
+              "exporterType": null,
+              "rcmcNumber": "02:E&CSEPC:DEL:REG:392:MADRAS:88-89",
+              "type": "83",
+              "expiryDate": "31-03-2000",
+              "issuedBy": ":ELEC.&COMPUTER SW EXPORT PROM.COUN.",
+              "validityPeriod": null
+            },
+            {
+              "status": null,
+              "statusFromExportPromotionCouncil": null,
+              "issueDate": "03-07-1993",
+              "productsForWhichRegistered": null,
+              "exporterType": null,
+              "rcmcNumber": "GJC/REGN/MH/T-16/1993-98",
+              "type": "81",
+              "expiryDate": "31-03-2000",
+              "issuedBy": ":GEM&JEWELLERY EXP.PROMO.COUNCIL",
+              "validityPeriod": null
+            },
+            {
+              "status": null,
+              "statusFromExportPromotionCouncil": null,
+              "issueDate": "22-08-1995",
+              "productsForWhichRegistered": null,
+              "exporterType": null,
+              "rcmcNumber": "FIEO/SR-7(927)/95-96/340/935/NEH",
+              "type": "83",
+              "expiryDate": "31-03-2000",
+              "issuedBy": ":FEDERATION OF INDIAN EXPORT ORGN.",
+              "validityPeriod": null
+            },
+            {
+              "status": "Active",
+              "statusFromExportPromotionCouncil": "N",
+              "issueDate": "26-05-2020",
+              "productsForWhichRegistered": "QUARTZ ANALOG WATCHES AND PARTS THEREOF, JEWELLERY AND JEWELLERY WATCHES, QUARTZ ALARM TIME PIECES AND PARTS THEREOF, BRACELETS AND ELECTRONIC WATCHES, PRECISION ENGINEERING COMPONENTS, SUB AND OTHERS",
+              "exporterType": "OTHERS",
+              "rcmcNumber": "BLR/87/2020-2021",
+              "type": null,
+              "expiryDate": "31-03-2021",
+              "issuedBy": "Federation of Indian Export Organisations (FIEO)",
+              "validityPeriod": "309"
+            }
+          ],
+          "registrations": [
+            {
+              "place": "Registered WithS.I.A.",
+              "dateOfRegistration": "09-02-1995",
+              "type": "1",
+              "registrationNumber": "782/SIA/IMO/95"
+            },
+            {
+              "place": "Registered WithS.I.A.",
+              "dateOfRegistration": "14-08-1998",
+              "type": "1",
+              "registrationNumber": "1447/SIA/IMO/98"
+            },
+            {
+              "place": "Registered WithS.I.A.",
+              "dateOfRegistration": "06-01-1999",
+              "type": "1",
+              "registrationNumber": "30/SIA/IMO/99"
+            },
+            {
+              "place": "Registered WithS.I.A,",
+              "dateOfRegistration": "07-09-1995",
+              "type": "1",
+              "registrationNumber": "4621/SIA/IMO/95"
+            },
+            {
+              "place": "Registered WithS.I.A.",
+              "dateOfRegistration": "22-10-1993",
+              "type": "1",
+              "registrationNumber": "3686/SIA/IMO/93"
+            }
+          ],
+          "directors": [],
+          "contact": null,
+          "emailDomain": null,
+          "fileNumber": null
+        }
+      ]
+    },
+    "alerts": {
+      "alertSummary": {
+        "severity": {
+          "high": 0,
+          "severe": 0,
+          "medium": 1,
+          "low": 0
+        },
+        "details": {
+          "entityAlerts": {},
+          "managementAlerts": []
+        }
+      },
+      "alertList": [
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isDinSurrendered",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isDinDisqualified",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isDinDeactivated",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isDinDisabled",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isDinLapsed",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "low"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isMcaDirectorDefaulter",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isProclaimedOffender",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isAddressQualityPoor_",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "low"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isGstCancelled",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isGstInactive",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isGstProvisional",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isGstUnderCancellation",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isGstTransactionDefault",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [
+            {
+              "source": "gst",
+              "details": [
+                {
+                  "value": [
+                    "32JITPS4169G1ZJ"
+                  ],
+                  "label": "ids"
+                }
+              ]
+            }
+          ],
+          "alert": "isGstTransactionDelay",
+          "lastUpdatedDate": null,
+          "exists": true,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isEmailInvalid_",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isEmailDisposable_",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isDomainInvalid_",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isIecCancelled",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isIecSuspended",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isIecBlackListed",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isIecInDeniedEntityList",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isTanInactive",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isTanTransactionDefault",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isTanTransactionDelay",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isBsePenalSuspended",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isBseDisciplinaryAction",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isBseMemberInactive",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "low"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isBseDefaulter",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isBseExpelled",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isNseDefaulter",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isNseExpelled",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isNseSuspended",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "high"
+        },
+        {
+          "documentUrl": null,
+          "detailsAsPerSource": [],
+          "alert": "isPanInactive",
+          "lastUpdatedDate": null,
+          "exists": false,
+          "severity": "medium"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isSebiDebarred",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "severe"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isOffshoreLeak",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "severe"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isMcaDirectorUnderProsecution",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "high"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isGstFraud",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "high"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isBankDefaulterSuitFiled",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "high"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isWilfulBankDefaulter",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "severe"
+        },
+        {
+          "detailsAsPerSource": [],
+          "exists": false,
+          "alert": "isBankDefaulterNonSuitFiled",
+          "lastUpdatedDate": null,
+          "documentUrl": null,
+          "severity": "high"
+        }
+      ]
+    },
+    "statutoryCompliance": {
+      "epf": {
+        "delays": [],
+        "defaults": []
+      },
+      "tan": {
+        "category": null,
+        "assessingOfficerNumber": "1",
+        "buildingName": null,
+        "sourceUri": "CHET08980G",
+        "areaCode": "CHE",
+        "timestamp": "2020-10-01 10:52:17.089Z",
+        "deductorCategory": "COMPANY/FIRMS/AOP/BOI/AJP/AOP(TRUST) AND BRANCHES",
+        "emailDomains": [
+          "titan.co.in"
+        ],
+        "divisionName": null,
+        "name": "TITAN COMPANY LIMITED",
+        "dispatchDate": null,
+        "branch": null,
+        "address": "3 SIPCOT INDUSTRIAL COMPLEX TAMILNADU HOSUR 635126",
+        "tanStatus": "ACTIVE",
+        "subCategory": null,
+        "tan": "CHET08980G",
+        "emails": [
+          "vinaybabu@titan.co.in",
+          "nairy@titan.co.in"
+        ],
+        "pan": "AAACT5131A",
+        "kid": "KCO000008279841G"
+      },
+      "gst": {
+        "delays": [
+          {
+            "returnYearMonth": "202003",
+            "revisedDueDateOfFiling": "01-05-2020",
+            "dateOfFiling": "04-06-2020",
+            "noOfDaysOfDelay": 34,
+            "returnType": "GSTR1",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA3203202212238"
+          },
+          {
+            "returnYearMonth": "202006",
+            "revisedDueDateOfFiling": "01-08-2020",
+            "dateOfFiling": "03-08-2020",
+            "noOfDaysOfDelay": 2,
+            "returnType": "GSTR1",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA320620260467F"
+          },
+          {
+            "returnYearMonth": "202008",
+            "revisedDueDateOfFiling": "10-09-2020",
+            "dateOfFiling": "20-09-2020",
+            "noOfDaysOfDelay": 10,
+            "returnType": "GSTR3B",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA320820224723L"
+          },
+          {
+            "returnYearMonth": "202003",
+            "revisedDueDateOfFiling": "25-04-2020",
+            "dateOfFiling": "26-05-2020",
+            "noOfDaysOfDelay": 31,
+            "returnType": "GSTR3B",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA320320166062Y"
+          },
+          {
+            "returnYearMonth": "202006",
+            "revisedDueDateOfFiling": "25-07-2020",
+            "dateOfFiling": "13-08-2020",
+            "noOfDaysOfDelay": 19,
+            "returnType": "GSTR3B",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA3206203114122"
+          },
+          {
+            "returnYearMonth": "202004",
+            "revisedDueDateOfFiling": "25-05-2020",
+            "dateOfFiling": "22-06-2020",
+            "noOfDaysOfDelay": 28,
+            "returnType": "GSTR3B",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA320420171376K"
+          },
+          {
+            "returnYearMonth": "202012",
+            "revisedDueDateOfFiling": "11-01-2021",
+            "dateOfFiling": "13-01-2021",
+            "noOfDaysOfDelay": 2,
+            "returnType": "GSTR1",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA321220194071W"
+          },
+          {
+            "returnYearMonth": "202012",
+            "revisedDueDateOfFiling": "24-01-2021",
+            "dateOfFiling": "02-02-2021",
+            "noOfDaysOfDelay": 9,
+            "returnType": "GSTR3B",
+            "gstin": "32JITPS4169G1ZJ",
+            "arn": "AA321220584362N"
+          }
+        ],
+        "defaults": []
+      },
+      "mca": {
+        "pans": [
+          "AAACT5131A"
+        ],
+        "numberOfDesignatedPartners": null,
+        "subcategory": "Non-govt company",
+        "dateOfAnnualReturnFiled": null,
+        "totalObligationOfContribution": null,
+        "paidUpCapital": 887786160,
+        "activitySubClass_": "Other business activities n.e.c.",
+        "foreignCompanyWithShareCapital": null,
+        "dateOfLastAgm": "11-08-2020",
+        "descriptionOfMainDivision": null,
+        "officeDetails": null,
+        "category": "Company limited by Shares",
+        "mainDivisonOfBusinessActivity": null,
+        "activityGroup_": "Business activities n.e.c.",
+        "formerNames": [
+          {
+            "toDate": null,
+            "fromDate": null,
+            "name": "TITAN INDUSTRIES LIMITED"
+          }
+        ],
+        "registrationNumber": "001456",
+        "activeCompliance": "ACTIVE compliant",
+        "dateOfStatementOfAccountsAndSolvencyFiled": null,
+        "formerBusinesses_": [],
+        "email": "dineshshetty@titan.co.in",
+        "status": "ACTIVE",
+        "sourceUri": null,
+        "dateOfIncorporation": "26-07-1984",
+        "timestamp": "2020-12-20 06:09:18.745Z",
+        "emailDomain": "titan.co.in",
+        "countryOfIncorporation": null,
+        "numberOfPartners": null,
+        "rocCode": "RoC-Coimbatore",
+        "numberOfMembers": 0,
+        "entityId": "L74999TZ1984PLC001456",
+        "typeOfOffice": null,
+        "class": "Public",
+        "kid": "KCO000008279841G",
+        "registeredAddress": "3SIPCOT INDUSTRIAL COMPLEX HOSUR HOSUR TN 635126 IN",
+        "listingStatus": "Listed",
+        "name": "TITAN COMPANY LIMITED",
+        "activityClass_": "Other business activit ies n.e.c.[This class includes service activities generally delivered to commercial clients]",
+        "numberOfAuthorisedRepresentatives": null,
+        "industry_": "Real estate, renting and business activities",
+        "type_": "DOMESTIC_COMPANY",
+        "formerEntityIds": [],
+        "dateOfBalanceSheet": "31-03-2020",
+        "alternateAddress": "Integrity, #193, Veersandra, Electronics City P.O, Off Hosur Main Road Bangalore 560100 KA IN",
+        "authorisedCapital": 1600000000,
+        "subIndustry_": "Other business activities"
+      }
+    },
+    "formerAlerts": null,
+    "creditRatings": []
+  }
+}

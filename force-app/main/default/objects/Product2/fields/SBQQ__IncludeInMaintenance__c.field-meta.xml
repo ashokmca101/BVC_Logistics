@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__IncludeInMaintenance__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Includes products in percent of total calculations that are normally excluded (e.g.: subscription products).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check to always include this product in percent of total calculations (normally subscription products are excluded from percent of total calculations).</inlineHelpText>
+    <label>Include In Percent Of Total</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

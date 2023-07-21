@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This flow is used to call the batch apex responsible for getting flight details</description>
+        <name>Call_Flight_Schedule_Batch</name>
+        <label>Call Flight Schedule Batch</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <actionName>callFlightScheduleBatch</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <description>via Batch Apex</description>
+    <environments>Default</environments>
+    <interviewLabel>Flight Schedule Details {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Flight Schedule Details</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Call_Flight_Schedule_Batch</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>is_Shipment_Locked</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(  AND( OR(ISPICKVAL( Customer_Product_Category__c , &apos;BATH&apos;),ISPICKVAL( Customer_Product_Category__c , &apos;eSHIP&apos;)) ,Verified_for_Billing__c ==true,OR(ISCHANGED( Total_Invoice_Value__c ), ISCHANGED( Product_Category__c ),ISCHANGED(  Shipment_Type__c),ISCHANGED(  Visit_Outcome__c ),ISCHANGED(  Gross_Weight__c),ISCHANGED(  Customer__c),ISCHANGED(  Origin_Destination_Pairing__c ) ) )  , true, false)</errorConditionFormula>
+    <errorMessage>Can&apos;t Change .After Verified!!</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoice_Payment_Status_Custom__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Total_Payment_on_Invoices_Excluding_TDS__c = 0, &apos;Unpaid&apos;,
+IF( Total_Payment_on_Invoices_Excluding_TDS__c &gt; 0 &amp;&amp; Total_Payments_on_invoices_Including_TD__c &lt; Invoice_Amount__c, &apos;Partially Paid&apos;,
+IF( Total_Payments_on_invoices_Including_TD__c  &gt;= Invoice_Amount__c , &apos;Paid&apos;,null )))</formula>
+    <label>Invoice Payment Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

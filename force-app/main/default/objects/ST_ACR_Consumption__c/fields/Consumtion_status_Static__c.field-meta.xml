@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consumtion_status_Static__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL( ST_ACR_Order__r.Order_Status_Static__c, &apos;Activated&apos;) , &apos;Activated&apos;, IF(ISPICKVAL(ST_ACR_Order__r.Order_Status_Static__c, &apos;Cancelled&apos;) , &apos;cancelled&apos;, null) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Consumtion status(Static)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

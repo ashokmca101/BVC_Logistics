@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Address_fields_lock</fullName>
+    <active>true</active>
+    <description>Address fields city, state, country, district and pin code are not editable once aws sync status marked as completed.</description>
+    <errorConditionFormula>IF (ISPICKVAL(AWS_SYNC_Status__c ,&apos;Completed&apos;) ,
+OR (ISCHANGED(CITY__c), ISCHANGED (STATE__c), ISCHANGED (COUNTRY__c), ISCHANGED (PINCODE__c), ISCHANGED(District__c)), False)</errorConditionFormula>
+    <errorMessage>You cannot edit after AWS Sync Status is completed.</errorMessage>
+</ValidationRule>

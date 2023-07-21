@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Deal Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Stage__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Contacted</fullName>
+                <default>false</default>
+                <label>Contacted</label>
+            </value>
+            <value>
+                <fullName>Call not Connected</fullName>
+                <default>false</default>
+                <label>Call not Connected</label>
+            </value>
+            <value>
+                <fullName>Contact Details Not Available</fullName>
+                <default>false</default>
+                <label>Contact Details Not Available</label>
+            </value>
+            <value>
+                <fullName>Visit Done</fullName>
+                <default>false</default>
+                <label>Visit Done</label>
+            </value>
+            <value>
+                <fullName>Already Paid</fullName>
+                <default>false</default>
+                <label>Already Paid</label>
+            </value>
+            <value>
+                <fullName>ACR Customer</fullName>
+                <default>false</default>
+                <label>ACR Customer</label>
+            </value>
+            <value>
+                <fullName>Paid in Cash but not updated</fullName>
+                <default>false</default>
+                <label>Paid in Cash but not updated</label>
+            </value>
+            <value>
+                <fullName>Credit Note</fullName>
+                <default>false</default>
+                <label>Credit Note</label>
+            </value>
+            <value>
+                <fullName>Operational issue</fullName>
+                <default>false</default>
+                <label>Operational issue</label>
+            </value>
+            <value>
+                <fullName>Dispute</fullName>
+                <default>false</default>
+                <label>Dispute</label>
+            </value>
+            <value>
+                <fullName>Reconciliation Under Process</fullName>
+                <default>false</default>
+                <label>Reconciliation Under Process</label>
+            </value>
+            <value>
+                <fullName>Revert Awaited</fullName>
+                <default>false</default>
+                <label>Revert Awaited</label>
+            </value>
+            <value>
+                <fullName>Payment in Process</fullName>
+                <default>false</default>
+                <label>Payment in Process</label>
+            </value>
+            <value>
+                <fullName>TDS Pending</fullName>
+                <default>false</default>
+                <label>TDS Pending</label>
+            </value>
+            <value>
+                <fullName>Fund Issue</fullName>
+                <default>false</default>
+                <label>Fund Issue</label>
+            </value>
+            <value>
+                <fullName>No ledger available wth Customer</fullName>
+                <default>false</default>
+                <label>No ledger available wth Customer</label>
+            </value>
+            <value>
+                <fullName>To Pay issue</fullName>
+                <default>false</default>
+                <label>To Pay issue</label>
+            </value>
+            <value>
+                <fullName>Legal</fullName>
+                <default>false</default>
+                <label>Legal</label>
+            </value>
+            <value>
+                <fullName>Complete Payment Received</fullName>
+                <default>false</default>
+                <label>Complete Payment Received</label>
+            </value>
+            <value>
+                <fullName>Part Payment Received</fullName>
+                <default>false</default>
+                <label>Part Payment Received</label>
+            </value>
+            <value>
+                <fullName>Approval Under process</fullName>
+                <default>false</default>
+                <label>Approval Under process</label>
+            </value>
+            <value>
+                <fullName>Credit Note Under process</fullName>
+                <default>false</default>
+                <label>Credit Note Under process</label>
+            </value>
+            <value>
+                <fullName>Write off pending</fullName>
+                <default>false</default>
+                <label>Write off pending</label>
+            </value>
+            <value>
+                <fullName>Write off done</fullName>
+                <default>false</default>
+                <label>Write off done</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Contacted</controllingFieldValue>
+            <valueName>Contacted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contacted</controllingFieldValue>
+            <valueName>Call not Connected</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contacted</controllingFieldValue>
+            <valueName>Contact Details Not Available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contacted</controllingFieldValue>
+            <valueName>Visit Done</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Internal</controllingFieldValue>
+            <valueName>Already Paid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Internal</controllingFieldValue>
+            <valueName>ACR Customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Internal</controllingFieldValue>
+            <valueName>Paid in Cash but not updated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Internal</controllingFieldValue>
+            <valueName>Credit Note</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Internal</controllingFieldValue>
+            <valueName>Operational issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Internal</controllingFieldValue>
+            <valueName>Dispute</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Customer</controllingFieldValue>
+            <valueName>Reconciliation Under Process</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Customer</controllingFieldValue>
+            <valueName>Revert Awaited</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Customer</controllingFieldValue>
+            <valueName>Payment in Process</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pending Customer</controllingFieldValue>
+            <valueName>TDS Pending</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stalemate</controllingFieldValue>
+            <valueName>Fund Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stalemate</controllingFieldValue>
+            <valueName>No ledger available wth Customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stalemate</controllingFieldValue>
+            <valueName>To Pay issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stalemate</controllingFieldValue>
+            <valueName>Legal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stalemate</controllingFieldValue>
+            <valueName>Write off pending</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stalemate</controllingFieldValue>
+            <valueName>Write off done</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment Received</controllingFieldValue>
+            <valueName>Complete Payment Received</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment Received</controllingFieldValue>
+            <valueName>Part Payment Received</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

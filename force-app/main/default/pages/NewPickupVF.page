@@ -1,0 +1,68 @@
+<apex:page standardController="Pickup__c" extensions="NewPickUp1" lightningStylesheets="true" docType="html-5.0" readOnly="false" sidebar="false" showHeader="false">
+    <apex:form id="theForm">
+        <apex:pageMessages ></apex:pageMessages>
+        <font color="Blue" size="4"><Center>New Pickup: Pickup Form</Center></font> 
+        <apex:pageBlock > 
+<table>		
+<tr>
+           <td> <apex:outputLabel ><font color="Blue" size="3">Pickup Name</font></apex:outputLabel>  </td><td></td>
+    </tr>
+<tr>
+            <td><apex:outputLabel ><font color="Blue" size="3">Customer</font></apex:outputLabel>  </td>              
+            <td>   
+                <apex:outputPanel >
+                    <apex:inputText size="50" label="Search Customer"  list="{!customerAccounts}" value="{!selectedCustomer}"/>
+                    <apex:actionSupport action="{!checkCustomer}"  event="onchange" reRender="messages, messages2" /> 
+                </apex:outputPanel>
+				<br/>
+                <apex:outputPanel id="messages">
+                    <font color="green" size="3">Pricing Type : <b>{!textDisplay}</b><br/></font>
+                </apex:outputPanel> <br/>
+            </td>
+</tr>	
+    <tr>
+           <td> <apex:outputLabel ><font color="Blue" size="3">Shipping Account</font></apex:outputLabel></td>
+            <td> 
+			<apex:outputPanel >
+                <apex:inputText size="50" label="Shipping Account"  list="{!ShipperAccounts}" value="{!selectedShipAc}" />                
+                <apex:actionSupport action="{!checkShipAc}"  event="onchange" reRender="getshadress" />                 
+            </apex:outputPanel>  
+            </td>
+</tr>
+<tr>
+			<td>
+            <apex:outputLabel ><font color="Blue" size="3"><br/>Shipping Address</font></apex:outputLabel> </td>
+			<td>
+            <apex:outputPanel id="getshadress" >
+                <br/><apex:inputText size="50" label="Shipping Address"  list="{!ShipperAddresses}" value="{!selectedShipAdd}"/>                
+            </apex:outputPanel> 
+			</td>
+</tr>
+<tr>
+			<td>
+            <apex:outputLabel ><font color="Blue" size="3"><br/>Pickup Date and Time</font></apex:outputLabel>
+			</td>
+			<td>
+            <br/><apex:input type="datetime-local" value="{!s_date}"/> 
+			</td>
+</tr>	
+
+    <tr>
+			<td>
+            <apex:outputLabel ><font color="Blue" size="3"><br/>Remarks</font></apex:outputLabel>
+			</td>
+			<td>
+            <br/><apex:input type="text" size="50" value="{!Remarks}"/> 
+			</td>
+</tr>
+    
+</table>		
+			<br/><br/>
+            <center><apex:commandButton action="{!Cancel}" value="Cancel" id="Can"/>
+            		<apex:commandButton action="{!savenNew}" value="Save & New" id="SN"/>
+                	<apex:commandButton action="{!save}" value="Save" id="save"/>
+            </center>
+			
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

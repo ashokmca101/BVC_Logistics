@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>COD_Charges_percentage_e_of_product__c</fullName>
+    <externalId>false</externalId>
+    <formula>if((Rate_INR__c * COD_Charges_percentage_of_product__c) &gt;  COD_Charges_per_shipment__c,Rate_INR__c * COD_Charges_percentage_of_product__c, COD_Charges_per_shipment__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>COD Charges percentage of product</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

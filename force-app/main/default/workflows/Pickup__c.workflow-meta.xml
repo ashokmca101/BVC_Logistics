@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Send_Email_with_Pickup_details</fullName>
+        <description>Send Email with Pickup details</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Notify_Hub_Origin__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Pickup_Detail_Information_Tempalte</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Email_with_Pickup_details_on_customer_email_and_mob</fullName>
+        <description>Send Email with Pickup details on customer email and mob</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Primary_Customer_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>valship.support@bvclogistics.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Pickup_Detail_Information_Email_Template</template>
+    </alerts>
+</Workflow>

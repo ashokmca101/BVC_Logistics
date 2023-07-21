@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__CompoundDiscountRate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Discount rate compounded by quantity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Discount rate compounded by quantity.</inlineHelpText>
+    <label>Compound Discount (%)</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

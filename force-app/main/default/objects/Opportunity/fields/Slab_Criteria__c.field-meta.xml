@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Slab_Criteria__c</fullName>
+    <externalId>false</externalId>
+    <label>Slab Criteria</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gross Weight Gms</fullName>
+                <default>false</default>
+                <label>Gross Weight Gms</label>
+            </value>
+            <value>
+                <fullName>Invoice Value INR</fullName>
+                <default>false</default>
+                <label>Invoice Value INR</label>
+            </value>
+            <value>
+                <fullName>Net Weight</fullName>
+                <default>false</default>
+                <label>Net Weight</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origin_Destination_Pair__c</fullName>
+    <externalId>false</externalId>
+    <label>Origin Destination Pair</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ahmedabad - Rajkot</fullName>
+                <default>false</default>
+                <label>Ahmedabad - Rajkot</label>
+            </value>
+            <value>
+                <fullName>Delhi - Rudrapur</fullName>
+                <default>false</default>
+                <label>Delhi - Rudrapur</label>
+            </value>
+            <value>
+                <fullName>Rudrapur - Delhi</fullName>
+                <default>false</default>
+                <label>Rudrapur - Delhi</label>
+            </value>
+            <value>
+                <fullName>Delhi - Agra</fullName>
+                <default>false</default>
+                <label>Delhi - Agra</label>
+            </value>
+            <value>
+                <fullName>Meerut - Agra</fullName>
+                <default>false</default>
+                <label>Meerut - Agra</label>
+            </value>
+            <value>
+                <fullName>Mumbai - Surat</fullName>
+                <default>false</default>
+                <label>Mumbai - Surat</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

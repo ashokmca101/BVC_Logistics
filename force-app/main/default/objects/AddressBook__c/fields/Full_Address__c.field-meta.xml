@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Full_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>ADDRESS1__c +&quot;,&quot;+ ADDRESS2__c +&quot;,&quot;+  CITY__c +&quot;,&quot;+  STATE__c +&quot;,&quot;+ COUNTRY__c +&quot;,&quot;+ PINCODE__c</formula>
+    <label>Full Address</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

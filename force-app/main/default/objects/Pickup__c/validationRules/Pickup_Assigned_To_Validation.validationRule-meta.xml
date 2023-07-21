@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pickup_Assigned_To_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISCHANGED(Pickup_Assigned_To__c) , OR( TEXT( Pickup_Status__c ) == &apos;Completed&apos; ,TEXT( Pickup_Status__c ) == &apos;Cancelled&apos;))</errorConditionFormula>
+    <errorDisplayField>Pickup_Assigned_To__c</errorDisplayField>
+    <errorMessage>Cant Reassign if status is Completed</errorMessage>
+</ValidationRule>

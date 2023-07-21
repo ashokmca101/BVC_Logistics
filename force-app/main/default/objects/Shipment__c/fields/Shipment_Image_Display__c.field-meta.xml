@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipment_Image_Display__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISPICKVAL( Status__c , &quot;Shipment Picked&quot; ) ,  IMAGE(&apos;https://bvc2--bvcdev--c.documentforce.com/servlet/servlet.FileDownload?file=0151m00000082TF&apos;	, &apos;Shipment Picked&apos; , 50, 50) &amp; &quot;Shipment Picked&quot; ,
+
+IF( ISPICKVAL( Status__c , &quot;In Transit (to Air)&quot; ) ,IMAGE(&apos;https://bvc2--bvcdev--c.documentforce.com/servlet/servlet.FileDownload?file=0151m00000082TK&apos;, &apos;In Transit (to Air)&apos; , 50, 50) &amp; &quot;In Transit (to Air)&quot; , 
+
+ IF( ISPICKVAL( Status__c , &quot;In Transit (to Road)&quot; ) , IMAGE(&apos;https://bvc2--bvcdev--c.documentforce.com/servlet/servlet.FileDownload?file=0151m00000082TP&apos;			, &apos;In Transit (to Road)&apos; , 50, 50) &amp; &quot;In Transit (to Road)&quot; , 
+
+ IF( ISPICKVAL( Status__c , &quot;In Scan Done&quot; ) , IMAGE(&apos;https://bvc2--bvcdev--c.documentforce.com/servlet/servlet.FileDownload?file=0151m00000082TU&apos;, &apos;In Scan Done&apos; , 50, 50) &amp; &quot;In Scan Done&quot; , 
+
+ IF( ISPICKVAL( Status__c , &quot;Out for Delivery&quot; ) , IMAGE(&apos;https://bvc2--bvcdev--c.documentforce.com/servlet/servlet.FileDownload?file=0151m00000082Te&apos;, &apos;Out for Delivery&apos; , 50, 50) &amp; &quot;Out for Delivery&quot;, 
+
+ IF( ISPICKVAL( Status__c , &quot;Shipment Delivered&quot; ) ,  IMAGE(&apos;https://bvc2--bvcdev--c.documentforce.com/servlet/servlet.FileDownload?file=0151m00000082TZ&apos;, &apos;Shipment Delivered&apos; , 50, 50) &amp; &quot;Shipment delivered&quot; , &quot;None&quot;))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Shipment Tracking Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

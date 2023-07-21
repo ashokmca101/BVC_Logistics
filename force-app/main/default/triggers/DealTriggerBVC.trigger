@@ -10,7 +10,7 @@ trigger DealTriggerBVC on Opportunity (before insert,After insert,after update) 
            }
        }
             OpportunityDuplicateValidator.checkForDuplicates(Trigger.new);
-       
+            OpportunityValidationClass.validateOpportunity(Trigger.new, Trigger.oldMap);
     }
  
 }

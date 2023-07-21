@@ -1,9 +1,9 @@
-/**                                                                             
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 12-11-2021
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+/**
+* @description       : 
+* @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+* @group             : 
+* @last modified on  : 12-11-2021
+* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class TMS_LinehaulClass {
     @AuraEnabled
@@ -59,7 +59,7 @@ public without sharing class TMS_LinehaulClass {
     public static TMS_LinehaulClass Shipments( String filter, string Hub){
         Boolean admin = IsAdminUser();
         if(!admin)
-        Hub = LoggedInUserHub();
+            Hub = LoggedInUserHub();
         TMS_LinehaulClass cls = new TMS_LinehaulClass();
         cls.error = '';
         cls.showHubFilter = admin;
@@ -72,13 +72,13 @@ public without sharing class TMS_LinehaulClass {
             deliveryStatusSet.add('Out for Delivery');
             deliveryStatusSet.add('Delivered');
             if(filter =='Finalised'){
-               string query = 'select id,Shipment__r.Number_of_Packages__c,Shipment__r.Net_Weight__c,Shipment__r.Shipper_Name_TMS__r.Phone,Shipment__r.Consignee_Name_TMS__r.ShippingCity,Shipment__r.Consignee_Name_TMS__r.ShippingState,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Consignee_Name_TMS__r.ShippingCountry,Shipment__r.Consignee_Name_TMS__r.Phone,Shipment__r.Shipper_Name_TMS__r.Email__c,Shipment__r.Consignee_Name_TMS__r.Email__c,Shipment__r.Shipper_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Shipper_Name_TMS__r.ShippingPostalCode,Shipment__r.Shipper_Name_TMS__r.Name,Shipment__r.Shipper_Name_TMS__r.ShippingStreet,Shipment__r.Shipper_Name_TMS__r.ShippingState,Shipment__r.Shipper_Name_TMS__r.ShippingCity,Shipment__r.Shipper_Name_TMS__r.ShippingCountry,Shipment__r.Gross_Weight_UOM_TMS__c,Secure_Packaging_Identifier__c, Unique_Identifier__c,Shipment__r.Cargo_Type__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Flight_Schedule__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Shipment__r.CreatedDate,Current_Scanned_at__c FROM Secure_Bag__c WHERE Finalised_Linehaul_Number__c !=null AND Current_Scan_Loction__c!=:deliveryStatusSet';
+                string query = 'select id,Shipment__r.Number_of_Packages__c,Shipment__r.Net_Weight__c,Shipment__r.Shipper_Name_TMS__r.Phone,Shipment__r.Consignee_Name_TMS__r.ShippingCity,Shipment__r.Consignee_Name_TMS__r.ShippingState,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Consignee_Name_TMS__r.ShippingCountry,Shipment__r.Consignee_Name_TMS__r.Phone,Shipment__r.Shipper_Name_TMS__r.Email__c,Shipment__r.Consignee_Name_TMS__r.Email__c,Shipment__r.Shipper_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Shipper_Name_TMS__r.ShippingPostalCode,Shipment__r.Shipper_Name_TMS__r.Name,Shipment__r.Shipper_Name_TMS__r.ShippingStreet,Shipment__r.Shipper_Name_TMS__r.ShippingState,Shipment__r.Shipper_Name_TMS__r.ShippingCity,Shipment__r.Shipper_Name_TMS__r.ShippingCountry,Shipment__r.Gross_Weight_UOM_TMS__c,Secure_Packaging_Identifier__c, Unique_Identifier__c,Shipment__r.Cargo_Type__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Flight_Schedule__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Shipment__r.CreatedDate,Current_Scanned_at__c, Trunk_Id__c,Trunk_Id__r.Name FROM Secure_Bag__c WHERE Finalised_Linehaul_Number__c !=null AND Current_Scan_Loction__c!=:deliveryStatusSet';
                 if(string.isNotBlank(hub)){
                     query = query+' AND Current_Scan_Hub__r.name=:hub';
                 }
-                query = query+' ORDER BY LastModifiedDate DESC LIMIT 50000';
+                query = query+' ORDER BY Shipment__r.CreatedDate DESC LIMIT 50000';
                 SecureBagList = Database.query(query);
-                //SecureBagList = [select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Flight_Schedule__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c FROM Secure_Bag__c WHERE Finalised_Linehaul_Number__c !=null AND Current_Scan_Loction__c!=:deliveryStatusSet AND Current_Scan_Hub__r.name=:hub ORDER BY LastModifiedDate DESC];
+                //SecureBagList = [select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Flight_Schedule__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Trunk_Id__c, Trunk_Id__r.Name FROM Secure_Bag__c WHERE Finalised_Linehaul_Number__c !=null AND Current_Scan_Loction__c!=:deliveryStatusSet AND Current_Scan_Hub__r.name=:hub ORDER BY LastModifiedDate DESC];
                 if(SecureBagList!=null && SecureBagList.size()>0){
                     for(Secure_Bag__c sb:SecureBagList){
                         // System.debug('id=:'+sb.id);
@@ -90,11 +90,11 @@ public without sharing class TMS_LinehaulClass {
                     }
                 }
             }else if(filter=='Outbound'){
-               string query = 'select id,Shipment__r.Number_of_Packages__c,Shipment__r.Net_Weight__c,Shipment__r.Shipper_Name_TMS__r.Phone,Shipment__r.Consignee_Name_TMS__r.ShippingCity,Shipment__r.Consignee_Name_TMS__r.ShippingState,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Consignee_Name_TMS__r.ShippingCountry,Shipment__r.Consignee_Name_TMS__r.Phone,Shipment__r.Shipper_Name_TMS__r.Email__c,Shipment__r.Consignee_Name_TMS__r.Email__c,Shipment__r.Shipper_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Shipper_Name_TMS__r.ShippingPostalCode,Shipment__r.Shipper_Name_TMS__r.Name,Shipment__r.Shipper_Name_TMS__r.ShippingStreet,Shipment__r.Shipper_Name_TMS__r.ShippingCity,Shipment__r.Shipper_Name_TMS__r.ShippingState,Shipment__r.Shipper_Name_TMS__r.ShippingCountry,Shipment__r.Gross_Weight_UOM_TMS__c,Secure_Packaging_Identifier__c, Unique_Identifier__c,Shipment__r.Cargo_Type__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Shipment__r.CreatedDate,Current_Scanned_at__c FROM Secure_Bag__c WHERE Current_Scan_Loction__c!=:deliveryStatusSet AND Finalised_Linehaul_Number__c =null';
+                string query = 'select id,Shipment__r.Number_of_Packages__c,Shipment__r.Net_Weight__c,Shipment__r.Shipper_Name_TMS__r.Phone,Shipment__r.Consignee_Name_TMS__r.ShippingCity,Shipment__r.Consignee_Name_TMS__r.ShippingState,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Consignee_Name_TMS__r.ShippingCountry,Shipment__r.Consignee_Name_TMS__r.Phone,Shipment__r.Shipper_Name_TMS__r.Email__c,Shipment__r.Consignee_Name_TMS__r.Email__c,Shipment__r.Shipper_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Shipper_Name_TMS__r.ShippingPostalCode,Shipment__r.Shipper_Name_TMS__r.Name,Shipment__r.Shipper_Name_TMS__r.ShippingStreet,Shipment__r.Shipper_Name_TMS__r.ShippingCity,Shipment__r.Shipper_Name_TMS__r.ShippingState,Shipment__r.Shipper_Name_TMS__r.ShippingCountry,Shipment__r.Gross_Weight_UOM_TMS__c,Secure_Packaging_Identifier__c, Unique_Identifier__c,Shipment__r.Cargo_Type__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Shipment__r.CreatedDate,Current_Scanned_at__c,Trunk_Id__c,Trunk_Id__r.Name FROM Secure_Bag__c WHERE Current_Scan_Loction__c!=:deliveryStatusSet AND Finalised_Linehaul_Number__c =null';
                 if(string.isNotBlank(hub)){
                     query = query+' AND Current_Scan_Hub__r.name=:hub';
                 }
-                query = query+' ORDER BY LastModifiedDate DESC LIMIT 50000';
+                query = query+' ORDER BY Shipment__r.CreatedDate DESC LIMIT 50000';
                 try{
                     SecureBagList = Database.query(query);
                 }catch(exception e){
@@ -113,13 +113,13 @@ public without sharing class TMS_LinehaulClass {
                     }
                 }
             }else{
-               string query = 'select id,Shipment__r.Number_of_Packages__c,Shipment__r.Net_Weight__c,Shipment__r.Shipper_Name_TMS__r.Phone,Shipment__r.Consignee_Name_TMS__r.ShippingCity,Shipment__r.Consignee_Name_TMS__r.ShippingState,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Consignee_Name_TMS__r.ShippingCountry,Shipment__r.Consignee_Name_TMS__r.Phone,Shipment__r.Shipper_Name_TMS__r.Email__c,Shipment__r.Consignee_Name_TMS__r.Email__c,Shipment__r.Shipper_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Shipper_Name_TMS__r.ShippingPostalCode,Shipment__r.Shipper_Name_TMS__r.Name,Shipment__r.Shipper_Name_TMS__r.ShippingStreet,Shipment__r.Shipper_Name_TMS__r.ShippingState,Shipment__r.Shipper_Name_TMS__r.ShippingCity,Shipment__r.Shipper_Name_TMS__r.ShippingCountry,Shipment__r.Gross_Weight_UOM_TMS__c,Secure_Packaging_Identifier__c, Unique_Identifier__c,Shipment__r.Cargo_Type__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Shipment__r.CreatedDate,Current_Scanned_at__c FROM Secure_Bag__c WHERE Current_Scan_Loction__c!=:deliveryStatusSet AND Next_Destination__c!=null AND Finalised_Linehaul_Number__c !=null';
+                string query = 'select id,Shipment__r.Number_of_Packages__c,Shipment__r.Net_Weight__c,Shipment__r.Shipper_Name_TMS__r.Phone,Shipment__r.Consignee_Name_TMS__r.ShippingCity,Shipment__r.Consignee_Name_TMS__r.ShippingState,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Consignee_Name_TMS__r.ShippingCountry,Shipment__r.Consignee_Name_TMS__r.Phone,Shipment__r.Shipper_Name_TMS__r.Email__c,Shipment__r.Consignee_Name_TMS__r.Email__c,Shipment__r.Shipper_Name_TMS__r.Shipping_Address_Fromula__c,Shipment__r.Shipper_Name_TMS__r.ShippingPostalCode,Shipment__r.Shipper_Name_TMS__r.Name,Shipment__r.Shipper_Name_TMS__r.ShippingStreet,Shipment__r.Shipper_Name_TMS__r.ShippingState,Shipment__r.Shipper_Name_TMS__r.ShippingCity,Shipment__r.Shipper_Name_TMS__r.ShippingCountry,Shipment__r.Gross_Weight_UOM_TMS__c,Secure_Packaging_Identifier__c, Unique_Identifier__c,Shipment__r.Cargo_Type__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Shipment__r.CreatedDate,Current_Scanned_at__c,Trunk_Id__c,Trunk_Id__r.Name FROM Secure_Bag__c WHERE Current_Scan_Loction__c!=:deliveryStatusSet AND Next_Destination__c!=null AND Finalised_Linehaul_Number__c !=null';
                 if(string.isNotBlank(hub)){
                     Hub__c destHub = [select id,Branch__c FROM Hub__c where name=:hub LIMIT 1];
                     string destBranch =destHub.Branch__c; 
                     query = query+' AND Next_Destination__c=:destBranch';
                 }
-                query = query+' ORDER BY LastModifiedDate DESC LIMIT 50000';
+                query = query+' ORDER BY Shipment__r.CreatedDate DESC LIMIT 50000';
                 
                 SecureBagList = Database.query(query);
                 if(SecureBagList!=null && SecureBagList.size()>0){
@@ -210,6 +210,7 @@ public without sharing class TMS_LinehaulClass {
                     sbwrap.sb = sb;
                     sbwrap.process = false;
                     sbwrap.Seal=sb.Seal_Id__r.name;
+                    sbwrap.trunk=sb.trunk_Id__r.name;
                     sbwrap.CurrentHub=sb.Current_Scan_Hub__r.name;
                     cls.BagWrapList.add(sbwrap);
                     index++;
@@ -235,39 +236,40 @@ public without sharing class TMS_LinehaulClass {
         Set<id> bagIds = new Set<id>();
         if(bags != null && bags.size()>0){
             for(Secure_Bag__c sb:bags){
-            bagIds.add(sb.id);
-        }
-        
-        // System.debug('CargoType: '+CargoType);
-        // System.debug('SealId: '+SealId);
-        // System.debug('Dest: '+Dest);
-        Set<string> deliveryStatusSet = new set<string>();
-        
-        String query = 'select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c FROM Secure_Bag__c WHERE id=:bagIds';
-        
-        if(string.isNotBlank(Dest))
-            query = query+' AND Next_Destination__c=:Dest';
-        if(string.isNotBlank(CargoType))
-            query = query+' AND Shipment__r.Cargo_Type__c=:CargoType';
-        if(string.isNotBlank(SealId)){
-            if(SealId=='Pending')
-                query = query+' AND Seal_Id__c=null';
-            else if(SealId=='Completed')
-                query = query+' AND Seal_Id__c!=null';
-        }
-        // System.debug('bagWrap:'+Database.query(query).size());
+                bagIds.add(sb.id);
+            }
+            
+            // System.debug('CargoType: '+CargoType);
+            // System.debug('SealId: '+SealId);
+            // System.debug('Dest: '+Dest);
+            Set<string> deliveryStatusSet = new set<string>();
+            
+            String query = 'select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Finalized_Time__c,Trunk_Id__c,Trunk_Id__r.Name FROM Secure_Bag__c WHERE id=:bagIds';
+            
+            if(string.isNotBlank(Dest))
+                query = query+' AND Next_Destination__c=:Dest';
+            if(string.isNotBlank(CargoType))
+                query = query+' AND Shipment__r.Cargo_Type__c=:CargoType';
+            if(string.isNotBlank(SealId)){
+                if(SealId=='Pending')
+                    query = query+' AND Seal_Id__c=null';
+                else if(SealId=='Completed')
+                    query = query+' AND Seal_Id__c!=null';
+            }
+            // System.debug('bagWrap:'+Database.query(query).size());
             integer index=1;
-        for(Secure_Bag__c bag:Database.query(query)){
-            SecureBagWrapper sbwrap = new SecureBagWrapper();
-            sbwrap.index = index;
-            sbwrap.sb = bag;
-            sbwrap.process = false;
-            sbwrap.Seal=bag.Seal_Id__r.name;
-            sbwrap.CurrentHub=bag.Current_Scan_Hub__r.name;
-            bagWrap.add(sbwrap);
-            index++;
-        }
-        
+            for(Secure_Bag__c bag:Database.query(query)){
+                SecureBagWrapper sbwrap = new SecureBagWrapper();
+                sbwrap.index = index;
+                sbwrap.sb = bag;
+                sbwrap.process = false;
+                sbwrap.Seal=bag.Seal_Id__r.name;
+                sbwrap.trunk=bag.Trunk_Id__r.name;
+                sbwrap.CurrentHub=bag.Current_Scan_Hub__r.name;
+                bagWrap.add(sbwrap);
+                index++;
+            }
+            
         }
         
         return bagWrap;
@@ -278,31 +280,32 @@ public without sharing class TMS_LinehaulClass {
         Set<id> bagIds = new Set<id>();
         if(bags != null && bags.size()>0){
             for(Secure_Bag__c sb:bags){
-            bagIds.add(sb.id);
-        }
-        
+                bagIds.add(sb.id);
+            }
+            
             // System.debug('SearchText: '+SearchText);
             SearchText='\'%' + String.escapeSingleQuotes(SearchText.trim()) + '%\'';
-        Set<string> deliveryStatusSet = new set<string>();
-        
-       String query = 'select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c FROM Secure_Bag__c WHERE id=:bagIds';
-        
-        if(string.isNotBlank(SearchText))
-            query = query+' AND Destination_Hub__c LIKE ' + SearchText;
-        query = query+' LIMIT 500';    
-        // System.debug('bagWrap:'+Database.query(query).size());
+            Set<string> deliveryStatusSet = new set<string>();
+            
+            String query = 'select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Trunk_Id__c,Trunk_Id__r.Name FROM Secure_Bag__c WHERE id=:bagIds';
+            
+            if(string.isNotBlank(SearchText))
+                query = query+' AND Destination_Hub__c LIKE ' + SearchText;
+            query = query+' LIMIT 500';    
+            // System.debug('bagWrap:'+Database.query(query).size());
             integer index=1;
-        for(Secure_Bag__c bag:Database.query(query)){
-            SecureBagWrapper sbwrap = new SecureBagWrapper();
-            sbwrap.index = index;
-            sbwrap.sb = bag;
-            sbwrap.process = true;
-            sbwrap.Seal=bag.Seal_Id__r.name;
-            sbwrap.CurrentHub=bag.Current_Scan_Hub__r.name;
-            bagWrap.add(sbwrap);
-            index++;
-        }
-        
+            for(Secure_Bag__c bag:Database.query(query)){
+                SecureBagWrapper sbwrap = new SecureBagWrapper();
+                sbwrap.index = index;
+                sbwrap.sb = bag;
+                sbwrap.process = true;
+                sbwrap.Seal=bag.Seal_Id__r.name;
+                sbwrap.trunk=bag.Trunk_Id__r.name;
+                sbwrap.CurrentHub=bag.Current_Scan_Hub__r.name;
+                bagWrap.add(sbwrap);
+                index++;
+            }
+            
         }
         
         return bagWrap;
@@ -315,7 +318,7 @@ public without sharing class TMS_LinehaulClass {
         
         if(bags != null && bags.size()>0){
             for(Secure_Bag__c bag:bags){
-                    bagIds.add(bag.id);                
+                bagIds.add(bag.id);                
             }
             if(BagWrapList != null && BagWrapList.size()>0){
                 for(SecureBagWrapper bag:BagWrapList){
@@ -329,24 +332,28 @@ public without sharing class TMS_LinehaulClass {
             SearchText='\'%' + String.escapeSingleQuotes(SearchText.trim()) + '%\'';
             Set<string> deliveryStatusSet = new set<string>();
             List<SecureBagWrapper> sbwrap0 = new List<SecureBagWrapper>();
-           String query = 'select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c FROM Secure_Bag__c WHERE id=:bagIds';
+            String query = 'select id,Secure_Packaging_Identifier__c, Unique_Identifier__c,Cargo_Type__c,Shipment__r.Origin_Address_City__c,Shipment__r.Destination_Address_City__c,Shipment__r.Origin_Hub__r.Branch__c,Shipment__r.Destination_Hub__r.Branch__c,Linehaul_Type__c,Shipment__c,Finalised_Linehaul_Number__c,Seal_Id__c,Seal_Id__r.name,Shipping_Note_Number__c,Current_Scan_Hub__r.name,Next_Destination__c,Destination_Hub__c,Trunk_Id__c, Trunk_Id__r.Name FROM Secure_Bag__c WHERE id=:bagIds';
             
             if(string.isNotBlank(SearchText))
                 query = query+' AND Secure_Packaging_Identifier__c LIKE ' + SearchText;
             query = query+' LIMIT 500';    
             // System.debug('bagWrap:'+Database.query(query).size());
             //integer index=1;
-			List<Secure_Bag__c> secbag = Database.query(query);
+            
+            List<Secure_Bag__c> secbag = Database.query(query);
+            System.debug('Test Log:::'+secbag);
             if(secBag.size() == 0)
             {
                 return sbwrap0;
             } else {
+         
             for(Secure_Bag__c bag:Database.query(query)){
                 SecureBagWrapper sbwrap = new SecureBagWrapper();
                 //sbwrap.index = index;
                 sbwrap.sb = bag;
                 sbwrap.process = true;
                 sbwrap.Seal=bag.Seal_Id__r.name;
+                sbwrap.trunk=bag.Trunk_Id__r.name;
                 sbwrap.CurrentHub=bag.Current_Scan_Hub__r.name;
                 bagWrap.add(sbwrap);
                 //index++;
@@ -355,7 +362,7 @@ public without sharing class TMS_LinehaulClass {
             for(SecureBagWrapper bg:bagWrap){
                 bg.index = index;
                 index++;
-				}
+            }
             }
         }
         
@@ -374,27 +381,29 @@ public without sharing class TMS_LinehaulClass {
         public integer index;
         @AuraEnabled
         public string CurrentHub;
+        @AuraEnabled
+        public string trunk;
     }
     /*@AuraEnabled
-    public static string SaveDraftBags(string BagWrapJson){
-        string stage= '';
-        List<SecureBagWrapper> BagWrapList = (List<SecureBagWrapper>)JSON.deserialize(BagWrapJson, List<SecureBagWrapper>.class);
-        List<Secure_Bag__c> updateBagList = new List<Secure_Bag__c>();
-        for(SecureBagWrapper sw:BagWrapList){
-            updateBagList.add(sw.sb);
-        }
-        try{
-            update updateBagList;
-            stage = 'success';
-        }catch(exception e){
-            stage = e.getMessage();
-            // System.debug('exception: '+e.getMessage());
-        }
-        return stage;
-        
-    }*/
+public static string SaveDraftBags(string BagWrapJson){
+string stage= '';
+List<SecureBagWrapper> BagWrapList = (List<SecureBagWrapper>)JSON.deserialize(BagWrapJson, List<SecureBagWrapper>.class);
+List<Secure_Bag__c> updateBagList = new List<Secure_Bag__c>();
+for(SecureBagWrapper sw:BagWrapList){
+updateBagList.add(sw.sb);
+}
+try{
+update updateBagList;
+stage = 'success';
+}catch(exception e){
+stage = e.getMessage();
+// System.debug('exception: '+e.getMessage());
+}
+return stage;
+
+}*/
     @AuraEnabled
-    public static List<SecureBagWrapper> AddBox(string BagWrapJson,string seal,string SealId,string Dest){
+    public static List<SecureBagWrapper> AddBox(string BagWrapJson,string seal,string SealId,string Dest, String trunk, string trunkId ){
         // System.debug('in: '+SealId+Dest);
         List<Secure_Bag__c> bagsToUpdate = new List<Secure_Bag__c>();
         List<SecureBagWrapper> BagWrapList = (List<SecureBagWrapper>)JSON.deserialize(BagWrapJson, List<SecureBagWrapper>.class);
@@ -404,6 +413,10 @@ public without sharing class TMS_LinehaulClass {
                     sw.seal = seal;
                     sw.sb.Seal_Id__c = SealId;
                     sw.sb.Lock_Status__c = 'Lock';
+                }
+                if(string.isNotBlank(trunkId)){
+                    sw.trunk = trunk;
+                    sw.sb.Trunk_Id__c = trunkId;
                 }
                 if(string.isNotBlank(Dest)){
                     sw.sb.Next_Destination__c = Dest;
@@ -419,9 +432,15 @@ public without sharing class TMS_LinehaulClass {
                 SealObj.id = SealId;
                 update SealObj;
             }
+            if(string.isNotBlank(trunkId)){
+                Secure_Packaging__c trunkObj = new Secure_Packaging__c();
+                trunkObj.Status__c = 'Consumed';
+                trunkObj.id = trunkId;
+                update trunkObj;
+            }
             update bagsToUpdate;
         }catch(exception e){
-             System.debug('Line: '+e.getLineNumber()+' exception: '+e.getMessage());
+            System.debug('Line: '+e.getLineNumber()+' exception: '+e.getMessage());
         }
         return BagWrapList;
     }
@@ -443,7 +462,9 @@ public without sharing class TMS_LinehaulClass {
     @AuraEnabled
     public static string SaveProcess(string BagWrapJson, string LHType, String LHNumber, String Flight, DateTime FlightDate, String Vehicle,String filter){
         string result = '';
-        if(string.isBlank(LHNumber)){
+        system.debug('entered in SaveProcess apex class');
+        system.debug('Linehaul number from APEX saveprocess '+LHNumber);
+        if(string.isBlank(LHNumber) || LHNumber == '' || LHNumber == null){
             result = 'Please enter airway bill number';
         }else{
             List<SecureBagWrapper> BagWrapList = (List<SecureBagWrapper>)JSON.deserialize(BagWrapJson, List<SecureBagWrapper>.class);
@@ -482,9 +503,10 @@ public without sharing class TMS_LinehaulClass {
                     dlhn.Finalized_Number__c = dlhn.Finalized_Number__c+1;
                     update dlhn;
                 }
-                if(filter == 'Finalised'){	
-                   // upsertLineTracking(UpdatedBagList);// Linehaul Tracking Record Creation	
+                if(filter == 'Finalised'){
+                    upsertLineTracking(UpdatedBagList);// Linehaul Tracking Record Creation
                 }
+                 
                 result = 'Success';
                 // System.debug('updated');
             }
@@ -530,7 +552,7 @@ public without sharing class TMS_LinehaulClass {
             }
         }
         //if(destSet.size()>1)
-            //cls.error= 'Please select bags for same destination';
+        //cls.error= 'Please select bags for same destination';
         if(!RowSelected)
             cls.error= 'Please select atleast one row to proceed';
         if(Seal==true)
@@ -541,7 +563,7 @@ public without sharing class TMS_LinehaulClass {
         if(string.isNotBlank(finalisedBagId)){
             Secure_Bag__c FinalisedBag = [select Linehaul_Type__c,Finalised_Linehaul_Number__c,Flight_Schedule__c,Flight_Schedule__r.name,
                                           Flight_Schedule__r.Origin_Airport__c,Flight_Schedule__r.Origin_Airport__r.name,Vehicle__c,Vehicle__r.name,
-                                          Flight_Schedule__r.Destination_Airport__c,Flight_Schedule__r.Destination_Airport__r.name FROM Secure_Bag__c where id=:finalisedBagId];
+                                          Flight_Schedule__r.Destination_Airport__c,Flight_Schedule__r.Destination_Airport__r.name,Trunk_Id__c, Trunk_Id__r.Name FROM Secure_Bag__c where id=:finalisedBagId];
             cls.finalBag = FinalisedBag;
             if(FinalisedBag.Flight_Schedule__r.Origin_Airport__c !=null){
                 cls.Originport = new ResultWrapper();
@@ -601,9 +623,7 @@ public without sharing class TMS_LinehaulClass {
         
     }
     
-    
-    
-      @AuraEnabled
+    @AuraEnabled
     public static List<String> getAvailableAwb(String origin, String destination, Date flightDate, String flightscheduleId, String airlineName){
         system.debug('entered in get awb');
         system.debug('origin '+origin);

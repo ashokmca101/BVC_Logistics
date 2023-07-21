@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_Type_When_Customer_is_GST_Reg</fullName>
+    <active>true</active>
+    <description>Dealer_Type_When_Customer_is_GST_Regitered</description>
+    <errorConditionFormula>IF(TEXT(GST_Registered_Status__c) ==&apos;Registered&apos; &amp;&amp;
+RecordType.Name = &apos;Billing&apos; &amp;&amp; TEXT(Dealer_Type__c)=&apos;Unregistered&apos;&amp;&amp; TEXT(Source__c)!=&apos;KARZAA&apos;,True, False )</errorConditionFormula>
+    <errorDisplayField>Dealer_Type__c</errorDisplayField>
+    <errorMessage>Your customer is GST registered. So kindly select either Regular or SEZ under Dealer Type.</errorMessage>
+</ValidationRule>

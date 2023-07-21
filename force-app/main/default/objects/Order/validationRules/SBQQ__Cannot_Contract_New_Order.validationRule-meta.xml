@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Cannot_Contract_New_Order</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISNEW(), SBQQ__Contracted__c)</errorConditionFormula>
+    <errorDisplayField>SBQQ__Contracted__c</errorDisplayField>
+    <errorMessage>Can&apos;t contract the order. Activate the order and try again.</errorMessage>
+</ValidationRule>

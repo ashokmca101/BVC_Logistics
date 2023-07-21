@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__AmendmentRenewalBehavior__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The basis for which a Renewal Start Date and Amendment End Date are calculated.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The basis for which a Renewal Start Date and Amendment End Date are calculated.</inlineHelpText>
+    <label>Amendment &amp; Renewal Behavior</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Latest End Date</fullName>
+                <default>true</default>
+                <label>Latest End Date</label>
+            </value>
+            <value>
+                <fullName>Earliest End Date</fullName>
+                <default>false</default>
+                <label>Earliest End Date</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal Sales Process</fullName>
+    <description>Sales process for BVC Brinks, BVC Clearance, BV Chinai and BVC Global</description>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Agreed and Contract Pending</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>BVC Opportunity</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Contact Later</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Contacted</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Contract Signed</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Deal Lost</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Inbound Lead</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Negotiation</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Proposal</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Quote Sent</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Support Required to Win</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Won - Shipments Started</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

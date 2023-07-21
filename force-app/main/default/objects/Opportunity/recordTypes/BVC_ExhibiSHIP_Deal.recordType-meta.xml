@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_ExhibiSHIP_Deal</fullName>
+    <active>true</active>
+    <businessProcess>Deal Sales Process</businessProcess>
+    <label>BVC ExhibiSHIP Deal</label>
+    <picklistValues>
+        <picklist>BVC_Competitors__c</picklist>
+        <values>
+            <fullName>Air Parcel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ambe Express</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ashok Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BK Freight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blue Dart</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brinks India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delhivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ferrari</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gati</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JK Customs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malca-Amit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Naplog</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safexpress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secure Global Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-transport</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sequel Logistics</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BVC_L2_Product__c</picklist>
+        <values>
+            <fullName>ArtSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ExhibiSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LuxeSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ValSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iValSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ieSHIP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BVC_Opportunity_Type__c</picklist>
+        <values>
+            <fullName>Contracted customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reactivation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BVC_Reason_Lost__c</picklist>
+        <values>
+            <fullName>Consignee Preference</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documentation Requirement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Global Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Potential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Reasons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Term</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pickup Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Satisfied with competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transit Duration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unauthentic Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Business_Type__c</picklist>
+        <values>
+            <fullName>ACR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non ACR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DB_Competitor__c</picklist>
+        <values>
+            <fullName>Competitor A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor C</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Exhibition_Type__c</picklist>
+        <values>
+            <fullName>InterNational</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Customer portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct database upload by admin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct lead addition by users</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email ID common</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specific exhibitions or campaign links or forms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website Inquiries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website signup %28community%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website visitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WhatsApp inbound</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Location__c</picklist>
+        <values>
+            <fullName>Ahmedabad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bengaluru</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chennai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delhi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hyderabad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jaipur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kochi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kolkata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mumbai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mumbai-SEEPZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surat-SEZ</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loss_Reason__c</picklist>
+        <values>
+            <fullName>Lost to Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget %2F Lost Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Decision %2F Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Package_Amount__c</picklist>
+        <values>
+            <fullName>250000</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Category__c</picklist>
+        <values>
+            <fullName>Diamond</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jewellery</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Slab_Criteria__c</picklist>
+        <values>
+            <fullName>Gross Weight Gms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Value INR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Weight</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tariff_Plan__c</picklist>
+        <values>
+            <fullName>Custom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>iSHIP_Sub_Category__c</picklist>
+        <values>
+            <fullName>Ecom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upto 50K%24</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ieSHIP_Location__c</picklist>
+        <values>
+            <fullName>Jaipur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mumbai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pan India</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>amit.sinha@bvclogistics.com</contactEmail>
+    <label>UAT_CB_SF CONNECTOR</label>
+    <oauthConfig>
+        <callbackUrl>https://staging.bvclogistics.com/IM_Salesforce/SF_Callback</callbackUrl>
+        <certificate>MIIC6jCCAdKgAwIBAgIQB/aY1z8uG0mGFXZhYR5HmTANBgkqhkiG9w0BAQsFADAxMS8wLQYDVQQDHiYAVQBBAFQAXwBDAEIAXwBTAEYAIABDAE8ATgBOAEUAQwBUAE8AUjAeFw0yMzAzMTYwNTI2MzhaFw00MzAzMTYwNTI2MzhaMDExLzAtBgNVBAMeJgBVAEEAVABfAEMAQgBfAFMARgAgAEMATwBOAE4ARQBDAFQATwBSMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu6W76BUB3oVnQvsUfLqILukMnAI/nR8zla+D7VDaNP99Jh6iX4oKO8U/jQfQ4tRMnLNZwvvvl7GWcVdUfzAS4ju1iD14MJs1wIlKfsp1Aq0nBpr4VkuZjqahRtQyd4KI73f5GPKfjiXeN+qAdXLGANxQEuBFbs0TAUY2tbTWfdajCZheP9p46haQBSjpBHqUqWgb+I6Ww5cbZpg8HeueyzgrCZvwrNCRqlLGghsQqxwv8lRin/PyVAokBArgHTwUw96T02+aaPsqAnAckkh0Xrrsubs4nqOrQS7Pg55RQ2xCDkERLMEdN0dXZvabNhaDBqdXv8pyxmtsYu2kTPO7rwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQA0p1RD7rmjnlCa0BJU627kewyA+d6sMQ30rYvARPsDGcf4ieSqqSSWe1/VlwV4njwZGzplX7OI5TFTVHjo4dUersdx9J8iljyo0pI5BpAM/Aif1uLH/TFskvfKV3ftElKh9eRzq17ouaOJl07NX1GUl75sUTwPXX9Nq0/UebLPg+znJq0vKaaMnqNc/m7hW73PgsFAgIBlXrNAHRAA0R8zTpyDHOu6O16dN82+pMVBYBfEBgmE9Un4ZUP/cv8puHjHqY+E/+SGGa+jL6AAT53kqNPNvcZOzJzeSweJdY5ubCKp27R3gb1kA/Idz3ZE68CFTmC2nDMl0Y7B7tb04KPW</certificate>
+        <consumerKey>3MVG9Po2PmyYruukqxJeZk9AR_W73Q0dDdGXaFhFxJ8DHKCVYhZtmYS84IgLWiVQqu7OkbRlKO.fYGxn52Yrx</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>UATCBSFCONNECTOR_2c1c4655_4c28_404f_9864_c3533</permissionSetName>
+    <profileName>System Administrator</profileName>
+    <profileName>Standard User</profileName>
+</ConnectedApp>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>BVC_CB_Shipment_No__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>OS_Username__c</columns>
+    <columns>BVC_CB_Org_Branch_SF_ID__c</columns>
+    <columns>BVC_CB_SalesForceCustomerId__c</columns>
+    <columns>BVC_CB_Operation_Type__c</columns>
+    <columns>BVC_CB_Pre_Tax_No__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

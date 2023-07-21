@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_BVC_Vehicle</fullName>
+    <columns>NAME</columns>
+    <columns>Current_BVC_Hub__c</columns>
+    <columns>Fabricated_By__c</columns>
+    <columns>Fabricated_On__c</columns>
+    <columns>Manufacturer__c</columns>
+    <columns>Model__c</columns>
+    <columns>Purchase_Date__c</columns>
+    <columns>Purchase_Dealer__c</columns>
+    <columns>Vehicle_Number__c</columns>
+    <columns>Is_Inactive__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Transport__c.BVC_Vehicle</value>
+    </filters>
+    <label>All - BVC Vehicle</label>
+</ListView>

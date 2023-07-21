@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remark__c</fullName>
+    <externalId>false</externalId>
+    <label>Remark</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Deal_Stage__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Incorrect Number</fullName>
+                <default>false</default>
+                <label>Incorrect Number</label>
+            </value>
+            <value>
+                <fullName>Number Not Reachable</fullName>
+                <default>false</default>
+                <label>Number Not Reachable</label>
+            </value>
+            <value>
+                <fullName>Number Switched Off</fullName>
+                <default>false</default>
+                <label>Number Switched Off</label>
+            </value>
+            <value>
+                <fullName>Not Responding</fullName>
+                <default>false</default>
+                <label>Not Responding</label>
+            </value>
+            <value>
+                <fullName>Need To take Contact Details From Branch</fullName>
+                <default>false</default>
+                <label>Need To take Contact Details From Branch</label>
+            </value>
+            <value>
+                <fullName>Need To Visit on GST address</fullName>
+                <default>false</default>
+                <label>Need To Visit on GST address</label>
+            </value>
+            <value>
+                <fullName>Office Closed - Revisit Required</fullName>
+                <default>false</default>
+                <label>Office Closed - Revisit Required</label>
+            </value>
+            <value>
+                <fullName>Address Shifted - No Contact Available</fullName>
+                <default>false</default>
+                <label>Address Shifted - No Contact Available</label>
+            </value>
+            <value>
+                <fullName>Customers Skipped from the address</fullName>
+                <default>false</default>
+                <label>Customers Skipped from the address</label>
+            </value>
+            <value>
+                <fullName>AR correction</fullName>
+                <default>false</default>
+                <label>AR correction</label>
+            </value>
+            <value>
+                <fullName>Payment Entry Done from Suspense</fullName>
+                <default>false</default>
+                <label>Payment Entry Done from Suspense</label>
+            </value>
+            <value>
+                <fullName>O/s Pending Before ACR</fullName>
+                <default>false</default>
+                <label>O/s Pending Before ACR</label>
+            </value>
+            <value>
+                <fullName>Excess Billing o/s</fullName>
+                <default>false</default>
+                <label>Excess Billing o/s</label>
+            </value>
+            <value>
+                <fullName>No Receipt  - Payment Denial from customer</fullName>
+                <default>false</default>
+                <label>No Receipt  - Payment Denial from customer</label>
+            </value>
+            <value>
+                <fullName>Shared Receipt by customer - CN Issued</fullName>
+                <default>false</default>
+                <label>Shared Receipt by customer - CN Issued</label>
+            </value>
+            <value>
+                <fullName>Shared Receipt by customer - Payment updated</fullName>
+                <default>false</default>
+                <label>Shared Receipt by customer - Payment updated</label>
+            </value>
+            <value>
+                <fullName>POD Required</fullName>
+                <default>false</default>
+                <label>POD Required</label>
+            </value>
+            <value>
+                <fullName>Wrong Billing Account Selected</fullName>
+                <default>false</default>
+                <label>Wrong Billing Account Selected</label>
+            </value>
+            <value>
+                <fullName>Wrong Shipment Value Captured</fullName>
+                <default>false</default>
+                <label>Wrong Shipment Value Captured</label>
+            </value>
+            <value>
+                <fullName>Wrong Weight Captured</fullName>
+                <default>false</default>
+                <label>Wrong Weight Captured</label>
+            </value>
+            <value>
+                <fullName>Billing issue</fullName>
+                <default>false</default>
+                <label>Billing issue</label>
+            </value>
+            <value>
+                <fullName>Export Invoice Issue ( Duty, Freight, etc…)</fullName>
+                <default>false</default>
+                <label>Export Invoice Issue ( Duty, Freight, etc…)</label>
+            </value>
+            <value>
+                <fullName>Offline Charges Issue</fullName>
+                <default>false</default>
+                <label>Offline Charges Issue</label>
+            </value>
+            <value>
+                <fullName>Ledger Reconciliation Under Process</fullName>
+                <default>false</default>
+                <label>Ledger Reconciliation Under Process</label>
+            </value>
+            <value>
+                <fullName>Shipment Lost or Damaged</fullName>
+                <default>false</default>
+                <label>Shipment Lost or Damaged</label>
+            </value>
+            <value>
+                <fullName>To Pay Issue</fullName>
+                <default>false</default>
+                <label>To Pay Issue</label>
+            </value>
+            <value>
+                <fullName>Required Certificate from customer</fullName>
+                <default>false</default>
+                <label>Required Certificate from customer</label>
+            </value>
+            <value>
+                <fullName>Payment Denial</fullName>
+                <default>false</default>
+                <label>Payment Denial</label>
+            </value>
+            <value>
+                <fullName>Ready to settle</fullName>
+                <default>false</default>
+                <label>Ready to settle</label>
+            </value>
+            <value>
+                <fullName>Ready to talk to other party</fullName>
+                <default>false</default>
+                <label>Ready to talk to other party</label>
+            </value>
+            <value>
+                <fullName>Not ready to talk to other party</fullName>
+                <default>false</default>
+                <label>Not ready to talk to other party</label>
+            </value>
+            <value>
+                <fullName>POD Required by Shipper or Consignee</fullName>
+                <default>false</default>
+                <label>POD Required by Shipper or Consignee</label>
+            </value>
+            <value>
+                <fullName>Payment Denial from Shipper and Consignee</fullName>
+                <default>false</default>
+                <label>Payment Denial from Shipper and Consignee</label>
+            </value>
+            <value>
+                <fullName>Shipper or Consignee Ready to settle</fullName>
+                <default>false</default>
+                <label>Shipper or Consignee Ready to settle</label>
+            </value>
+            <value>
+                <fullName>Outstanding letters to be sent</fullName>
+                <default>false</default>
+                <label>Outstanding letters to be sent</label>
+            </value>
+            <value>
+                <fullName>Legal letter to be sent</fullName>
+                <default>false</default>
+                <label>Legal letter to be sent</label>
+            </value>
+            <value>
+                <fullName>ACR Customer Old O/s Adjustment</fullName>
+                <default>false</default>
+                <label>ACR Customer Old O/s Adjustment</label>
+            </value>
+            <value>
+                <fullName>ACR Excess Billing Adjustment</fullName>
+                <default>false</default>
+                <label>ACR Excess Billing Adjustment</label>
+            </value>
+            <value>
+                <fullName>Wrong bill generated of ACR customer</fullName>
+                <default>false</default>
+                <label>Wrong bill generated of ACR customer</label>
+            </value>
+            <value>
+                <fullName>Bill to Party Change</fullName>
+                <default>false</default>
+                <label>Bill to Party Change</label>
+            </value>
+            <value>
+                <fullName>Discount</fullName>
+                <default>false</default>
+                <label>Discount</label>
+            </value>
+            <value>
+                <fullName>Rate Change</fullName>
+                <default>false</default>
+                <label>Rate Change</label>
+            </value>
+            <value>
+                <fullName>Data Entry Error</fullName>
+                <default>false</default>
+                <label>Data Entry Error</label>
+            </value>
+            <value>
+                <fullName>Current Dated Invoice Required</fullName>
+                <default>false</default>
+                <label>Current Dated Invoice Required</label>
+            </value>
+            <value>
+                <fullName>Offline Charges</fullName>
+                <default>false</default>
+                <label>Offline Charges</label>
+            </value>
+            <value>
+                <fullName>Double Billing</fullName>
+                <default>false</default>
+                <label>Double Billing</label>
+            </value>
+            <value>
+                <fullName>Changes in GST No or Address</fullName>
+                <default>false</default>
+                <label>Changes in GST No or Address</label>
+            </value>
+            <value>
+                <fullName>Shipment Return</fullName>
+                <default>false</default>
+                <label>Shipment Return</label>
+            </value>
+            <value>
+                <fullName>Liss of Shipment</fullName>
+                <default>false</default>
+                <label>Liss of Shipment</label>
+            </value>
+            <value>
+                <fullName>ACR Invoice Cancellation</fullName>
+                <default>false</default>
+                <label>ACR Invoice Cancellation</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>TDS Pending</controllingFieldValue>
+            <valueName>Required Certificate from customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>No ledger available wth Customer</controllingFieldValue>
+            <valueName>Payment Denial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>No ledger available wth Customer</controllingFieldValue>
+            <valueName>Ready to settle</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>To Pay issue</controllingFieldValue>
+            <valueName>Ready to talk to other party</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>To Pay issue</controllingFieldValue>
+            <valueName>Not ready to talk to other party</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>To Pay issue</controllingFieldValue>
+            <valueName>POD Required by Shipper or Consignee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>To Pay issue</controllingFieldValue>
+            <valueName>Payment Denial from Shipper and Consignee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>To Pay issue</controllingFieldValue>
+            <valueName>Shipper or Consignee Ready to settle</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Outstanding letters to be sent</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Legal letter to be sent</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Call not Connected</controllingFieldValue>
+            <valueName>Incorrect Number</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Call not Connected</controllingFieldValue>
+            <valueName>Number Not Reachable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Call not Connected</controllingFieldValue>
+            <valueName>Number Switched Off</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Call not Connected</controllingFieldValue>
+            <valueName>Not Responding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact Details Not Available</controllingFieldValue>
+            <valueName>Need To take Contact Details From Branch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact Details Not Available</controllingFieldValue>
+            <valueName>Need To Visit on GST address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Visit Done</controllingFieldValue>
+            <valueName>Office Closed - Revisit Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Visit Done</controllingFieldValue>
+            <valueName>Address Shifted - No Contact Available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Visit Done</controllingFieldValue>
+            <valueName>Customers Skipped from the address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Already Paid</controllingFieldValue>
+            <valueName>AR correction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Already Paid</controllingFieldValue>
+            <valueName>Payment Entry Done from Suspense</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ACR Customer</controllingFieldValue>
+            <valueName>O/s Pending Before ACR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ACR Customer</controllingFieldValue>
+            <valueName>Excess Billing o/s</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid in Cash but not updated</controllingFieldValue>
+            <valueName>No Receipt  - Payment Denial from customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid in Cash but not updated</controllingFieldValue>
+            <valueName>Shared Receipt by customer - CN Issued</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid in Cash but not updated</controllingFieldValue>
+            <valueName>Shared Receipt by customer - Payment updated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>ACR Customer Old O/s Adjustment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>ACR Excess Billing Adjustment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Wrong bill generated of ACR customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Bill to Party Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Discount</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Rate Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Data Entry Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Current Dated Invoice Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Offline Charges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Double Billing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Changes in GST No or Address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Shipment Return</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>Liss of Shipment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credit Note</controllingFieldValue>
+            <valueName>ACR Invoice Cancellation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational issue</controllingFieldValue>
+            <valueName>POD Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational issue</controllingFieldValue>
+            <valueName>Wrong Billing Account Selected</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational issue</controllingFieldValue>
+            <valueName>Wrong Shipment Value Captured</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational issue</controllingFieldValue>
+            <valueName>Wrong Weight Captured</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>Billing issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>Export Invoice Issue ( Duty, Freight, etc…)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>Offline Charges Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>Ledger Reconciliation Under Process</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>Shipment Lost or Damaged</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>To Pay Issue</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

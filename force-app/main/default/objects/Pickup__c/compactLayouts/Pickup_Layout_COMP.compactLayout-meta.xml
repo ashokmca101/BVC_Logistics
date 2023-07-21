@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pickup_Layout_COMP</fullName>
+    <fields>Pickup_Id__c</fields>
+    <fields>Pickup_Status__c</fields>
+    <fields>Customer__c</fields>
+    <fields>Shipper_Name__c</fields>
+    <fields>Shipper_Address__c</fields>
+    <fields>Origin_Address_Line1__c</fields>
+    <fields>Origin_Address_Line2__c</fields>
+    <fields>Origin_Address_Country__c</fields>
+    <fields>Origin_Address_Pincode__c</fields>
+    <fields>Shipment__c</fields>
+    <label>Pickup Layout COMP</label>
+</CompactLayout>

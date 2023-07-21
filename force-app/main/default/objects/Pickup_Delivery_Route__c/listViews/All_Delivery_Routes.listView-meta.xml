@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Delivery_Routes</fullName>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>Hub__c</columns>
+    <columns>Delivery_Route_Assigned_At__c</columns>
+    <columns>Delivery_Route_Assigned_By__c</columns>
+    <columns>Delivery_Route_Assigned_To__c</columns>
+    <columns>Delivery_Route_Time__c</columns>
+    <columns>Delivery_Route_Time_Slot_To_1__c</columns>
+    <columns>Delivery_Route_Time_Slot_To_2__c</columns>
+    <columns>Delivery_Route_Time_Slot_To_3__c</columns>
+    <columns>Is_In_Active__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Pickup_Delivery_Route__c.Delivery</value>
+    </filters>
+    <label>All Delivery Routes</label>
+</ListView>

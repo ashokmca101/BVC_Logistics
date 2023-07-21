@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Spice-Jet Get Fight Details</label>
+    <protected>false</protected>
+    <values>
+        <field>AWB_Prefix__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>AirLine_Code__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>AppID__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ClientUID__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Client_Key__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Device_ID__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Email__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Endpoint_String__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Endpoint__c</field>
+        <value xsi:type="xsd:string">https://qa.thespicetag.com/admin/api/freighter/list</value>
+    </values>
+    <values>
+        <field>LoginName__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Password__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Session_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Source__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Station__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Username__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>isSwagger__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+</CustomMetadata>

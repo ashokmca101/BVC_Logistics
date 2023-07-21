@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Airport</fullName>
+    <active>true</active>
+    <label>Airport</label>
+    <picklistValues>
+        <picklist>Manufacturer__c</picklist>
+        <values>
+            <fullName>Dummy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Purchase_Dealer__c</picklist>
+        <values>
+            <fullName>Dummy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

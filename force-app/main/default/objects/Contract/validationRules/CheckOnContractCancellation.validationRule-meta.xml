@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CheckOnContractCancellation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL(PRIORVALUE(Status),&apos;Activated&apos;),ISCHANGED(Status), ISPICKVAL(Status, &apos;Cancelled&apos;)
+)</errorConditionFormula>
+    <errorMessage>Activated Contract cannot be Cancelled.</errorMessage>
+</ValidationRule>

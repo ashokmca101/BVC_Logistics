@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ExcludeFromOpportunity__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Indicates this product should be excluded from transfer to the Opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates this product should not be transferred to the opportunity.</inlineHelpText>
+    <label>Exclude From Opportunity</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>EmailAlert_Notify_Deal_Owner_If_No_Activity_Recorded_For_14_Day</fullName>
+        <ccEmails>sumitsourav111@gmail.com</ccEmails>
+        <description>EmailAlert- Notify Deal Owner If No Activity Recorded For 14 Days</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Deal_Not_Contacted</template>
+    </alerts>
+    <alerts>
+        <fullName>EmailAlert_Notify_Deal_Owner_If_No_Activity_Recorded_For_14_Days</fullName>
+        <ccEmails>sumitsourav111@gmail.com</ccEmails>
+        <description>EmailAlert- Notify Deal Owner If No Activity Recorded For 14 Days</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Deal_Not_Contacted</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_deal_stage_change_from_contact_later_to_bvc_opportunity</fullName>
+        <ccEmails>govind.sangale@bvclogistics.com</ccEmails>
+        <description>Email Alert for deal stage change from contact later to bvc opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/Stage_Change_From_Contact_Later_To_BVC_Opportunity</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_to_Manager_if_any_Deal_has_competitor</fullName>
+        <description>Email Notification to Manager if any Deal has competitor as Secure Global Logistics / CMS / SIS</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/Notification_to_Manager_if_any_Deal_has_competitor</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_when_Deal_stage_changes_to_Support_Required_to_Win</fullName>
+        <description>Email Notification when Deal stage changes to Support Required to Win</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/Support_Required_to_Win</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_to_Manager_if_the_Deal_is_Lost</fullName>
+        <description>Email to Manager if the Deal is Lost</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/Email_to_Manager_when_Deal_is_Lost</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_to_Manager_if_the_Deal_is_not_moving_forward_for_3_hours</fullName>
+        <description>Email to Manager if the Deal is not moving forward for 3 hours</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/No_Action_on_Deal_for_3_hrs</template>
+    </alerts>
+    <alerts>
+        <fullName>Hot_Lead_Alert_to_Owner</fullName>
+        <description>Hot Lead Alert to Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/Hot_Deal_Email_Alert</template>
+    </alerts>
+    <alerts>
+        <fullName>Top_Deal_Email_Alert</fullName>
+        <description>Alert the Manager about the new top deals of the owner</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Opportunity_Email_Templates/Top_Deal_Amount_Email</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Change_Date</fullName>
+        <field>BVC_Next_Contact_Date__c</field>
+        <name>Change Next Contact Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage</fullName>
+        <field>StageName</field>
+        <literalValue>BVC Opportunity</literalValue>
+        <name>Change Deal Stage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Deal_Stage</fullName>
+        <field>StageName</field>
+        <literalValue>BVC Opportunity</literalValue>
+        <name>Update Deal Stage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Next_Contact_Date</fullName>
+        <field>BVC_Next_Contact_Date__c</field>
+        <name>Update Next Contact Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>BVC Opportunity%3A No Action on Deal for 3 hrs</fullName>
+        <active>false</active>
+        <formula>ISPICKVAL(StageName  ,&apos;BVC Opportunity&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Email_to_Manager_if_the_Deal_is_not_moving_forward_for_3_hours</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Opportunity.BVC_StageLastChanged__c</offsetFromField>
+            <timeLength>3</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Notify Deal Owner If No Activity On Deal</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>notEqual</operation>
+            <value>Won - Shipments Started,Contact Later,Deal Lost</value>
+        </criteriaItems>
+        <description>Deal Owner if any Deal hasn’t been contacted (No Activity) in past 14 days.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>EmailAlert_Notify_Deal_Owner_If_No_Activity_Recorded_For_14_Days</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Opportunity.Last_Activity_Captured_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Update Deal Stage</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Contact Later</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.BVC_Next_Contact_Date__c</field>
+            <operation>notEqual</operation>
+            <value>&quot;1/1/2001, 1:30 PM&quot;</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Email_Alert_for_deal_stage_change_from_contact_later_to_bvc_opportunity</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Change_Date</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>Change_Stage</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Opportunity.BVC_Next_Contact_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Greater_That_85_consumed_Amount__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Consumed_Amount__c &gt;=  Consumed_Amount_85__c ,true,false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Greater That 85 consumed Amount</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

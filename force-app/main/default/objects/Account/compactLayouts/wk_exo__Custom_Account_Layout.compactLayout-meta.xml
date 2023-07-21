@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>wk_exo__Custom_Account_Layout</fullName>
+    <fields>Type</fields>
+    <fields>wk_exo__Clone_Pone_No__c</fields>
+    <fields>Website</fields>
+    <fields>OwnerId</fields>
+    <fields>Site</fields>
+    <fields>Industry</fields>
+    <label>Custom Account Layout</label>
+</CompactLayout>

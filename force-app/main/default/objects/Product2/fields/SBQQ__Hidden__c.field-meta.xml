@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Hidden__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Excludes this product from appearing on the quote PDF.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Excludes this product from appearing on the quote PDF.</inlineHelpText>
+    <label>Hidden</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

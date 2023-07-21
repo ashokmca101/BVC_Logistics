@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_by_Billing_date</fullName>
+    <columns>ORDERS.ORDER_NUMBER</columns>
+    <columns>CONTRACT.CONTRACT_NUMBER</columns>
+    <columns>SALES.ACCOUNT.NAME</columns>
+    <columns>ORDERS.EFFECTIVE_DATE</columns>
+    <columns>ORDERS.TOTAL_AMOUNT</columns>
+    <columns>ORDERS.STATUS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>blng__BillingDayOfMonth__c</field>
+        <operation>equals</operation>
+        <value>20</value>
+    </filters>
+    <filters>
+        <field>ORDERS.EFFECTIVE_DATE</field>
+        <operation>greaterThan</operation>
+        <value>12/1/2021</value>
+    </filters>
+    <label>Order by Billing date</label>
+</ListView>

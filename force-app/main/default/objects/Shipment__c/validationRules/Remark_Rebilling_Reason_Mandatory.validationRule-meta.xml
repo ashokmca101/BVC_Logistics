@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remark_Rebilling_Reason_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(LEN(Remark__c) = 0,ISPICKVAL( Rebilling_Reason__c,&quot;&quot;)) &amp;&amp; Ready_for_Rebilling__c= True</errorConditionFormula>
+    <errorMessage>Review the Rebilling Reason &amp; Remark fields</errorMessage>
+</ValidationRule>

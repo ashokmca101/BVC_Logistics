@@ -1,0 +1,39 @@
+{
+    "accept_partial": true,
+    "amount": 121200,
+    "amount_paid": 121200,
+    "cancelled_at": 0,
+    "created_at": 1625732610,
+    "currency": "INR",
+    "customer": {
+        "name": "Ram"
+    },
+    "description": "Payment for the Invoice : Test 23",
+    "expire_by": 1626596609,
+    "expired_at": 0,
+    "first_min_partial_amount": 100,
+    "id": "plink_HWMxWAHZ2IIDKp",
+    "notes": null,
+    "notify": {
+        "email": false,
+        "sms": false
+    },
+    "order_id": "order_HWMy6lEGd0ZxzV",
+    "payments": [
+        {
+            "amount": 121200,
+            "created_at": 1625732718,
+            "method": "card",
+            "payment_id": "pay_HWMzLxgmqEbKPr",
+            "status": "captured"
+        }
+    ],
+    "reference_id": "a0A1m00000103olEAA",
+    "reminder_enable": false,
+    "reminders": [],
+    "short_url": "https://rzp.io/i/n9Jmu5M8A",
+    "status": "paid",
+    "updated_at": 1625732718,
+    "upi_link": false,
+    "user_id": ""
+}

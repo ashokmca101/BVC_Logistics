@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>scheduled_departure_utc__c</fullName>
+    <description>scheduled_departure_utc</description>
+    <externalId>false</externalId>
+    <label>scheduled_departure_utc</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

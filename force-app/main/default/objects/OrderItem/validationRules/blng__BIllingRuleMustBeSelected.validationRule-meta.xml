@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>blng__BIllingRuleMustBeSelected</fullName>
+    <active>true</active>
+    <description>Billing Rule must be selected</description>
+    <errorConditionFormula>AND(OR(ISNEW(), AND (ISCHANGED(SBQQ__Activated__c), SBQQ__Activated__c)), ISBLANK(blng__BillingRule__c))</errorConditionFormula>
+    <errorMessage>Billing Rule must be selected</errorMessage>
+</ValidationRule>

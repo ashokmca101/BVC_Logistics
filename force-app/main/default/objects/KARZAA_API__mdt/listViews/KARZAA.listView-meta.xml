@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KARZAA</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>API_Name__c</columns>
+    <columns>EndPoint__c</columns>
+    <columns>Environment__c</columns>
+    <columns>KARZAA_Key__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>KARZAA</label>
+    <language>en_US</language>
+</ListView>

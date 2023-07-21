@@ -9,7 +9,7 @@ trigger InvoiceLineTrigger on blng__InvoiceLine__c (after insert,after update, b
     }
     
     if((trigger.isInsert || trigger.isUpdate )&& trigger.isAfter){
-        InvoiceLineTriggerHandler.rollupInvoiceCharges(trigger.new);
+        InvoiceLineTriggerHandler.rollupInvoiceCharges(trigger.new, trigger.oldMap);
     }
     
 }

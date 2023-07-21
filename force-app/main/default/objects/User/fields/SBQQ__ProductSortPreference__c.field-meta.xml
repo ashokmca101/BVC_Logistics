@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ProductSortPreference__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Product sort preference for this user. Currently only Chatter Follows are supported.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select &quot;Followed&quot; to display products you follow in Chatter before others when adding to quote.</inlineHelpText>
+    <label>Product Sort Preference</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Followed</fullName>
+                <default>false</default>
+                <label>Followed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

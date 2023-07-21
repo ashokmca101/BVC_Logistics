@@ -1,9 +1,9 @@
 /**
 * @description       : 
-* @author            : ChangeMeIn@UserSettingsUnder.SFDoc	//rafi.khan@bvclogistics.com
+* @author            : ChangeMeIn@UserSettingsUnder.SFDoc  //rafi.khan@bvclogistics.com
 * @group             : 
-* @last modified on  : 02-10-2022							//28-04-2023
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc	//rafi.khan@bvclogistics.com
+* @last modified on  : 02-10-2022              //28-04-2023
+* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc  //rafi.khan@bvclogistics.com
 * Modifications Log 
 * Ver   Date         Author                               Modification
 * 1.0   07-15-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
@@ -16,7 +16,6 @@ The method takes a String parameter bagId and returns a custom object ShipmetWra
 that contains information related to shipments associated with the given bagId.
 */
     public static ShipmetWrap bagBySealId(String bagId){
-        System.debug('123 Inside bagBySealId');
         try {
             ShipmetWrap ShipmetWrapData = new ShipmetWrap(); 
             Map<String,Secure_Bag__c> shipmentRecord = new Map<String,Secure_Bag__c>();
@@ -25,14 +24,13 @@ that contains information related to shipments associated with the given bagId.
             
             if(bagId != null && bagId != ''){
                 for(Secure_Bag__c secureBag : [
-                    SELECT Id, Name , Shipment__c, Shipping_Note_Number__c, Cargo_Type__c, Seal_Id__c, Current_Scan_Loction__c,
+                    SELECT Id, Name , Shipment__c, Shipping_Note_Number__c, Cargo_Type__c, Seal_Id__c,
                     Seal_Id__r.Name, Current_Scan_Hub__r.name, Current_Destination_City__c, Shipment__r.Shipper_Name_TMS__r.Name,
                     Shipment__r.Consignee_Name_TMS__r.Name,Destination_Hub__c, Secure_Bag__r.Name, Secure_Bag__r.Id,
-                    Shipment__r.Destination_Hub__c, Shipment__r.Origin_Hub__c,Secure_Packaging_Identifier__c,Next_Destination__c
+                    Secure_Packaging_Identifier__c,Shipment__r.Destination_Hub__c,Shipment__r.Origin_Hub__c
                     FROM Secure_Bag__c
                     WHERE Seal_Id__r.Name =: bagId LIMIT 50000
                 ]){
-
                     shipmentRecord.put(secureBag.Secure_Bag__r.Name, secureBag);
                     snn.add(secureBag.Shipping_Note_Number__c);
                     bag.add(secureBag.Secure_Bag__r.Name);
@@ -40,8 +38,6 @@ that contains information related to shipments associated with the given bagId.
                     ShipmetWrapData.cargoType = secureBag.Cargo_Type__c;
                     ShipmetWrapData.destinationCity = secureBag.Current_Destination_City__c;
                     ShipmetWrapData.destinationhub = secureBag.Destination_Hub__c;
-                    ShipmetWrapData.nextDestination = secureBag.Next_Destination__c;
-
                 }
             }
             
@@ -115,9 +111,8 @@ including a map of Secure Bag records associated with the shipment.
 Finally, the method returns the ShipmetWrap instance.
 */
     public static ShipmetWrap bagBySecureBagId(String bagId , Shipment_Tracking__c trackingrecord, String bagMode){
-        System.debug('Inside bagBySecureBagId');
         Integer Index = 1;
-        String errorData = ''; 
+        String errorData = '';
         try { 
             
             ShipmetWrap ShipmetWrapData = new ShipmetWrap();            
@@ -125,41 +120,17 @@ Finally, the method returns the ShipmetWrap instance.
             
             if(bagId != null && bagId != ''){
                 for(Secure_Bag__c secureBag : [
-                    SELECT Id, Name, Shipment__c, Shipment__r.Name,Shipment__r.Customer__r.Name,Current_Scan_Loction__c,
+                    SELECT Id, Name , Shipment__c, Shipment__r.Name,Shipment__r.Customer__r.Name,
                     Shipment__r.Origin_Address_City__c,Shipment__r.Consignee_Name_TMS__r.Name,Shipment__r.Consignee_Name_TMS__c,
-                    Shipment__r.Shipper_Name_TMS__r.Name, Shipment__r.Consignee_Name__c,Shipment__r.Destination_Hub__c, Shipment__r.Origin_Hub__c,
+                    Shipment__r.Shipper_Name_TMS__r.Name, Shipment__r.Consignee_Name__c, 
                     Current_Origin_City__c, Shipment__r.Delivery_Route_Assigned_To__c, Shipping_Note_Number__c, 
                     Cargo_Type__c, Seal_Id__c, Seal_Id__r.Name, Current_Destination_City__c, Destination_Hub__c, 
-                    Secure_Bag__r.Name, Shipment__r.Destination_Address_City__c,Secure_Packaging_Identifier__c,Next_Destination__c
+                    Secure_Bag__r.Name, Shipment__r.Destination_Address_City__c, Shipment__r.Origin_Hub__c, Shipment__r.Destination_Hub__c,
+                    Secure_Packaging_Identifier__c
                     FROM Secure_Bag__c
                     WHERE Secure_Bag__r.Name =: bagId LIMIT 1
                 ]){ 
-
-                    // added by Imran
-                    String curUid = userInfo.getUserId();
-                    List<GroupMember> pgUList = [select Group.Name,UserOrGroupId from GroupMember where Group.Name='TMS Managers' and UserOrGroupId=:curUid];
-					System.debug('1212 pgUList Size:'+pgUList.size());
-                    System.debug('1212 Secure_Bag__c Current_Scan_Loction__c:'+Secure_Bag__c.Current_Scan_Loction__c);
-                    if(secureBag.Current_Scan_Loction__c=='Delivered' && pgUList.size()==0)
-                    //if(secureBag.Current_Scan_Loction__c=='Delivered')
-                    {
-                        errorData = 'Secure Bag already Delivered. you Have no Right to Edit  '+bagId;
-                        throw new AuraHandledException('Secure Bag already Delivered. you Have no Right to Edit '+bagId);
-                    }                    
-                    else
-                    {
-                        if(secureBag.Shipment__r.Delivery_Route_Assigned_To__c != UserInfo.getUserId() && trackingrecord.Location__c == 'Out for Delivery'){
-                            errorData = 'Insufficient  access rights on  '+bagId;
-                            throw new AuraHandledException('Insufficient  access rights on  '+bagId);
-                            
-                        }else{
-                            shipmentRecord.put(secureBag.Secure_Bag__r.Name, secureBag);
-                        }
-                        
-                    }
-                    // upto here Added by Imran
-                    // the below line are Commented by Imran
-                    /*
+                    
                     if(secureBag.Shipment__r.Delivery_Route_Assigned_To__c != UserInfo.getUserId() && trackingrecord.Location__c == 'Out for Delivery'){
                         errorData = 'Insufficient  access rights on  '+bagId;
                         throw new AuraHandledException('Insufficient  access rights on  '+bagId);
@@ -167,7 +138,6 @@ Finally, the method returns the ShipmetWrap instance.
                     }else{
                         shipmentRecord.put(secureBag.Secure_Bag__r.Name, secureBag);
                     }
-                    */
                 }
             }
             
@@ -177,7 +147,7 @@ Finally, the method returns the ShipmetWrap instance.
                 ShipmetWrapData.shipmentRecordMap = shipmentRecord; 
                 //ShipmetWrapData.index = Index; 
                 
-                if(bagMode =='Misrouted'){
+                if(bagMode == 'Misrouted'){
                     Shipment_Tracking__c shipmentTracking = new Shipment_Tracking__c();
                     shipmentTracking = trackingrecord;
                     
@@ -189,7 +159,9 @@ Finally, the method returns the ShipmetWrap instance.
                     
                     shipmentTracking.Scan_Time__c = DateTime.now();
                     if(shipmentTracking != null){
-                        Database.insert(shipmentTracking);
+                        if(bagMode!='Misrouted'){
+                            Database.insert(shipmentTracking);
+                        }
                     }
                     
                     Secure_Bag__c bag = new Secure_Bag__c();
@@ -232,7 +204,6 @@ Finally, it inserts the new Shipment_Tracking__c records created and updates the
 */
     public static void updateSecureBag(Shipment_Tracking__c trackingRecord, List<Secure_Bag__c> secureBagList, ShipmetWrap shipmetWrapData, String lockStatus){
         try { 
-            
             Set<Id> shipmentId = new Set<Id>();
             Map<Id, Shipment__c> shipmentMap = new Map<Id, Shipment__c>(); 
             Map<Id,Shipment_Tracking__c> shipmnetTrackingMap = new Map<Id,Shipment_Tracking__c>();
@@ -257,42 +228,49 @@ Finally, it inserts the new Shipment_Tracking__c records created and updates the
                     ]);
                 }
                 
+                Map<String,String> trackingShipBagMap = new Map<String,String>();
+                for(Secure_Bag__c secBagObj : secureBagList){
+                    trackingShipBagMap.put(secBagObj.shipment__c,secBagObj.shipment__c);
+                }
+                
+                
+                
                 if(!shipmentMap.isEmpty()){
-                    for(Shipment__c  ship : shipmentMap.values()){ 
-                        Shipment_Tracking__c shipmentTracking = new Shipment_Tracking__c();
-                        
-                        shipmentTracking = trackingRecord.clone(false,false,false,false);
-                        shipmentTracking.Shipment__c = null; 
-                        shipmentTracking.Scan_Time__c = DateTime.now();
-                        
-                        if(String.isNotBlank(ShipmentTracking.Hub__c)){ 
-                            if(ShipmentTracking.Hub__c ==ShipmentMap.get(ship.Id).Destination_Hub__c){
-                                ShipmentTracking.Location__c='Destination Hub';
+                    for(Shipment__c  ship : shipmentMap.values()){
+                        if(trackingShipBagMap.containsKey(ship.Id)){
+                            Shipment_Tracking__c shipmentTracking = new Shipment_Tracking__c();                        
+                            shipmentTracking = trackingRecord.clone(false,false,false,false);
+                            shipmentTracking.Shipment__c = null; 
+                            shipmentTracking.Scan_Time__c = DateTime.now();
+                            
+                            if(String.isNotBlank(ShipmentTracking.Hub__c)){ 
+                                if(ShipmentTracking.Hub__c ==ShipmentMap.get(ship.Id).Destination_Hub__c){
+                                    ShipmentTracking.Location__c='Destination Hub';
+                                    
+                                }else if(ShipmentTracking.Hub__c == ShipmentMap.get(ship.Id).Origin_Hub__c){
+                                    ShipmentTracking.Location__c='Origin Hub';
+                                    
+                                }else {                                    
+                                    ShipmentTracking.Location__c='Transit Hub';
+                                } 
                                 
-                            }else if(ShipmentTracking.Hub__c == ShipmentMap.get(ship.Id).Origin_Hub__c){
-                                ShipmentTracking.Location__c='Origin Hub';
+                            } else if(String.isNotBlank(ShipmentTracking.Airport__c)){
                                 
-                            }else {
-                                
-                                ShipmentTracking.Location__c='Transit Hub';
+                                if(ShipmentTracking.Airport__c ==ShipmentMap.get(ship.Id).Destination_Hub__r.Airport__c){
+                                    ShipmentTracking.Location__c='Destination Port';
+                                    
+                                }else if(ShipmentTracking.Airport__c ==ShipmentMap.get(ship.Id).Origin_Hub__r.Airport__c){
+                                    ShipmentTracking.Location__c='Origin Port';
+                                    
+                                }else {
+                                    ShipmentTracking.Location__c = 'Transit Port';
+                                    
+                                }
                             } 
                             
-                        } else if(String.isNotBlank(ShipmentTracking.Airport__c)){
-                            
-                            if(ShipmentTracking.Airport__c ==ShipmentMap.get(ship.Id).Destination_Hub__r.Airport__c){
-                                ShipmentTracking.Location__c='Destination Port';
-                                
-                            }else if(ShipmentTracking.Airport__c ==ShipmentMap.get(ship.Id).Origin_Hub__r.Airport__c){
-                                ShipmentTracking.Location__c='Origin Port';
-                                
-                            }else {
-                                ShipmentTracking.Location__c = 'Transit Port';
-                                
-                            }
-                        } 
-                        
-                        shipmentTracking.Shipment__c = ship.Id; 
-                        shipmnetTrackingMap.put(shipmentTracking.Shipment__c,shipmentTracking); 
+                            shipmentTracking.Shipment__c = ship.Id; 
+                            shipmnetTrackingMap.put(shipmentTracking.Shipment__c,shipmentTracking);
+                        }
                         
                     } 
                     
@@ -300,12 +278,11 @@ Finally, it inserts the new Shipment_Tracking__c records created and updates the
                         
                         Insert shipmnetTrackingMap.values();
                         List<Shipment__c> tempShipment = new List<Shipment__c>(); 
-                        
                         for(Secure_Bag__c secureBag : shipmetWrapData.shipmentRecordMap.values()){
                             
                             Secure_Bag__c bag = new Secure_Bag__c();
                             bag.id = secureBag.Id;
-                            System.debug('for checking @@@ next destination '+secureBag.Next_Destination__c);
+                            
                             Shipment__c ship = new Shipment__c();
                             
                             if(secureBagList.size() > 0){
@@ -313,36 +290,26 @@ Finally, it inserts the new Shipment_Tracking__c records created and updates the
                                 if(shipmnetTrackingMap.containsKey(secureBag.Shipment__c) && secureBagList.contains(secureBag)){
                                     bag.Is_Count_Mismatch__c =  false;
                                     bag.Current_Scan_Loction__c =  shipmnetTrackingMap.get(secureBag.Shipment__c).Location__c;
-                                    
                                     bag.Current_Scan_Hub__c = shipmnetTrackingMap.get(secureBag.Shipment__c).Hub__c != null ? shipmnetTrackingMap.get(secureBag.Shipment__c).Hub__c : null;
+                                    bag.Seal_Id__c = secureBag.Seal_Id__c;
                                     
-                                    System.debug('for checking bag.Current_Scan_Hub__cr.Name : '+bag.Current_Scan_Hub__c);
-                                    System.debug('for checking bag.Current_Scan_Hub__cr.Name : '+bag.Current_Scan_Hub__r.Name);
-                                    
-                                    System.debug('for checking secureBag.Shipment__r.Origin_Hub__c : '+secureBag.Shipment__r.Origin_Hub__c);
-                                    System.debug('for checking secureBag.Shipment__r.Destination_Hub__c : '+secureBag.Shipment__r.Destination_Hub__c);
                                     if(bag.Current_Scan_Hub__c!=null){
                                         if((bag.Current_Scan_Hub__c != secureBag.Shipment__r.Destination_Hub__c) && (bag.Current_Scan_Hub__c != secureBag.Shipment__r.Origin_Hub__c)){
                                             bag.Is_Misrouted__c = true;
                                         }else{
-                                            bag.Next_Destination__c = LoggedInUserHubWithBranchName();
                                             bag.Is_Misrouted__c = false;
                                         }
+                                        
                                     }
-                                  
                                     
                                     bag.Tracking__c = shipmnetTrackingMap.get(secureBag.Shipment__c).Id;
                                     bag.Current_Scan_Airport__c = shipmnetTrackingMap.get(secureBag.Shipment__c).Airport__c != null ? shipmnetTrackingMap.get(secureBag.Shipment__c).Airport__c  : null;
-                                    System.debug('shipmnetTrackingMa EEEEE  '+shipmnetTrackingMap.get(secureBag.Shipment__c).Airport__c != null ? shipmnetTrackingMap.get(secureBag.Shipment__c).Airport__c  : null);
                                     bag.Current_Scan_Date_and_Time__c = DateTime.now();
-                                    //bag.Next_Destination__c = LoggedInUserHubWithName();
-                                    //System.debug('for checking LoggedInUserHubWithName() : '+bag.LoggedInUserHubWithName());
-                                    //System.debug('for checking bag.Next_Destination__c : '+bag.Next_Destination__c);
                                     
                                     if(lockStatus == 'Unlock'){
                                         bag.Lock_Status__c = lockStatus;
                                     }
-                                    bag.Next_Destination__c = LoggedInUserHubWithBranchName();
+                                    
                                 }else{
                                     bag.Scanning_Status__c = 'In Progress';
                                     bag.Tracking__c = null;
@@ -363,78 +330,180 @@ Finally, it inserts the new Shipment_Tracking__c records created and updates the
                             if(!tempShipment.contains(ship) && ship.Id != null  ){
                                 tempShipment.add(ship);
                             }
-                            //bag.Next_Destination__c = LoggedInUserHubWithBranchName();
-                            System.debug('for checking LoggedInUserHubWithName() : '+LoggedInUserHubWithBranchName());
-                            System.debug('for checking bag.Next_Destination__c : '+bag.Next_Destination__c);
                             updateSecureBag.put(bag.Id,bag); 
                         }
                         
                         
-                        if(updateSecureBag.values().size() > 0 ){
-                            System.debug('for checking updateSecureBag.values() :'+updateSecureBag.values());
-                            Update updateSecureBag.values();
+                        if(updateSecureBag.values().size() > 0 ){ 
+                            Update updateSecureBag.values();  
                             
                             //Code Added by Rafi Khan for Unlock Seal.
+                            //this code is executed only for scaned bags
+                            Map<String,List<Secure_Bag__c>> shipBagMap = new Map<String,List<Secure_Bag__c>>(); 
+                            if(secureBagList.size()>0){
+                                for(Secure_Bag__c secBag:secureBagList){
+                                    if(shipBagMap.containsKey(secBag.Shipment__c)){
+                                        List<Secure_Bag__c> tmpBagList = shipBagMap.get(secBag.Shipment__c);
+                                        tmpBagList.add(secBag);
+                                        shipBagMap.put(secBag.Shipment__c,tmpBagList);							
+                                    }else{
+                                        List<Secure_Bag__c> tmpBagLists = new List<Secure_Bag__c>();
+                                        tmpBagLists.add(secBag);
+                                        shipBagMap.put(secBag.Shipment__c,tmpBagLists);	
+                                    }									
+                                }
+                            }
+                            
+                            //This code is executed to create map for all shipment and corroesponding secure bags
+                            Map<String,List<Secure_Bag__c>> exstingShipBagMap = new Map<String,List<Secure_Bag__c>>(); 
+                            if(!shipmetWrapData.shipmentRecordMap.isEmpty()){
+                                for( Secure_Bag__c secBag : shipmetWrapData.shipmentRecordMap.values()){
+                                    if(exstingShipBagMap.containsKey(secBag.Shipment__c)){
+                                        List<Secure_Bag__c> tmpBagList = exstingShipBagMap.get(secBag.Shipment__c);
+                                        tmpBagList.add(secBag);
+                                        exstingShipBagMap.put(secBag.Shipment__c,tmpBagList);							
+                                    }else{
+                                        List<Secure_Bag__c> tmpBagLists = new List<Secure_Bag__c>();
+                                        tmpBagLists.add(secBag);
+                                        exstingShipBagMap.put(secBag.Shipment__c,tmpBagLists);	
+                                    }	
+                                }                            
+                            }
                             
                             List<Shipment_Tracking__c> shipTrakingList = new List<Shipment_Tracking__c>();
                             shipTrakingList = shipmnetTrackingMap.values();
-                            
-                            List<String> locationList = new List<String>();
-                            List<String> shipmentList = new List<String>();
-                            
                             Map<String,String> mapShipAndLocation = new Map<String,String>();
-                            
                             for(Shipment_Tracking__c sObj :shipTrakingList){
                                 if(sObj.Location__c!=null && sObj.Shipment__c!=null){
-                                    locationList.add(sObj.Location__c);
-                                    shipmentList.add(sObj.Shipment__c);
                                     mapShipAndLocation.put(sObj.Shipment__c,sObj.Location__c);
                                 }
-                            }//end of for loop
+                            }
                             
-                            List<Secure_Bag__c> secBagList1 = new List<Secure_Bag__c>();
-                            secBagList1 = [Select Id, Name From Secure_Bag__c
-                                           where Shipment__c IN:shipmentList];
-                            
-                            List<Secure_Bag__c> secBagList = new List<Secure_Bag__c>();
-                            secBagList = [Select Id, Name From Secure_Bag__c
-                                          where Shipment__c IN:shipmentList
-                                          AND Current_Scan_Loction__c IN:locationList];
-                            
-                            if(secBagList.size()>0 && (secBagList1.size() == secBagList.size())){
-                                List<Shipment__c> shipList = new List<Shipment__c>();
-                                shipList = [Select Id,Name,Tracking_Status__c from Shipment__c
-                                            Where Id IN:shipmentList];
+                            List<Shipment__c> updateShippingList = new List<Shipment__c>();
+                            for(Secure_Bag__c secBag : secureBagList){
+                                System.debug('for checking exstingShipBagMap.containsKey(secBag.Shipment__c) '+exstingShipBagMap.containsKey(secBag.Shipment__c));
+                                System.debug('for checking exstingShipBagMap.get(secBag.Shipment__c).size() '+exstingShipBagMap.get(secBag.Shipment__c).size());
+                                if(exstingShipBagMap.containsKey(secBag.Shipment__c)){
                                 
-                                if(shipList.size()>0){
-                                    List<Shipment__c> updateShippingList = new List<Shipment__c>();
-                                    for(Shipment__c obj:shipList){
-                                        Shipment__c tmpUpdate = new Shipment__c();
-                                        System.debug('for Checking '+mapShipAndLocation.get(obj.Id));
-                                        tmpUpdate.Tracking_Status__c =  mapShipAndLocation.get(obj.Id);
-                                        tmpUpdate.Id = obj.Id;
-                                        updateShippingList.add(tmpUpdate);
-                                    }//end of for loop
-                                    if(updateShippingList.size()>0){
-                                        update updateShippingList;
-                                    }
-                                }
-                            }	//Added Code upto here
-                            
+                                    if(exstingShipBagMap.get(secBag.Shipment__c).size()==shipBagMap.get(secBag.Shipment__c).size()){
+                                        Shipment__c shipObj = new Shipment__c();
+                                        shipObj.Tracking_Status__c =  mapShipAndLocation.get(secBag.Shipment__c);
+                                        shipObj.Id = secBag.Shipment__c;
+                                        if(!updateShippingList.contains(shipObj)){
+                                            updateShippingList.add(shipObj);
+                                        }
+                                        
+                                    }   
+                                }                               
+                            }
+                            update updateShippingList;
                         }
                         
                         
                     }else{
-                        throw new AuraHandledException('Tracking Record Update failed');
+                        System.debug('for chekcing exceptions first');
+                        // throw new AuraHandledException('Tracking Record Update failed');
                     }
                 } 
             } 
             
         }catch(System.NoAccessException noAccess){
+            System.debug('for chekcing exceptions second');
             throw new AuraHandledException('Insufficient  access rights on Secure bag and Shipment.');
         } catch (Exception e) {
+            System.debug('for chekcing exceptions third '+e.getMessage());
+            System.debug('for chekcing exceptions third '+e.getLineNumber());
             throw new AuraHandledException(e.getMessage());
         } 
+    }
+    
+    //upadateScanBagsWithNoseal method added by Rafi for creating tracking record of the scanned bag if it is not in seal.
+    //and updating shipment linehaul not processed flag true.
+    @auraEnabled
+    public static void upadateScanBagsWithNoseal(Shipment_Tracking__c trackingRecord,List<Secure_Bag__c> secureBagList){
+        try{
+            
+            Set<Id> shipmentId = new Set<Id>();
+            Map<Id, Shipment__c> shipmentMap = new Map<Id, Shipment__c>(); 
+            Map<Id,Shipment_Tracking__c> shipmnetTrackingMap = new Map<Id,Shipment_Tracking__c>();
+            Map<Id,Secure_Bag__c> updateSecureBag = new Map<Id,Secure_Bag__c>(); 
+            
+            if(String.isBlank(trackingRecord.Hub__c) && String.isBlank(trackingRecord.Airport__c) &&  trackingRecord.Location__c != 'Out for Delivery'){
+                trackingRecord.Hub__c = LoggedInUserHub();
+            } 
+            
+            if(secureBagList.size() > 0){
+                for(Secure_Bag__c bag : secureBagList){
+                    shipmentId.add(bag.Shipment__c);              
+                }
+                
+                if(shipmentId.size() > 0){
+                    shipmentMap = new Map <Id, Shipment__c>([ 
+                        SELECT Id,Origin_Hub__c,Destination_Hub__c,Destination_Hub__r.Airport__c,Origin_Hub__r.Airport__c 
+                        FROM Shipment__c WHERE Id IN:shipmentId 
+                    ]); 
+                }
+                
+                if(!shipmentMap.isEmpty()){
+                    for(Shipment__c  ship : shipmentMap.values()){
+                        
+                        Shipment_Tracking__c shipmentTracking = new Shipment_Tracking__c();
+                        
+                        shipmentTracking = trackingRecord.clone(false,false,false,false);
+                        shipmentTracking.Shipment__c = null; 
+                        shipmentTracking.Scan_Time__c = DateTime.now();
+                        
+                        if(String.isNotBlank(ShipmentTracking.Hub__c)){
+                            
+                            if(ShipmentTracking.Hub__c == ShipmentMap.get(ship.Id).Destination_Hub__c){
+                                ShipmentTracking.Location__c='Destination Hub';
+                                
+                            }else if(ShipmentTracking.Hub__c == ShipmentMap.get(ship.Id).Origin_Hub__c ){ 
+                                ShipmentTracking.Location__c='Origin Hub';
+                                
+                            }else{
+                                
+                                ShipmentTracking.Location__c='Transit Hub';
+                            } 
+                            
+                        }else if(String.isNotBlank(ShipmentTracking.Airport__c)){
+                            
+                            if(ShipmentTracking.Airport__c ==ShipmentMap.get(ship.Id).Destination_Hub__r.Airport__c){
+                                ShipmentTracking.Location__c='Destination Port';
+                                
+                            }else if(ShipmentTracking.Airport__c == ShipmentMap.get(ship.Id).Origin_Hub__r.Airport__c){ 
+                                ShipmentTracking.Location__c='Origin Port';
+                                
+                            }else{
+                                ShipmentTracking.Location__c = 'Transit Port';
+                            }
+                        } 
+                        shipmentTracking.Shipment__c =  ship.Id ;
+                        shipmnetTrackingMap.put(shipmentTracking.Shipment__c,shipmentTracking); 
+                        
+                    } 
+                }
+                if(!shipmnetTrackingMap.isEmpty()){
+                    Insert shipmnetTrackingMap.values();
+                }
+                
+                
+                List<String> shipmentIdList = new List<String>();
+                for(Secure_Bag__c secBag : secureBagList){
+                    shipmentIdList.add(secBag.Shipment__c);
+                }
+                List<Shipment__c> shipmentList = [Select Id,Linehaul_not_Processed__c from Shipment__c
+                                                  WHERE Id IN:shipmentIdList];
+                for(Shipment__c obj:shipmentList){
+                    obj.Linehaul_not_Processed__c = true;           
+                }
+                update shipmentList;
+            }   
+        }catch (Exception e) {
+            System.debug('Error on line number '+e.getLineNumber());
+            System.debug('Error Message '+e.getMessage());
+        }
+        
     }
     
     @AuraEnabled
@@ -542,49 +611,36 @@ It also updates the location of the shipment in the Shipment__c record based on 
                         
                         Insert shipmnetTrackingMap.values();
                         
+                        
                         for(Secure_Bag__c secureBag :  secureBagList){
                             Secure_Bag__c bag = new Secure_Bag__c();
-                            System.debug('for checking @@@ next destination '+secureBag.Next_Destination__c);
                             bag.id = secureBag.Id;
-                            
-                            Shipment__c ship = new Shipment__c();
                             
                             if(shipmnetTrackingMap.containsKey(secureBag.Shipment__c)){
                                 bag.Current_Scan_Loction__c =  shipmnetTrackingMap.get(secureBag.Shipment__c).Location__c;
                                 bag.Current_Scan_Hub__c = shipmnetTrackingMap.get(secureBag.Shipment__c).Hub__c != null ? shipmnetTrackingMap.get(secureBag.Shipment__c).Hub__c : null;
-                                System.debug('for checking @@@ bag.Current_Scan_Hub__c: '+bag.Current_Scan_Hub__c);
-                                System.debug('for checking @@@ secureBag.Shipment__r.Destination_Hub__c: '+secureBag.Shipment__r.Destination_Hub__c);
+                                
                                 if(bag.Current_Scan_Hub__c!=null){
                                     if((bag.Current_Scan_Hub__c != secureBag.Shipment__r.Destination_Hub__c) && (bag.Current_Scan_Hub__c != secureBag.Shipment__r.Origin_Hub__c)){
                                         bag.Is_Misrouted__c = true;
                                     }else{
-                                        //bag.Next_Destination__c = LoggedInUserHubWithBranchName();
                                         bag.Is_Misrouted__c = false;
                                     }
                                     
-                                    
-                                    if(bag.Current_Scan_Hub__c == secureBag.Shipment__r.Destination_Hub__c){
-                                        bag.Next_Destination__c = LoggedInUserHubWithBranchName();
-                                        System.debug('for checking @@@ bag.Next_Destination__c : '+bag.Next_Destination__c);
-                                        System.debug('for checking @@@ LoggedInUserHubWithBranchName() : '+LoggedInUserHubWithBranchName());
-                                    }
                                 }
-                                    
+                                
                                 bag.Tracking__c = shipmnetTrackingMap.get(secureBag.Shipment__c).Id;
                                 bag.Current_Scan_Airport__c = shipmnetTrackingMap.get(secureBag.Shipment__c).Airport__c != null ? shipmnetTrackingMap.get(secureBag.Shipment__c).Airport__c  : null;
                                 bag.Current_Scan_Date_and_Time__c = DateTime.now(); 
                                 bag.Scanning_Status__c = 'Scanned';
                                 bag.Scanning__c = 'Updated';
-                                //bag.Next_Destination__c = LoggedInUserHubWithBranchName();
-                                
-                                
                             }
                             updateSecureBag.put(bag.Id,bag); 
                         }  
-                        
                     }
                 }
             }
+            
             
             if(updateSecureBag.values().size() > 0 ){ 
                 Update updateSecureBag.values();
@@ -626,8 +682,8 @@ It also updates the location of the shipment in the Shipment__c record based on 
                         List<Shipment__c> updateShippingList = new List<Shipment__c>();
                         for(Shipment__c obj:shipList){
                             Shipment__c tmpUpdate = new Shipment__c();
-                            System.debug('for Checking '+mapShipAndLocation.get(obj.Id));
                             tmpUpdate.Tracking_Status__c =  mapShipAndLocation.get(obj.Id);
+                            tmpUpdate.Linehaul_not_Processed__c = false;
                             tmpUpdate.Id = obj.Id;
                             updateShippingList.add(tmpUpdate);
                         }//end of for loop
@@ -646,7 +702,6 @@ It also updates the location of the shipment in the Shipment__c record based on 
         }
     }
     
-   
     @AuraEnabled
     /*
 This method used to determine the "Hub" of the currently logged-in user, which can have one of three values:
@@ -670,7 +725,6 @@ This method used to determine the "Hub" of the currently logged-in user, which c
         
     }
     
-    
     public static string LoggedInUserHubWithBranchName(){
         FSE_Sales__c[] UserHub = [ SELECT Id,Hub__r.Branch__c,Hub__c FROM FSE_Sales__c WHERE Sales_Person__c =:UserInfo.getUserId() AND Type__c='Manager' ORDER BY CreatedDate DESC LIMIT 1];
         
@@ -686,6 +740,7 @@ This method used to determine the "Hub" of the currently logged-in user, which c
         }
         
     }
+    
     
     @testVisible class ShipmetWrap{
         
@@ -710,8 +765,6 @@ This method used to determine the "Hub" of the currently logged-in user, which c
         @AuraEnabled
         public String destinationhub{get;set;}
         
-        @AuraEnabled
-        public String nextDestination{get;set;}
         
         
     } 

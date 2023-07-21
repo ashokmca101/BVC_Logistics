@@ -19,7 +19,109 @@ public static String getshipmetID(Id recId){
 List<Delivery__c> lstship  = [Select Id, Shipment__r.Id from Delivery__c where Id =:recId];
 return lstship[0].Shipment__r.Id; 
 }*/
-    
+// added by imran
+    @AuraEnabled
+    public static void saveSNPhoto(String shipId,String contentDocId , List<Secure_Bag__c> secureBagList)
+    {
+             Shipment__c sh1 = [select Id,DocketPhoto__c from Shipment__c where ID=:shipId limit 1];
+             System.debug('11.Shipment update sh:'+sh1);
+             if(sh1.Id !=null || sh1.Id!='')
+             {
+                 sh1.DocketPhoto__c=true;
+                 update sh1;
+                 System.debug('22.Shipment DocketPhoto__c update sh:'+sh1);
+             }
+        System.debug('1122.contentDocId :'+contentDocId);
+        System.debug('1122.secureBagList :'+secureBagList);
+            set<String> shipmentId = new Set<String>();
+            if(secureBagList.size() > 0){
+                for(Secure_Bag__c bag : secureBagList){
+                    if(bag.Shipment__c!=shipId)
+                    {
+                        shipmentId.add(bag.Shipment__c);
+                    }
+                    // shipmentId.add(bag.Shipment__c);              
+                }
+            }
+            System.debug('1122.shipmentId :'+shipmentId);  
+
+            List<Shipment__c>  shList = [select Id,DocketPhoto__c from Shipment__c where ID IN : shipmentId ];
+        	List<Shipment__c>  shListUpdate = new List<Shipment__c>();
+        if(shList.size()>0)
+        {
+            for(Shipment__c sh : shList){
+                sh.DocketPhoto__c=true;
+                shListUpdate.add(sh);
+            }  
+            update shListUpdate;
+        }
+		List<ContentDocumentLink> contentDocumentList = new List<ContentDocumentLink>();
+            for(Id linkedEntity : shipmentId){
+                
+                ContentDocumentLink cDocLink = new ContentDocumentLink();
+                cDocLink.ContentDocumentId = contentDocId; 
+                cDocLink.LinkedEntityId = linkedEntity; 
+                cDocLink.ShareType = 'V'; 
+                cDocLink.Visibility = 'AllUsers';
+                contentDocumentList.add(cDocLink);
+			}				
+            if(contentDocumentList.size() > 0){
+                Upsert contentDocumentList;
+			}
+    }
+    @AuraEnabled 
+    public static void saveIdPhoto(String shipId,String contentDocId , List<Secure_Bag__c> secureBagList)
+    {
+        System.debug('1122.contentDocId :'+contentDocId);
+        System.debug('1122.secureBagList :'+secureBagList);
+            set<String> shipmentId = new Set<String>();
+            if(secureBagList.size() > 0){
+                for(Secure_Bag__c bag : secureBagList){
+                    if(bag.Shipment__c!=shipId)
+                    {
+                        shipmentId.add(bag.Shipment__c);
+                    }
+                    // shipmentId.add(bag.Shipment__c);              
+                }
+            }
+            System.debug('1122.shipmentId :'+shipmentId);  
+
+            List<Shipment__c>  shList = [select Id,RecieverIDPhoto__c from Shipment__c where ID IN : shipmentId ];
+        	List<Shipment__c>  shListUpdate = new List<Shipment__c>();
+        if(shList.size()>0)
+        {
+            for(Shipment__c sh : shList){
+                sh.RecieverIDPhoto__c=true;
+                shListUpdate.add(sh);
+            }  
+            update shListUpdate;
+        }
+		List<ContentDocumentLink> contentDocumentList = new List<ContentDocumentLink>();
+            for(Id linkedEntity : shipmentId){
+                
+                ContentDocumentLink cDocLink = new ContentDocumentLink();
+                cDocLink.ContentDocumentId = contentDocId; 
+                cDocLink.LinkedEntityId = linkedEntity; 
+                cDocLink.ShareType = 'V'; 
+                cDocLink.Visibility = 'AllUsers';
+                contentDocumentList.add(cDocLink);
+			}				
+            if(contentDocumentList.size() > 0){
+                Upsert contentDocumentList;
+			}
+
+             Shipment__c sh1 = [select Id,RecieverIDPhoto__c from Shipment__c where ID=:shipId limit 1];
+             System.debug('11.Shipment update sh:'+sh1);
+             if(sh1.Id !=null || sh1.Id!='')
+             {
+                 sh1.RecieverIDPhoto__c=true;
+                 update sh1;
+                 System.debug('22.Shipment RecieverIDPhoto__c update sh:'+sh1);
+             }        
+
+    }    
+// upto here
+
     @AuraEnabled
     public static void saveSign(String strSignElement,Id recId, Delivery__c deliveryData, List<Shipment_Tracking__c> trackingList){  
         String consigneeName = '';
@@ -43,6 +145,17 @@ return lstship[0].Shipment__r.Id;
         
         if(cVersion.Id != null){
             conDocument = [SELECT ContentDocumentId FROM ContentVersion WHERE Id =:cVersion.Id].ContentDocumentId;
+            // added by imran
+             Shipment__c sh = [select Id,SignaturePhoto__c from Shipment__c where ID=:trackingList[0].Shipment__c limit 1];
+             System.debug('11.Shipment update sh:'+sh);
+             if(sh.Id !=null || sh.Id!='')
+             {
+                 sh.SignaturePhoto__c=true;
+                 update sh;
+                 System.debug('22.Shipment update sh:'+sh);
+             }
+
+            // upto here
         } 
         
         if(trackingList.size() > 0){
@@ -60,10 +173,9 @@ return lstship[0].Shipment__r.Id;
             List<ContentDocumentLink> contentDocumentList = new List<ContentDocumentLink>();
             for(Shipment_Tracking__c track : trackingList){
                 shipmentId.add(track.shipment__c);
-            }
+            } 
             
-            
-            // added by Rafi Khan line 66 to 149
+            // added by Rafi Khan
             // Delivery and Shipment marks as delivered only if all secure bags of related shipment get delivered 
             List<Secure_Bag__c> secureBagList = [
                 SELECT Id, Name , Shipment__c,Shipment__r.Tracking_Status__c, Shipping_Note_Number__c, Shipment__r.Destination_Address_Name__c, Secure_Packaging_Identifier__c , Current_Scan_Loction__c
@@ -157,13 +269,13 @@ return lstship[0].Shipment__r.Id;
                 cDocLink.Visibility = 'AllUsers';
                 contentDocumentList.add(cDocLink);
                 
-                Shipment__c delivery = new Shipment__c();
-                delivery.Id = linkedEntity; 
-                delivery.Consignee_Name__c = consigneeName; 
-                delivery.Consignee_Designation__c = consigneeDesignation; 
-                delivery.Delivered_To_Person__c = consigneeName;
+                Shipment__c shipObj = new Shipment__c();
+                shipObj.Id = linkedEntity; 
+                shipObj.Consignee_Name__c = consigneeName; 
+                shipObj.Consignee_Designation__c = consigneeDesignation; 
+                shipObj.Delivered_To_Person__c = consigneeName;
                 //delivery.Actual_Delivery_Date_and_Time__c = System.now();  
-                updateDeliveryList.add(delivery);
+                updateDeliveryList.add(shipObj);
                 
             }
             

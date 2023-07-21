@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trade_Name_for_Billing_Address</fullName>
+    <active>true</active>
+    <description>Trade Name to be made mandatory if billing address&apos;s customer has blank name as per pan.</description>
+    <errorConditionFormula>If(ISBLANK(TRADE_NAME__c)&amp;&amp; ISBLANK( Customer__r.Name_As_Per_PAN_Manual_Input__c )&amp;&amp;TEXT(Source__c)!=&apos;KARZAA&apos;&amp;&amp;RecordType.Name =&apos;Billing&apos;,TRUE,FALSE )</errorConditionFormula>
+    <errorDisplayField>TRADE_NAME__c</errorDisplayField>
+    <errorMessage>Customer&apos;s Name As Per Pan is blank. Kindly provide a Trade Name.</errorMessage>
+</ValidationRule>

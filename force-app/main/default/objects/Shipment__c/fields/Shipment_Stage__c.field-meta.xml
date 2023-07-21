@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipment_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Shipment Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Shipment Created</fullName>
+                <default>true</default>
+                <label>Shipment Created</label>
+            </value>
+            <value>
+                <fullName>Shipment Booked</fullName>
+                <default>false</default>
+                <label>Shipment Booked</label>
+            </value>
+            <value>
+                <fullName>Picked Up</fullName>
+                <default>false</default>
+                <label>Picked Up</label>
+            </value>
+            <value>
+                <fullName>Shipment Picked</fullName>
+                <default>false</default>
+                <label>Shipment Picked</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Hold at Destination</fullName>
+                <default>false</default>
+                <label>Hold at Destination</label>
+            </value>
+            <value>
+                <fullName>Pending for Vaulting</fullName>
+                <default>false</default>
+                <label>Pending for Vaulting</label>
+            </value>
+            <value>
+                <fullName>BVC Weighment Done</fullName>
+                <default>false</default>
+                <label>BVC Weighment Done</label>
+            </value>
+            <value>
+                <fullName>Delivered</fullName>
+                <default>false</default>
+                <label>Delivered</label>
+            </value>
+            <value>
+                <fullName>Received at Destination</fullName>
+                <default>false</default>
+                <label>Received at Destination</label>
+            </value>
+            <value>
+                <fullName>Weighment Pending</fullName>
+                <default>false</default>
+                <label>Weighment Pending</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

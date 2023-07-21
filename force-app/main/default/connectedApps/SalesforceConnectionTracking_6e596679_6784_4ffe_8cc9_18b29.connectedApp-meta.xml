@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>nehal.siddiqui@bvclogistics.com</contactEmail>
+    <label>Salesforce Connection Tracking</label>
+    <oauthConfig>
+        <callbackUrl>https://bvclogistics-dev.outsystemsenterprise.com/IM_Salesforce/SF_Callback</callbackUrl>
+        <certificate>MIIC2jCCAcKgAwIBAgIQQbYepvDkvEq7J98/uImmuDANBgkqhkiG9w0BAQsFADApMScwJQYDVQQDEx5TYWxlc2ZvcmNlIENvbm5lY3Rpb24gVHJhY2tpbmcwHhcNMjIwNDEyMTExMzUzWhcNNDIwNDEyMTExMzUzWjApMScwJQYDVQQDEx5TYWxlc2ZvcmNlIENvbm5lY3Rpb24gVHJhY2tpbmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC2QF8lP5C8J/5GYYBYOBI5vOu3VDVdm+7XTSP+YJfOpxxLfQhqwrw+A2ntzPqvMUV84O7/7o0ZmH9KUExW4ODRE8+Ka7rH5wyFpfUPfJP/pzmbWk3StaDoYb3ab+BUWdHBqiRsRiZ1PZzLppE2fXCkKb+eOQ/tsOlsqcHoEBJBbZ82PP5ZUEngf+rpCBgdozZEZzV4J4fFVpetfadpM1RRk3oOym0e4ZbX9cOPAyeXHa1aXfc/2hen9xblhpNToWWAtwrCuES1I4AT/kouSfvqnw+76TQf6x6/uYhwjrV6Iy4bDkBRtayFssF7vMkAETw640y63Lldggl/8J8sxlL1AgMBAAEwDQYJKoZIhvcNAQELBQADggEBABhyEf2X9NQZ9GZtckvqw9/b37uA19QDZouf9DXip9onaqyFXVLNl5CNFWLn+Pt5gYz811hZK7pWOQQl+leu8MHO+A6R/yzitC8ECPgU9e5AYODxiwc3wqpZItTJ5fJcUioSteay1xmLjnCA8oNV1OlUCBxPZRD79NMrSdDtbCmO0awS1HBYrPYZFFwgV1h01lWC5yGe3G8op7MK/NSNz+p3q2M7rRZICh+/Q3U8GVhD75Adup3wmIP9PTk5O/GufMC2YdajyBbz36IsTadGbQqyVqVvpcWS+VJOezg2GeELrgSN1uHivvTubSZG/pg+bYYebS5A/w2AbZaDg3o+b6Q=</certificate>
+        <consumerKey>3MVG9Po2PmyYruunIZR7z32Xb6O_BxkGDr04Vlu8e.9KyuIm_GkF_kT8HtqIrhnzcrxu_o.cEr2ylE_hfb67f</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>SalesforceConnectionTracking_6e596679_6784_4ffe_8cc9_18b29</permissionSetName>
+    <profileName>System Administrator</profileName>
+    <profileName>Standard User</profileName>
+    <profileName>Admin Non-Export</profileName>
+    <profileName>Read Only (Dev)</profileName>
+    <profileName>Developer Profile</profileName>
+</ConnectedApp>

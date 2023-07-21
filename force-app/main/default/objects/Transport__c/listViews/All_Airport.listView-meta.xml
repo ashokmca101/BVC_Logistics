@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Airport</fullName>
+    <columns>NAME</columns>
+    <columns>Airport_Name__c</columns>
+    <columns>Airport_Code__c</columns>
+    <columns>Branch_Master_Name__c</columns>
+    <columns>Pin_Code_Master__c</columns>
+    <columns>Is_Dry_Port__c</columns>
+    <columns>Is_Ice_Gate_Port__c</columns>
+    <columns>Is_Inactive__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Transport__c.Airport</value>
+    </filters>
+    <label>All - Airport</label>
+</ListView>

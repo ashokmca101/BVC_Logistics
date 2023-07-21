@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legacy_customer</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND((Is_Legacy_Contract__c  &lt;&gt; true),
+AND(NOT( Contract_Amount__c =500000)),NOT( Contract_Amount__c =120000),NOT( Contract_Amount__c =2500000),NOT( Contract_Amount__c =1000000),NOT( Contract_Amount__c =250000), ISPICKVAL(BVC_Service__c,&apos;eSHIP&apos;))</errorConditionFormula>
+    <errorDisplayField>Contract_Amount__c</errorDisplayField>
+    <errorMessage>You cannot select this amount if the contract is not legacy</errorMessage>
+</ValidationRule>

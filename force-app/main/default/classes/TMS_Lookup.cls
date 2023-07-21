@@ -21,6 +21,14 @@ public class TMS_Lookup {
     @AuraEnabled(cacheable=true)
     public static String searchDB(String objectName, String fld_API_Text, String fld_API_Val, Integer lim,String fld_API_Search,String searchText,String RecordType, string originPort, string DestPort,String SecPackType){
         Id RecTypeId;
+        System.debug('12.objectName :'+objectName);
+        System.debug('12.fld_API_Text :'+fld_API_Text);
+        System.debug('12.fld_API_Val :'+fld_API_Val);
+        System.debug('12.fld_API_Search :'+fld_API_Search);
+        System.debug('12.searchText :'+searchText);
+        System.debug('12.RecordType :'+RecordType);
+        System.debug('12.SecPackType :'+SecPackType);
+        
         if(objectName=='Transport__c' && string.isNotBlank(RecordType)){
             RecTypeId = Schema.SObjectType.Transport__c.getRecordTypeInfosByName().get(RecordType).getRecordTypeId();
         }else if(objectName=='Account' && string.isNotBlank(RecordType)){
@@ -34,13 +42,24 @@ public class TMS_Lookup {
              query += ' ,Origin_Airport__c';	
          }
         query += ' FROM '+objectName ;
+        System.debug('12. query :'+query);
         Id Packagingtype;
+        // added by imran
+        /* if(SecPackType =='Trunk'){
+            System.debug('<==>--Found Trunk');
+            SecPackType ='Secure Bag';
+        } */
+        // upto here
         if(objectName=='Secure_Packaging__c' && string.isNotBlank(SecPackType)){
+            System.debug('121. query :'+query);
             Packagingtype = Schema.SObjectType.Secure_Packaging__c.getRecordTypeInfosByName().get(SecPackType).getRecordTypeId();
+            System.debug('121. query :'+query);
         }
         query +=' WHERE ' +fld_API_Search+' LIKE '+searchText;
+        System.debug('121. query :'+query);
         string whereClause = '';
                       system.debug('lokkupresp@@ '+originPort +''+ Destport);
+        System.debug('122. query :'+query);
         if(objectName=='Secure_Packaging__c' &&string.isNotBlank(Packagingtype)){
             string status = 'Available';
             whereClause += 'AND RecordTypeId=:Packagingtype AND Status__c=:status ';

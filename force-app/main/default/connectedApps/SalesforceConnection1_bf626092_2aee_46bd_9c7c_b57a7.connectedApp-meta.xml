@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>chaitannya.inamdar@bvclogistics.com</contactEmail>
+    <label>Salesforce Connection 1</label>
+    <oauthConfig>
+        <callbackUrl>https://prod.bvclogistics.com/IM_Salesforce/SF_Callback</callbackUrl>
+        <certificate>MIICzDCCAbSgAwIBAgIQdSBvXuz/KE6cpAQwARadQzANBgkqhkiG9w0BAQsFADAiMSAwHgYDVQQDExdTYWxlc2ZvcmNlIENvbm5lY3Rpb24gMTAeFw0yMjEyMDcwODUyMTlaFw00MjEyMDcwODUyMTlaMCIxIDAeBgNVBAMTF1NhbGVzZm9yY2UgQ29ubmVjdGlvbiAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtticCsCaAacwcvBJ0p0sxWyCf2DVKEwx25bBNmY7OY59AG0rXDZV0R0DG/kZxvPSownQRNbc844iwC6dmxZUQC7g1Dyu4FR3ghQSN4twJzRg8Q4nIVxyGQTjgSZ01u/qzPUax9zGRujCna6k8aZZv8xht++34Ju7btpOjtqz24/X8H9+pSNct3tteSsPu276O1L/QwaYElwETCfUoskffrxBpcZSrmthfGxm+roAjxYCmvDaw3jLybyoWum0s1Kj5E4ILt8z8IvCMpWaZDgn6oj4ytl6dgAYmneV7bsov4T8teKIyrP1IRtciWoPRxA5xUkhPvRCZfFqoaoQhFXkFwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBvfYYhvST8/ktbbChR7tSmC1nyeIGIRpkEDcWo/QREQQfBozPT+VBsp1EtAWABIJCgw9sam6yRLP6MjNK4I8y+IqZxmkTWGq+1gSEp83g48TSSfBlwXA6Hii8NDT1FZx8byuQ0YmmN62kUSlnV6XK75s7m8apR0PhFrKc+3SmcwSvdj5/coUjEVoRP3TP5B24z6o3X6e3sRxdYee112UHuJx2uvTj8gRL1Aaxjg0T3Px20k0+OW3/kHRniG35D3C0j/ABhbGMz2suLOf2+pDA6jwDEsTnQ7AgGAexeiRX5/Ib+39rNZwdQ04pj0MFG7wptA78giyaeODCAbvYWLKns</certificate>
+        <consumerKey>3MVG9Po2PmyYruunIZR7z32Xb6O_BxkGDr04VdFTW5w3rpNj5qUzc5Gka_c9w_TQqIthSxGpiV0YH7sZMyvTV</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>SalesforceConnection1_bf626092_2aee_46bd_9c7c_b57a7</permissionSetName>
+    <profileName>System Administrator</profileName>
+    <profileName>Standard User</profileName>
+    <profileName>Developer Profile</profileName>
+</ConnectedApp>

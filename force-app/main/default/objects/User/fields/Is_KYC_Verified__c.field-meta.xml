@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_KYC_Verified__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Make this field true when kyc is verified.</description>
+    <externalId>false</externalId>
+    <label>Is KYC Verified</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

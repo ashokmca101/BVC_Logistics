@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Contracted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Internal flag used to kick off automatic asset and subscription conversion.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Salesforce CPQ uses this field to automatically convert assets and subscriptions.</inlineHelpText>
+    <label>Contracted</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

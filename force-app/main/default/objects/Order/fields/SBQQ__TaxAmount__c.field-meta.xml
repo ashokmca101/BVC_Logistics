@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__TaxAmount__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The estimated tax amount</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The estimated tax amount</inlineHelpText>
+    <label>Estimated Tax</label>
+    <summarizedField>OrderItem.SBQQ__TaxAmount__c</summarizedField>
+    <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

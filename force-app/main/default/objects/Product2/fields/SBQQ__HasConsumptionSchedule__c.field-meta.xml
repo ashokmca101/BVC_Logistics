@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__HasConsumptionSchedule__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Indicates if Product is assigned to at least 1 active Consumption Schedule</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates if this product has at least one consumption schedule</inlineHelpText>
+    <label>Has Consumption Schedules</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

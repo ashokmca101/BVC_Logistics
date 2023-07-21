@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition</fullName>
+    <active>true</active>
+    <label>Exhibition</label>
+    <picklistValues>
+        <picklist>BVC_CB_Invoice_Type__c</picklist>
+        <values>
+            <fullName>Bill of Supply Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax Invoice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BVC_CB_Operation_Type__c</picklist>
+        <values>
+            <fullName>Export</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Import</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Business_Type__c</picklist>
+        <values>
+            <fullName>ACR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exhibition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non ACR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Destination_Type__c</picklist>
+        <values>
+            <fullName>Offline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Exhibition_Movement_Type__c</picklist>
+        <values>
+            <fullName>Inward</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outward</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Liability_Cover_by_BVC__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Order_Status_Static__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Order_reversal_reason__c</picklist>
+        <values>
+            <fullName>Correction in Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Correction in Gross Weight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Correction in Insurance by BVC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Correction in Offline Charges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewal of Contract</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin_Type__c</picklist>
+        <values>
+            <fullName>Offline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__ContractingMethod__c</picklist>
+        <values>
+            <fullName>By Subscription End Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single Contract</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__PaymentTerm__c</picklist>
+        <values>
+            <fullName>Due on receipt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immediate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 30</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Net 45</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 90</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__PriceCalcStatus__c</picklist>
+        <values>
+            <fullName>Aborted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Queued</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shipment_Status_Static__c</picklist>
+        <values>
+            <fullName>ACR Consumed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Billed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Picked For Billing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shipment_Type__c</picklist>
+        <values>
+            <fullName>Collect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prepaid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>blng__BillingDayOfMonth__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>16</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>17</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>18</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>19</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>21</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>22</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>23</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>24</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>26</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>27</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>28</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>31</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>blng__InvoiceBatch__c</picklist>
+        <values>
+            <fullName>BATCH - ANGEL GOLD PRIVATE LIMITED - AAVCA9551A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - Angel Gold - ABBFA1019R</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - BHIMA JEWELLERY VISAKHAPATNAM - AAZFB6066E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - EMIN GOLD %26 DIAMOND LLP AAIFE1276A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - GLITZ BULLION GB AASFG8640A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - GOLDTREE BULLION INDIA PRIVATE LIMITED - AAECG3048F</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - GRT GROUP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - H K JEWELS PVT LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - H K JEWELS PVT LTD - B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - H K JEWELS PVT LTD - GOLD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - KANGANAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - N M DIAM LLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH - NIVODA LLP AAQFN4016M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-ANGEL GOLD ORNAMENTS %26 WORKS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-C KRISHNIAH CHETTY %26 CO PRIVATE LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-CAPS GOLD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-CORA JEWELLERY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-CULVER MAX ENTERTAINMENT PRIVATE LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Carat Lane Trading Private Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-D Gem Mount AAFFD8890G</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-DE BEERS INDIA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-DINESH K AHUJA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Ejohri Jewel Hub Private Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-FORESIGHT BULLION INDIA PRIVATE LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Flipkart Internet Private Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-GEMORA GOLD RETAIL LLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-GGEM GURU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-GOLD STRINGS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-INFO EDGE INDIA LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Ishaan Sanjivbhai Shah</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-MAIORA DIAMONDS LLP - ABOFM5347H</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-MMTC Pamp India Private Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-MONTHLY CUSTOMERS VALSHIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-MUTHOOT EXIM PRIVATE LIMITED - AACCM4564E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-ONE 97 COMMUNICATION LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-PURE LAB DIAMONDS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Prakash Chand ABCPC6324Q</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Prince Gold And Diamonds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-ROSY BLUE DIAMONDS PRIVATE LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-Riddisiddhi Bullions Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-S K JEWELLERS - AEKFS2271K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-SANJEEVKUMAR CHANDRATAN DAMANI - ABBPD7077Q</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-SHARAD KUMAR - AWHPK6104E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-SHREEKUNJ AAI LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-SRI MADHURA JEWELLERY PRIVATE LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-STAC - Billing ADQFS4357R</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-UCG FINE METALS LLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BATCH-VER SE INNOVATION PRIVATE LIMITED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch - QUALITY ASSAY %26 HALLMARKS LLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch-Bhima Jewels Private Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch-Sha Gold Arcade LLP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bath ACR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bath Non-ACR Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bath Non-ACR Weekly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eship Non-ACR Monthly Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eship Non-ACR Weekly Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INVOICE BATCH - GRT GROUP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

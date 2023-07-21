@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Pricing</fullName>
+    <columns>NAME</columns>
+    <columns>Business_Type__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Rate_INR__c</columns>
+    <columns>Package_Amount__c</columns>
+    <columns>Weight_Covered_Gms__c</columns>
+    <columns>UOM_Percentage__c</columns>
+    <columns>Per_Shipment_Freight_Charge__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>eSHIP_Standard_Pricing__c.New_eSHIP_Pricing</value>
+    </filters>
+    <label>New Pricing</label>
+</ListView>

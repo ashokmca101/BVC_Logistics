@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Shipping_Customer</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>New Shipping Customer</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>https://bvc2--bvcuat.sandbox.lightning.force.com/lightning/o/Account/new?count=2&amp;nooverride=1&amp;useRecordTypeCheck=1&amp;navigationLocation=LIST_VIEW&amp;uid=162679345568559632&amp;backgroundContext=%2Flightning%2Fo%2FAccount%2Flist%3FfilterName%3D00B5g0000059cEOEAY&amp;recordTypeId=0125g0000002XayAAE</url>
+</WebLink>

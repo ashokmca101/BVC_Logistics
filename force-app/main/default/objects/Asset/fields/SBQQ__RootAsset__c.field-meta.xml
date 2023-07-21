@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__RootAsset__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Ultimate bundle parent of this Asset</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Ultimate bundle parent of this Asset</inlineHelpText>
+    <label>Root Asset (CPQ)</label>
+    <referenceTo>Asset</referenceTo>
+    <relationshipLabel>Assets (RootAsset)</relationshipLabel>
+    <relationshipName>Assets1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

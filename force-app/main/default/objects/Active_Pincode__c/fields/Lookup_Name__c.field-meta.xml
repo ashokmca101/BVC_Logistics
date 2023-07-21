@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lookup_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>&apos;City : &apos;+  TEXT(City__c) +&apos;, State : &apos;+ State__c +&apos;, Country : &apos;+ Country__c</formula>
+    <label>Lookup Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

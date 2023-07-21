@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>wk_exo__Exotel_Call_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Exotel: Call Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Missed</fullName>
+                <default>false</default>
+                <label>Missed</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Dialed</fullName>
+                <default>false</default>
+                <label>Dialed</label>
+            </value>
+            <value>
+                <fullName>Ringing</fullName>
+                <default>false</default>
+                <label>Ringing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

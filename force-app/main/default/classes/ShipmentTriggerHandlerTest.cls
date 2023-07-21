@@ -84,6 +84,9 @@ public class ShipmentTriggerHandlerTest {
         Ship.BVC_Products__c ='Import';
         ship.Bill_to_1__c = 'Shipper';
         ship.RecordTypeId = operationRecrodTypeId;
+        ship.Consignee_Name_TMS__c = Acc.Id;
+        //    ship.Origin_Address_Name__c = testAdd.name;
+        ship.Destination_Address_Name__c = TestAdd.Id;
         insert Ship;
         ShipList1.add(Ship);
         ShipList3.add(Ship);
@@ -106,6 +109,9 @@ public class ShipmentTriggerHandlerTest {
         Ship2.Consignee_Name__c = 'abc';
         Ship2.Bill_To_Party_PAN__c = 'EQUPNB123K';
         Ship2.Shipment_Lot__c = ShipLot1.Id;
+        Ship2.Consignee_Name_TMS__c = Acc.Id;
+        //    ship.Origin_Address_Name__c = testAdd.name;
+        Ship2.Destination_Address_Name__c = TestAdd.Id;
         insert Ship2;        
         ShipList1.add(Ship2);
         Shipment__c Ship3 = New Shipment__c();
@@ -122,6 +128,9 @@ public class ShipmentTriggerHandlerTest {
         Ship3.Shipper_Email_ID__c = 'abc@sd.com';
         Ship3.Shipper__c = 'abc';
         Ship3.Shipment_Lot__c = ShipLot1.Id;
+        Ship3.Consignee_Name_TMS__c = Acc.Id;
+        //    ship.Origin_Address_Name__c = testAdd.name;
+        Ship3.Destination_Address_Name__c = TestAdd.Id;
         insert Ship3; 
         ShipList2.add(Ship3);
         //ShipmentTriggerHandler.UpdateShipmentShipper(ShipList1);

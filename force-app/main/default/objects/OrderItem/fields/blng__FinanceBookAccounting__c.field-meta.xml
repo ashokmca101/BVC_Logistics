@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>blng__FinanceBookAccounting__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Lookup to the Finance Book object used to record the Accounting for this Order Product.</inlineHelpText>
+    <label>Finance Book (Accounting)</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>blng__FinanceBook__c.blng__Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>blng__FinanceBook__c</referenceTo>
+    <relationshipLabel>Order Products (Finance Book (Accounting))</relationshipLabel>
+    <relationshipName>AccountingOrderProducts</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

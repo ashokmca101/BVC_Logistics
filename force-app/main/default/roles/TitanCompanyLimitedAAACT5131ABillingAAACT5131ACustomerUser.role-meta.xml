@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>None</contactAccessLevel>
+    <description>Titan Company Limited Billing AAACT5131A Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Titan Company Limited Billing AAACT5131A Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Head_of_Division_BVCB</parentRole>
+</Role>

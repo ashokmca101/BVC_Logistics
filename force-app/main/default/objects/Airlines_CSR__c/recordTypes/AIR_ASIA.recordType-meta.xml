@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AIR_ASIA</fullName>
+    <active>false</active>
+    <label>AIR ASIA</label>
+    <picklistValues>
+        <picklist>Booking_Status__c</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>UOM1__c</picklist>
+        <values>
+            <fullName>Carat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KG</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>UOM__c</picklist>
+        <values>
+            <fullName>Carat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kg</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

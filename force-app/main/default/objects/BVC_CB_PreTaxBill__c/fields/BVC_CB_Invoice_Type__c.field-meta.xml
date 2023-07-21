@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_CB_Invoice_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Invoice Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BVC CB Invoice Type</fullName>
+                <default>false</default>
+                <label>BVC CB Invoice Type</label>
+            </value>
+            <value>
+                <fullName>Bill of Supply Invoice</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bill of Supply Invoice</label>
+            </value>
+            <value>
+                <fullName>Commercial Invoice</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Commercial Invoice</label>
+            </value>
+            <value>
+                <fullName>Tax Invoice</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tax Invoice</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

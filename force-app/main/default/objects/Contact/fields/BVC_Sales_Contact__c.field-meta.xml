@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BVC_Sales_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is to indicate if the contact is for Sales</description>
+    <externalId>false</externalId>
+    <label>Sales Contact</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

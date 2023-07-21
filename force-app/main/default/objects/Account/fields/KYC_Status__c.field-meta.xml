@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KYC_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>KYC Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>API Verified</fullName>
+                <default>false</default>
+                <label>API Verified</label>
+            </value>
+            <value>
+                <fullName>Verification Case Created</fullName>
+                <default>false</default>
+                <label>Verification Case Created</label>
+            </value>
+            <value>
+                <fullName>Verification Failed</fullName>
+                <default>false</default>
+                <label>Verification Failed</label>
+            </value>
+            <value>
+                <fullName>Manually Verified</fullName>
+                <default>false</default>
+                <label>Manually Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

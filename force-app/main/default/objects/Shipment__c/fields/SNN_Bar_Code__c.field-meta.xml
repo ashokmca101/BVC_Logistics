@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SNN_Bar_Code__c</fullName>
+    <externalId>false</externalId>
+    <formula>/*&quot;https://barcode.tec-it.com/barcode.ashx?data=&quot;+Shipping_Note_Number__c+&quot;&amp;code=Code128&amp;dpi=96&amp;dataseparator=&quot;*/
+&quot;https://barcode.tec-it.com/barcode.ashx?data=&quot;+Shipping_Note_Number__c+&quot;&amp;code=Code128&amp;translate-esc=on&quot;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SNN Bar Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

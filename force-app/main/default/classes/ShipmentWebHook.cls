@@ -1,0 +1,311 @@
+global with sharing class ShipmentWebHook 
+{
+    /*
+public class PayloadBody {
+public String CreatedById;
+public String Shipment_Date;
+public String Shipping_Note_Number;
+public String LastModifiedById;
+}
+*/
+    public class PayloadBody
+    {
+        public String Id;
+        public String Shipping_Note_Number ;
+        public String Name;
+        public String LastModifiedDate;
+        public String Customer; 
+        public String Account; 
+        public String BillTo_Party_Address; 
+        public String Bill_To_Account; 
+        public String Billing_Account; 
+        public String Billing_Address; 
+        public String Billing_Entity_Name; 
+        public String Customer_Product_Category; 
+        public String X18_Digit_ID; 
+        public String Destination_Address_Name; 
+        public String Gross_Weight_UOM; 
+        public String Gross_Weight; 
+        public String Gross_weight_in_Gram; 
+        public String Invoice_Number; 
+        public String Net_Weight_UOM; 
+        public String Net_Weight; 
+        public String Net_weight_in_Gram; 
+        public String Origin_Address_Name; 
+        public String Product_Code; 
+        public String Product_Type; 
+        public String Delivery_Instruction; 
+        public String Shipment_Date; 
+        public String Shipment_Number; 
+        public String Shipment_Payment_Status; 
+        public String Shipment_Stage; 
+        public String Shipper_Name_TMS; 
+        public String Shipper_PAN_TMS; 
+        public String Tracking_Status; 
+        public String Billing_Entity_PAN; 
+        public String Billing_Entity_Address; 
+        public String Billing_Entity_GST; 
+        public String Billing_Entity_Name_TMS; 
+        public String Consignee_Name_TMS; 
+        public String Consignee_PAN_TMS; 
+        public String Destination_Hub; 
+        public String Origin_Hub; 
+        public String BVC_Product_Name; 
+        public String Cargo_Type_Code; 
+        public String Cargo_Type; 
+        public String Delivery_Route_Assigned_To; 
+        public String Number_of_Secure_Bags_scanned; 
+        public String Customer_Status; 
+        public String Delivery_Route_Number; 
+        public String Shipment_Value; 
+        public String Product_Description; 
+        public String Pickup; 
+        public String IsDeleted;
+        public String BVC_Products; 
+        public String Cancelled_Reason; 
+        public String Pdf_Url; 
+        public String CreatedDate;
+        public String Status; 
+        public String Insurance_By_BVC; 
+        public String API_or_Excel; 
+        public String Shipment_Created_Through; 
+        public String Reference_1; 
+        public String Insurance_By; 
+        public String Number_of_Packages; 
+        public String Net_Weight_UOM_TMS; 
+        public String Gross_Weight_UOM_TMS; 
+        public String IsExhibition; 
+        public String Exhibition; 
+        public String Exhibition_Movement_Type; 
+        public String Actual_Delivery_Date_and_Time; 
+        public String Estimated_Delivery_Date; 
+        public String Delivered_To_Person; 
+        public String Destination_Address_Phone; 
+        public String Destination_Address_Email; 
+        public String Origin_Address_Phone; 
+        public String Origin_Address_Email; 
+    }
+    
+    public static string jsonContent(List<Shipment__c> st)
+    {
+        PayloadBody pl = new PayloadBody(); 
+        // pl.Id = st[0].Shipment__c;
+       // User cbu = [select Name from User where Id=:st[0].CreatedById limit 1];
+       // User lmbu = [select Name from User where Id=:st[0].LastModifiedById limit 1];
+        /*
+pl.CreatedById = cbu.Name;
+pl.Shipment_Date = string.valueOf(st[0].Shipment_Date__c);
+pl.Shipping_Note_Number = st[0].Shipping_Note_Number__c;
+pl.LastModifiedById = lmbu.Name;
+String jsonstring = Json.serialize(pl);
+*/
+        System.debug('Shipping Note Number :'+st[0].Shipping_Note_Number__c);
+        pl.Id 	=	st[0].Id;
+        pl.Shipping_Note_Number 	=	st[0].Shipping_Note_Number__c;
+        pl.Name	=	st[0].Name;
+        pl.LastModifiedDate	=	string.valueOf(st[0].LastModifiedDate);
+        pl.Customer  =		st[0].Customer__c;
+        pl.Account  	=	st[0].Account__c;
+        pl.BillTo_Party_Address  =		st[0].BillTo_Party_Address__c;
+        pl.Bill_To_Account  	=	st[0].Bill_To_Account__c;
+        pl.Billing_Account  =		st[0].Billing_Account__c;
+        pl.Billing_Address  	=	st[0].Billing_Address__c;
+        pl.Billing_Entity_Name  =		st[0].Billing_Entity_Name__c;
+        pl.Customer_Product_Category  =		st[0].Customer_Product_Category__c;
+        pl.X18_Digit_ID  	=	st[0].X18_Digit_ID__c;
+        pl.Destination_Address_Name  	=	st[0].Destination_Address_Name__c;
+        pl.Gross_Weight_UOM  =		st[0].Gross_Weight_UOM__c;
+        pl.Gross_Weight  	=	string.valueOf(st[0].Gross_Weight__c);
+        pl.Gross_weight_in_Gram  	=	string.valueOf(st[0].Gross_weight_in_Gram__c);
+        pl.Invoice_Number  	=	st[0].Invoice_Number__c;
+        pl.Net_Weight_UOM  	=	st[0].Net_Weight_UOM__c;
+        pl.Net_Weight  	=	string.valueOf(st[0].Net_Weight__c);
+        pl.Net_weight_in_Gram  	=	string.valueOf(st[0].Net_weight_in_Gram__c);
+        pl.Origin_Address_Name  =		st[0].Origin_Address_Name__c;
+        pl.Product_Code  	=	st[0].Product_Code__c;
+        pl.Product_Type  	=	st[0].Product_Type__c;
+        pl.Delivery_Instruction  	=	st[0].Delivery_Instruction__c;
+        pl.Shipment_Date  	=	string.valueOf(st[0].Shipment_Date__c);
+        pl.Shipment_Number  	=	st[0].Shipment_Number__c;
+        pl.Shipment_Payment_Status  	=	st[0].Shipment_Payment_Status__c;
+        pl.Shipment_Stage  	=	st[0].Shipment_Stage__c;
+        pl.Shipper_Name_TMS  	=	st[0].Shipper_Name_TMS__c;
+        pl.Shipper_PAN_TMS  	=	st[0].Shipper_PAN_TMS__c;
+        pl.Tracking_Status  	=	st[0].Tracking_Status__c;
+        pl.Billing_Entity_PAN  	=	st[0].Billing_Entity_PAN__c;
+        pl.Billing_Entity_Address  =		st[0].Billing_Entity_Address__c;
+        pl.Billing_Entity_GST  	=	st[0].Billing_Entity_GST__c;
+        pl.Billing_Entity_Name_TMS  =		st[0].Billing_Entity_Name_TMS__c;
+        pl.Consignee_Name_TMS  	=	st[0].Consignee_Name_TMS__c;
+        pl.Consignee_PAN_TMS  	=	st[0].Consignee_PAN_TMS__c;
+        pl.Destination_Hub  	=	st[0].Destination_Hub__c;
+        pl.Origin_Hub  	=	st[0].Origin_Hub__c;
+        pl.BVC_Product_Name  	=	st[0].BVC_Product_Name__c;
+        pl.Cargo_Type_Code  =		st[0].Cargo_Type_Code__c;
+        pl.Cargo_Type  	=	st[0].Cargo_Type__c;
+        pl.Delivery_Route_Assigned_To  =		st[0].Delivery_Route_Assigned_To__c;
+        pl.Number_of_Secure_Bags_scanned  	=	string.valueOf(st[0].Number_of_Secure_Bags_scanned__c);
+        pl.Customer_Status  	=	st[0].Customer_Status__c;
+        pl.Delivery_Route_Number  	=	st[0].Delivery_Route_Number__c;
+        pl.Shipment_Value  	=	string.valueOf(st[0].Shipment_Value__c);
+        pl.Product_Description  	=	st[0].Product_Description__c;
+        pl.Pickup  	=	st[0].Pickup__c;
+        pl.IsDeleted	=	string.valueOf(st[0].IsDeleted);
+        pl.BVC_Products  	=	st[0].BVC_Products__c;
+        pl.Cancelled_Reason  	=	st[0].Cancelled_Reason__c;
+        pl.Pdf_Url  	=	st[0].Pdf_Url__c;
+        pl.CreatedDate	=	string.valueOf(st[0].CreatedDate);
+        pl.Status  		=st[0].Status__c;
+        pl.Insurance_By_BVC  	=	st[0].Insurance_By_BVC__c;
+        pl.API_or_Excel  	=	string.valueOf(st[0].API_or_Excel__c);
+        pl.Shipment_Created_Through  	=	st[0].Shipment_Created_Through__c;
+        pl.Reference_1  	=	st[0].Reference_1__c;
+        pl.Insurance_By  		=st[0].Insurance_By__c;
+        pl.Number_of_Packages  	=	string.valueOf(st[0].Number_of_Packages__c);
+        pl.Net_Weight_UOM_TMS  	=	st[0].Net_Weight_UOM_TMS__c;
+        pl.Gross_Weight_UOM_TMS  =		st[0].Gross_Weight_UOM_TMS__c;
+        pl.IsExhibition  	=	string.valueOf(st[0].IsExhibition__c);
+        pl.Exhibition  	=	st[0].Exhibition__c;
+        pl.Exhibition_Movement_Type  	=	string.valueOf(st[0].Exhibition_Movement_Type__c);
+        pl.Actual_Delivery_Date_and_Time  =		string.valueOf(st[0].Actual_Delivery_Date_and_Time__c);
+        pl.Estimated_Delivery_Date  =		string.valueOf(st[0].Estimated_Delivery_Date__c);
+        pl.Delivered_To_Person  	=	st[0].Delivered_To_Person__c;
+        pl.Destination_Address_Phone  	=	st[0].Destination_Address_Phone__c;
+        pl.Destination_Address_Email  =		st[0].Destination_Address_Email__c;
+        pl.Origin_Address_Phone  	=	st[0].Origin_Address_Phone__c;
+        pl.Origin_Address_Email  	=	st[0].Origin_Address_Email__c;
+        String jsonstring = Json.serialize(pl);
+        String jsString='{"Id":"'+st[0].Id+'","Shipping_Note_Number__c":"'+st[0].Shipping_Note_Number__c+'",';
+        jsString = jsString +'"Name":"'+st[0].Name+'",';
+        jsString = jsString +'"Tracking_Status__c":"'+st[0].Tracking_Status__c+'",';        
+        jsString = jsString +'"CreatedDate":"'+st[0].CreatedDate+'",';  
+        jsString = jsString +'"LastModifiedDate":"'+st[0].LastModifiedDate+'",'; 
+       // jsString = jsString +'"Shipment_Date__c":"'+st[0].Shipment_Date__c+'"';
+        jsString = jsString +'}';
+        /*
+        jsString = jsString +'"LastModifiedDate":"'	+st[0].LastModifiedDate+'"';
+        jsString = jsString +'"Customer":"'	+st[0].Customer__c+'"';
+        jsString = jsString +'"Account":"'	+st[0].Account__c+'"';
+        jsString = jsString +'"BillTo_Party_Address":"'	+st[0].BillTo_Party_Address__c+'"';
+        jsString = jsString +'"Bill_To_Account":"'	+st[0].Bill_To_Account__c+'"';
+        jsString = jsString +'"Billing_Account":"'	+st[0].Billing_Account__c+'"';
+        jsString = jsString +'"Billing_Address":"'	+st[0].Billing_Address__c+'"';
+        jsString = jsString +'"Billing_Entity_Name":"'	+st[0].Billing_Entity_Name__c+'"';
+        jsString = jsString +'"Customer_Product_Category":"'	+st[0].Customer_Product_Category__c+'"';
+        jsString = jsString +'"X18_Digit_ID":"'	+st[0].X18_Digit_ID__c+'"';
+        jsString = jsString +'"Destination_Address_Name":"'	+st[0].Destination_Address_Name__c+'"';
+        jsString = jsString +'"Gross_Weight_UOM":"'	+st[0].Gross_Weight_UOM__c+'"';
+        jsString = jsString +'"Gross_Weight":"'	+st[0].Gross_Weight__c+'"';
+        jsString = jsString +'"Gross_weight_in_Gram":"'	+st[0].Gross_weight_in_Gram__c+'"';
+        jsString = jsString +'"Invoice_Number":"'	+st[0].Invoice_Number__c+'"';
+        jsString = jsString +'"Net_Weight_UOM":"'	+st[0].Net_Weight_UOM__c+'"';
+        jsString = jsString +'"Net_Weight":"'	+st[0].Net_Weight__c+'"';
+        jsString = jsString +'"Net_weight_in_Gram":"'	+st[0].Net_weight_in_Gram__c+'"';
+        jsString = jsString +'"Origin_Address_Name":"'	+st[0].Origin_Address_Name__c+'"';
+        jsString = jsString +'"Product_Code":"'	+st[0].Product_Code__c+'"';
+        jsString = jsString +'"Product_Type":"'	+st[0].Product_Type__c+'"';
+        jsString = jsString +'"Delivery_Instruction":"'	+st[0].Delivery_Instruction__c+'"';
+        jsString = jsString +'"Shipment_Date":"'	+st[0].Shipment_Date__c+'"';
+        jsString = jsString +'"Shipment_Number":"'	+st[0].Shipment_Number__c+'"';
+        jsString = jsString +'"Shipment_Payment_Status":"'	+st[0].Shipment_Payment_Status__c+'"';
+        jsString = jsString +'"Shipment_Stage":"'	+st[0].Shipment_Stage__c+'"';
+        jsString = jsString +'"Shipper_Name_TMS":"'	+st[0].Shipper_Name_TMS__c+'"';
+        jsString = jsString +'"Shipper_PAN_TMS":"'	+st[0].Shipper_PAN_TMS__c+'"';
+        jsString = jsString +'"Tracking_Status":"'	+st[0].Tracking_Status__c+'"';
+        jsString = jsString +'"Billing_Entity_PAN":"'	+st[0].Billing_Entity_PAN__c+'"';
+        jsString = jsString +'"Billing_Entity_Address":"'	+st[0].Billing_Entity_Address__c+'"';
+        jsString = jsString +'"Billing_Entity_GST":"'	+st[0].Billing_Entity_GST__c+'"';
+        jsString = jsString +'"Billing_Entity_Name_TMS":"'	+st[0].Billing_Entity_Name_TMS__c+'"';
+        jsString = jsString +'"Consignee_Name_TMS":"'	+st[0].Consignee_Name_TMS__c+'"';
+        jsString = jsString +'"Consignee_PAN_TMS":"'	+st[0].Consignee_PAN_TMS__c+'"';
+        jsString = jsString +'"Destination_Hub":"'	+st[0].Destination_Hub__c+'"';
+        jsString = jsString +'"Origin_Hub":"'	+st[0].Origin_Hub__c+'"';
+        jsString = jsString +'"BVC_Product_Name":"'	+st[0].BVC_Product_Name__c+'"';
+        jsString = jsString +'"Cargo_Type_Code":"'	+st[0].Cargo_Type_Code__c+'"';
+        jsString = jsString +'"Cargo_Type":"'	+st[0].Cargo_Type__c+'"';
+        jsString = jsString +'"Delivery_Route_Assigned_To":"'	+st[0].Delivery_Route_Assigned_To__c+'"';
+        jsString = jsString +'"Number_of_Secure_Bags_scanned":"'	+st[0].Number_of_Secure_Bags_scanned__c+'"';
+        jsString = jsString +'"Customer_Status":"'	+st[0].Customer_Status__c+'"';
+        jsString = jsString +'"Delivery_Route_Number":"'	+st[0].Delivery_Route_Number__c+'"';
+        jsString = jsString +'"Shipment_Value":"'	+st[0].Shipment_Value__c+'"';
+        jsString = jsString +'"Product_Description":"'	+st[0].Product_Description__c+'"';
+        jsString = jsString +'"Pickup":"'	+st[0].Pickup__c+'"';
+        jsString = jsString +'"IsDeleted":"'	+st[0].IsDeleted+'"';
+        jsString = jsString +'"BVC_Products":"'	+st[0].BVC_Products__c+'"';
+        jsString = jsString +'"Cancelled_Reason":"'	+st[0].Cancelled_Reason__c+'"';
+        jsString = jsString +'"Pdf_Url":"'	+st[0].Pdf_Url__c+'"';
+        jsString = jsString +'"CreatedDate":"'	+st[0].CreatedDate+'"';
+        jsString = jsString +'"Status":"'	+st[0].Status__c+'"';
+        jsString = jsString +'"Insurance_By_BVC":"'	+st[0].Insurance_By_BVC__c+'"';
+        jsString = jsString +'"API_or_Excel":"'	+st[0].API_or_Excel__c+'"';
+        jsString = jsString +'"Shipment_Created_Through":"'	+st[0].Shipment_Created_Through__c+'"';
+        jsString = jsString +'"Reference_1":"'	+st[0].Reference_1__c+'"';
+        jsString = jsString +'"Insurance_By":"'	+st[0].Insurance_By__c+'"';
+        jsString = jsString +'"Number_of_Packages":"'	+st[0].Number_of_Packages__c+'"';
+        jsString = jsString +'"Net_Weight_UOM_TMS":"'	+st[0].Net_Weight_UOM_TMS__c+'"';
+        jsString = jsString +'"Gross_Weight_UOM_TMS":"'	+st[0].Gross_Weight_UOM_TMS__c+'"';
+        jsString = jsString +'"IsExhibition":"'	+st[0].IsExhibition__c+'"';
+        jsString = jsString +'"Exhibition":"'	+st[0].Exhibition__c+'"';
+        jsString = jsString +'"Exhibition_Movement_Type":"'	+st[0].Exhibition_Movement_Type__c+'"';
+        jsString = jsString +'"Actual_Delivery_Date_and_Time":"'	+st[0].Actual_Delivery_Date_and_Time__c+'"';
+        jsString = jsString +'"Estimated_Delivery_Date":"'	+st[0].Estimated_Delivery_Date__c+'"';
+        jsString = jsString +'"Delivered_To_Person":"'	+st[0].Delivered_To_Person__c+'"';
+        jsString = jsString +'"Destination_Address_Phone":"'	+st[0].Destination_Address_Phone__c+'"';
+        jsString = jsString +'"Destination_Address_Email":"'	+st[0].Destination_Address_Email__c+'"';
+        jsString = jsString +'"Origin_Address_Phone":"'	+st[0].Origin_Address_Phone__c+'"';
+        jsString = jsString +'"Origin_Address_Email":"'	+st[0].Origin_Address_Email__c+'"';
+        
+        jsString = jsString +'}';
+*/
+        System.debug('11. jsString :'+jsString);
+        //return jsonstring;
+        return jsString;
+    }
+    // @HttpPost
+    @future(callout=true)   
+    global static void sendRequest(String jsonstring){
+        HttpRequest req = new HttpRequest();
+        Http http = new Http();
+        HttpResponse resp = new HttpResponse();
+        // req.setEndpoint('');               
+        API_Integration_Credential__mdt Tracking_Webhook_url = API_Integration_Credential__mdt.getInstance('Tracking_Webhook_url');        
+        // API_Integration_Credential__mdt Tracking_Webhook_url = API_Integration_Credential__mdt.getInstance('Razorpay_Payment_Link_Generator');        // it is kept here for testing
+        String endpoint = Tracking_Webhook_url.Server_URL__c;
+        /* endpoint = endpoint +'/'; 
+string username = Tracking_Webhook_url.UserName__c; 
+string password = Tracking_Webhook_url.Password__c;
+Blob headerValue = Blob.valueOf(username + ':' + password);
+Blob headerValue = Blob.valueOf(headerValue);
+System.debug('12.headerValue :'+headerValue); 
+String authorizationHeader = 'BASIC ' + EncodingUtil.base64Encode(headerValue);
+*/
+        req.setEndpoint(endpoint);
+        req.setMethod('POST');        
+        req.setHeader('Username', 'Ravindra');
+        req.setHeader('Password', 'bvc@123');
+        req.setHeader('Content-Type','application/json');
+        req.setBody(jsonstring);      
+        // req.setBody('{"ID":0}');
+        
+        req.setTimeout(120000);        
+        String printUrl = req.toString();
+        System.debug(' printUrl :'+printUrl);
+        System.debug(' getBody :'+req.getBody());
+        System.debug(' getEndpoint :'+req.getEndpoint());
+        //System.debug(' authorizationHeader :'+req.getHeader('Authorization'));
+        System.debug(' req :'+req);
+        //req.setCompressed(true);                        
+        try {
+            resp = http.send(req);
+            System.debug('Response :'+resp);
+            System.debug('Response getStatusCode:'+resp.getStatusCode());
+            System.debug('Response getStatus:'+resp.getStatus());
+            // System.debug('Response getBodyDocument:'+resp.getBodyDocument());
+            System.debug('Response Body :'+resp.getBody());
+        }  catch(System.CalloutException e) {
+            System.debug('Callout error: '+ e);
+            System.debug(resp.toString());
+        }        
+    }
+    
+}

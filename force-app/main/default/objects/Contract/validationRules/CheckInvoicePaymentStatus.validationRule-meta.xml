@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CheckInvoicePaymentStatus</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(! ISBLANK( Invoice__c ), ISPICKVAL( Business_Type__c , &apos;ACR&apos;), Invoice__r.blng__PaymentStatus__c != &apos;Paid&apos;, ISPICKVAL( Status , &apos;Activated&apos;) )</errorConditionFormula>
+    <errorMessage>Contract cant be activated because Invoice Payment not Paid</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__ConfiguredDescriptionPattern__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Pattern used to generate dynamic product description for configured products.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Pattern used to generate dynamic product description for configured products.</inlineHelpText>
+    <label>Configured Description Pattern</label>
+    <length>1000</length>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

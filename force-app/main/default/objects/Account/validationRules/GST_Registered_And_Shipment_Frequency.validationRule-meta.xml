@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GST_Registered_And_Shipment_Frequency</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISCHANGED( GST_Registered__c ) || ISCHANGED( Billing_Frequency__c )) &amp;&amp; ( IF(GST_Registered__c == False, True, False) &amp;&amp;  NOT(ISPICKVAL(Billing_Frequency__c, &quot;Shipment&quot;))  )</errorConditionFormula>
+    <errorDisplayField>Billing_Frequency__c</errorDisplayField>
+    <errorMessage>Billing Frequency can only be &apos;Shipment&apos; when GST is not registered</errorMessage>
+</ValidationRule>

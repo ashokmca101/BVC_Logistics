@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Geo_Code__c</fullName>
+    <externalId>false</externalId>
+    <formula>&apos;Latitude : &apos;+ TEXT(Tracking__r.Geocode__Latitude__s) +&apos;, Longitude : &apos;+TEXT(Tracking__r.Geocode__Longitude__s)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Geo Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

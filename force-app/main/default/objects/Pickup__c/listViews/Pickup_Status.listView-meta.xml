@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pickup_Status</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Pickup_Date__c</columns>
+    <columns>Pickup_Date_and_Time__c</columns>
+    <columns>Shipping_Note_Number__c</columns>
+    <columns>Shipment__c</columns>
+    <columns>BVC_Origin_Hub__c</columns>
+    <columns>Shipper_Name__c</columns>
+    <columns>Shipper_Address__c</columns>
+    <columns>Pickup_Status__c</columns>
+    <columns>Pickup_Route_Number__c</columns>
+    <columns>Pickup_Assigned_To__c</columns>
+    <columns>Number_of_Shipments_Picked_Up__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Pickup__c.Domestic</value>
+    </filters>
+    <label>Pickup Status</label>
+    <sharedTo>
+        <group>TMS_Managers</group>
+        <role>AREA_MANAGER</role>
+        <role>BRANCH_MANAGER</role>
+        <role>EXECUTIVE</role>
+        <role>REGIONAL_MANAGER</role>
+    </sharedTo>
+</ListView>

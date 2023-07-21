@@ -1,0 +1,7 @@
+<apex:page controller="AttachmentController" contentType="application/pdf">
+    <apex:iframe src="/servlet/servlet.FileDownload?file={!attachment.id}"/>
+    
+    <!--<object data="/servlet/servlet.FileDownload?file={'00P5g00000C6y5H'}" type="application/pdf" width="100%" height="300px">
+        
+    </object>-->
+</apex:page>

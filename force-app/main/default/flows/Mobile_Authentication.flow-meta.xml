@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <description>Assign Generated OTP to a Variable So that it should not change during run time.</description>
+        <name>Assign_Generated_OTP_to_a_Variable</name>
+        <label>Assign Generated OTP to a Variable</label>
+        <locationX>497</locationX>
+        <locationY>177</locationY>
+        <assignmentItems>
+            <assignToReference>VariableToStoreOTP</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GeneratedOTP</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Kindly_Authenticate_Mobile</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Is Mobile Verified so that mobile authentication happens only once.</description>
+        <name>Is_Mobile_Verified</name>
+        <label>Is Mobile Verified</label>
+        <locationX>489</locationX>
+        <locationY>23</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Generated_OTP_to_a_Variable</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Current_User_Mobile_Verified</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validate Security Code</description>
+        <name>Validate_Security_Code</name>
+        <label>Validate Security Code</label>
+        <locationX>489</locationX>
+        <locationY>428</locationY>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>Code_Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>VariableToStoreOTP</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Security_Code</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Mobile_Verified_check_box_to_True</targetReference>
+            </connector>
+            <label>Code Matched</label>
+        </rules>
+        <rules>
+            <name>Code_Not_Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>VariableToStoreOTP</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>Security_Code</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Page_Showing_Code_Not_Matched</targetReference>
+            </connector>
+            <label>Code Not Matched</label>
+        </rules>
+    </decisions>
+    <description>Mobile Authentication.</description>
+    <formulas>
+        <description>This is generated OTP from system.</description>
+        <name>GeneratedOTP</name>
+        <dataType>Number</dataType>
+        <expression>Value(SUBSTITUTE(LEFT(RIGHT(text( {!$Flow.CurrentDateTime} ),9),8), &quot;:&quot;, &quot;&quot; ))</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Mobile Authentication {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Mobile Authentication</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Current_User_record</name>
+        <label>Get Current User record</label>
+        <locationX>162</locationX>
+        <locationY>166</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Mobile_Verified</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LoginFlow_UserId</elementReference>
+            </value>
+        </filters>
+        <object>User</object>
+        <outputAssignments>
+            <assignToReference>Current_User_Mobile_Verified</assignToReference>
+            <field>Is_Mobile_Verified__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Mobile Verified check box on User to True</description>
+        <name>Update_Mobile_Verified_check_box_to_True</name>
+        <label>Update Mobile Verified check box to True</label>
+        <locationX>231</locationX>
+        <locationY>291</locationY>
+        <connector>
+            <targetReference>OTP_VERIFIED_CONFIRMATION_SCREEN</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LoginFlow_UserId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Is_Mobile_Verified__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>User</object>
+    </recordUpdates>
+    <screens>
+        <description>Error Page Showing Code Not Matched</description>
+        <name>Error_Page_Showing_Code_Not_Matched</name>
+        <label>Error Page Showing Code Not Matched</label>
+        <locationX>752</locationX>
+        <locationY>265</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Display_Error_Message</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-family: serif; font-size: 20px; color: rgb(255, 2, 2);&quot;&gt;OTP Didn&apos;t Match&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Kindly Authenticate Mobile</description>
+        <name>Kindly_Authenticate_Mobile</name>
+        <label>Kindly Authenticate Mobile</label>
+        <locationX>497</locationX>
+        <locationY>295</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Validate_Security_Code</targetReference>
+        </connector>
+        <fields>
+            <name>Generated_OTP</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>VariableToStoreOTP</elementReference>
+            </defaultValue>
+            <fieldText>Generated OTP  :</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Security_Code</name>
+            <dataType>Number</dataType>
+            <fieldText>Security Code</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <scale>0</scale>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>OTP_VERIFIED_CONFIRMATION_SCREEN</name>
+        <label>OTP VERIFIED CONFIRMATION SCREEN</label>
+        <locationX>44</locationX>
+        <locationY>291</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>OTP_VERIFIED_CONFIRMATION</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(28, 244, 0); background-color: rgb(255, 255, 255); font-family: serif; font-size: 20px;&quot;&gt;OTP Verified!!&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>34</locationX>
+        <locationY>32</locationY>
+        <connector>
+            <targetReference>Get_Current_User_record</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>Current_User_Mobile_Verified</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Logged In User</description>
+        <name>LoginFlow_UserId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Variable To Store Generated OTP</description>
+        <name>VariableToStoreOTP</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>0</scale>
+    </variables>
+</Flow>

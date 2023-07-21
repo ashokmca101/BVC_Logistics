@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legacy_Pricing</fullName>
+    <columns>NAME</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Business_Type__c</columns>
+    <columns>UOM_Percentage__c</columns>
+    <columns>Slab_Criteria__c</columns>
+    <columns>Shipment_Type__c</columns>
+    <columns>Slab_Level__c</columns>
+    <columns>Rate_INR__c</columns>
+    <columns>Lower_Bound__c</columns>
+    <columns>Upper_Bound__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>eSHIP_Standard_Pricing__c.Legacy_eSHIP_Pricing</value>
+    </filters>
+    <label>Legacy Pricing</label>
+</ListView>

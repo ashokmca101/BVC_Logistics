@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Type_For_International_Customer</fullName>
+    <active>true</active>
+    <description>Customer Type can only be Private/Government/Government Undertaking if the BVC Company Type is &apos;CB Customer &amp; International Customer&apos; or &apos;International Customer&apos;</description>
+    <errorConditionFormula>IF((INCLUDES(BVC_Company_Type__c,&apos;International&apos;) || INCLUDES(BVC_Company_Type__c,&apos;International;CB Customer&apos;)) &amp;&amp; (NOT(INCLUDES(BVC_Company_Type__c,&apos;Domestic&apos;))), IF( ISPICKVAL(Customer_Type__c, &apos;GOVERNMENT&apos;) || ISPICKVAL(Customer_Type__c, &apos;GOVERNMENT UNDERTAKING&apos;) || ISPICKVAL(Customer_Type__c, &apos;PRIVATE&apos;) ,  FALSE , TRUE) ,FALSE)</errorConditionFormula>
+    <errorDisplayField>Customer_Type__c</errorDisplayField>
+    <errorMessage>Customer Type can only be Government, Government Undertaking or Private for the selected BVC Company Type</errorMessage>
+</ValidationRule>

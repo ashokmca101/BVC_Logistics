@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Route_Assigned_Cannot_Be_Change</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISCHANGED(Delivery_Route_Assigned_To__c),
+ISPICKVAL( Tracking_Status__c , &quot;Delivered&quot;), $Profile.Name &lt;&gt;&quot;System Administrator&quot;
+)</errorConditionFormula>
+    <errorDisplayField>Delivery_Route_Assigned_To__c</errorDisplayField>
+    <errorMessage>You Cannot Reassign Delivered Shipment</errorMessage>
+</ValidationRule>

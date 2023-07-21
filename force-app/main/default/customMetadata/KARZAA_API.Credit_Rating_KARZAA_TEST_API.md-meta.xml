@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Credit Rating KARZAA TEST API</label>
+    <protected>false</protected>
+    <values>
+        <field>API_Name__c</field>
+        <value xsi:type="xsd:string">Credit_Rating_DEV</value>
+    </values>
+    <values>
+        <field>EndPoint__c</field>
+        <value xsi:type="xsd:string">https://api.kscan.in/v3/credit-rating</value>
+    </values>
+    <values>
+        <field>Environment__c</field>
+        <value xsi:type="xsd:string">Production</value>
+    </values>
+    <values>
+        <field>KARZAA_Key__c</field>
+        <value xsi:type="xsd:string">oaHIQHlF8lRBF4A</value>
+    </values>
+</CustomMetadata>

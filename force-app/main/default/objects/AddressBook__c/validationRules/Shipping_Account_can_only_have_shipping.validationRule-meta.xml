@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Account_can_only_have_shipping</fullName>
+    <active>true</active>
+    <description>Shipping Account can only have shipping address</description>
+    <errorConditionFormula>AND(Customer__r.RecordType.Name =&apos;Shipping&apos;,
+NOT(RecordType.Name =&apos;Shipping&apos;))</errorConditionFormula>
+    <errorMessage>Shipping Account can only have Shipping Address.</errorMessage>
+</ValidationRule>

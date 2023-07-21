@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__RenewalTerm__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Specify the term of the renewal. By default, it matches the original contract term.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Specify the term of the renewal. By default, it matches the original contract term.</inlineHelpText>
+    <label>Renewal Term</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

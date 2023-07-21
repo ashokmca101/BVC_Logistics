@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Customer Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GOVERNMENT</fullName>
+                <default>false</default>
+                <label>GOVERNMENT</label>
+            </value>
+            <value>
+                <fullName>GOVERNMENT UNDERTAKING</fullName>
+                <default>false</default>
+                <label>GOVERNMENT UNDERTAKING</label>
+            </value>
+            <value>
+                <fullName>PRIVATE</fullName>
+                <default>false</default>
+                <label>PRIVATE</label>
+            </value>
+            <value>
+                <fullName>Company</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Company</label>
+            </value>
+            <value>
+                <fullName>Customer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Customer</label>
+            </value>
+            <value>
+                <fullName>OTHERS</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>OTHERS</label>
+            </value>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Prospect</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

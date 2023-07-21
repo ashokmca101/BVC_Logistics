@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Product_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>BVC Service</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ValSHIP</fullName>
+                <default>false</default>
+                <label>ValSHIP</label>
+            </value>
+            <value>
+                <fullName>GoldSHIP</fullName>
+                <default>false</default>
+                <label>GoldSHIP</label>
+            </value>
+            <value>
+                <fullName>SilverSHIP</fullName>
+                <default>false</default>
+                <label>SilverSHIP</label>
+            </value>
+            <value>
+                <fullName>LuxeSHIP</fullName>
+                <default>false</default>
+                <label>LuxeSHIP</label>
+            </value>
+            <value>
+                <fullName>GenSHIP</fullName>
+                <default>false</default>
+                <label>GenSHIP</label>
+            </value>
+            <value>
+                <fullName>ExhibiSHIP</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ExhibiSHIP</label>
+            </value>
+            <value>
+                <fullName>Gold Bars</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gold Bars</label>
+            </value>
+            <value>
+                <fullName>Gold Coins</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gold Coins</label>
+            </value>
+            <value>
+                <fullName>Gold Jewellery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gold Jewellery</label>
+            </value>
+            <value>
+                <fullName>Silver Bricks</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Silver Bricks</label>
+            </value>
+            <value>
+                <fullName>Silver Jewellery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Silver Jewellery</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

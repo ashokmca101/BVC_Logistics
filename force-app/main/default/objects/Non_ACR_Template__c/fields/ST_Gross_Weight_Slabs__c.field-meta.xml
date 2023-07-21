@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ST_Gross_Weight_Slabs__c</fullName>
+    <externalId>false</externalId>
+    <label>Gross Weight Slabs</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0 - 1 Kg</fullName>
+                <default>false</default>
+                <label>0 - 1 Kg</label>
+            </value>
+            <value>
+                <fullName>1.01 - 3 Kg</fullName>
+                <default>false</default>
+                <label>1.01 - 3 Kg</label>
+            </value>
+            <value>
+                <fullName>3.01 - 10 Kg</fullName>
+                <default>false</default>
+                <label>3.01 - 10 Kg</label>
+            </value>
+            <value>
+                <fullName>10.01 - 20 Kg</fullName>
+                <default>false</default>
+                <label>10.01 - 20 Kg</label>
+            </value>
+            <value>
+                <fullName>20.01+ Kg</fullName>
+                <default>false</default>
+                <label>20.01+ Kg</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

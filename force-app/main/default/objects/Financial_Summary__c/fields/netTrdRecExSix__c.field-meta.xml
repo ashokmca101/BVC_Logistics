@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>netTrdRecExSix__c</fullName>
+    <description>Net trade receivables exceeding six months</description>
+    <externalId>false</externalId>
+    <label>Net trade receivables exceeding 6 months</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

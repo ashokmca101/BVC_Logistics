@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Remarks_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL( Delivery_Instruction__c, &apos;Deliver&apos;),
+    ISCHANGED(Delivery_Instruction__c),
+    ISBLANK( Delivery_Remarks__c )   
+    )</errorConditionFormula>
+    <errorDisplayField>Delivery_Remarks__c</errorDisplayField>
+    <errorMessage>Enter Delivery Remarks.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_to_Hub_Manager_for_count_mismatch</fullName>
+        <description>Alert to Hub Manager for count mismatch</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Destination_Hub_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Origin_Hub_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Email_to_Hub_Manager</template>
+    </alerts>
+    <outboundMessages>
+        <fullName>WebHookonShipment</fullName>
+        <apiVersion>58.0</apiVersion>
+        <endpointUrl>https://bvclogistics-dev.outsystemsenterprise.com/BVCWebhook/rest/BVC/Tracking</endpointUrl>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Tracking_Status__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>imran.shaik@bvclogistics.com</integrationUser>
+        <name>WebHookonShipment</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+</Workflow>

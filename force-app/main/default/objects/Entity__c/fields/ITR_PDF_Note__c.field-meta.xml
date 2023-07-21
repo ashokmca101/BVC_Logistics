@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ITR_PDF_Note__c</fullName>
+    <externalId>false</externalId>
+    <formula>Name +&apos; has filed Income Tax Return for FY &apos;+ Year_1__c +&apos; and FY &apos;+Year_2__c+&apos; before due date of filing return as prescribed u/s 139(1) with acknowledgement Number &apos;+ ITR_Acknowledgement_Number_1__c +&apos; &amp; &apos;+ ITR_Acknowledgement_Number_2__c + &apos;, Date of filing &apos;
++TEXT(DAY( ITR_Filing_Date_1__c ))+&quot;-&quot; +TEXT(MONTH(ITR_Filing_Date_1__c))+&quot;-&quot; +TEXT(YEAR(ITR_Filing_Date_1__c))+&apos; &amp; &apos;+TEXT(DAY( ITR_Filing_Date_2__c ))+&quot;-&quot; +TEXT(MONTH(ITR_Filing_Date_2__c))+&quot;-&quot; +TEXT(YEAR(ITR_Filing_Date_2__c))+&apos;  for the respectively. Therefore provision u/s 206AB &amp; 206CCA is not applicable to us and TDS will be deducted at normal rate&apos;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>ITR PDF Note</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

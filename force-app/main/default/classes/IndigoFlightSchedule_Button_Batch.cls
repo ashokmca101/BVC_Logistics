@@ -6,25 +6,28 @@ global class IndigoFlightSchedule_Button_Batch implements Database.Batchable<sOb
         return Database.getQueryLocator(mtCityCode);
     }
     global void execute(Database.BatchableContext bc,List<City_Code__mdt> originCode){
+     // variable to store metadata values
         String indigoID = '';
         String LoginName = '';
         String airlineCode = '';
         String endpoint = '';
+    //get airline record where airline name is 'AirLine1__c' 
         List<AirLine1__c> indigoAirlineName = [SELECT Airline_Name__c,Name,Id FROM AirLine1__c WHERE Airline_Name__c = 'Indigo' LIMIT 1];
         if(!indigoAirlineName.isEmpty()){
             indigoID = indigoAirlineName[0].Id;
         }
         
-        
+    //get  Airline_API__mdt custom metadata where developer name is 'Indigo_Get_Flight_Details'   
         List<Airline_API__mdt> indigoAirline = [SELECT Endpoint__c,loginName__c, airLine_Code__c FROM Airline_API__mdt
                                                 WHERE DeveloperName = 'Indigo_Get_Flight_Details' LIMIT 1];
         if(!indigoAirline.isEmpty()){
+   // store values in mentioned variables
              LoginName = indigoAirline[0].loginName__c;
              airlineCode = indigoAirline[0].airLine_Code__c;
             endpoint = indigoAirline[0].Endpoint__c;
         }
        
-        
+       // generate token  
         String TokenNumber = FlightScheduleBatch_Helper.generateToken();
         
         system.debug('access_token from Batch Class------ '+TokenNumber);
